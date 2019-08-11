@@ -11,7 +11,8 @@ const getPlanetName = () => {
  * @param dispatch
  */
 export const generatePlanet = dispatch => {
+  const items = []
   const name = getPlanetName()
 
-  dispatch(storePlanet({ name }))
+  dispatch(storePlanet({ items, name }))
 }
