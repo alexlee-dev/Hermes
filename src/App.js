@@ -1,19 +1,30 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { fireExampleAction } from './redux/actions/app'
+import { generatePlanet } from './util'
 
-const App = ({ dispatch }) => {
+const App = ({ dispatch, world }) => {
   useEffect(() => {
-    dispatch(fireExampleAction())
+    generatePlanet(dispatch)
+    generatePlanet(dispatch)
+    generatePlanet(dispatch)
     // eslint-disable-next-line
   }, [])
+
+  const { planets } = world
+
   return (
     <div>
       <h1>hermes</h1>
+      <br />
+      <div>
+        {planets.map(({ name }) => (
+          <p>{name}</p>
+        ))}
+      </div>
     </div>
   )
 }
 
-const mapDispatchToProps = ({ dispatch }) => ({ dispatch })
+const mapStateToProps = ({ world }) => ({ world })
 
-export default connect(mapDispatchToProps)(App)
+export default connect(mapStateToProps)(App)
