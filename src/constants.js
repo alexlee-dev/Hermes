@@ -100,3 +100,20 @@ export const planets = [
   { name: "Drummond's Nailwort" },
   { name: "Wright's Milkvetch" }
 ]
+
+const spaceJunk = {
+  space: 1,
+  value: 1
+}
+
+const ore = {
+  space: 1,
+  value: 2
+}
+
+const plasma = {
+  space: 1,
+  value: 3
+}
+
+export const items = [ore, plasma, spaceJunk]
