@@ -17,8 +17,11 @@ const App = ({ dispatch, world }) => {
       <h1>hermes</h1>
       <br />
       <div>
-        {planets.map(({ name }) => (
-          <p>{name}</p>
+        {planets.map(({ items, name }) => (
+          <div>
+            <p>{name}</p>
+            <p>Items: {JSON.stringify(items, null, 2)}</p>
+          </div>
         ))}
       </div>
     </div>
