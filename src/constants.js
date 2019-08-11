@@ -102,18 +102,21 @@ export const planets = [
 ]
 
 const spaceJunk = {
+  name: "Space Junk",
   space: 1,
   value: 1
 }
 
 const ore = {
+  name: "Ore",
   space: 1,
   value: 2
 }
 
 const plasma = {
+  name: "Plasma",
   space: 1,
   value: 3
 }
 
-export const items = [ore, plasma, spaceJunk]
+export const itemList = [ore, plasma, spaceJunk]
