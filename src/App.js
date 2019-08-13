@@ -18,7 +18,7 @@ const App = ({ dispatch, world }) => {
       <br />
       <div>
         {planets.map(({ items, name }) => (
-          <div>
+          <div key={name}>
             <h2>{name}</h2>
             <span>Items:</span>
             <pre>{JSON.stringify(items, null, 2)}</pre>
