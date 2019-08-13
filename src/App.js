@@ -1,12 +1,21 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { generatePlanet } from './util'
+import { generatePlanets } from './util'
+import useLocalStorage from './hooks/useLocalStorage'
+import { storePlanets } from './redux/actions/world'
 
 const App = ({ dispatch, world }) => {
+  const [storagePlanets, setStoragePlanets] = useLocalStorage('planets', [])
+
   useEffect(() => {
-    generatePlanet(dispatch)
-    generatePlanet(dispatch)
-    generatePlanet(dispatch)
+    // * Check to see if planets exist
+
+    if (storagePlanets.length === 0) {
+      generatePlanets(dispatch, setStoragePlanets)
+    } else {
+      dispatch(storePlanets(storagePlanets))
+    }
+
     // eslint-disable-next-line
   }, [])
 

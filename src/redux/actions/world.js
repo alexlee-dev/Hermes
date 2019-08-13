@@ -1,10 +1,10 @@
 // * ACTION TYPES
-const STORE_PLANET = 'STORE_PLANET'
+const STORE_PLANETS = 'STORE_PLANETS'
 
 // * ACTION GENERATORS
-export const storePlanet = planet => ({
-  type: STORE_PLANET,
-  payload: { planet }
+export const storePlanets = planets => ({
+  type: STORE_PLANETS,
+  payload: { planets }
 })
 
 // * PROMISES
