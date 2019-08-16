@@ -16,13 +16,14 @@ export const generatePlanets = (dispatch, setStoragePlanets) => {
   for (let i = 0; i < 3; i++) {
     const items = []
     const name = getPlanetName()
+    const isHomePlanet = i === 0
 
     for (let j = 0; j < 5; j++) {
       const item = itemList[Math.floor(Math.random() * itemList.length)]
       items.push(item)
     }
 
-    planets.push({ items, name })
+    planets.push({ items, isHomePlanet, name })
   }
 
   dispatch(storePlanets(planets))
