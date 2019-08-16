@@ -28,9 +28,9 @@ const App = ({ dispatch, world }) => {
       <ItemTimer />
       <br />
       <div>
-        {planets.map(({ items, name }) => (
+        {planets.map(({ items, isHomePlanet, name }) => (
           <div key={name}>
-            <h2>{name}</h2>
+            <h2>{isHomePlanet ? name + ' - Home Planet' : name}</h2>
             <span>Items:</span>
             <pre>{JSON.stringify(items, null, 2)}</pre>
           </div>
