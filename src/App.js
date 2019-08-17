@@ -4,7 +4,6 @@ import { generatePlanets } from './util'
 import useLocalStorage from './hooks/useLocalStorage'
 import { storePlanets } from './redux/actions/world'
 import ItemTimer from './components/ItemTimer'
-import GalaxyMap from './components/GalaxyMap'
 
 const App = ({ dispatch, world }) => {
   const [storagePlanets, setStoragePlanets] = useLocalStorage('planets', [])
@@ -26,7 +25,6 @@ const App = ({ dispatch, world }) => {
   return (
     <div>
       <h1>hermes</h1>
-      <GalaxyMap />
       <ItemTimer />
       <br />
       <div>

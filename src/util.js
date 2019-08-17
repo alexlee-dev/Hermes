@@ -3,7 +3,7 @@ import { storePlanets } from './redux/actions/world'
 
 const getPlanetName = () => {
   const planet = planets[Math.floor(Math.random() * planets.length)]
-  return planet.name
+  return planet
 }
 
 /**
