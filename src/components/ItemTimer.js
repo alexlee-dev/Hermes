@@ -20,9 +20,6 @@ const ItemTimer = ({ handleTimerStarted, handleTimerStopped, world }) => {
         setTimeLeft(
           `${duration.minutes()} minutes ${duration.seconds()} seconds`
         )
-        console.log({
-          timeLeft: `${duration.minutes()} minutes ${duration.seconds()} seconds`
-        })
         if (duration.asMilliseconds() === 0) {
           clearInterval(timer)
           handleTimerStopped()
