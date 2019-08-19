@@ -1,3 +1,11 @@
+import PlanetsView from './views/planets'
+import ShipView from './views/ship'
+
+export const views = {
+  Planets: PlanetsView,
+  Ship: ShipView
+}
+
 const spaceJunk = {
   name: "Space Junk",
   space: 1,

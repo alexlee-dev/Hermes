@@ -5,57 +5,50 @@ import { generatePlanets } from './util'
 import useLocalStorage from './hooks/useLocalStorage'
 import { storePlanets } from './redux/actions/world'
 import ItemTimer from './components/ItemTimer'
+import View from './views/View'
+import ViewSelector from './components/ViewSelector'
 
-const App = ({ dispatch, ship, world }) => {
+const App = ({ handleGeneratePlanets, handleStorePlanets }) => {
   const [storagePlanets, setStoragePlanets] = useLocalStorage('planets', [])
 
   useEffect(() => {
     // * Check to see if planets exist
 
     if (storagePlanets.length === 0) {
-      generatePlanets(dispatch, setStoragePlanets)
+      handleGeneratePlanets(setStoragePlanets)
     } else {
-      dispatch(storePlanets(storagePlanets))
+      handleStorePlanets(storagePlanets)
     }
 
     // eslint-disable-next-line
   }, [])
-
-  // const { planets } = world
-  const { cargo } = ship
 
   return (
     <div>
       <h1>hermes</h1>
       <ItemTimer />
       <br />
+      <br />
+      <ViewSelector />
       <div>
-        {/* {planets.map(({ items, isHomePlanet, name }) => (
-          <div key={name}>
-            <h2>{isHomePlanet ? name + ' - Home Planet' : name}</h2>
-            <span>Items:</span>
-            <pre>{JSON.stringify(items, null, 2)}</pre>
-          </div>
-        ))} */}
-
-        <h2>Your Ship</h2>
-        <h3>Cargo</h3>
-        <ul>
-          {cargo.map(({ name }, i) => (
-            <li key={i}>{name}</li>
-          ))}
-        </ul>
+        <View />
       </div>
     </div>
   )
 }
 
 App.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  ship: PropTypes.object.isRequired,
-  world: PropTypes.object.isRequired
+  handleGeneratePlanets: PropTypes.func.isRequired,
+  handleStorePlanets: PropTypes.func.isRequired
 }
 
-const mapStateToProps = ({ ship, world }) => ({ ship, world })
+const mapDispatchToProps = dispatch => ({
+  handleGeneratePlanets: setStoragePlanets =>
+    generatePlanets(dispatch, setStoragePlanets),
+  handleStorePlanets: storagePlanets => dispatch(storePlanets(storagePlanets))
+})
 
-export default connect(mapStateToProps)(App)
+export default connect(
+  null,
+  mapDispatchToProps
+)(App)
