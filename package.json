@@ -15,12 +15,17 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.3.2"
   },
+  "devDependencies": {
+    "coveralls": "^3.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "coveralls": "echo Setup Coveralls."
+    "test": "react-scripts test",
+    "test:coveralls": "jest --coverage --collectCoverageFrom=src/**/* --coverageReporters=text-lcov | coveralls"
   },
   "eslintConfig": {
     "extends": "react-app"
