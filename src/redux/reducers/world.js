@@ -8,11 +8,11 @@ export default (state = worldDefaultState, action) => {
     case 'STORE_PLANETS':
       const { planets } = action.payload
 
-      return Object.assign({}, state, { planets })
+      return { ...state, planets }
     case 'SET_TIMER_RUNNING':
       const { isTimerRunning } = action.payload
 
-      return Object.assign({}, state, { isTimerRunning })
+      return { ...state, isTimerRunning }
     default:
       return state
   }
