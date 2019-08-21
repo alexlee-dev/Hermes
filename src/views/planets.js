@@ -7,14 +7,17 @@ import useLocalStorage from '../hooks/useLocalStorage'
 import {
   storeCargo,
   setShipLocationName,
-  setShipLocationValue
+  setShipLocationValue,
+  removeCargo
 } from '../redux/actions/ship'
+import { addCash } from '../redux/actions/user'
 import { removeItem } from '../redux/actions/world'
 
 const PlanetsView = ({
   handleShipTravel,
   handleStoreCargo,
   planets,
+  shipCargo,
   shipCargoLength,
   shipLocationValue
 }) => {
@@ -32,7 +35,9 @@ const PlanetsView = ({
               <Button
                 hoverIndicator
                 icon={<Target />}
-                onClick={() => handleShipTravel({ name, value: location })}
+                onClick={() =>
+                  handleShipTravel({ name, value: location }, shipCargo)
+                }
                 plain
               />
             )}
@@ -91,12 +96,14 @@ PlanetsView.propTypes = {
   handleShipTravel: PropTypes.func.isRequired,
   handleStoreCargo: PropTypes.func.isRequired,
   planets: PropTypes.array.isRequired,
+  shipCargo: PropTypes.array.isRequired,
   shipCargoLength: PropTypes.number.isRequired,
   shipLocationValue: PropTypes.number.isRequired
 }
 
 const mapStateToProps = ({ ship, world }) => ({
   planets: world.planets,
+  shipCargo: ship.cargo,
   shipCargoLength: ship.cargo.length,
   shipLocationValue: ship.location.value
 })
@@ -108,7 +115,19 @@ const mapDispatchToProps = dispatch => ({
     // * dispatch an action to remove the item from the list of stored items on this planet
     dispatch(removeItem(item))
   },
-  handleShipTravel: destination => {
+  handleShipTravel: (destination, shipCargo) => {
+    const sellableItems = []
+    shipCargo.forEach(item => {
+      if (item.destination.value === destination.value) {
+        sellableItems.push(item)
+      }
+    })
+    sellableItems.forEach(item => {
+      // * Add the value of this item to the user's cash
+      dispatch(addCash(item.value))
+      // * Remove the item from the ship cargo
+      dispatch(removeCargo(item))
+    })
     dispatch(setShipLocationName(destination.name))
     dispatch(setShipLocationValue(destination.value))
   }
