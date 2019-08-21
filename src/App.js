@@ -1,33 +1,72 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { generatePlanet } from './util'
+import { generatePlanets } from './util'
+import { setPlanets } from './redux/actions/world'
+import ItemTimer from './components/ItemTimer'
+import View from './views/View'
+import ViewSelector from './components/ViewSelector'
+import { setShipLocationValue, setShipLocationName } from './redux/actions/ship'
 
-const App = ({ dispatch, world }) => {
+const App = ({
+  handleInitializeShipLocation,
+  handleSetPlanets,
+  planets,
+  userCash
+}) => {
   useEffect(() => {
-    generatePlanet(dispatch)
-    generatePlanet(dispatch)
-    generatePlanet(dispatch)
+    if (planets.length === 0) {
+      const planets = generatePlanets()
+
+      handleSetPlanets(planets)
+
+      const homePlanet = planets.find(planet => planet.isHomePlanet === true)
+
+      const value = homePlanet.location
+      const name = homePlanet.name
+
+      handleInitializeShipLocation(value, name)
+    }
+
     // eslint-disable-next-line
   }, [])
-
-  const { planets } = world
 
   return (
     <div>
       <h1>hermes</h1>
+      <ItemTimer />
+      <h2>Cash:</h2>
+      <span>{userCash}</span>
       <br />
+      <br />
+      <ViewSelector />
       <div>
-        {planets.map(({ items, name }) => (
-          <div>
-            <p>{name}</p>
-            <p>Items: {JSON.stringify(items, null, 2)}</p>
-          </div>
-        ))}
+        <View />
       </div>
     </div>
   )
 }
 
-const mapStateToProps = ({ world }) => ({ world })
+App.propTypes = {
+  handleInitializeShipLocation: PropTypes.func.isRequired,
+  handleSetPlanets: PropTypes.func.isRequired,
+  planets: PropTypes.array.isRequired
+}
 
-export default connect(mapStateToProps)(App)
+const mapStateToProps = ({ user, world }) => ({
+  planets: world.planets,
+  userCash: user.cash
+})
+
+const mapDispatchToProps = dispatch => ({
+  handleSetPlanets: planets => dispatch(setPlanets(planets)),
+  handleInitializeShipLocation: (value, name) => {
+    dispatch(setShipLocationValue(value))
+    dispatch(setShipLocationName(name))
+  }
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
