@@ -15,6 +15,7 @@ const PlanetsView = ({
   handleShipTravel,
   handleStoreCargo,
   planets,
+  shipCargoLength,
   shipLocationValue
 }) => {
   const [storagePlanets, setStoragePlanets] = useLocalStorage('planets', [])
@@ -60,6 +61,7 @@ const PlanetsView = ({
                 {shipLocationValue === location && (
                   <Box pad="medium">
                     <Button
+                      disabled={shipCargoLength === 5}
                       hoverIndicator
                       icon={<Add />}
                       onClick={() =>
@@ -86,11 +88,13 @@ PlanetsView.propTypes = {
   handleShipTravel: PropTypes.func.isRequired,
   handleStoreCargo: PropTypes.func.isRequired,
   planets: PropTypes.array.isRequired,
+  shipCargoLength: PropTypes.number.isRequired,
   shipLocationValue: PropTypes.number.isRequired
 }
 
 const mapStateToProps = ({ ship, world }) => ({
   planets: world.planets,
+  shipCargoLength: ship.cargo.length,
   shipLocationValue: ship.location.value
 })
 
