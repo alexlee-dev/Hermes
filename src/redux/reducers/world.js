@@ -38,9 +38,7 @@ export default (state = worldDefaultState, action) => {
         }
       })
 
-      // TODO: Update localStorage with the new updatedPlanets
-
-      return Object.assign({}, state, { planets: updatedPlanets })
+      return { ...state, planets: updatedPlanets }
     default:
       return state
   }
