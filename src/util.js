@@ -1,5 +1,6 @@
 import { itemList, planets } from './constants'
 import { storePlanets } from './redux/actions/world'
+import uuidv4 from 'uuid/v4'
 
 const getPlanetName = () => {
   const planet = planets[Math.floor(Math.random() * planets.length)]
@@ -20,7 +21,11 @@ export const generatePlanets = (dispatch, setStoragePlanets) => {
     const name = getPlanetName()
 
     for (let j = 0; j < 5; j++) {
-      const item = itemList[Math.floor(Math.random() * itemList.length)]
+      const item = Object.assign(
+        {},
+        itemList[Math.floor(Math.random() * itemList.length)],
+        { id: uuidv4() }
+      )
       items.push(item)
     }
 
