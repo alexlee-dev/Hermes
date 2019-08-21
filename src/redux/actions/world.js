@@ -1,16 +1,24 @@
 // * ACTION TYPES
-const STORE_PLANETS = 'STORE_PLANETS'
 const SET_TIMER_RUNNING = 'SET_TIMER_RUNNING'
+const REMOVE_ITEM = 'REMOVE_ITEM'
+const SET_PLANETS = 'SET_PLANETS'
 
 // * ACTION GENERATORS
-export const storePlanets = planets => ({
-  type: STORE_PLANETS,
+export const setPlanets = planets => ({
+  type: SET_PLANETS,
   payload: { planets }
 })
 
 export const setTimerRunning = isTimerRunning => ({
   type: SET_TIMER_RUNNING,
   payload: { isTimerRunning }
+})
+
+export const removeItem = item => ({
+  type: REMOVE_ITEM,
+  payload: {
+    item
+  }
 })
 
 // * PROMISES
