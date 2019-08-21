@@ -6,6 +6,7 @@
     "@sentry/browser": "^5.6.1",
     "grommet": "^2.7.6",
     "grommet-icons": "^4.3.0",
+    "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
