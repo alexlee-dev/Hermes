@@ -6,14 +6,27 @@ const getPlanetName = () => {
   return planet
 }
 
-export const generateItems = () => {
+export const generateItems = possibleDestinations => {
   const items = []
 
+  console.log({ possibleDestinations })
+
   for (let i = 0; i < 5; i++) {
+    const destinationPlanet =
+      possibleDestinations[
+        Math.floor(Math.random() * possibleDestinations.length)
+      ]
+
     const item = Object.assign(
       {},
       itemList[Math.floor(Math.random() * itemList.length)],
-      { id: uuidv4() }
+      {
+        id: uuidv4(),
+        destination: {
+          name: destinationPlanet.name,
+          value: destinationPlanet.location
+        }
+      }
     )
     items.push(item)
   }
@@ -25,12 +38,18 @@ export const generatePlanets = () => {
 
   for (let i = 0; i < 3; i++) {
     const isHomePlanet = i === 0
-    const items = generateItems()
     const location = Math.floor(Math.random() * 100 + 1)
     const name = getPlanetName()
 
-    planets.push({ isHomePlanet, items, location, name })
+    planets.push({ isHomePlanet, location, name })
   }
+
+  planets.forEach((planet, i) => {
+    const otherPlanets = [...planets]
+    otherPlanets.splice(i, 1)
+
+    planet.items = generateItems(otherPlanets)
+  })
 
   return planets
 }

@@ -13,6 +13,8 @@ const ShipView = ({ cargo, handleRemoveCargo, location }) => {
       {cargo.map(item => (
         <Box direction="row" gap="medium" key={item.id}>
           <Text>{item.name}</Text>
+          <Text weight="bold">Destination:</Text>
+          <Text>{item.destination.name}</Text>
           <Button
             hoverIndicator
             icon={<Subtract />}
@@ -22,10 +24,14 @@ const ShipView = ({ cargo, handleRemoveCargo, location }) => {
         </Box>
       ))}
       <h3>Location:</h3>
-      <Box gap="small" margin={{ left: 'medium'}}>
-        <Text size="small" weight="bold">Value:</Text>
+      <Box gap="small" margin={{ left: 'medium' }}>
+        <Text size="small" weight="bold">
+          Value:
+        </Text>
         <Text size="small">{location.value}</Text>
-        <Text size="small" weight="bold">Name:</Text>
+        <Text size="small" weight="bold">
+          Name:
+        </Text>
         <Text size="small">{location.name}</Text>
       </Box>
     </div>
