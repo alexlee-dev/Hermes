@@ -5,7 +5,7 @@ const worldDefaultState = {
 
 export default (state = worldDefaultState, action) => {
   switch (action.type) {
-    case 'STORE_PLANETS':
+    case 'SET_PLANETS':
       const { planets } = action.payload
 
       return { ...state, planets }
