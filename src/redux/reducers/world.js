@@ -1,3 +1,5 @@
+import { generateItems } from '../../util'
+
 const worldDefaultState = {
   isTimerRunning: false,
   planets: []
@@ -5,6 +7,22 @@ const worldDefaultState = {
 
 export default (state = worldDefaultState, action) => {
   switch (action.type) {
+    case 'CLEAR_ITEMS':
+      const newPlanets = [...state.planets]
+
+      newPlanets.forEach(planet => {
+        planet.items = []
+      })
+
+      return { ...state, planets: newPlanets }
+    case 'REFRESH_ITEMS':
+      const additionalPlanets = [...state.planets]
+
+      additionalPlanets.forEach(planet => {
+        planet.items = generateItems()
+      })
+
+      return { ...state, planets: additionalPlanets }
     case 'SET_PLANETS':
       const { planets } = action.payload
 
