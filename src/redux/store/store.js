@@ -27,6 +27,7 @@ store.subscribe(
     saveState({
       ship: store.getState().ship,
       ui: store.getState().ui,
+      user: store.getState().user,
       world: {
         isTimerRunning: false,
         planets: store.getState().world.planets
