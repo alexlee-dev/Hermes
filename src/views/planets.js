@@ -1,20 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Box, Text, Button } from 'grommet'
-import { Add } from 'grommet-icons'
+import { Box, Text, Button, Heading } from 'grommet'
+import { Add, Target } from 'grommet-icons'
 import useLocalStorage from '../hooks/useLocalStorage'
-import { storeCargo } from '../redux/actions/ship'
+import {
+  storeCargo,
+  setShipLocationName,
+  setShipLocationValue
+} from '../redux/actions/ship'
 import { removeItem } from '../redux/actions/world'
 
-const PlanetsView = ({ planets, handleStoreCargo }) => {
+const PlanetsView = ({
+  handleShipTravel,
+  handleStoreCargo,
+  planets,
+  shipLocationValue
+}) => {
   const [storagePlanets, setStoragePlanets] = useLocalStorage('planets', [])
 
   return (
     <div>
-      {planets.map(({ items, isHomePlanet, name }) => (
+      {planets.map(({ items, isHomePlanet, location, name }) => (
         <div key={name}>
-          <h2>{isHomePlanet ? name + ' - Home Planet' : name}</h2>
+          <Box direction="row" gap="medium">
+            <Heading level="2">
+              {isHomePlanet ? name + ' - Home Planet' : name}
+            </Heading>
+            {shipLocationValue !== location && (
+              <Button
+                hoverIndicator
+                icon={<Target />}
+                onClick={() => handleShipTravel({ name, value: location })}
+                plain
+              />
+            )}
+          </Box>
           <span>Items:</span>
           {items.map(item => {
             const { id, name, space, value } = item
@@ -56,11 +77,16 @@ const PlanetsView = ({ planets, handleStoreCargo }) => {
 }
 
 PlanetsView.propTypes = {
+  handleShipTravel: PropTypes.func.isRequired,
+  handleStoreCargo: PropTypes.func.isRequired,
   planets: PropTypes.array.isRequired,
-  handleStoreCargo: PropTypes.func.isRequired
+  shipLocationValue: PropTypes.number.isRequired
 }
 
-const mapStateToProps = ({ world }) => ({ planets: world.planets })
+const mapStateToProps = ({ ship, world }) => ({
+  planets: world.planets,
+  shipLocationValue: ship.location.value
+})
 
 const mapDispatchToProps = dispatch => ({
   handleStoreCargo: (item, currentPlanets, setStoragePlanets) => {
@@ -68,6 +94,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(storeCargo(item))
     // * dispatch an action to remove the item from the list of stored items on this planet
     dispatch(removeItem(item))
+  },
+  handleShipTravel: destination => {
+    dispatch(setShipLocationName(destination.name))
+    dispatch(setShipLocationValue(destination.value))
   }
 })
 
