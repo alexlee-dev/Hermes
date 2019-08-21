@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=875px height=350px src="https://github.com/alexlee-dev/hermes/raw/feature/readme/hermes-cover.png" alt="Hermes logo"></a>
+ <img width=875px height=350px src="https://github.com/alexlee-dev/hermes/raw/develop/hermes-cover.png" alt="Hermes logo"></a>
 </p>
  
 <div align="center">
