@@ -3,4 +3,4 @@ node_js:
   - 'node'
 script:
   - yarn build
-  - yarn coveralls
+  - yarn test:coveralls
