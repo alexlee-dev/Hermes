@@ -28,19 +28,5 @@ export const clearItems = () => ({ type: CLEAR_ITEMS })
 export const refreshItems = () => ({ type: REFRESH_ITEMS })
 
 // * PROMISES
-// const thing = () => {
-//   return new Promise((resolve, reject) => {
-//     console.log('Promise timer started.')
-//     setTimeout(() => {
-//       resolve(true)
-//     }, 3000)
-//   })
-// }
 
 // * THUNKS
-// export const generatePlanet = () => {
-//   return async dispatch => {
-//     const thingy = await thing()
-//     console.log(thingy)
-//   }
-// }

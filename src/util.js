@@ -9,8 +9,6 @@ const getPlanetName = () => {
 export const generateItems = possibleDestinations => {
   const items = []
 
-  console.log({ possibleDestinations })
-
   for (let i = 0; i < 5; i++) {
     const destinationPlanet =
       possibleDestinations[

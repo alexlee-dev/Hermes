@@ -2,6 +2,7 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import shipReducer from '../reducers/ship'
 import uiReducer from '../reducers/ui'
+import userReducer from '../reducers/user'
 import worldReducer from '../reducers/world'
 import { loadState, saveState } from '../../util'
 import throttle from 'lodash/throttle'
@@ -14,6 +15,7 @@ const store = createStore(
   combineReducers({
     ship: shipReducer,
     ui: uiReducer,
+    user: userReducer,
     world: worldReducer
   }),
   persistedState,

@@ -12,7 +12,7 @@ const App = ({
   handleInitializeShipLocation,
   handleSetPlanets,
   planets,
-  shipLocation
+  userCash
 }) => {
   useEffect(() => {
     if (planets.length === 0) {
@@ -35,6 +35,8 @@ const App = ({
     <div>
       <h1>hermes</h1>
       <ItemTimer />
+      <h2>Cash:</h2>
+      <span>{userCash}</span>
       <br />
       <br />
       <ViewSelector />
@@ -48,13 +50,12 @@ const App = ({
 App.propTypes = {
   handleInitializeShipLocation: PropTypes.func.isRequired,
   handleSetPlanets: PropTypes.func.isRequired,
-  planets: PropTypes.array.isRequired,
-  shipLocation: PropTypes.object
+  planets: PropTypes.array.isRequired
 }
 
-const mapStateToProps = ({ ship, world }) => ({
+const mapStateToProps = ({ user, world }) => ({
   planets: world.planets,
-  shipLocation: ship.location
+  userCash: user.cash
 })
 
 const mapDispatchToProps = dispatch => ({
