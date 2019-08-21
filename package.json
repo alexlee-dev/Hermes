@@ -1,8 +1,23 @@
 {
-  "name": "hermes",
-  "version": "0.1.0",
-  "private": true,
+  "name": "hermes-game",
+  "version": "0.0.0",
   "description": "A game about space and junk.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexlee-dev/hermes.git"
+  },
+  "keywords": [
+    "hermes",
+    "game",
+    "space",
+    "eve",
+    "economy"
+  ],
+  "author": "Alex Lee <alex@alexlee.site>",
+  "bugs": {
+    "url": "https://github.com/alexlee-dev/hermes/issues"
+  },
+  "homepage": "https://github.com/alexlee-dev/hermes#readme",
   "dependencies": {
     "@sentry/browser": "^5.6.1",
     "grommet": "^2.7.6",
