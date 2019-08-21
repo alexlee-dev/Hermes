@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import moment from 'moment'
-import { setTimerRunning } from '../redux/actions/world'
+import {
+  setTimerRunning,
+  clearItems,
+  refreshItems
+} from '../redux/actions/world'
 
 const ItemTimer = ({ handleTimerStarted, handleTimerStopped, world }) => {
   const { isTimerRunning } = world
@@ -42,7 +46,14 @@ const mapStateToProps = ({ world }) => ({ world })
 
 const mapDispatchToProps = dispatch => ({
   handleTimerStarted: () => dispatch(setTimerRunning(true)),
-  handleTimerStopped: () => dispatch(setTimerRunning(false))
+  handleTimerStopped: () => {
+    // * Clear all items from planets
+    dispatch(clearItems())
+    // * Put new items on planets
+    dispatch(refreshItems())
+    // * Tell Redux the timer is no longer running
+    dispatch(setTimerRunning(false))
+  }
 })
 
 export default connect(
