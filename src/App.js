@@ -6,12 +6,29 @@ import { setPlanets } from './redux/actions/world'
 import ItemTimer from './components/ItemTimer'
 import View from './views/View'
 import ViewSelector from './components/ViewSelector'
+import { setShipLocationValue, setShipLocationName } from './redux/actions/ship'
 
-const App = ({ handleSetPlanets, planets }) => {
+const App = ({
+  handleInitializeShipLocation,
+  handleSetPlanets,
+  planets,
+  shipLocation
+}) => {
   useEffect(() => {
     if (planets.length === 0) {
-      handleSetPlanets(generatePlanets())
+      const planets = generatePlanets()
+
+      handleSetPlanets(planets)
+
+      const homePlanet = planets.find(planet => planet.isHomePlanet === true)
+
+      console.log({ homePlanet, shipLocation })
+      const value = homePlanet.location
+      const name = homePlanet.name
+
+      handleInitializeShipLocation(value, name)
     }
+
     // eslint-disable-next-line
   }, [])
 
@@ -30,16 +47,23 @@ const App = ({ handleSetPlanets, planets }) => {
 }
 
 App.propTypes = {
+  handleInitializeShipLocation: PropTypes.func.isRequired,
   handleSetPlanets: PropTypes.func.isRequired,
-  planets: PropTypes.array.isRequired
+  planets: PropTypes.array.isRequired,
+  shipLocation: PropTypes.object
 }
 
-const mapStateToProps = ({ world }) => ({
-  planets: world.planets
+const mapStateToProps = ({ ship, world }) => ({
+  planets: world.planets,
+  shipLocation: ship.location
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleSetPlanets: planets => dispatch(setPlanets(planets))
+  handleSetPlanets: planets => dispatch(setPlanets(planets)),
+  handleInitializeShipLocation: (value, name) => {
+    dispatch(setShipLocationValue(value))
+    dispatch(setShipLocationName(name))
+  }
 })
 
 export default connect(

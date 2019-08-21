@@ -5,7 +5,7 @@ import { Box, Text, Button } from 'grommet'
 import { Subtract } from 'grommet-icons'
 import { removeCargo } from '../redux/actions/ship'
 
-const ShipView = ({ cargo, handleRemoveCargo }) => {
+const ShipView = ({ cargo, handleRemoveCargo, location }) => {
   return (
     <div>
       <h2>Your Ship</h2>
@@ -21,16 +21,27 @@ const ShipView = ({ cargo, handleRemoveCargo }) => {
           />
         </Box>
       ))}
+      <h3>Location:</h3>
+      <Box gap="small" margin={{ left: 'medium'}}>
+        <Text size="small" weight="bold">Value:</Text>
+        <Text size="small">{location.value}</Text>
+        <Text size="small" weight="bold">Name:</Text>
+        <Text size="small">{location.name}</Text>
+      </Box>
     </div>
   )
 }
 
 ShipView.propTypes = {
   cargo: PropTypes.array.isRequired,
-  handleRemoveCargo: PropTypes.func.isRequired
+  handleRemoveCargo: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired
 }
 
-const mapStateToProps = ({ ship }) => ({ cargo: ship.cargo })
+const mapStateToProps = ({ ship }) => ({
+  cargo: ship.cargo,
+  location: ship.location
+})
 
 const mapDispatchToProps = dispatch => ({
   handleRemoveCargo: item => dispatch(removeCargo(item))
