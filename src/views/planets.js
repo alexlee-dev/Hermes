@@ -57,16 +57,22 @@ const PlanetsView = ({
                 <Box pad="medium">
                   <Text>Value: {value}</Text>
                 </Box>
-                <Box pad="medium">
-                  <Button
-                    hoverIndicator
-                    icon={<Add />}
-                    onClick={() =>
-                      handleStoreCargo(item, storagePlanets, setStoragePlanets)
-                    }
-                    plain
-                  />
-                </Box>
+                {shipLocationValue === location && (
+                  <Box pad="medium">
+                    <Button
+                      hoverIndicator
+                      icon={<Add />}
+                      onClick={() =>
+                        handleStoreCargo(
+                          item,
+                          storagePlanets,
+                          setStoragePlanets
+                        )
+                      }
+                      plain
+                    />
+                  </Box>
+                )}
               </Box>
             )
           })}
