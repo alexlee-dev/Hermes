@@ -7,13 +7,9 @@ import ItemTimer from './components/ItemTimer'
 import View from './views/View'
 import ViewSelector from './components/ViewSelector'
 import { setShipLocationValue, setShipLocationName } from './redux/actions/ship'
+import CashDisplay from './components/CashDisplay'
 
-const App = ({
-  handleInitializeShipLocation,
-  handleSetPlanets,
-  planets,
-  userCash
-}) => {
+const App = ({ handleInitializeShipLocation, handleSetPlanets, planets }) => {
   useEffect(() => {
     if (planets.length === 0) {
       const planets = generatePlanets()
@@ -35,8 +31,7 @@ const App = ({
     <div>
       <h1>hermes</h1>
       <ItemTimer />
-      <h2>Cash:</h2>
-      <span>{userCash}</span>
+      <CashDisplay />
       <br />
       <br />
       <ViewSelector />
@@ -53,9 +48,8 @@ App.propTypes = {
   planets: PropTypes.array.isRequired
 }
 
-const mapStateToProps = ({ user, world }) => ({
-  planets: world.planets,
-  userCash: user.cash
+const mapStateToProps = ({ world }) => ({
+  planets: world.planets
 })
 
 const mapDispatchToProps = dispatch => ({
