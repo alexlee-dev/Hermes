@@ -11,7 +11,7 @@ import {
 const ItemTimer = ({ handleTimerStarted, handleTimerStopped, world }) => {
   const { isTimerRunning } = world
 
-  let duration = moment.duration({ minutes: 10, seconds: 0 })
+  let duration = moment.duration({ minutes: 0, seconds: 5 })
   const [timeLeft, setTimeLeft] = useState(
     `${duration.minutes()} minutes ${duration.seconds()} seconds`
   )

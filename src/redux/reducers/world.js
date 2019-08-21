@@ -8,51 +8,41 @@ const worldDefaultState = {
 export default (state = worldDefaultState, action) => {
   switch (action.type) {
     case 'CLEAR_ITEMS':
-      const newPlanets = [...state.planets]
-
-      newPlanets.forEach(planet => {
-        planet.items = []
-      })
-
-      return { ...state, planets: newPlanets }
+      return {
+        ...state,
+        planets: state.planets.map(planet => ({ ...planet, items: [] }))
+      }
     case 'REFRESH_ITEMS':
-      const additionalPlanets = [...state.planets]
-
-      additionalPlanets.forEach(planet => {
-        planet.items = generateItems()
-      })
-
-      return { ...state, planets: additionalPlanets }
-    case 'SET_PLANETS':
-      const { planets } = action.payload
-
-      return { ...state, planets }
-    case 'SET_TIMER_RUNNING':
-      const { isTimerRunning } = action.payload
-
-      return { ...state, isTimerRunning }
+      return {
+        ...state,
+        planets: state.planets.map(planet => ({
+          ...planet,
+          items: generateItems(state.planets)
+        }))
+      }
     case 'REMOVE_ITEM':
       const { item } = action.payload
 
-      const updatedPlanets = []
-
-      state.planets.forEach(planet => {
+      const updatedPlanets = state.planets.map(planet => {
         const { isHomePlanet, items, location, name } = planet
-        const planetContainsItem = items.includes(item)
-        if (planetContainsItem) {
-          const newPlanetObj = {
+
+        if (planet.items.includes(item)) {
+          return {
             isHomePlanet,
             items: items.filter(currentItem => item !== currentItem),
             location,
             name
           }
-          updatedPlanets.push(newPlanetObj)
         } else {
-          updatedPlanets.push(planet)
+          return planet
         }
       })
 
       return { ...state, planets: updatedPlanets }
+    case 'SET_PLANETS':
+      return { ...state, planets: action.payload.planets }
+    case 'SET_TIMER_RUNNING':
+      return { ...state, isTimerRunning: action.payload.isTimerRunning }
     default:
       return state
   }

@@ -5,8 +5,7 @@ const uiDefaultState = {
 export default (state = uiDefaultState, action) => {
   switch (action.type) {
     case 'SET_VIEW':
-      const { view } = action.payload
-      return { ...state, view }
+      return { ...state, view: action.payload.view }
     default:
       return state
   }
