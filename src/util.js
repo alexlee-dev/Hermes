@@ -42,11 +42,10 @@ export const generatePlanets = () => {
     planets.push({ isHomePlanet, location, name })
   }
 
-  planets.forEach((planet, i) => {
-    const otherPlanets = [...planets]
-    otherPlanets.splice(i, 1)
-
-    planet.items = generateItems(otherPlanets)
+  planets.forEach(planet => {
+    planet.items = generateItems(
+      planets.filter(currentPlanet => currentPlanet !== planet)
+    )
   })
 
   return planets

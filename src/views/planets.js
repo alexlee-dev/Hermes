@@ -116,12 +116,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(removeItem(item))
   },
   handleShipTravel: (destination, shipCargo) => {
-    const sellableItems = []
-    shipCargo.forEach(item => {
-      if (item.destination.value === destination.value) {
-        sellableItems.push(item)
-      }
-    })
+    const sellableItems = shipCargo.filter(
+      item => item.destination.value === destination.value
+    )
+
     sellableItems.forEach(item => {
       // * Add the value of this item to the user's cash
       dispatch(addCash(item.value))

@@ -40,13 +40,9 @@ export default (state = worldDefaultState, action) => {
         const { isHomePlanet, items, location, name } = planet
         const planetContainsItem = items.includes(item)
         if (planetContainsItem) {
-          const itemIndex = items.findIndex(currentItem => item === currentItem)
-          const newItems = Array.from(items)
-          newItems.splice(itemIndex, 1)
-
           const newPlanetObj = {
             isHomePlanet,
-            items: newItems,
+            items: items.filter(currentItem => item !== currentItem),
             location,
             name
           }
