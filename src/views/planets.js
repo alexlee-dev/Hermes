@@ -39,7 +39,7 @@ const PlanetsView = ({
           </Box>
           <span>Items:</span>
           {items.map(item => {
-            const { id, name, space, value } = item
+            const { destination, id, name, space, value } = item
 
             return (
               <Box
@@ -57,6 +57,9 @@ const PlanetsView = ({
                 </Box>
                 <Box pad="medium">
                   <Text>Value: {value}</Text>
+                </Box>
+                <Box pad="medium">
+                  <Text>Destination: {destination.name}</Text>
                 </Box>
                 {shipLocationValue === location && (
                   <Box pad="medium">

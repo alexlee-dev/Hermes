@@ -22,7 +22,6 @@ const App = ({
 
       const homePlanet = planets.find(planet => planet.isHomePlanet === true)
 
-      console.log({ homePlanet, shipLocation })
       const value = homePlanet.location
       const name = homePlanet.name
 
