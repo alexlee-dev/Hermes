@@ -5,8 +5,10 @@ import { connect } from 'react-redux'
 
 const CashDisplay = ({ cash }) => {
   return (
-    <Box>
-      <Heading level="2">Cash:</Heading>
+    <Box margin={{ bottom: 'small' }}>
+      <Heading level="2" margin={{ bottom: 'xsmall' }}>
+        Cash:
+      </Heading>
       <Text>{cash}</Text>
     </Box>
   )
