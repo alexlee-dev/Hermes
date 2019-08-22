@@ -33,6 +33,7 @@ const PlanetsView = ({
             </Heading>
             {shipLocationValue !== location && (
               <Button
+                data-testid={`travel-button-${name}`}
                 hoverIndicator
                 icon={<Target />}
                 onClick={() =>
@@ -69,6 +70,7 @@ const PlanetsView = ({
                 {shipLocationValue === location && (
                   <Box pad="medium">
                     <Button
+                      data-testid={`add-button-${id}`}
                       disabled={shipCargoLength === 5}
                       hoverIndicator
                       icon={<Add />}
