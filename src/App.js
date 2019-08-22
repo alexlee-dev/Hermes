@@ -2,49 +2,34 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { generatePlanets } from './util'
-import { setPlanets } from './redux/actions/world'
-import ItemTimer from './components/ItemTimer'
-import View from './views/View'
-import ViewSelector from './components/ViewSelector'
 import { setShipLocationValue, setShipLocationName } from './redux/actions/ship'
+import { setPlanets } from './redux/actions/world'
+import View from './views/View'
+import { Box } from 'grommet'
 import CashDisplay from './components/CashDisplay'
+import ItemTimer from './components/ItemTimer'
+import Title from './components/Title'
+import ViewSelector from './components/ViewSelector'
 
-const App = ({ handleInitializeShipLocation, handleSetPlanets, planets }) => {
+const App = ({ handleInitializeApplication, planets }) => {
   useEffect(() => {
-    if (planets.length === 0) {
-      const planets = generatePlanets()
-
-      handleSetPlanets(planets)
-
-      const homePlanet = planets.find(planet => planet.isHomePlanet === true)
-
-      const value = homePlanet.location
-      const name = homePlanet.name
-
-      handleInitializeShipLocation(value, name)
-    }
-
+    if (planets.length === 0) handleInitializeApplication()
     // eslint-disable-next-line
   }, [])
 
   return (
-    <div>
-      <h1>hermes</h1>
+    <Box fill>
+      <Title />
       <ItemTimer />
       <CashDisplay />
-      <br />
-      <br />
       <ViewSelector />
-      <div>
-        <View />
-      </div>
-    </div>
+      <View />
+    </Box>
   )
 }
 
 App.propTypes = {
-  handleInitializeShipLocation: PropTypes.func.isRequired,
-  handleSetPlanets: PropTypes.func.isRequired,
+  handleInitializeApplication: PropTypes.func.isRequired,
   planets: PropTypes.array.isRequired
 }
 
@@ -53,8 +38,13 @@ const mapStateToProps = ({ world }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleSetPlanets: planets => dispatch(setPlanets(planets)),
-  handleInitializeShipLocation: (value, name) => {
+  handleInitializeApplication: () => {
+    const planets = generatePlanets()
+    const homePlanet = planets.find(planet => planet.isHomePlanet === true)
+    const value = homePlanet.location
+    const name = homePlanet.name
+
+    dispatch(setPlanets(planets))
     dispatch(setShipLocationValue(value))
     dispatch(setShipLocationName(name))
   }
