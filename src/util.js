@@ -1,5 +1,6 @@
 import { itemList, planets } from './constants'
 import uuidv4 from 'uuid/v4'
+import moment from 'moment'
 
 const getPlanetName = () => {
   const planet = planets[Math.floor(Math.random() * planets.length)]
@@ -70,4 +71,17 @@ export const saveState = state => {
   } catch (error) {
     console.error(error)
   }
+}
+
+export const createDuration = () => {
+  const deadline = moment().minutes(60)
+  const now = moment()
+
+  const minutesLeft = deadline
+    .clone()
+    .subtract(now.minutes(), 'minutes')
+    .minutes()
+  const secondsLeft = 60 - now.seconds()
+
+  return moment.duration({ minutes: minutesLeft, seconds: secondsLeft })
 }
