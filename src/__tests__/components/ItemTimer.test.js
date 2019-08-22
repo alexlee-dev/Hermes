@@ -1,16 +1,9 @@
-import React from 'react'
-import { render } from '@testing-library/react'
-import { Provider } from 'react-redux'
-import { defaultState, mockStore } from '../../fixtures'
+import { customRender } from '../../test-utils'
 import ItemTimer from '../../components/ItemTimer'
 
 describe('<ItemTimer />', () => {
   it('Should render the <ItemTimer /> component.', () => {
-    const container = render(
-      <Provider store={mockStore(defaultState)}>
-        <ItemTimer />
-      </Provider>
-    )
+    const container = customRender({ component: ItemTimer })
     expect(container.asFragment()).toMatchSnapshot()
   })
 })

@@ -1,10 +1,9 @@
-import React from 'react'
-import { render } from '@testing-library/react'
 import Title from '../../components/Title'
+import { customRender } from '../../test-utils'
 
 describe('<Title />', () => {
   it('Should render the <Title /> component.', () => {
-    const container = render(<Title />)
+    const container = customRender({ component: Title })
     expect(container.asFragment()).toMatchSnapshot()
   })
 })

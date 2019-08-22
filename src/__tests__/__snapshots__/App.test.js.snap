@@ -30,7 +30,9 @@ exports[`<App /> Should render the <App /> component. 1`] = `
     <div
       class="StyledBox-sc-13pk1d4-0 dfMVfp"
     >
-      <select>
+      <select
+        data-testid="view-selector"
+      >
         <option>
           Ship
         </option>
