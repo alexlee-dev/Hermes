@@ -4,7 +4,7 @@
 
 import React from 'react'
 import App from '../App'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 
@@ -31,10 +31,17 @@ const defaultState = {
   }
 }
 
-const rerenderShallow = props =>
+const rerenderShallow = customState =>
   shallow(
-    <Provider store={mockStore(defaultState)}>
-      <App {...props} />
+    <Provider store={mockStore(customState ? customState : defaultState)}>
+      <App />
+    </Provider>
+  )
+
+const rerenderMount = customState =>
+  mount(
+    <Provider store={mockStore(customState ? customState : defaultState)}>
+      <App />
     </Provider>
   )
 
