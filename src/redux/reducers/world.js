@@ -1,3 +1,5 @@
+import { generateItems } from '../../util'
+
 const worldDefaultState = {
   isTimerRunning: false,
   planets: []
@@ -5,14 +7,42 @@ const worldDefaultState = {
 
 export default (state = worldDefaultState, action) => {
   switch (action.type) {
-    case 'STORE_PLANETS':
-      const { planets } = action.payload
+    case 'CLEAR_ITEMS':
+      return {
+        ...state,
+        planets: state.planets.map(planet => ({ ...planet, items: [] }))
+      }
+    case 'REFRESH_ITEMS':
+      return {
+        ...state,
+        planets: state.planets.map(planet => ({
+          ...planet,
+          items: generateItems(state.planets)
+        }))
+      }
+    case 'REMOVE_ITEM':
+      const { item } = action.payload
 
-      return { ...state, planets }
+      const updatedPlanets = state.planets.map(planet => {
+        const { isHomePlanet, items, location, name } = planet
+
+        if (planet.items.includes(item)) {
+          return {
+            isHomePlanet,
+            items: items.filter(currentItem => item !== currentItem),
+            location,
+            name
+          }
+        } else {
+          return planet
+        }
+      })
+
+      return { ...state, planets: updatedPlanets }
+    case 'SET_PLANETS':
+      return { ...state, planets: action.payload.planets }
     case 'SET_TIMER_RUNNING':
-      const { isTimerRunning } = action.payload
-
-      return { ...state, isTimerRunning }
+      return { ...state, isTimerRunning: action.payload.isTimerRunning }
     default:
       return state
   }

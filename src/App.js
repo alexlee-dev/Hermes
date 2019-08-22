@@ -2,53 +2,55 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { generatePlanets } from './util'
-import useLocalStorage from './hooks/useLocalStorage'
-import { storePlanets } from './redux/actions/world'
-import ItemTimer from './components/ItemTimer'
+import { setShipLocationValue, setShipLocationName } from './redux/actions/ship'
+import { setPlanets } from './redux/actions/world'
 import View from './views/View'
+import { Box } from 'grommet'
+import CashDisplay from './components/CashDisplay'
+import ItemTimer from './components/ItemTimer'
+import Title from './components/Title'
 import ViewSelector from './components/ViewSelector'
 
-const App = ({ handleGeneratePlanets, handleStorePlanets }) => {
-  const [storagePlanets, setStoragePlanets] = useLocalStorage('planets', [])
-
+const App = ({ handleInitializeApplication, planets }) => {
   useEffect(() => {
-    // * Check to see if planets exist
-
-    if (storagePlanets.length === 0) {
-      handleGeneratePlanets(setStoragePlanets)
-    } else {
-      handleStorePlanets(storagePlanets)
-    }
-
+    if (planets.length === 0) handleInitializeApplication()
     // eslint-disable-next-line
   }, [])
 
   return (
-    <div>
-      <h1>hermes</h1>
+    <Box fill>
+      <Title />
       <ItemTimer />
-      <br />
-      <br />
+      <CashDisplay />
       <ViewSelector />
-      <div>
-        <View />
-      </div>
-    </div>
+      <View />
+    </Box>
   )
 }
 
 App.propTypes = {
-  handleGeneratePlanets: PropTypes.func.isRequired,
-  handleStorePlanets: PropTypes.func.isRequired
+  handleInitializeApplication: PropTypes.func.isRequired,
+  planets: PropTypes.array.isRequired
 }
 
+const mapStateToProps = ({ world }) => ({
+  planets: world.planets
+})
+
 const mapDispatchToProps = dispatch => ({
-  handleGeneratePlanets: setStoragePlanets =>
-    generatePlanets(dispatch, setStoragePlanets),
-  handleStorePlanets: storagePlanets => dispatch(storePlanets(storagePlanets))
+  handleInitializeApplication: () => {
+    const planets = generatePlanets()
+    const homePlanet = planets.find(planet => planet.isHomePlanet === true)
+    const value = homePlanet.location
+    const name = homePlanet.name
+
+    dispatch(setPlanets(planets))
+    dispatch(setShipLocationValue(value))
+    dispatch(setShipLocationName(name))
+  }
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App)
