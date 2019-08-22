@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import App from '../App'
+import Title from '../../components/Title'
 import { mount, shallow } from 'enzyme'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
@@ -34,19 +34,19 @@ const defaultState = {
 const rerenderShallow = customState =>
   shallow(
     <Provider store={mockStore(customState ? customState : defaultState)}>
-      <App />
+      <Title />
     </Provider>
   )
 
 const rerenderMount = customState =>
   mount(
     <Provider store={mockStore(customState ? customState : defaultState)}>
-      <App />
+      <Title />
     </Provider>
   )
 
-describe('<App />', () => {
-  it('Should render the <App /> component.', () => {
+describe('<Title />', () => {
+  it('Should render the <Title /> component.', () => {
     const wrapper = rerenderShallow()
     expect(wrapper.html()).toMatchSnapshot()
   })

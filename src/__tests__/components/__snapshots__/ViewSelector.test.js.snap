@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ViewSelector /> Should render the <ViewSelector /> component. 1`] = `"<div class=\\"StyledBox-sc-13pk1d4-0 dfMVfp\\"><select><option>Ship</option><option>Planets</option></select></div>"`;

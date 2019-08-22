@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import App from '../App'
+import CashDisplay from '../../components/CashDisplay'
 import { mount, shallow } from 'enzyme'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
@@ -34,19 +34,19 @@ const defaultState = {
 const rerenderShallow = customState =>
   shallow(
     <Provider store={mockStore(customState ? customState : defaultState)}>
-      <App />
+      <CashDisplay />
     </Provider>
   )
 
 const rerenderMount = customState =>
   mount(
     <Provider store={mockStore(customState ? customState : defaultState)}>
-      <App />
+      <CashDisplay />
     </Provider>
   )
 
-describe('<App />', () => {
-  it('Should render the <App /> component.', () => {
+describe('<CashDisplay />', () => {
+  it('Should render the <CashDisplay /> component.', () => {
     const wrapper = rerenderShallow()
     expect(wrapper.html()).toMatchSnapshot()
   })
