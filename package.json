@@ -34,22 +34,16 @@
     "uuid": "^3.3.3"
   },
   "devDependencies": {
-    "@testing-library/dom": "^6.1.0",
-    "@testing-library/react": "^9.1.3",
     "coveralls": "^3.0.6",
     "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "jsdom": "^15.1.1",
-    "jsdom-global": "^3.0.2",
-    "redux-mock-store": "^1.5.3"
+    "enzyme-adapter-react-16": "^1.14.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "react-scripts test",
-    "test:coverage": "yarn test --coverage --watchAll=false --collectCoverageFrom=src/components/**/* --collectCoverageFrom=src/views/**/*",
-    "test:coveralls": "yarn test --coverage --watchAll=false --collectCoverageFrom=src/components/**/* --collectCoverageFrom=src/views/**/* --coverageReporters=text-lcov | coveralls"
+    "test:coveralls": "jest --coverage --collectCoverageFrom=src/**/* --coverageReporters=text-lcov | coveralls"
   },
   "eslintConfig": {
     "extends": "react-app"

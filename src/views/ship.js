@@ -16,7 +16,6 @@ const ShipView = ({ cargo, handleRemoveCargo, location }) => {
           <Text weight="bold">Destination:</Text>
           <Text>{item.destination.name}</Text>
           <Button
-            data-testid={`remove-button-${item.id}`}
             hoverIndicator
             icon={<Subtract />}
             onClick={() => handleRemoveCargo(item)}
