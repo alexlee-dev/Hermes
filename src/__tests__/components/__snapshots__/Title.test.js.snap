@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Title /> Should render the <Title /> component. 1`] = `"<h1 class=\\"StyledHeading-sc-1rdh4aw-0 rfVJR\\">Hermes</h1>"`;
