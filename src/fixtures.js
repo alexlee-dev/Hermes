@@ -1,5 +1,3 @@
-import configureStore from 'redux-mock-store'
-
 export const defaultState = {
   ship: {
     cargo: [],
@@ -19,7 +17,3 @@ export const defaultState = {
     planets: []
   }
 }
-
-const middlewares = []
-
-export const mockStore = configureStore(middlewares)

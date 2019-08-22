@@ -1,16 +1,20 @@
-import React from 'react'
-import { render } from '@testing-library/react'
-import { Provider } from 'react-redux'
-import { defaultState, mockStore } from '../../fixtures'
+import { fireEvent, waitForElement } from '@testing-library/react'
+import { customRender } from '../../test-utils'
 import ViewSelector from '../../components/ViewSelector'
 
 describe('<ViewSelector />', () => {
   it('Should render the <ViewSelector /> component.', () => {
-    const container = render(
-      <Provider store={mockStore(defaultState)}>
-        <ViewSelector />
-      </Provider>
-    )
+    const container = customRender({ component: ViewSelector })
     expect(container.asFragment()).toMatchSnapshot()
+  })
+
+  it('Should handle changing the ViewSelector.', async () => {
+    const { getByTestId } = customRender({ component: ViewSelector })
+
+    const selector = await waitForElement(() => getByTestId('view-selector'))
+
+    expect(getByTestId('view-selector').value).toBe('Ship')
+    fireEvent.change(selector, { target: { value: 'Planets' } })
+    expect(getByTestId('view-selector').value).toBe('Planets')
   })
 })

@@ -1,16 +1,9 @@
-import React from 'react'
-import { render } from '@testing-library/react'
-import { Provider } from 'react-redux'
-import { defaultState, mockStore } from '../../fixtures'
+import { customRender } from '../../test-utils'
 import CashDisplay from '../../components/CashDisplay'
 
 describe('<CashDisplay />', () => {
   it('Should render the <CashDisplay /> component.', () => {
-    const container = render(
-      <Provider store={mockStore(defaultState)}>
-        <CashDisplay />
-      </Provider>
-    )
+    const container = customRender({ component: CashDisplay })
     expect(container.asFragment()).toMatchSnapshot()
   })
 })
