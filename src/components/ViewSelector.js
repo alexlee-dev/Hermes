@@ -10,7 +10,7 @@ const ViewSelector = ({ handleSetView, view }) => {
 
   return (
     <Box width="small">
-      <select onChange={handleChange}>
+      <select data-testid="view-selector" onChange={handleChange}>
         <option>{view}</option>
         {Object.keys(views).map((viewName, i) => {
           if (viewName !== view) {
