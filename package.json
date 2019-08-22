@@ -44,6 +44,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "react-scripts test",
+    "test:coverage": "yarn test --coverage --watchAll=false",
     "test:coveralls": "yarn test --coverage --watchAll=false --coverageReporters=text-lcov | coveralls"
   },
   "eslintConfig": {
