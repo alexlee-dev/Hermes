@@ -10,10 +10,11 @@ export const clearItems = () => ({ type: CLEAR_ITEMS })
 
 export const refreshItems = () => ({ type: REFRESH_ITEMS })
 
-export const removeItem = item => ({
+export const removeItem = (item, quantity) => ({
   type: REMOVE_ITEM,
   payload: {
-    item
+    item,
+    quantity
   }
 })
 
