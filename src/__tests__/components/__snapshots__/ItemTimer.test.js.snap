@@ -3,7 +3,7 @@
 exports[`<ItemTimer /> Should render the <ItemTimer /> component. 1`] = `
 <DocumentFragment>
   <span>
-    MockedTime
+    0 minutes 0 seconds
   </span>
 </DocumentFragment>
 `;

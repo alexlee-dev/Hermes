@@ -1,9 +1,12 @@
-import React from 'react';
 import { customRender } from '../../test-utils'
 import ItemTimer from '../../components/ItemTimer'
 
-jest.mock('../../components/ItemTimer', () => {
-  return () => <span>MockedTime</span>
+jest.mock('../../util', () => {
+  const moment = require('moment')
+  const mockCreateDuration = () => moment.duration({ minutes: 60, seconds: 0 })
+  return {
+    createDuration: mockCreateDuration
+  }
 })
 
 describe('<ItemTimer />', () => {
