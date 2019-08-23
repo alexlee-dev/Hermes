@@ -24,7 +24,8 @@ export const generateItems = possibleDestinations => {
         destination: {
           name: destinationPlanet.name,
           value: destinationPlanet.location
-        }
+        },
+        quantity: 10
       }
     )
     items.push(item)

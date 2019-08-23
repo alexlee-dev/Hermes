@@ -11,7 +11,7 @@ exports[`<App /> Should render the <App /> component. 1`] = `
       Hermes
     </h1>
     <span>
-      10 minutes 0 seconds
+      MockedTime
     </span>
     <div
       class="StyledBox-sc-13pk1d4-0 CAsMy"
@@ -48,6 +48,20 @@ exports[`<App /> Should render the <App /> component. 1`] = `
       <h3>
         Cargo
       </h3>
+      <div
+        class="StyledBox-sc-13pk1d4-0 IRSNj"
+      >
+        <span
+          class="StyledText-sc-1sadyjn-0 bnqisW"
+        >
+          Volume Remaining:
+        </span>
+        <span
+          class="StyledText-sc-1sadyjn-0 fWSbXS"
+        >
+          5
+        </span>
+      </div>
       <h3>
         Location:
       </h3>
