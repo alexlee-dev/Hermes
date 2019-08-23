@@ -5,17 +5,24 @@ import { Box, Text, Button } from 'grommet'
 import { Subtract } from 'grommet-icons'
 import { removeCargo } from '../redux/actions/ship'
 
-const ShipView = ({ cargo, handleRemoveCargo, location }) => {
+const ShipView = ({ items, handleRemoveCargo, location, volumeRemaining }) => {
   return (
     <div>
       <h2>Your Ship</h2>
       <h3>Cargo</h3>
-      {cargo.map(item => (
+      <Box>
+        <Text weight="bold">Volume Remaining:</Text>
+        <Text>{volumeRemaining}</Text>
+      </Box>
+      {items.map(item => (
         <Box direction="row" gap="medium" key={item.id}>
           <Text>{item.name}</Text>
           <Text weight="bold">Destination:</Text>
           <Text>{item.destination.name}</Text>
+          <Text weight="bold">Quantity:</Text>
+          <Text>{item.quantity}</Text>
           <Button
+            data-testid={`remove-button-${item.id}`}
             hoverIndicator
             icon={<Subtract />}
             onClick={() => handleRemoveCargo(item)}
@@ -39,14 +46,16 @@ const ShipView = ({ cargo, handleRemoveCargo, location }) => {
 }
 
 ShipView.propTypes = {
-  cargo: PropTypes.array.isRequired,
   handleRemoveCargo: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired
+  items: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired,
+  volumeRemaining: PropTypes.number.isRequired
 }
 
 const mapStateToProps = ({ ship }) => ({
-  cargo: ship.cargo,
-  location: ship.location
+  items: ship.cargo.items,
+  location: ship.location,
+  volumeRemaining: ship.cargo.volumeRemaining
 })
 
 const mapDispatchToProps = dispatch => ({
