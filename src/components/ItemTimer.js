@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import moment from 'moment'
 import {
   setTimerRunning,
   clearItems,
   refreshItems
 } from '../redux/actions/world'
+import { createDuration } from '../util'
 
 const ItemTimer = ({ handleTimerStarted, handleTimerStopped, world }) => {
   const { isTimerRunning } = world
 
-  let duration = moment.duration({ minutes: 10, seconds: 0 })
+  let duration = createDuration()
+
   const [timeLeft, setTimeLeft] = useState(
     `${duration.minutes()} minutes ${duration.seconds()} seconds`
   )

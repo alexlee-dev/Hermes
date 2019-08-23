@@ -21,17 +21,43 @@ export default (state = worldDefaultState, action) => {
         }))
       }
     case 'REMOVE_ITEM':
-      const { item } = action.payload
+      const { item, quantity } = action.payload
 
       const updatedPlanets = state.planets.map(planet => {
         const { isHomePlanet, items, location, name } = planet
 
         if (planet.items.includes(item)) {
-          return {
-            isHomePlanet,
-            items: items.filter(currentItem => item !== currentItem),
-            location,
-            name
+          // * This plaanet has the item in question
+          // * Figure out if all of the quantity needs to be removed
+
+          if (quantity === item.quantity) {
+            // * All of the item should be removed
+            return {
+              isHomePlanet,
+              items: items.filter(currentItem => item !== currentItem),
+              location,
+              name
+            }
+          } else {
+            // * Only some of the item quantity should be removed
+            const updatedItems = items.map(currentItem => {
+              if (item.id === currentItem.id) {
+                // * figure out quantity
+                return {
+                  ...currentItem,
+                  quantity: currentItem.quantity - quantity
+                }
+              } else {
+                return currentItem
+              }
+            })
+
+            return {
+              isHomePlanet,
+              items: updatedItems,
+              location,
+              name
+            }
           }
         } else {
           return planet

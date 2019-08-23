@@ -5,7 +5,9 @@
  
 <div align="center">
 
+[![NPM Version][npm-image]][npm-url]
 [![Build Status][travis]][travis]
+[![Coverage Status][coverage-badge]][coverage-link]
 
 </div>
 
@@ -44,6 +46,6 @@ A game about space and junk.
 [npm-downloads]: https://img.shields.io/npm/dt/hermes-gaame.svg
 [npm-url]: https://www.npmjs.com/package/hermes-gaame
 [size-image]: https://img.shields.io/bundlephobia/minzip/hermes-game.svg
-[coverage-badge]: https://coveralls.io/repos/github/alexlee-dev/hermes/badge.svg?branch=master
+[coverage-badge]: https://coveralls.io/repos/github/alexlee-dev/hermes/badge.svg?branch=develop
 [coverage-link]: https://coveralls.io/github/alexlee-dev/hermes?branch=master
 [travis]: https://travis-ci.org/alexlee-dev/hermes.svg?branch=master

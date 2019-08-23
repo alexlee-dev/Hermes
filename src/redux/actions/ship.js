@@ -22,10 +22,11 @@ export const setShipLocationValue = value => ({
   payload: { value }
 })
 
-export const storeCargo = item => ({
+export const storeCargo = (item, quantity) => ({
   type: STORE_CARGO,
   payload: {
-    item
+    item,
+    quantity
   }
 })
 
