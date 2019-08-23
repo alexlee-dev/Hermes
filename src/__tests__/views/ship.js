@@ -7,18 +7,22 @@ const customState = {
   ...defaultState,
   ship: {
     ...defaultState.ship,
-    cargo: [
-      {
-        name: 'Test Item',
-        space: 1,
-        value: 1,
-        id: '0',
-        destination: {
-          name: 'Test Planet 2',
-          value: 50
+    cargo: {
+      items: [
+        {
+          name: 'Test Item',
+          space: 1,
+          value: 1,
+          id: '0',
+          quantity: 1,
+          destination: {
+            name: 'Test Planet 2',
+            value: 50
+          }
         }
-      }
-    ]
+      ],
+      volumeRemaining: 4
+    }
   }
 }
 

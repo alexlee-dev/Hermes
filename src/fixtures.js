@@ -1,6 +1,9 @@
 export const defaultState = {
   ship: {
-    cargo: [],
+    cargo: {
+      items: [],
+      volumeRemaining: 5
+    },
     location: {
       name: null,
       value: null
