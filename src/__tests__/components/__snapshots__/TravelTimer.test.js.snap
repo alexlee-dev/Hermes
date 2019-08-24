@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TravelTimer /> Should render the <TravelTimer /> component. 1`] = `
+<DocumentFragment>
+  <div
+    class="StyledBox-sc-13pk1d4-0 IRSNj"
+  >
+    <h3
+      class="StyledHeading-sc-1rdh4aw-0 ftOecI"
+    >
+      Travel Timer
+    </h3>
+    <span>
+      8 minutes 20 seconds
+    </span>
+  </div>
+</DocumentFragment>
+`;
