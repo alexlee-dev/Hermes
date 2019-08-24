@@ -1,33 +1,56 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { generatePlanet } from './util'
+import { generatePlanets } from './util'
+import { setShipLocationValue, setShipLocationName } from './redux/actions/ship'
+import { setPlanets } from './redux/actions/world'
+import View from './views/View'
+import { Box } from 'grommet'
+import CashDisplay from './components/CashDisplay'
+import ItemTimer from './components/ItemTimer'
+import Title from './components/Title'
+import ViewSelector from './components/ViewSelector'
 
-const App = ({ dispatch, world }) => {
+const App = ({ handleInitializeApplication, planets }) => {
   useEffect(() => {
-    generatePlanet(dispatch)
-    generatePlanet(dispatch)
-    generatePlanet(dispatch)
+    if (planets.length === 0) handleInitializeApplication()
     // eslint-disable-next-line
   }, [])
 
-  const { planets } = world
-
   return (
-    <div>
-      <h1>hermes</h1>
-      <br />
-      <div>
-        {planets.map(({ items, name }) => (
-          <div>
-            <p>{name}</p>
-            <p>Items: {JSON.stringify(items, null, 2)}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Box fill>
+      <Title />
+      <ItemTimer />
+      <CashDisplay />
+      <ViewSelector />
+      <View />
+    </Box>
   )
 }
 
-const mapStateToProps = ({ world }) => ({ world })
+App.propTypes = {
+  handleInitializeApplication: PropTypes.func.isRequired,
+  planets: PropTypes.array.isRequired
+}
 
-export default connect(mapStateToProps)(App)
+const mapStateToProps = ({ world }) => ({
+  planets: world.planets
+})
+
+const mapDispatchToProps = dispatch => ({
+  handleInitializeApplication: () => {
+    const planets = generatePlanets()
+    const homePlanet = planets.find(planet => planet.isHomePlanet === true)
+    const value = homePlanet.location
+    const name = homePlanet.name
+
+    dispatch(setPlanets(planets))
+    dispatch(setShipLocationValue(value))
+    dispatch(setShipLocationName(name))
+  }
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
