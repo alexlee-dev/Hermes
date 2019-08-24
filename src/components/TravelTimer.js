@@ -9,70 +9,60 @@ import {
   setShipLocationName,
   setShipLocationValue,
   setDestination,
+  setShipTraveling,
   setTravelDuration
 } from '../redux/actions/ship'
 import moment from 'moment'
 
-const TravelTimer = ({
-  handleTravelDurationCreated,
-  handleTimerStopped,
-  ship
-}) => {
-  const [timeLeft, setTimeLeft] = useState('NOT TRAVELING')
-  const { travelDuration } = ship
+const TravelTimer = ({ handleSetTravelDuration, handleTimerStopped, ship }) => {
+  const [minutes, setMinutes] = useState(0)
+  const [seconds, setSeconds] = useState(0)
 
   const timerLogic = () => {
-    // TODO - every 10 seconds, update ship location value by 1
-    // ! Might run into trouble at the end of the timer if time is not divisible by 10
-
-    // ! STUCK
-
     if (ship.isShipTraveling) {
-      // * Instead of immediately selling everything,
-      // * calculate how long it will take to travel to the destination
-
-      if (!travelDuration) {
-        const newTravelDuration = createTravelDuration(ship.destination, ship)
-        handleTravelDurationCreated(newTravelDuration)
-        setTimeLeft({
-          minutes: newTravelDuration.minutes(),
-          seconds: newTravelDuration.seconds()
+      let timerDuration
+      if (ship.travelDuration) {
+        // * There is already a travel durataion, use it
+        timerDuration = moment.duration({
+          minutes: ship.travelDuration.minutes,
+          seconds: ship.travelDuration.seconds
         })
       } else {
-        const travelTimer = setInterval(() => {
-          const duration = moment.duration({
-            minutes: timeLeft.minutes,
-            seconds: timeLeft.seconds
-          })
-          duration.subtract(1, 'second')
-          setTimeLeft({
-            minutes: duration.minutes(),
-            seconds: duration.seconds()
-          })
-          // handleTravelDurationCreated(duration)
-
-          if (duration.asMilliseconds() === 0) {
-            clearInterval(travelTimer)
-            // * Only do the selling stuff when the ship arrives
-            handleTimerStopped(ship)
-          }
-        }, 1000)
+        timerDuration = createTravelDuration(ship.destination, ship)
       }
+      setMinutes(timerDuration.minutes())
+      setSeconds(timerDuration.seconds())
+
+      const travelTimer = setInterval(() => {
+        timerDuration.subtract(1, 'second')
+        setMinutes(timerDuration.minutes())
+        setSeconds(timerDuration.seconds())
+        handleSetTravelDuration(timerDuration)
+
+        if (timerDuration.asMilliseconds() === 0) {
+          clearInterval(travelTimer)
+          handleTimerStopped(ship)
+        }
+      }, 1000)
     }
   }
 
-  useEffect(timerLogic, [ship.isShipTraveling, ship.travelDuration])
+  useEffect(timerLogic, [ship.isShipTraveling])
 
   return (
-    <Box>
-      <Heading level="3">Travel Timer</Heading>
-      <span>{`${timeLeft.minutes} minutes ${timeLeft.seconds} seconds`}</span>
-    </Box>
+    ship.isShipTraveling && (
+      <Box>
+        <Heading level="3">Travel Timer</Heading>
+        <span>
+          {minutes} minutes {seconds} seconds
+        </span>
+      </Box>
+    )
   )
 }
 
 TravelTimer.propTypes = {
-  handleTravelDurationCreated: PropTypes.func.isRequired,
+  handleSetTravelDuration: PropTypes.func.isRequired,
   handleTimerStopped: PropTypes.func.isRequired,
   ship: PropTypes.object.isRequired
 }
@@ -93,15 +83,14 @@ const mapDispatchToProps = dispatch => ({
     })
     dispatch(addCash(profit))
     sellableItems.forEach(item => {
-      // * Remove the item from the ship cargo
       dispatch(removeCargo(item))
     })
     dispatch(setShipLocationName(destination.name))
     dispatch(setShipLocationValue(destination.value))
-
     dispatch(setDestination(null))
+    dispatch(setShipTraveling(false))
   },
-  handleTravelDurationCreated: travelDuration => {
+  handleSetTravelDuration: travelDuration => {
     dispatch(
       setTravelDuration({
         minutes: travelDuration.minutes(),
