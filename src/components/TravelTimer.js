@@ -6,8 +6,7 @@ import { Box, Heading } from 'grommet'
 import { addCash } from '../redux/actions/user'
 import {
   removeCargo,
-  setShipLocationName,
-  setShipLocationValue,
+  setShipLocation,
   setDestination,
   setShipTraveling,
   setTravelDuration
@@ -83,8 +82,9 @@ const mapDispatchToProps = dispatch => ({
     sellableItems.forEach(item => {
       dispatch(removeCargo(item))
     })
-    dispatch(setShipLocationName(destination.name))
-    dispatch(setShipLocationValue(destination.value))
+    dispatch(
+      setShipLocation({ name: destination.name, value: destination.value })
+    )
     dispatch(setDestination(null))
     dispatch(setShipTraveling(false))
   },

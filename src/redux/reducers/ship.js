@@ -28,15 +28,10 @@ export default (state = shipDefaultState, action) => {
       }
     case 'SET_DESTINATION':
       return { ...state, destination: action.payload.destination }
-    case 'SET_SHIP_LOCATION_NAME':
+    case 'SET_SHIP_LOCATION':
       return {
         ...state,
-        location: { ...state.location, name: action.payload.name }
-      }
-    case 'SET_SHIP_LOCATION_VALUE':
-      return {
-        ...state,
-        location: { ...state.location, value: action.payload.value }
+        location: action.payload.location
       }
     case 'SET_SHIP_TRAVELING':
       return { ...state, isShipTraveling: action.payload.isShipTraveling }

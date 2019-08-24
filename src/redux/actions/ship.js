@@ -1,8 +1,7 @@
 // * ACTION TYPES
 const REMOVE_CARGO = 'REMOVE_CARGO'
 const SET_DESTINATION = 'SET_DESTINATION'
-const SET_SHIP_LOCATION_NAME = 'SET_SHIP_LOCATION_NAME'
-const SET_SHIP_LOCATION_VALUE = 'SET_SHIP_LOCATION_VALUE'
+const SET_SHIP_LOCATION = 'SET_SHIP_LOCATION'
 const SET_SHIP_TRAVELING = 'SET_SHIP_TRAVELING'
 const SET_TRAVEL_DURATION = 'SET_TRAVEL_DURATION'
 const STORE_CARGO = 'STORE_CARGO'
@@ -15,14 +14,14 @@ export const removeCargo = item => ({
   }
 })
 
-export const setShipLocationName = name => ({
-  type: SET_SHIP_LOCATION_NAME,
-  payload: { name }
+export const setDestination = destination => ({
+  type: SET_DESTINATION,
+  payload: { destination }
 })
 
-export const setShipLocationValue = value => ({
-  type: SET_SHIP_LOCATION_VALUE,
-  payload: { value }
+export const setShipLocation = location => ({
+  type: SET_SHIP_LOCATION,
+  payload: { location }
 })
 
 export const setShipTraveling = isShipTraveling => ({
@@ -41,11 +40,6 @@ export const storeCargo = (item, quantity) => ({
     item,
     quantity
   }
-})
-
-export const setDestination = destination => ({
-  type: SET_DESTINATION,
-  payload: { destination }
 })
 
 // * PROMISES

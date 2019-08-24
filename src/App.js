@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { generatePlanets } from './util'
-import { setShipLocationValue, setShipLocationName } from './redux/actions/ship'
+import { setShipLocation } from './redux/actions/ship'
 import { setPlanets } from './redux/actions/world'
 import View from './views/View'
 import { Box } from 'grommet'
@@ -10,8 +10,8 @@ import CashDisplay from './components/CashDisplay'
 import ItemTimer from './components/ItemTimer'
 import Title from './components/Title'
 import ViewSelector from './components/ViewSelector'
-import TravelTimer from './components/TravelTimer';
-import ContractsDisplay from './components/ContractsDisplay';
+import TravelTimer from './components/TravelTimer'
+import ContractsDisplay from './components/ContractsDisplay'
 
 const App = ({ handleInitializeApplication, planets }) => {
   useEffect(() => {
@@ -45,12 +45,10 @@ const mapDispatchToProps = dispatch => ({
   handleInitializeApplication: () => {
     const planets = generatePlanets()
     const homePlanet = planets.find(planet => planet.isHomePlanet === true)
-    const value = homePlanet.location
-    const name = homePlanet.name
+    const location = { name: homePlanet.name, value: homePlanet.location }
 
     dispatch(setPlanets(planets))
-    dispatch(setShipLocationValue(value))
-    dispatch(setShipLocationName(name))
+    dispatch(setShipLocation(location))
   }
 })
 
