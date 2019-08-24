@@ -1,6 +1,7 @@
-import { generateItems } from '../../util'
+import { generateItems, generateContracts } from '../../util'
 
 const worldDefaultState = {
+  contracts: generateContracts(),
   isTimerRunning: false,
   planets: []
 }

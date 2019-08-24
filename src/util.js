@@ -94,3 +94,20 @@ export const createTravelDuration = (destination, ship) => {
 
   return moment.duration({ seconds })
 }
+
+export const generateContracts = () => {
+  const contracts = []
+
+  for (let i = 0; i < 5; i++) {
+    const itemType = itemList[Math.floor(Math.random() * itemList.length)].name
+    const contract = {
+      id: uuidv4(),
+      itemType,
+      space: itemList.find(item => item.name === itemType).space,
+      value: itemList.find(item => item.name === itemType).value + 1
+    }
+    contracts.push(contract)
+  }
+
+  return contracts
+}
