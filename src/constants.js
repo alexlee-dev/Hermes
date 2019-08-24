@@ -8,62 +8,62 @@ export const views = {
 
 const spaceJunk = {
   name: 'Space Junk',
-  space: 1,
-  value: 1
+  value: 1,
+  volume: 0.1
 }
 
 const ore = {
   name: 'Ore',
-  space: 1,
-  value: 2
+  value: 2,
+  volume: 1
 }
 
 const plasma = {
   name: 'Plasma',
-  space: 1,
-  value: 3
+  value: 3,
+  volume: 0.4
 }
 
 const antibiotics = {
   name: 'Antibiotics',
-  space: 1,
-  value: 2
+  value: 2,
+  volume: 0.1
 }
 
 const tobacco = {
   name: 'Tobacco',
-  space: 1,
-  value: 3
+  value: 3,
+  volume: 0.2
 }
 
 const soil = {
   name: 'Soil',
-  space: 2,
-  value: 1
+  volume: 2,
+  value: 0.5
 }
 
 const ammunition = {
   name: 'Ammunition',
-  space: 1,
-  value: 3
+  value: 3,
+  volume: 0.8
 }
 
 const glass = {
   name: 'Glass',
-  space: 1,
-  value: 1
+  value: 1,
+  volume: 1
 }
 
 const silver = {
   name: 'Silver',
-  space: 1,
-  value: 4
+  value: 4,
+  volume: 0.5
 }
 
 const gold = {
   name: 'Gold',
-  space: 1,
-  valu: 5
+  value: 5,
+  volume: 0.5
 }
 
 export const itemList = [
@@ -3804,7 +3804,7 @@ export const planets = [
   'Cicero',
   'Cichocki',
   'Ciconia',
-  'Cieletespace',
+  'Cieletevolume',
   'Cielobuio',
   'Cilek',
   'Cilla',
@@ -18330,8 +18330,8 @@ export const planets = [
   'Sova',
   'Soyounchoi',
   'Soyuz-Apollo',
-  'Spacesora',
-  'Spacewatch',
+  'volumesora',
+  'volumewatch',
   'Spadolini',
   'Spahr',
   'Spalatin',

@@ -23,7 +23,7 @@ export const defaultState = {
       {
         id: '0',
         itemType: 'Ore',
-        space: 1,
+        volume: 1,
         value: 3
       }
     ],
@@ -36,7 +36,7 @@ export const defaultState = {
         items: [
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '0',
             destination: {
@@ -46,7 +46,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '1',
             destination: {
@@ -56,7 +56,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '2',
             destination: {
@@ -66,7 +66,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '3',
             destination: {
@@ -76,7 +76,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '4',
             destination: {
@@ -94,7 +94,7 @@ export const defaultState = {
         items: [
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '5',
             destination: {
@@ -104,7 +104,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '6',
             destination: {
@@ -114,7 +114,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '7',
             destination: {
@@ -124,7 +124,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '8',
             destination: {
@@ -134,7 +134,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '9',
             destination: {
@@ -152,7 +152,7 @@ export const defaultState = {
         items: [
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '10',
             destination: {
@@ -162,7 +162,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '11',
             destination: {
@@ -172,7 +172,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '12',
             destination: {
@@ -182,7 +182,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '13',
             destination: {
@@ -192,7 +192,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '14',
             destination: {

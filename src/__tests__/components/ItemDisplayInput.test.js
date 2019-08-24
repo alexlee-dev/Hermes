@@ -3,15 +3,15 @@ import { fireEvent } from '@testing-library/react'
 import ItemDisplayInput from '../../components/ItemDisplayInput'
 
 const item = {
-  name: 'Test Item',
-  space: 1,
-  value: 1,
-  id: '0',
   destination: {
     name: 'Test Planet 2',
     value: 50
   },
-  quantity: 10
+  id: '0',
+  name: 'Test Item',
+  quantity: 10,
+  value: 1,
+  volume: 1
 }
 
 describe('<ItemDisplayInput />', () => {

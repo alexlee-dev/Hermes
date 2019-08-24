@@ -1,7 +1,7 @@
 const shipDefaultState = {
   cargo: {
     items: [],
-    volumeRemaining: 5
+    volumeRemaining: 10 // m³
   },
   destination: null,
   isShipTraveling: false,

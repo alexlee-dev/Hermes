@@ -11,15 +11,15 @@ const customState = {
     cargo: {
       items: [
         {
-          name: 'Test Item',
-          space: 1,
-          quantity: 1,
-          value: 1,
-          id: '0',
           destination: {
             name: 'Test Planet 2',
             value: 50
-          }
+          },
+          id: '0',
+          name: 'Test Item',
+          quantity: 1,
+          value: 1,
+          volume: 1
         }
       ],
       volumeRemaining: 4
