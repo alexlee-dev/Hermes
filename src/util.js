@@ -37,11 +37,12 @@ export const generatePlanets = () => {
   const planets = []
 
   for (let i = 0; i < 3; i++) {
+    const id = uuidv4()
     const isHomePlanet = i === 0
     const location = Math.floor(Math.random() * 100 + 1)
     const name = getPlanetName()
 
-    planets.push({ isHomePlanet, location, name })
+    planets.push({ id, isHomePlanet, location, name })
   }
 
   planets.forEach(planet => {
