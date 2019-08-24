@@ -9,13 +9,13 @@ const middlewares = []
 export const mockStore = configureStore(middlewares)
 
 export const customRender = options => {
-  const { component, state } = options
+  const { component, state, props } = options
 
   const Component = component
 
   return render(
     <Provider store={mockStore(state ? state : defaultState)}>
-      <Component />
+      <Component {...props} />
     </Provider>
   )
 }
