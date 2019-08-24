@@ -3,21 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Box, Button, Heading } from 'grommet'
 import { Target } from 'grommet-icons'
-import {
-  setShipLocationName,
-  setShipLocationValue,
-  removeCargo
-} from '../redux/actions/ship'
-import { addCash } from '../redux/actions/user'
+import { setShipTraveling, setDestination } from '../redux/actions/ship'
 import ItemDisplay from './ItemDisplay'
 
-const PlanetDisplay = ({
-  handleShipTravel,
-  planet,
-  shipCargo,
-  shipLocationValue
-}) => {
+const PlanetDisplay = ({ handleShipTravel, planet, ship }) => {
   const { isHomePlanet, items, location, name } = planet
+  const shipLocationValue = ship.location.value
 
   return (
     <div key={name}>
@@ -25,14 +16,12 @@ const PlanetDisplay = ({
         <Heading level="2">
           {isHomePlanet ? name + ' - Home Planet' : name}
         </Heading>
-        {shipLocationValue !== location && (
+        {shipLocationValue !== location && !ship.isShipTraveling && (
           <Button
             data-testid={`travel-button-${name}`}
             hoverIndicator
             icon={<Target />}
-            onClick={() =>
-              handleShipTravel({ name, value: location }, shipCargo)
-            }
+            onClick={() => handleShipTravel({ name, value: location })}
             plain
           />
         )}
@@ -48,38 +37,17 @@ const PlanetDisplay = ({
 PlanetDisplay.propTypes = {
   handleShipTravel: PropTypes.func.isRequired,
   planet: PropTypes.object.isRequired,
-  shipCargo: PropTypes.object.isRequired,
-  shipLocationValue: PropTypes.number.isRequired
+  ship: PropTypes.object.isRequired
 }
 
-const mapStateToProps = ({ ship }) => ({
-  shipCargo: ship.cargo,
-  shipLocationValue: ship.location.value
-})
+const mapStateToProps = ({ ship }) => ({ ship })
 
 const mapDispatchToProps = dispatch => ({
-  handleShipTravel: (destination, shipCargo) => {
-    const sellableItems = shipCargo.items.filter(
-      item => item.destination.value === destination.value
-    )
-
-    let profit = 0
-
-    sellableItems.forEach(item => {
-      const { quantity, value } = item
-      const itemProfit = quantity * value
-      profit += itemProfit
-    })
-
-    dispatch(addCash(profit))
-
-    sellableItems.forEach(item => {
-      // * Remove the item from the ship cargo
-      dispatch(removeCargo(item))
-    })
-
-    dispatch(setShipLocationName(destination.name))
-    dispatch(setShipLocationValue(destination.value))
+  handleShipTravel: destination => {
+    // * set isShipTraveling to true
+    dispatch(setShipTraveling(true))
+    // * set destination
+    dispatch(setDestination(destination))
   }
 })
 

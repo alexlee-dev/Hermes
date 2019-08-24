@@ -4,10 +4,13 @@ export const defaultState = {
       items: [],
       volumeRemaining: 5
     },
+    destination: null,
+    isShipTraveling: false,
     location: {
       name: null,
       value: null
-    }
+    },
+    travelDuration: null
   },
   ui: {
     view: 'Ship'
