@@ -3,10 +3,13 @@ const shipDefaultState = {
     items: [],
     volumeRemaining: 5
   },
+  destination: null,
+  isShipTraveling: false,
   location: {
     name: null,
     value: null
-  }
+  },
+  travelDuration: null
 }
 
 export default (state = shipDefaultState, action) => {
@@ -23,6 +26,8 @@ export default (state = shipDefaultState, action) => {
             state.cargo.volumeRemaining + action.payload.item.quantity
         }
       }
+    case 'SET_DESTINATION':
+      return { ...state, destination: action.payload.destination }
     case 'SET_SHIP_LOCATION_NAME':
       return {
         ...state,
@@ -33,6 +38,10 @@ export default (state = shipDefaultState, action) => {
         ...state,
         location: { ...state.location, value: action.payload.value }
       }
+    case 'SET_SHIP_TRAVELING':
+      return { ...state, isShipTraveling: action.payload.isShipTraveling }
+    case 'SET_TRAVEL_DURATION':
+      return { ...state, travelDuration: action.payload.travelDuration }
     case 'STORE_CARGO':
       let updatedItems = state.cargo.items.map(currentItem => {
         if (action.payload.item.id === currentItem.id) {

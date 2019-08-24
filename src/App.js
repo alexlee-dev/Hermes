@@ -10,6 +10,7 @@ import CashDisplay from './components/CashDisplay'
 import ItemTimer from './components/ItemTimer'
 import Title from './components/Title'
 import ViewSelector from './components/ViewSelector'
+import TravelTimer from './components/TravelTimer';
 
 const App = ({ handleInitializeApplication, planets }) => {
   useEffect(() => {
@@ -21,6 +22,7 @@ const App = ({ handleInitializeApplication, planets }) => {
     <Box fill>
       <Title />
       <ItemTimer />
+      <TravelTimer />
       <CashDisplay />
       <ViewSelector />
       <View />
