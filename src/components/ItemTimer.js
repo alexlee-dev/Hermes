@@ -7,6 +7,7 @@ import {
   refreshItems
 } from '../redux/actions/world'
 import { createDuration } from '../util'
+import { Box, Heading } from 'grommet'
 
 const ItemTimer = ({ handleTimerStarted, handleTimerStopped, world }) => {
   const { isTimerRunning } = world
@@ -35,7 +36,12 @@ const ItemTimer = ({ handleTimerStarted, handleTimerStopped, world }) => {
 
   useEffect(startTimer, [isTimerRunning])
 
-  return <span>{timeLeft}</span>
+  return (
+    <Box>
+      <Heading level="3">Item Timer</Heading>
+      <span>{timeLeft}</span>
+    </Box>
+  )
 }
 
 ItemTimer.propTypes = {

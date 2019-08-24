@@ -2,8 +2,17 @@
 
 exports[`<ItemTimer /> Should render the <ItemTimer /> component. 1`] = `
 <DocumentFragment>
-  <span>
-    0 minutes 0 seconds
-  </span>
+  <div
+    class="StyledBox-sc-13pk1d4-0 IRSNj"
+  >
+    <h3
+      class="StyledHeading-sc-1rdh4aw-0 ftOecI"
+    >
+      Item Timer
+    </h3>
+    <span>
+      0 minutes 0 seconds
+    </span>
+  </div>
 </DocumentFragment>
 `;
