@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/alexlee-dev/hermes/issues"
   },
-  "homepage": "https://github.com/alexlee-dev/hermes#readme",
+  "homepage": "https://hermes-game.netlify.com/",
   "dependencies": {
     "@sentry/browser": "^5.6.1",
     "grommet": "^2.7.6",
