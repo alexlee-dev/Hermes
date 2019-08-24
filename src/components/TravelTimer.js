@@ -49,16 +49,14 @@ const TravelTimer = ({ handleSetTravelDuration, handleTimerStopped, ship }) => {
 
   useEffect(timerLogic, [ship.isShipTraveling])
 
-  return (
-    ship.isShipTraveling && (
-      <Box>
-        <Heading level="3">Travel Timer</Heading>
-        <span>
-          {minutes} minutes {seconds} seconds
-        </span>
-      </Box>
-    )
-  )
+  return ship.isShipTraveling ? (
+    <Box>
+      <Heading level="3">Travel Timer</Heading>
+      <span>
+        {minutes} minutes {seconds} seconds
+      </span>
+    </Box>
+  ) : null
 }
 
 TravelTimer.propTypes = {
