@@ -19,6 +19,7 @@ export const defaultState = {
     isTimerRunning: false,
     planets: [
       {
+        id: "0",
         isHomePlanet: true,
         location: 0,
         items: [
@@ -76,6 +77,7 @@ export const defaultState = {
         name: 'Test Planet 1'
       },
       {
+        id: "1",
         isHomePlanet: false,
         location: 50,
         items: [
@@ -133,6 +135,7 @@ export const defaultState = {
         name: 'Test Planet 2'
       },
       {
+        id: "2",
         isHomePlanet: false,
         location: 100,
         items: [
