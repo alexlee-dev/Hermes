@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import ItemDisplayInput from './ItemDisplayInput'
 
 const ItemDisplay = ({ item, location, shipLocationValue }) => {
-  const { destination, id, name, quantity, space, value } = item
+  const { destination, id, name, quantity, volume, value } = item
 
   return (
     <Box
@@ -23,7 +23,7 @@ const ItemDisplay = ({ item, location, shipLocationValue }) => {
         <Text>Quantity: {quantity}</Text>
       </Box>
       <Box pad="medium">
-        <Text>Space: {space}</Text>
+        <Text>Volume: {volume}</Text>
       </Box>
       <Box pad="medium">
         <Text>Value: {value}</Text>

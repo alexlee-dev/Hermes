@@ -103,8 +103,8 @@ export const generateContracts = () => {
     const contract = {
       id: uuidv4(),
       itemType,
-      space: itemList.find(item => item.name === itemType).space,
-      value: itemList.find(item => item.name === itemType).value + 1
+      value: itemList.find(item => item.name === itemType).value + 1,
+      volume: itemList.find(item => item.name === itemType).volume
     }
     contracts.push(contract)
   }

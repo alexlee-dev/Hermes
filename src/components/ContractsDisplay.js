@@ -11,8 +11,8 @@ const ContractsDisplay = ({ contracts }) => {
         <Box direction="row" key={contract.id} gap="small">
           <Text weight="bold">Item Type</Text>
           <Text>{contract.itemType}</Text>
-          <Text weight="bold">Space</Text>
-          <Text>{contract.space}</Text>
+          <Text weight="bold">Volume</Text>
+          <Text>{contract.volume}</Text>
           <Text weight="bold">Value</Text>
           <Text>{contract.value}</Text>
         </Box>
