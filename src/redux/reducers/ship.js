@@ -8,8 +8,7 @@ const shipDefaultState = {
   location: {
     name: null,
     value: null
-  },
-  travelDuration: null
+  }
 }
 
 export default (state = shipDefaultState, action) => {
@@ -28,6 +27,11 @@ export default (state = shipDefaultState, action) => {
       }
     case 'SET_DESTINATION':
       return { ...state, destination: action.payload.destination }
+    case 'SET_ETA':
+      return {
+        ...state,
+        destination: { ...state.destination, eta: action.payload.eta }
+      }
     case 'SET_SHIP_LOCATION':
       return {
         ...state,

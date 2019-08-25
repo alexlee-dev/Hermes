@@ -1,9 +1,9 @@
 // * ACTION TYPES
 const REMOVE_CARGO = 'REMOVE_CARGO'
 const SET_DESTINATION = 'SET_DESTINATION'
+const SET_ETA = 'SET_ETA'
 const SET_SHIP_LOCATION = 'SET_SHIP_LOCATION'
 const SET_SHIP_TRAVELING = 'SET_SHIP_TRAVELING'
-const SET_TRAVEL_DURATION = 'SET_TRAVEL_DURATION'
 const STORE_CARGO = 'STORE_CARGO'
 
 // * ACTION GENERATORS
@@ -19,6 +19,11 @@ export const setDestination = destination => ({
   payload: { destination }
 })
 
+export const setETA = eta => ({
+  type: SET_ETA,
+  payload: { eta }
+})
+
 export const setShipLocation = location => ({
   type: SET_SHIP_LOCATION,
   payload: { location }
@@ -27,11 +32,6 @@ export const setShipLocation = location => ({
 export const setShipTraveling = isShipTraveling => ({
   type: SET_SHIP_TRAVELING,
   payload: { isShipTraveling }
-})
-
-export const setTravelDuration = travelDuration => ({
-  type: SET_TRAVEL_DURATION,
-  payload: { travelDuration }
 })
 
 export const storeCargo = (item, quantity) => ({

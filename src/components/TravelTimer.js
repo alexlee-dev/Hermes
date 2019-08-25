@@ -1,44 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { createTravelDuration } from '../util'
+import { createETA } from '../util'
 import { Box, Heading } from 'grommet'
 import { addCash } from '../redux/actions/user'
 import {
   removeCargo,
   setShipLocation,
   setDestination,
-  setShipTraveling,
-  setTravelDuration
+  setETA,
+  setShipTraveling
 } from '../redux/actions/ship'
 import moment from 'moment'
 
-const TravelTimer = ({ handleSetTravelDuration, handleTimerStopped, ship }) => {
+const TravelTimer = ({ handleSetETA, handleTimerStopped, ship }) => {
   const [minutes, setMinutes] = useState(0)
   const [seconds, setSeconds] = useState(0)
 
   const timerLogic = () => {
     if (ship.isShipTraveling) {
-      let timerDuration
-      if (ship.travelDuration) {
-        // * There is already a travel durataion, use it
-        timerDuration = moment.duration({
-          minutes: ship.travelDuration.minutes,
-          seconds: ship.travelDuration.seconds
-        })
+      let eta
+      if (ship.destination.eta) {
+        console.log('Used the eta that already existed.', ship.destination.eta)
+        // * There is already an eta, use it
+        eta = moment()
+        eta.minute(ship.destination.eta.minutes)
+        eta.second(ship.destination.eta.seconds)
+        console.log('The eta is now', eta)
       } else {
-        timerDuration = createTravelDuration(ship.destination, ship)
+        eta = createETA(ship.destination, ship)
+        console.log('Created a new eta.', eta)
       }
-      setMinutes(timerDuration.minutes())
-      setSeconds(timerDuration.seconds())
+      setMinutes(eta.minutes())
+      setSeconds(eta.seconds())
 
       const travelTimer = setInterval(() => {
-        timerDuration.subtract(1, 'second')
-        setMinutes(timerDuration.minutes())
-        setSeconds(timerDuration.seconds())
-        handleSetTravelDuration(timerDuration)
+        eta.subtract(1, 'second')
+        setMinutes(eta.minutes())
+        setSeconds(eta.seconds())
+        handleSetETA({ minutes: eta.minutes(), seconds: eta.seconds() })
 
-        if (timerDuration.asMilliseconds() === 0) {
+        if (eta.milliseconds() === 0) {
           clearInterval(travelTimer)
           handleTimerStopped(ship)
         }
@@ -59,7 +61,7 @@ const TravelTimer = ({ handleSetTravelDuration, handleTimerStopped, ship }) => {
 }
 
 TravelTimer.propTypes = {
-  handleSetTravelDuration: PropTypes.func.isRequired,
+  handleSetETA: PropTypes.func.isRequired,
   handleTimerStopped: PropTypes.func.isRequired,
   ship: PropTypes.object.isRequired
 }
@@ -88,13 +90,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setDestination(null))
     dispatch(setShipTraveling(false))
   },
-  handleSetTravelDuration: travelDuration => {
-    dispatch(
-      setTravelDuration({
-        minutes: travelDuration.minutes(),
-        seconds: travelDuration.seconds()
-      })
-    )
+  handleSetETA: eta => {
+    dispatch(setETA(eta))
   }
 })
 
