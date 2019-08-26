@@ -6,35 +6,23 @@ import {
   clearItems,
   refreshItems
 } from '../redux/actions/world'
-import { createDuration } from '../util'
+import { itemTimerLogic } from '../util'
 import { Box, Heading } from 'grommet'
 
 const ItemTimer = ({ handleTimerStarted, handleTimerStopped, world }) => {
-  const { isTimerRunning } = world
+  const [timeLeft, setTimeLeft] = useState(null)
 
-  let duration = createDuration()
-
-  const [timeLeft, setTimeLeft] = useState(
-    `${duration.minutes()} minutes ${duration.seconds()} seconds`
+  useEffect(
+    () =>
+      itemTimerLogic(
+        world,
+        setTimeLeft,
+        handleTimerStarted,
+        handleTimerStopped
+      ),
+    // eslint-disable-next-line
+    [world.isTimerRunning]
   )
-
-  const startTimer = () => {
-    if (!isTimerRunning) {
-      handleTimerStarted()
-      let timer = setInterval(() => {
-        duration.subtract(1, 'second')
-        setTimeLeft(
-          `${duration.minutes()} minutes ${duration.seconds()} seconds`
-        )
-        if (duration.asMilliseconds() === 0) {
-          clearInterval(timer)
-          handleTimerStopped()
-        }
-      }, 1000)
-    }
-  }
-
-  useEffect(startTimer, [isTimerRunning])
 
   return (
     <Box>

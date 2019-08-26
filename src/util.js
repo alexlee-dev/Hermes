@@ -122,3 +122,43 @@ export const generateContracts = () => {
 
   return contracts
 }
+
+export const travelTimerLogic = (ship, setTimeLeft, handleTimerStopped) => {
+  if (ship.isShipTraveling) {
+    const travelTimer = setInterval(() => {
+      const diffDuration = createDiffDuration(ship.destination.eta)
+
+      diffDuration.subtract(1, 'second')
+
+      if (diffDuration.asMilliseconds() === 0) {
+        clearInterval(travelTimer)
+        handleTimerStopped(ship)
+      }
+
+      setTimeLeft(diffDuration)
+    }, 1000)
+  }
+}
+
+export const itemTimerLogic = (
+  world,
+  setTimeLeft,
+  handleTimerStarted,
+  handleTimerStopped
+) => {
+  const { isTimerRunning } = world
+
+  let duration = createDuration()
+
+  if (!isTimerRunning) {
+    handleTimerStarted()
+    let timer = setInterval(() => {
+      duration.subtract(1, 'second')
+      setTimeLeft(`${duration.minutes()} minutes ${duration.seconds()} seconds`)
+      if (duration.asMilliseconds() === 0) {
+        clearInterval(timer)
+        handleTimerStopped()
+      }
+    }, 1000)
+  }
+}
