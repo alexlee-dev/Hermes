@@ -24,7 +24,7 @@ const ItemDisplayInput = ({
         disabled={
           shipCargoVolumeRemaining === 0 ||
           value === 0 ||
-          userCash < value * item.value
+          userCash < value * item.price
         }
         hoverIndicator
         icon={<Add />}
@@ -63,7 +63,7 @@ const mapStateToProps = ({ ship, user }) => ({
 const mapDispatchToProps = dispatch => ({
   handleStoreCargo: (item, quantity) => {
     // * dispatch an action to buy the items with the user's cash
-    dispatch(removeCash(item.value * quantity))
+    dispatch(removeCash(item.price * quantity))
     // * dispatch an action to store the item in ship cargo
     dispatch(storeCargo(item, quantity))
     // * dispatch an action to remove the item from the list of stored items on this planet
