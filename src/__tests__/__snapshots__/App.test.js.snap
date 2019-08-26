@@ -28,13 +28,16 @@ exports[`<App /> Should render the <App /> component. 1`] = `
       </span>
     </div>
     <div
-      class="StyledBox-sc-13pk1d4-0 IRSNj"
+      class="StyledBox-sc-13pk1d4-0 laNWCK"
     >
       <h3
         class="StyledHeading-sc-1rdh4aw-0 ftOecI"
       >
         Contracts
       </h3>
+      <div
+        class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hPsznL"
+      />
       <div
         class="StyledBox-sc-13pk1d4-0 ffeAql"
       >
@@ -83,6 +86,28 @@ exports[`<App /> Should render the <App /> component. 1`] = `
         >
           3
         </span>
+        <div
+          class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
+        />
+        <button
+          class="StyledButton-sc-323bzc-0 jJyttA"
+          disabled=""
+          type="button"
+          value="0"
+        >
+          <svg
+            aria-label="Checkmark"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            viewBox="0 0 24 24"
+          >
+            <polyline
+              fill="none"
+              points="2 14 9 20 22 4"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </button>
       </div>
     </div>
     <div
