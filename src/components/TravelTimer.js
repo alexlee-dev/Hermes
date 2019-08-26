@@ -9,29 +9,15 @@ import {
   setDestination,
   setShipTraveling
 } from '../redux/actions/ship'
-import { createDiffDuration } from '../util'
+import { travelTimerLogic } from '../util'
 
 const TravelTimer = ({ handleTimerStopped, ship }) => {
   const [timeLeft, setTimeLeft] = useState(null)
 
-  const timerLogic = () => {
-    if (ship.isShipTraveling) {
-      const travelTimer = setInterval(() => {
-        const diffDuration = createDiffDuration(ship.destination.eta)
-
-        diffDuration.subtract(1, 'second')
-
-        if (diffDuration.asMilliseconds() === 0) {
-          clearInterval(travelTimer)
-          handleTimerStopped(ship)
-        }
-
-        setTimeLeft(diffDuration)
-      }, 1000)
-    }
-  }
-
-  useEffect(timerLogic, [ship.isShipTraveling])
+  // eslint-disable-next-line
+  useEffect(() => travelTimerLogic(ship, setTimeLeft, handleTimerStopped), [
+    ship.isShipTraveling
+  ])
 
   return ship.isShipTraveling ? (
     <Box>
