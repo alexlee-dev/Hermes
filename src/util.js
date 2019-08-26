@@ -25,6 +25,7 @@ export const generateItems = possibleDestinations => {
           name: destinationPlanet.name,
           value: destinationPlanet.location
         },
+        price: Math.floor(Math.random() * 10),
         quantity: 10
       }
     )

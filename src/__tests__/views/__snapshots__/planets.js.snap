@@ -61,6 +61,15 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
         </div>
@@ -143,6 +152,15 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
             Value: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Price: 
           </span>
         </div>
         <div
@@ -241,6 +259,15 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
         </div>
@@ -331,6 +358,15 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
         </div>
@@ -413,6 +449,15 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
             Value: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Price: 
           </span>
         </div>
         <div
@@ -554,47 +599,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Destination: Test Planet 1
-          </span>
-        </div>
-      </div>
-      <div
-        class="StyledBox-sc-13pk1d4-0 xqboQ"
-      >
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Name: Test Item
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Quantity: 
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Volume: 1
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Value: 1
+            Price: 
           </span>
         </div>
         <div
@@ -652,47 +657,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Destination: Test Planet 1
-          </span>
-        </div>
-      </div>
-      <div
-        class="StyledBox-sc-13pk1d4-0 xqboQ"
-      >
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Name: Test Item
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Quantity: 
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Volume: 1
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Value: 1
+            Price: 
           </span>
         </div>
         <div
@@ -742,6 +707,131 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
             Value: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Destination: Test Planet 1
+          </span>
+        </div>
+      </div>
+      <div
+        class="StyledBox-sc-13pk1d4-0 xqboQ"
+      >
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Name: Test Item
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Quantity: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Volume: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Value: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Destination: Test Planet 1
+          </span>
+        </div>
+      </div>
+      <div
+        class="StyledBox-sc-13pk1d4-0 xqboQ"
+      >
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Name: Test Item
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Quantity: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Volume: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Value: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Price: 
           </span>
         </div>
         <div
@@ -842,47 +932,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Destination: Test Planet 2
-          </span>
-        </div>
-      </div>
-      <div
-        class="StyledBox-sc-13pk1d4-0 xqboQ"
-      >
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Name: Test Item
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Quantity: 
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Volume: 1
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Value: 1
+            Price: 
           </span>
         </div>
         <div
@@ -940,47 +990,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Destination: Test Planet 2
-          </span>
-        </div>
-      </div>
-      <div
-        class="StyledBox-sc-13pk1d4-0 xqboQ"
-      >
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Name: Test Item
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Quantity: 
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Volume: 1
-          </span>
-        </div>
-        <div
-          class="StyledBox-sc-13pk1d4-0 hroMnY"
-        >
-          <span
-            class="StyledText-sc-1sadyjn-0 fWSbXS"
-          >
-            Value: 1
+            Price: 
           </span>
         </div>
         <div
@@ -1030,6 +1040,131 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
             Value: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Destination: Test Planet 2
+          </span>
+        </div>
+      </div>
+      <div
+        class="StyledBox-sc-13pk1d4-0 xqboQ"
+      >
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Name: Test Item
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Quantity: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Volume: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Value: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Destination: Test Planet 2
+          </span>
+        </div>
+      </div>
+      <div
+        class="StyledBox-sc-13pk1d4-0 xqboQ"
+      >
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Name: Test Item
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Quantity: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Volume: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Value: 1
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
+            Price: 
           </span>
         </div>
         <div
