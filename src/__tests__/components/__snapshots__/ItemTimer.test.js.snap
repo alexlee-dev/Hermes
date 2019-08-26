@@ -10,9 +10,7 @@ exports[`<ItemTimer /> Should render the <ItemTimer /> component. 1`] = `
     >
       Item Timer
     </h3>
-    <span>
-      0 minutes 0 seconds
-    </span>
+    <span />
   </div>
 </DocumentFragment>
 `;
