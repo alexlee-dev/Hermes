@@ -37,6 +37,7 @@
     "@testing-library/dom": "^6.1.0",
     "@testing-library/react": "^9.1.3",
     "coveralls": "^3.0.6",
+    "cypress": "^3.4.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jsdom": "^15.1.1",
@@ -49,7 +50,8 @@
     "eject": "react-scripts eject",
     "test": "react-scripts test",
     "test:coverage": "yarn test --coverage --watchAll=false --collectCoverageFrom=src/components/**/* --collectCoverageFrom=src/views/**/*",
-    "test:coveralls": "yarn test --coverage --watchAll=false --collectCoverageFrom=src/components/**/* --collectCoverageFrom=src/views/**/* --coverageReporters=text-lcov | coveralls"
+    "test:coveralls": "yarn test --coverage --watchAll=false --collectCoverageFrom=src/components/**/* --collectCoverageFrom=src/views/**/* --coverageReporters=text-lcov | coveralls",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
