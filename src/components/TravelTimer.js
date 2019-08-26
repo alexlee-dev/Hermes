@@ -12,31 +12,25 @@ import {
 import moment from 'moment'
 
 const TravelTimer = ({ handleTimerStopped, ship }) => {
-  const [differenceInMilliseconds, setDifferenceInMilliseconds] = useState(0)
-
-  // ? Why is this so hard
-  // * All you need to do:
-  // TODO 1 - ✅ Calculate how long it will take to reach the destination
-  // TODO 2 - ✅ Set an ETA in Redux
-  // TODO 3 - Set a duration in the TravelTimer based on the ETA in Redux
-  // TODO 4 - Start a timer that ticks down the duration every second
-  // TODO 5 - Display the time of that duration
+  const [timeLeft, setTimeLeft] = useState(null)
 
   const timerLogic = () => {
     if (ship.isShipTraveling) {
       const travelTimer = setInterval(() => {
         const now = moment()
-        const differenceMill = moment(ship.destination.eta, 'x').diff(now) // * gives the number of milliseconds betweeen the eta and now
+        now.millisecond(0)
+        const differenceMill = moment(ship.destination.eta, 'x').diff(now)
 
         const diffDuration = moment.duration({ milliseconds: differenceMill })
 
         diffDuration.subtract(1, 'second')
-        setDifferenceInMilliseconds(diffDuration.asMilliseconds())
 
-        if (diffDuration.milliseconds() === 0) {
+        if (diffDuration.asMilliseconds() === 0) {
           clearInterval(travelTimer)
           handleTimerStopped(ship)
         }
+
+        setTimeLeft(diffDuration)
       }, 1000)
     }
   }
@@ -46,7 +40,11 @@ const TravelTimer = ({ handleTimerStopped, ship }) => {
   return ship.isShipTraveling ? (
     <Box>
       <Heading level="3">Travel Timer</Heading>
-      <span>{moment(differenceInMilliseconds, 'SSS')}</span>
+      {timeLeft && (
+        <span>
+          {timeLeft.minutes()} minutes {timeLeft.seconds()} seconds
+        </span>
+      )}
     </Box>
   ) : null
 }
