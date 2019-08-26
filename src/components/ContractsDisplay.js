@@ -1,12 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, Heading, Text } from 'grommet'
+import { Box, Heading, Text, Button } from 'grommet'
+import { Checkmark, Close } from 'grommet-icons'
 import { connect } from 'react-redux'
+import { resetContract, setContract } from '../redux/actions/user'
 
-const ContractsDisplay = ({ contracts }) => {
+const ContractsDisplay = ({
+  contracts,
+  currentContract,
+  handleResetContract,
+  handleSetContract
+}) => {
   return (
-    <Box>
+    <Box gap="small" margin={{ vertical: 'medium' }}>
       <Heading level="3">Contracts</Heading>
+      {currentContract && (
+        <Box direction="row" gap="small">
+          <Text>Current Contract: {currentContract.id}</Text>
+          <Button
+            hoverIndicator
+            icon={<Close />}
+            onClick={() => handleResetContract()}
+            plain
+          />
+        </Box>
+      )}
       {contracts.map(contract => (
         <Box direction="row" key={contract.id} gap="small">
           <Text weight="bold">Item Type</Text>
@@ -15,6 +33,20 @@ const ContractsDisplay = ({ contracts }) => {
           <Text>{contract.volume}</Text>
           <Text weight="bold">Value</Text>
           <Text>{contract.value}</Text>
+          <Button
+            disabled={currentContract !== null}
+            hoverIndicator
+            icon={<Checkmark />}
+            onClick={e =>
+              handleSetContract(
+                contracts.find(
+                  contract => contract.id === e.target.parentElement.value
+                )
+              )
+            }
+            plain
+            value={contract.id}
+          />
         </Box>
       ))}
     </Box>
@@ -22,11 +54,27 @@ const ContractsDisplay = ({ contracts }) => {
 }
 
 ContractsDisplay.propTypes = {
-  contracts: PropTypes.array.isRequired
+  contracts: PropTypes.array.isRequired,
+  currentContract: PropTypes.object,
+  handleResetContract: PropTypes.func.isRequired,
+  handleSetContract: PropTypes.func.isRequired
 }
 
-const mapStateToProps = ({ world }) => ({
-  contracts: world.contracts
+const mapStateToProps = ({ user, world }) => ({
+  contracts: world.contracts,
+  currentContract: user.contract
 })
 
-export default connect(mapStateToProps)(ContractsDisplay)
+const mapDispatchToProps = dispatch => ({
+  handleResetContract: () => {
+    dispatch(resetContract())
+  },
+  handleSetContract: contract => {
+    dispatch(setContract(contract))
+  }
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ContractsDisplay)
