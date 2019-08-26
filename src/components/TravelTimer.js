@@ -9,7 +9,7 @@ import {
   setDestination,
   setShipTraveling
 } from '../redux/actions/ship'
-import moment from 'moment'
+import { createDiffDuration } from '../util'
 
 const TravelTimer = ({ handleTimerStopped, ship }) => {
   const [timeLeft, setTimeLeft] = useState(null)
@@ -17,11 +17,7 @@ const TravelTimer = ({ handleTimerStopped, ship }) => {
   const timerLogic = () => {
     if (ship.isShipTraveling) {
       const travelTimer = setInterval(() => {
-        const now = moment()
-        now.millisecond(0)
-        const differenceMill = moment(ship.destination.eta, 'x').diff(now)
-
-        const diffDuration = moment.duration({ milliseconds: differenceMill })
+        const diffDuration = createDiffDuration(ship.destination.eta)
 
         diffDuration.subtract(1, 'second')
 

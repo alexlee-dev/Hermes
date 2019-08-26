@@ -1,19 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Box, Button, Heading } from 'grommet'
+import { Box, Button, Heading, Text } from 'grommet'
 import { Target } from 'grommet-icons'
 import { setShipTraveling, setDestination, setETA } from '../redux/actions/ship'
 import ItemDisplay from './ItemDisplay'
-import { createETA } from '../util'
+import { createETA, createDiffDuration } from '../util'
 
 const PlanetDisplay = ({ handleShipTravel, planet, ship }) => {
   const { isHomePlanet, items, location, name } = planet
   const shipLocationValue = ship.location.value
 
+  const eta = createETA({ value: planet.location }, ship)
+  const diffDuration = createDiffDuration(eta)
+
   return (
     <div key={name}>
-      <Box direction="row" gap="medium">
+      <Box align="center" direction="row" gap="medium">
         <Heading level="2">
           {isHomePlanet ? name + ' - Home Planet' : name}
         </Heading>
@@ -25,6 +28,12 @@ const PlanetDisplay = ({ handleShipTravel, planet, ship }) => {
             onClick={() => handleShipTravel({ name, value: location }, ship)}
             plain
           />
+        )}
+        {shipLocationValue !== location && !ship.isShipTraveling && (
+          <Text>
+            ETA: {diffDuration.minutes()} minutes {diffDuration.seconds()}{' '}
+            seconds
+          </Text>
         )}
       </Box>
       <span>Items:</span>

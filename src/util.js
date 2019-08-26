@@ -98,6 +98,14 @@ export const createETA = (destination, ship) => {
   return eta
 }
 
+export const createDiffDuration = eta => {
+  const now = moment()
+  now.millisecond(0)
+  const differenceMill = moment(eta, 'x').diff(now)
+
+  return moment.duration({ milliseconds: differenceMill })
+}
+
 export const generateContracts = () => {
   const contracts = []
 
