@@ -1,47 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { createTravelDuration } from '../util'
 import { Box, Heading } from 'grommet'
 import { addCash } from '../redux/actions/user'
 import {
   removeCargo,
   setShipLocation,
   setDestination,
-  setShipTraveling,
-  setTravelDuration
+  setShipTraveling
 } from '../redux/actions/ship'
 import moment from 'moment'
 
-const TravelTimer = ({ handleSetTravelDuration, handleTimerStopped, ship }) => {
-  const [minutes, setMinutes] = useState(0)
-  const [seconds, setSeconds] = useState(0)
+const TravelTimer = ({ handleTimerStopped, ship }) => {
+  const [timeLeft, setTimeLeft] = useState(null)
 
   const timerLogic = () => {
     if (ship.isShipTraveling) {
-      let timerDuration
-      if (ship.travelDuration) {
-        // * There is already a travel durataion, use it
-        timerDuration = moment.duration({
-          minutes: ship.travelDuration.minutes,
-          seconds: ship.travelDuration.seconds
-        })
-      } else {
-        timerDuration = createTravelDuration(ship.destination, ship)
-      }
-      setMinutes(timerDuration.minutes())
-      setSeconds(timerDuration.seconds())
-
       const travelTimer = setInterval(() => {
-        timerDuration.subtract(1, 'second')
-        setMinutes(timerDuration.minutes())
-        setSeconds(timerDuration.seconds())
-        handleSetTravelDuration(timerDuration)
+        const now = moment()
+        now.millisecond(0)
+        const differenceMill = moment(ship.destination.eta, 'x').diff(now)
 
-        if (timerDuration.asMilliseconds() === 0) {
+        const diffDuration = moment.duration({ milliseconds: differenceMill })
+
+        diffDuration.subtract(1, 'second')
+
+        if (diffDuration.asMilliseconds() === 0) {
           clearInterval(travelTimer)
           handleTimerStopped(ship)
         }
+
+        setTimeLeft(diffDuration)
       }, 1000)
     }
   }
@@ -51,15 +40,16 @@ const TravelTimer = ({ handleSetTravelDuration, handleTimerStopped, ship }) => {
   return ship.isShipTraveling ? (
     <Box>
       <Heading level="3">Travel Timer</Heading>
-      <span>
-        {minutes} minutes {seconds} seconds
-      </span>
+      {timeLeft && (
+        <span>
+          {timeLeft.minutes()} minutes {timeLeft.seconds()} seconds
+        </span>
+      )}
     </Box>
   ) : null
 }
 
 TravelTimer.propTypes = {
-  handleSetTravelDuration: PropTypes.func.isRequired,
   handleTimerStopped: PropTypes.func.isRequired,
   ship: PropTypes.object.isRequired
 }
@@ -87,14 +77,6 @@ const mapDispatchToProps = dispatch => ({
     )
     dispatch(setDestination(null))
     dispatch(setShipTraveling(false))
-  },
-  handleSetTravelDuration: travelDuration => {
-    dispatch(
-      setTravelDuration({
-        minutes: travelDuration.minutes(),
-        seconds: travelDuration.seconds()
-      })
-    )
   }
 })
 

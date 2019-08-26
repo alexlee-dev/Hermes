@@ -10,9 +10,6 @@ exports[`<TravelTimer /> Should render the <TravelTimer /> component. 1`] = `
     >
       Travel Timer
     </h3>
-    <span>
-      8 minutes 20 seconds
-    </span>
   </div>
 </DocumentFragment>
 `;

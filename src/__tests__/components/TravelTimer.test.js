@@ -7,6 +7,7 @@ const customState = {
   ship: {
     ...defaultState.ship,
     destination: {
+      eta: '10000',
       name: 'Test Planet 2',
       value: 50
     },
