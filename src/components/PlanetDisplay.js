@@ -7,6 +7,9 @@ import { setShipTraveling, setDestination, setETA } from '../redux/actions/ship'
 import ItemDisplay from './ItemDisplay'
 import { createETA, createDiffDuration } from '../util'
 
+/**
+ * Displays planet statistics.
+ */
 const PlanetDisplay = ({ handleShipTravel, planet, ship }) => {
   const { isHomePlanet, items, location, name } = planet
   const shipLocationValue = ship.location.value

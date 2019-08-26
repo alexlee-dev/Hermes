@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Box, Text } from 'grommet'
 import { connect } from 'react-redux'
-
 import ItemDisplayInput from './ItemDisplayInput'
 
+/**
+ * Displays item statistics.
+ */
 const ItemDisplay = ({ item, location, shipLocationValue }) => {
   const { destination, id, name, price, quantity, volume, value } = item
 

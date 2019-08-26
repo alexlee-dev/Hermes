@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PlanetDisplay from '../components/PlanetDisplay'
 
+/**
+ * Displays information about the planets.
+ */
 const PlanetsView = ({ planets }) => {
   return (
     <div>

@@ -13,6 +13,9 @@ import ViewSelector from './components/ViewSelector'
 import TravelTimer from './components/TravelTimer'
 import ContractsDisplay from './components/ContractsDisplay'
 
+/**
+ * Hermes app.
+ */
 const App = ({ handleInitializeApplication, planets }) => {
   useEffect(() => {
     if (planets.length === 0) handleInitializeApplication()

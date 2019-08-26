@@ -2,11 +2,20 @@ import { itemList, planets } from './constants'
 import uuidv4 from 'uuid/v4'
 import moment from 'moment'
 
+/**
+ * Gets a name of a planet.
+ * @returns {string}
+ */
 const getPlanetName = () => {
   const planet = planets[Math.floor(Math.random() * planets.length)]
   return planet
 }
 
+/**
+ * Generates an array of item objects randomly.
+ * @param {array} possibleDestinations Array of possible destinations where the items could be going.
+ * @returns {array}
+ */
 export const generateItems = possibleDestinations => {
   const items = []
 
@@ -34,6 +43,10 @@ export const generateItems = possibleDestinations => {
   return items
 }
 
+/**
+ * Generataes an array of planet objects randomly.
+ * @returns {array}
+ */
 export const generatePlanets = () => {
   const planets = []
 
@@ -55,6 +68,10 @@ export const generatePlanets = () => {
   return planets
 }
 
+/**
+ * Loads the state of the application from localStorage if present.
+ * @returns {object}
+ */
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state')
@@ -67,6 +84,10 @@ export const loadState = () => {
   }
 }
 
+/**
+ * Saves the application state in localStorage.
+ * @param {object} state State of the application.
+ */
 export const saveState = state => {
   try {
     const serializedState = JSON.stringify(state)
@@ -76,6 +97,10 @@ export const saveState = state => {
   }
 }
 
+/**
+ * Creates a moment duration for the itemTimer
+ * @returns {duration}
+ */
 export const createDuration = () => {
   const deadline = moment().minutes(60)
   const now = moment()
@@ -89,6 +114,12 @@ export const createDuration = () => {
   return moment.duration({ minutes: minutesLeft, seconds: secondsLeft })
 }
 
+/**
+ * Creates a moment ETA for the ship to get to its destination.
+ * @param {object} destination Destination object.
+ * @param {object} ship Ship object.
+ * @returns {moment}
+ */
 export const createETA = (destination, ship) => {
   const distance = Math.abs(destination.value - ship.location.value)
   const seconds = distance * 10
@@ -99,6 +130,11 @@ export const createETA = (destination, ship) => {
   return eta
 }
 
+/**
+ * Creates a moment duration in the difference of time from now to the ETA.
+ * @param {Unix Millisecond Timestamp} eta Timestamp.
+ * @returns {duration}
+ */
 export const createDiffDuration = eta => {
   const now = moment()
   now.millisecond(0)
@@ -107,6 +143,10 @@ export const createDiffDuration = eta => {
   return moment.duration({ milliseconds: differenceMill })
 }
 
+/**
+ * Generates an array of item contracts randomly.
+ * @returns {array}
+ */
 export const generateContracts = () => {
   const contracts = []
 
@@ -124,6 +164,12 @@ export const generateContracts = () => {
   return contracts
 }
 
+/**
+ * The logic for the travel timer.
+ * @param {object} ship Ship object
+ * @param {function} setTimeLeft State function to set the time left.
+ * @param {function} handleTimerStopped What to do when the timer stops.
+ */
 export const travelTimerLogic = (ship, setTimeLeft, handleTimerStopped) => {
   if (ship.isShipTraveling) {
     const travelTimer = setInterval(() => {
@@ -141,6 +187,13 @@ export const travelTimerLogic = (ship, setTimeLeft, handleTimerStopped) => {
   }
 }
 
+/**
+ * The logic for the item timer.
+ * @param {object} world World object.
+ * @param {function} setTimeLeft State function to set the time left.
+ * @param {function} handleTimerStarted What to do when the timer has started.
+ * @param {function} handleTimerStopped What to do when the timer has ended.
+ */
 export const itemTimerLogic = (
   world,
   setTimeLeft,

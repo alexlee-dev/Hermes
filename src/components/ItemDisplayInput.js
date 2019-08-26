@@ -7,6 +7,9 @@ import { storeCargo } from '../redux/actions/ship'
 import { removeCash } from '../redux/actions/user'
 import { removeItem } from '../redux/actions/world'
 
+/**
+ * Allows the user to select a specific number of this item.
+ */
 const ItemDisplayInput = ({
   handleStoreCargo,
   item,

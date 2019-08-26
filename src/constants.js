@@ -1,6 +1,9 @@
 import PlanetsView from './views/planets'
 import ShipView from './views/ship'
 
+/**
+ * Views object.
+ */
 export const views = {
   Planets: PlanetsView,
   Ship: ShipView
@@ -66,6 +69,9 @@ const gold = {
   volume: 0.5
 }
 
+/**
+ * List of items.
+ */
 export const itemList = [
   ore,
   plasma,
@@ -79,6 +85,9 @@ export const itemList = [
   gold
 ]
 
+/**
+ * List of real minor planet names.
+ */
 export const planets = [
   "A'Hearn",
   'AAS',
