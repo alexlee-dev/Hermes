@@ -9,6 +9,9 @@ import {
 import { itemTimerLogic } from '../util'
 import { Box, Heading } from 'grommet'
 
+/**
+ * A timer that refreshes the items when finished. Restarts itself.
+ */
 const ItemTimer = ({ handleTimerStarted, handleTimerStopped, world }) => {
   const [timeLeft, setTimeLeft] = useState(null)
 

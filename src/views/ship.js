@@ -5,6 +5,9 @@ import { Box, Text, Button } from 'grommet'
 import { Subtract } from 'grommet-icons'
 import { removeCargo } from '../redux/actions/ship'
 
+/**
+ * Displays information about the user's ship.
+ */
 const ShipView = ({ items, handleRemoveCargo, location, volumeRemaining }) => {
   return (
     <div>

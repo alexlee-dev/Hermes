@@ -11,6 +11,9 @@ import {
 } from '../redux/actions/ship'
 import { travelTimerLogic } from '../util'
 
+/**
+ * A timer that counts the time until the ship reaches its destination.
+ */
 const TravelTimer = ({ handleTimerStopped, ship }) => {
   const [timeLeft, setTimeLeft] = useState(null)
 

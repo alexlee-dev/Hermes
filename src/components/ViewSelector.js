@@ -5,6 +5,9 @@ import { views } from '../constants'
 import { setView } from '../redux/actions/ui'
 import { Box } from 'grommet'
 
+/**
+ * A select that gives the user the ability to change views in the application.
+ */
 const ViewSelector = ({ handleSetView, view }) => {
   const handleChange = e => handleSetView(e.target.value)
 

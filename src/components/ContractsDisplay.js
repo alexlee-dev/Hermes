@@ -5,6 +5,9 @@ import { Checkmark, Close } from 'grommet-icons'
 import { connect } from 'react-redux'
 import { resetContract, setContract } from '../redux/actions/user'
 
+/**
+ * Displays a set of item contracts.
+ */
 const ContractsDisplay = ({
   contracts,
   currentContract,
