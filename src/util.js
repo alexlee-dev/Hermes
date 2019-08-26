@@ -92,7 +92,7 @@ export const createETA = (destination, ship) => {
   const distance = Math.abs(destination.value - ship.location.value)
   const seconds = distance * 10
 
-  return moment().second(seconds)
+  return moment().add(seconds, 'seconds')
 }
 
 export const generateContracts = () => {

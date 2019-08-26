@@ -1,46 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { createETA } from '../util'
 import { Box, Heading } from 'grommet'
 import { addCash } from '../redux/actions/user'
 import {
   removeCargo,
   setShipLocation,
   setDestination,
-  setETA,
   setShipTraveling
 } from '../redux/actions/ship'
 import moment from 'moment'
 
-const TravelTimer = ({ handleSetETA, handleTimerStopped, ship }) => {
-  const [minutes, setMinutes] = useState(0)
-  const [seconds, setSeconds] = useState(0)
+const TravelTimer = ({ handleTimerStopped, ship }) => {
+  const [differenceInMilliseconds, setDifferenceInMilliseconds] = useState(0)
+
+  // ? Why is this so hard
+  // * All you need to do:
+  // TODO 1 - ✅ Calculate how long it will take to reach the destination
+  // TODO 2 - ✅ Set an ETA in Redux
+  // TODO 3 - Set a duration in the TravelTimer based on the ETA in Redux
+  // TODO 4 - Start a timer that ticks down the duration every second
+  // TODO 5 - Display the time of that duration
 
   const timerLogic = () => {
     if (ship.isShipTraveling) {
-      let eta
-      if (ship.destination.eta) {
-        console.log('Used the eta that already existed.', ship.destination.eta)
-        // * There is already an eta, use it
-        eta = moment()
-        eta.minute(ship.destination.eta.minutes)
-        eta.second(ship.destination.eta.seconds)
-        console.log('The eta is now', eta)
-      } else {
-        eta = createETA(ship.destination, ship)
-        console.log('Created a new eta.', eta)
-      }
-      setMinutes(eta.minutes())
-      setSeconds(eta.seconds())
-
       const travelTimer = setInterval(() => {
-        eta.subtract(1, 'second')
-        setMinutes(eta.minutes())
-        setSeconds(eta.seconds())
-        handleSetETA({ minutes: eta.minutes(), seconds: eta.seconds() })
+        const now = moment()
+        const differenceMill = moment(ship.destination.eta, 'x').diff(now) // * gives the number of milliseconds betweeen the eta and now
 
-        if (eta.milliseconds() === 0) {
+        const diffDuration = moment.duration({ milliseconds: differenceMill })
+
+        diffDuration.subtract(1, 'second')
+        setDifferenceInMilliseconds(diffDuration.asMilliseconds())
+
+        if (diffDuration.milliseconds() === 0) {
           clearInterval(travelTimer)
           handleTimerStopped(ship)
         }
@@ -53,15 +46,12 @@ const TravelTimer = ({ handleSetETA, handleTimerStopped, ship }) => {
   return ship.isShipTraveling ? (
     <Box>
       <Heading level="3">Travel Timer</Heading>
-      <span>
-        {minutes} minutes {seconds} seconds
-      </span>
+      <span>{moment(differenceInMilliseconds, 'SSS')}</span>
     </Box>
   ) : null
 }
 
 TravelTimer.propTypes = {
-  handleSetETA: PropTypes.func.isRequired,
   handleTimerStopped: PropTypes.func.isRequired,
   ship: PropTypes.object.isRequired
 }
@@ -89,9 +79,6 @@ const mapDispatchToProps = dispatch => ({
     )
     dispatch(setDestination(null))
     dispatch(setShipTraveling(false))
-  },
-  handleSetETA: eta => {
-    dispatch(setETA(eta))
   }
 })
 
