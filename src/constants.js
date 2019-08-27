@@ -10,60 +10,72 @@ export const views = {
 }
 
 const spaceJunk = {
+  description:
+    'Junk! Space junk, to be exact. Prevalent throughout the galaxy.',
   name: 'Space Junk',
   value: 1,
   volume: 0.1
 }
 
 const ore = {
+  description: 'Your garden variety ore. From a rock. A space rock.',
   name: 'Ore',
   value: 2,
   volume: 1
 }
 
 const plasma = {
+  description: 'Not the kind in your blood, but just as valuable.',
   name: 'Plasma',
   value: 3,
   volume: 0.4
 }
 
 const antibiotics = {
+  description: 'Still used to fight the common cold!',
   name: 'Antibiotics',
   value: 2,
   volume: 0.1
 }
 
 const tobacco = {
+  description:
+    'Smoke it or chew it. Farmed on distant planets by astronauts in overalls.',
   name: 'Tobacco',
   value: 3,
   volume: 0.2
 }
 
 const soil = {
+  description: "It's not dirt! It's soil.",
   name: 'Soil',
   volume: 2,
   value: 0.5
 }
 
 const ammunition = {
+  description: "Bullets used for shootin'.",
   name: 'Ammunition',
   value: 3,
   volume: 0.8
 }
 
 const glass = {
+  description: 'Melted sand.',
   name: 'Glass',
   value: 1,
   volume: 1
 }
 
 const silver = {
+  description: 'Shiny!',
   name: 'Silver',
   value: 4,
   volume: 0.5
 }
 
 const gold = {
+  description: "Midas' favorite.",
   name: 'Gold',
   value: 5,
   volume: 0.5
