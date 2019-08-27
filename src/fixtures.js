@@ -13,6 +13,7 @@ export const defaultState = {
     travelDuration: null
   },
   ui: {
+    isCreatingContract: false,
     view: 'Ship'
   },
   user: {

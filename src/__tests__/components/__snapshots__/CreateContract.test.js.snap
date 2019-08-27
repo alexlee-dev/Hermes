@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CreateContract /> Should render the <CreateContract /> component. 1`] = `
+<DocumentFragment>
+  <div
+    class="StyledBox-sc-13pk1d4-0 ipWbUu"
+  >
+    <label
+      for="item-type"
+    >
+      Item Type
+    </label>
+    <select
+      id="item-type"
+    >
+      <option
+        value="{\\"name\\":\\"Ore\\",\\"value\\":2,\\"volume\\":1}"
+      >
+        Ore
+      </option>
+      <option
+        value="{\\"name\\":\\"Plasma\\",\\"value\\":3,\\"volume\\":0.4}"
+      >
+        Plasma
+      </option>
+      <option
+        value="{\\"name\\":\\"Space Junk\\",\\"value\\":1,\\"volume\\":0.1}"
+      >
+        Space Junk
+      </option>
+      <option
+        value="{\\"name\\":\\"Antibiotics\\",\\"value\\":2,\\"volume\\":0.1}"
+      >
+        Antibiotics
+      </option>
+      <option
+        value="{\\"name\\":\\"Tobacco\\",\\"value\\":3,\\"volume\\":0.2}"
+      >
+        Tobacco
+      </option>
+      <option
+        value="{\\"name\\":\\"Soil\\",\\"volume\\":2,\\"value\\":0.5}"
+      >
+        Soil
+      </option>
+      <option
+        value="{\\"name\\":\\"Ammunition\\",\\"value\\":3,\\"volume\\":0.8}"
+      >
+        Ammunition
+      </option>
+      <option
+        value="{\\"name\\":\\"Glass\\",\\"value\\":1,\\"volume\\":1}"
+      >
+        Glass
+      </option>
+      <option
+        value="{\\"name\\":\\"Silver\\",\\"value\\":4,\\"volume\\":0.5}"
+      >
+        Silver
+      </option>
+      <option
+        value="{\\"name\\":\\"Gold\\",\\"value\\":5,\\"volume\\":0.5}"
+      >
+        Gold
+      </option>
+    </select>
+    <label
+      for="item-volume"
+    >
+      Item Volume
+    </label>
+    <input
+      disabled=""
+      id="item-volume"
+      type="number"
+      value="1"
+    />
+    <label
+      for="item-value"
+    >
+      Item Value
+    </label>
+    <input
+      disabled=""
+      id="item-value"
+      type="number"
+      value="2"
+    />
+    <label
+      for="item-destination"
+    >
+      Destination
+    </label>
+    <select
+      id="item-destination"
+    >
+      <option
+        value="0"
+      >
+        Test Planet 1
+      </option>
+      <option
+        value="1"
+      >
+        Test Planet 2
+      </option>
+      <option
+        value="2"
+      >
+        Test Planet 3
+      </option>
+    </select>
+    <button>
+      Create Contract
+    </button>
+  </div>
+</DocumentFragment>
+`;
