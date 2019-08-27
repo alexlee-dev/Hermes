@@ -8,6 +8,9 @@ const worldDefaultState = {
 
 export default (state = worldDefaultState, action) => {
   switch (action.type) {
+    case 'ADD_CONTRACT':
+      state.contracts.push(action.payload.contract)
+      return { ...state, contracts: state.contracts }
     case 'CLEAR_ITEMS':
       return {
         ...state,

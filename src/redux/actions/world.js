@@ -1,7 +1,9 @@
 import { setShipLocation } from './ship'
 import { generatePlanets, generateContracts } from '../../util'
+import { setIsCreatingContract } from './ui'
 
 // * ACTION TYPES
+const ADD_CONTRACT = 'ADD_CONTRACT'
 const CLEAR_ITEMS = 'CLEAR_ITEMS'
 const REFRESH_ITEMS = 'REFRESH_ITEMS'
 const REMOVE_ITEM = 'REMOVE_ITEM'
@@ -10,6 +12,15 @@ const SET_PLANETS = 'SET_PLANETS'
 const SET_TIMER_RUNNING = 'SET_TIMER_RUNNING'
 
 // * ACTION GENERATORS
+/**
+ * Adds a contract to the contract array.
+ * @param {object} contract Contract object.
+ */
+export const addContract = contract => ({
+  type: ADD_CONTRACT,
+  payload: { contract }
+})
+
 /**
  * Removes all items from planets.
  */
@@ -63,6 +74,18 @@ export const setTimerRunning = isTimerRunning => ({
 // * PROMISES
 
 // * THUNKS
+/**
+ * Sets the isCreatingContract value in UI to false, and adds the contract to the contract array in World.
+ * @param {object} contract Contract object.
+ */
+export const createContract = contract => dispatch => {
+  dispatch(setIsCreatingContract(false))
+  dispatch(addContract(contract))
+}
+
+/**
+ * Sets the planets, ship location, and contracts initially.
+ */
 export const initializeApplication = () => dispatch => {
   const planets = generatePlanets()
   const homePlanet = planets.find(planet => planet.isHomePlanet === true)
@@ -74,6 +97,9 @@ export const initializeApplication = () => dispatch => {
   dispatch(setContracts(contracts))
 }
 
+/**
+ * Clears and refreshes items, and sets the timer to be no longer running.
+ */
 export const itemTimerFinish = () => dispatch => {
   // * Clear all items from planets
   dispatch(clearItems())

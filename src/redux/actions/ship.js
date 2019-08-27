@@ -75,6 +75,11 @@ export const storeCargo = (item, quantity) => ({
 // * PROMISES
 
 // * THUNKS
+/**
+ * Sets the ship to be traveling, sets the destination, and sets the ETA.
+ * @param {object} destination Destination object.
+ * @param {object} ship Ship object.
+ */
 export const departShip = (destination, ship) => dispatch => {
   // * set isShipTraveling to true
   dispatch(setShipTraveling(true))
@@ -85,6 +90,10 @@ export const departShip = (destination, ship) => dispatch => {
   dispatch(setETA(eta.format('x')))
 }
 
+/**
+ * If the ship is carrying items to sell, will sell those items if necessary. Removes items from cargo if needed. Sets the ship location, destination, and isShipTraveling.
+ * @param {object} ship Ship object.
+ */
 export const landShip = ship => dispatch => {
   const { cargo, destination } = ship
   const sellableItems = cargo.items.filter(
@@ -107,6 +116,11 @@ export const landShip = ship => dispatch => {
   dispatch(setShipTraveling(false))
 }
 
+/**
+ * Removes cash from the user, stores the cargo in the ship cargo, and removes the item from the planet.
+ * @param {object} item Item object.
+ * @param {number} quantity Quantity of the item.
+ */
 export const purchaseCargo = (item, quantity) => dispatch => {
   // * dispatch an action to buy the items with the user's cash
   dispatch(removeCash(item.price * quantity))
