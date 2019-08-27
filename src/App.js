@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { generatePlanets } from './util'
-import { setShipLocation } from './redux/actions/ship'
-import { setPlanets } from './redux/actions/world'
+import { initializeApplication } from './redux/actions/world'
 import View from './views/View'
 import { Box } from 'grommet'
 import CashDisplay from './components/CashDisplay'
@@ -45,14 +43,7 @@ const mapStateToProps = ({ world }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleInitializeApplication: () => {
-    const planets = generatePlanets()
-    const homePlanet = planets.find(planet => planet.isHomePlanet === true)
-    const location = { name: homePlanet.name, value: homePlanet.location }
-
-    dispatch(setPlanets(planets))
-    dispatch(setShipLocation(location))
-  }
+  handleInitializeApplication: () => dispatch(initializeApplication())
 })
 
 export default connect(

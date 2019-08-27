@@ -1,3 +1,7 @@
+import { addCash, removeCash } from './user'
+import { removeItem } from './world'
+import { createETA } from '../../util'
+
 // * ACTION TYPES
 const REMOVE_CARGO = 'REMOVE_CARGO'
 const SET_DESTINATION = 'SET_DESTINATION'
@@ -71,3 +75,43 @@ export const storeCargo = (item, quantity) => ({
 // * PROMISES
 
 // * THUNKS
+export const departShip = (destination, ship) => dispatch => {
+  // * set isShipTraveling to true
+  dispatch(setShipTraveling(true))
+  // * set destination
+  dispatch(setDestination(destination))
+  // * set ETA
+  const eta = createETA(destination, ship)
+  dispatch(setETA(eta.format('x')))
+}
+
+export const landShip = ship => dispatch => {
+  const { cargo, destination } = ship
+  const sellableItems = cargo.items.filter(
+    item => item.destination.value === destination.value
+  )
+  let profit = 0
+  sellableItems.forEach(item => {
+    const { quantity, value } = item
+    const itemProfit = quantity * value
+    profit += itemProfit
+  })
+  dispatch(addCash(profit))
+  sellableItems.forEach(item => {
+    dispatch(removeCargo(item))
+  })
+  dispatch(
+    setShipLocation({ name: destination.name, value: destination.value })
+  )
+  dispatch(setDestination(null))
+  dispatch(setShipTraveling(false))
+}
+
+export const purchaseCargo = (item, quantity) => dispatch => {
+  // * dispatch an action to buy the items with the user's cash
+  dispatch(removeCash(item.price * quantity))
+  // * dispatch an action to store the item in ship cargo
+  dispatch(storeCargo(item, quantity))
+  // * dispatch an action to remove the item from the list of stored items on this planet
+  dispatch(removeItem(item, quantity))
+}

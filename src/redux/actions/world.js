@@ -1,3 +1,6 @@
+import { setShipLocation } from './ship'
+import { generatePlanets } from '../../util'
+
 // * ACTION TYPES
 const CLEAR_ITEMS = 'CLEAR_ITEMS'
 const REFRESH_ITEMS = 'REFRESH_ITEMS'
@@ -50,3 +53,20 @@ export const setTimerRunning = isTimerRunning => ({
 // * PROMISES
 
 // * THUNKS
+export const initializeApplication = () => dispatch => {
+  const planets = generatePlanets()
+  const homePlanet = planets.find(planet => planet.isHomePlanet === true)
+  const location = { name: homePlanet.name, value: homePlanet.location }
+
+  dispatch(setPlanets(planets))
+  dispatch(setShipLocation(location))
+}
+
+export const itemTimerFinish = () => dispatch => {
+  // * Clear all items from planets
+  dispatch(clearItems())
+  // * Put new items on planets
+  dispatch(refreshItems())
+  // * Tell Redux the timer is no longer running
+  dispatch(setTimerRunning(false))
+}
