@@ -14,52 +14,52 @@ exports[`<CreateContract /> Should render the <CreateContract /> component. 1`] 
       id="item-type"
     >
       <option
-        value="{\\"name\\":\\"Ore\\",\\"value\\":2,\\"volume\\":1}"
+        value="{\\"description\\":\\"Your garden variety ore. From a rock. A space rock.\\",\\"name\\":\\"Ore\\",\\"value\\":2,\\"volume\\":1}"
       >
         Ore
       </option>
       <option
-        value="{\\"name\\":\\"Plasma\\",\\"value\\":3,\\"volume\\":0.4}"
+        value="{\\"description\\":\\"Not the kind in your blood, but just as valuable.\\",\\"name\\":\\"Plasma\\",\\"value\\":3,\\"volume\\":0.4}"
       >
         Plasma
       </option>
       <option
-        value="{\\"name\\":\\"Space Junk\\",\\"value\\":1,\\"volume\\":0.1}"
+        value="{\\"description\\":\\"Junk! Space junk, to be exact. Prevalent throughout the galaxy.\\",\\"name\\":\\"Space Junk\\",\\"value\\":1,\\"volume\\":0.1}"
       >
         Space Junk
       </option>
       <option
-        value="{\\"name\\":\\"Antibiotics\\",\\"value\\":2,\\"volume\\":0.1}"
+        value="{\\"description\\":\\"Still used to fight the common cold!\\",\\"name\\":\\"Antibiotics\\",\\"value\\":2,\\"volume\\":0.1}"
       >
         Antibiotics
       </option>
       <option
-        value="{\\"name\\":\\"Tobacco\\",\\"value\\":3,\\"volume\\":0.2}"
+        value="{\\"description\\":\\"Smoke it or chew it. Farmed on distant planets by astronauts in overalls.\\",\\"name\\":\\"Tobacco\\",\\"value\\":3,\\"volume\\":0.2}"
       >
         Tobacco
       </option>
       <option
-        value="{\\"name\\":\\"Soil\\",\\"volume\\":2,\\"value\\":0.5}"
+        value="{\\"description\\":\\"It's not dirt! It's soil.\\",\\"name\\":\\"Soil\\",\\"volume\\":2,\\"value\\":0.5}"
       >
         Soil
       </option>
       <option
-        value="{\\"name\\":\\"Ammunition\\",\\"value\\":3,\\"volume\\":0.8}"
+        value="{\\"description\\":\\"Bullets used for shootin'.\\",\\"name\\":\\"Ammunition\\",\\"value\\":3,\\"volume\\":0.8}"
       >
         Ammunition
       </option>
       <option
-        value="{\\"name\\":\\"Glass\\",\\"value\\":1,\\"volume\\":1}"
+        value="{\\"description\\":\\"Melted sand.\\",\\"name\\":\\"Glass\\",\\"value\\":1,\\"volume\\":1}"
       >
         Glass
       </option>
       <option
-        value="{\\"name\\":\\"Silver\\",\\"value\\":4,\\"volume\\":0.5}"
+        value="{\\"description\\":\\"Shiny!\\",\\"name\\":\\"Silver\\",\\"value\\":4,\\"volume\\":0.5}"
       >
         Silver
       </option>
       <option
-        value="{\\"name\\":\\"Gold\\",\\"value\\":5,\\"volume\\":0.5}"
+        value="{\\"description\\":\\"Midas' favorite.\\",\\"name\\":\\"Gold\\",\\"value\\":5,\\"volume\\":0.5}"
       >
         Gold
       </option>
