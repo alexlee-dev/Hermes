@@ -41,6 +41,8 @@ describe('Utilities', () => {
   })
 
   it('Should test generateContracts().', () => {
-    expect(generateContracts().length).toBe(5)
+    expect(
+      generateContracts([{ location: 50, name: 'Test Planet 2' }]).length
+    ).toBe(5)
   })
 })
