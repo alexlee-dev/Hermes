@@ -36,6 +36,8 @@ const ContractsDisplay = ({
           <Text>{contract.volume}</Text>
           <Text weight="bold">Value</Text>
           <Text>{contract.value}</Text>
+          <Text weight="bold">Destination</Text>
+          <Text>{contract.destination.name}</Text>
           <Button
             disabled={currentContract !== null}
             hoverIndicator

@@ -1,7 +1,7 @@
-import { generateItems, generateContracts } from '../../util'
+import { generateItems } from '../../util'
 
 const worldDefaultState = {
-  contracts: generateContracts(),
+  contracts: [],
   isTimerRunning: false,
   planets: []
 }
@@ -66,6 +66,8 @@ export default (state = worldDefaultState, action) => {
       })
 
       return { ...state, planets: updatedPlanets }
+    case 'SET_CONTRACTS':
+      return { ...state, contracts: action.payload.contracts }
     case 'SET_PLANETS':
       return { ...state, planets: action.payload.planets }
     case 'SET_TIMER_RUNNING':

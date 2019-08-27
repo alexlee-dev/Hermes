@@ -145,14 +145,22 @@ export const createDiffDuration = eta => {
 
 /**
  * Generates an array of item contracts randomly.
+ * @param {array} planets Array of planet objects.
  * @returns {array}
  */
-export const generateContracts = () => {
+export const generateContracts = planets => {
   const contracts = []
 
   for (let i = 0; i < 5; i++) {
     const itemType = itemList[Math.floor(Math.random() * itemList.length)].name
+    const destinationPlanet =
+      planets[Math.floor(Math.random() * planets.length)]
+
     const contract = {
+      destination: {
+        name: destinationPlanet.name,
+        value: destinationPlanet.location
+      },
       id: uuidv4(),
       itemType,
       value: itemList.find(item => item.name === itemType).value + 1,
