@@ -21,6 +21,7 @@ export const defaultState = {
   world: {
     contracts: [
       {
+        destination: { name: 'Test Planet 2', value: 50 },
         id: '0',
         itemType: 'Ore',
         volume: 1,

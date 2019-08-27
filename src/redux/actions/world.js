@@ -1,10 +1,11 @@
 import { setShipLocation } from './ship'
-import { generatePlanets } from '../../util'
+import { generatePlanets, generateContracts } from '../../util'
 
 // * ACTION TYPES
 const CLEAR_ITEMS = 'CLEAR_ITEMS'
 const REFRESH_ITEMS = 'REFRESH_ITEMS'
 const REMOVE_ITEM = 'REMOVE_ITEM'
+const SET_CONTRACTS = 'SET_CONTRACTS'
 const SET_PLANETS = 'SET_PLANETS'
 const SET_TIMER_RUNNING = 'SET_TIMER_RUNNING'
 
@@ -33,6 +34,15 @@ export const removeItem = (item, quantity) => ({
 })
 
 /**
+ * Sets the contracts array.
+ * @param {array} contracts Array of contract objects.
+ */
+export const setContracts = contracts => ({
+  type: SET_CONTRACTS,
+  payload: { contracts }
+})
+
+/**
  * Sets the planet objects in the world.
  * @param {array} planets Array of planets.
  */
@@ -57,9 +67,11 @@ export const initializeApplication = () => dispatch => {
   const planets = generatePlanets()
   const homePlanet = planets.find(planet => planet.isHomePlanet === true)
   const location = { name: homePlanet.name, value: homePlanet.location }
+  const contracts = generateContracts(planets)
 
   dispatch(setPlanets(planets))
   dispatch(setShipLocation(location))
+  dispatch(setContracts(contracts))
 }
 
 export const itemTimerFinish = () => dispatch => {

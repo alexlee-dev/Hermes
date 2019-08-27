@@ -1,13 +1,21 @@
 import { customRender } from '../../test-utils'
 import ContractsDisplay from '../../components/ContractsDisplay'
 import { defaultState } from '../../fixtures'
-import { fireEvent } from '@testing-library/dom';
+import { fireEvent } from '@testing-library/dom'
 
 const customState = {
   ...defaultState,
   user: {
     ...defaultState.user,
-    contracts: [{ id: '0', itemType: 'Plasma', value: 2, volume: 1 }]
+    contracts: [
+      {
+        destination: { name: 'Planet 1', value: 0 },
+        id: '0',
+        itemType: 'Plasma',
+        value: 2,
+        volume: 1
+      }
+    ]
   }
 }
 
