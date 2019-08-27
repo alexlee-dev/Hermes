@@ -144,6 +144,34 @@ export const createDiffDuration = eta => {
 }
 
 /**
+ * Generates a single contract.
+ * @param {array} planets Planet array.
+ * @param {string || undefined} itemType Item type name.
+ * @param {object || undefined} destination Destination object.
+ */
+export const generateContract = (planets, itemType, destination) => {
+  let finalItemType = itemType
+  if (!itemType) {
+    finalItemType = itemList[Math.floor(Math.random() * itemList.length)].name
+  }
+  let finalDestination = destination
+  if (!destination) {
+    finalDestination = planets[Math.floor(Math.random() * planets.length)]
+  }
+
+  return {
+    destination: {
+      name: finalDestination.name,
+      value: finalDestination.location
+    },
+    id: uuidv4(),
+    itemType: finalItemType,
+    value: itemList.find(item => item.name === finalItemType).value + 1,
+    volume: itemList.find(item => item.name === finalItemType).volume
+  }
+}
+
+/**
  * Generates an array of item contracts randomly.
  * @param {array} planets Array of planet objects.
  * @returns {array}
@@ -152,21 +180,7 @@ export const generateContracts = planets => {
   const contracts = []
 
   for (let i = 0; i < 5; i++) {
-    const itemType = itemList[Math.floor(Math.random() * itemList.length)].name
-    const destinationPlanet =
-      planets[Math.floor(Math.random() * planets.length)]
-
-    const contract = {
-      destination: {
-        name: destinationPlanet.name,
-        value: destinationPlanet.location
-      },
-      id: uuidv4(),
-      itemType,
-      value: itemList.find(item => item.name === itemType).value + 1,
-      volume: itemList.find(item => item.name === itemType).volume
-    }
-    contracts.push(contract)
+    contracts.push(generateContract(planets))
   }
 
   return contracts
