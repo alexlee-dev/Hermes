@@ -5,6 +5,13 @@ script:
   - yarn build
   - yarn test:coveralls
 
+# if using Ubuntu 16 need this library
+# https://github.com/cypress-io/cypress-documentation/pull/1647
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
+
 cache:
   # cache both npm modules and Cypress binary
   directories:
