@@ -2,13 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Box, Heading } from 'grommet'
-import { addCash } from '../redux/actions/user'
-import {
-  removeCargo,
-  setShipLocation,
-  setDestination,
-  setShipTraveling
-} from '../redux/actions/ship'
+import { landShip } from '../redux/actions/ship'
 import { travelTimerLogic } from '../util'
 
 /**
@@ -42,27 +36,7 @@ TravelTimer.propTypes = {
 const mapStateToProps = ({ ship }) => ({ ship })
 
 const mapDispatchToProps = dispatch => ({
-  handleTimerStopped: ship => {
-    const { cargo, destination } = ship
-    const sellableItems = cargo.items.filter(
-      item => item.destination.value === destination.value
-    )
-    let profit = 0
-    sellableItems.forEach(item => {
-      const { quantity, value } = item
-      const itemProfit = quantity * value
-      profit += itemProfit
-    })
-    dispatch(addCash(profit))
-    sellableItems.forEach(item => {
-      dispatch(removeCargo(item))
-    })
-    dispatch(
-      setShipLocation({ name: destination.name, value: destination.value })
-    )
-    dispatch(setDestination(null))
-    dispatch(setShipTraveling(false))
-  }
+  handleTimerStopped: ship => dispatch(landShip(ship))
 })
 
 export default connect(

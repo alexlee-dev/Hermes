@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Box, Button, Heading, Text } from 'grommet'
 import { Target } from 'grommet-icons'
-import { setShipTraveling, setDestination, setETA } from '../redux/actions/ship'
+import { departShip } from '../redux/actions/ship'
 import ItemDisplay from './ItemDisplay'
 import { createETA, createDiffDuration } from '../util'
 
@@ -56,15 +56,8 @@ PlanetDisplay.propTypes = {
 const mapStateToProps = ({ ship }) => ({ ship })
 
 const mapDispatchToProps = dispatch => ({
-  handleShipTravel: (destination, ship) => {
-    // * set isShipTraveling to true
-    dispatch(setShipTraveling(true))
-    // * set destination
-    dispatch(setDestination(destination))
-    // * set ETA
-    const eta = createETA(destination, ship)
-    dispatch(setETA(eta.format('x')))
-  }
+  handleShipTravel: (destination, ship) =>
+    dispatch(departShip(destination, ship))
 })
 
 export default connect(
