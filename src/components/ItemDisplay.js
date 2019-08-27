@@ -3,12 +3,23 @@ import PropTypes from 'prop-types'
 import { Box, Text } from 'grommet'
 import { connect } from 'react-redux'
 import ItemDisplayInput from './ItemDisplayInput'
+import { StatusUnknown } from 'grommet-icons'
+import ReactTooltip from 'react-tooltip'
 
 /**
  * Displays item statistics.
  */
 const ItemDisplay = ({ item, location, shipLocationValue }) => {
-  const { destination, id, name, price, quantity, volume, value } = item
+  const {
+    description,
+    destination,
+    id,
+    name,
+    price,
+    quantity,
+    volume,
+    value
+  } = item
 
   return (
     <Box
@@ -20,6 +31,9 @@ const ItemDisplay = ({ item, location, shipLocationValue }) => {
     >
       <Box pad="medium">
         <Text>Name: {name}</Text>
+      </Box>
+      <Box pad="none">
+        <StatusUnknown data-tip data-for={id} />
       </Box>
       <Box pad="medium">
         <Text>Quantity: {quantity}</Text>
@@ -36,6 +50,11 @@ const ItemDisplay = ({ item, location, shipLocationValue }) => {
       <Box pad="medium">
         <Text>Destination: {destination.name}</Text>
       </Box>
+      {
+        <ReactTooltip id={id} type="info">
+          <span>{description}</span>
+        </ReactTooltip>
+      }
       {shipLocationValue === location && <ItemDisplayInput item={item} />}
     </Box>
   )
