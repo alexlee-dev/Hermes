@@ -5,6 +5,11 @@ import { Anchor, Heading, Box } from 'grommet'
 import { connect } from 'react-redux'
 import { setView } from '../redux/actions/ui'
 import { views } from '../constants'
+import Title from './Title'
+import ItemTimer from './ItemTimer'
+import TravelTimer from './TravelTimer'
+import CashDisplay from './CashDisplay'
+import ContractsDisplay from './ContractsDisplay'
 
 /**
  * Sidebar component.
@@ -22,6 +27,7 @@ const Sidebar = ({ handleViewChange, outerContainerId, pageWrapId, view }) => {
       pageWrapId={pageWrapId}
     >
       <Box>
+        <Title />
         <Heading level="2">View</Heading>
         <Box gap="small">
           {Object.keys(views).map((viewName, i) => (
@@ -34,6 +40,10 @@ const Sidebar = ({ handleViewChange, outerContainerId, pageWrapId, view }) => {
             />
           ))}
         </Box>
+        <ItemTimer />
+        <TravelTimer />
+        <CashDisplay />
+        <ContractsDisplay />
       </Box>
     </Menu>
   )

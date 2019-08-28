@@ -4,11 +4,6 @@ import { connect } from 'react-redux'
 import { initializeApplication } from './redux/actions/world'
 import View from './views/View'
 import { Box } from 'grommet'
-import CashDisplay from './components/CashDisplay'
-import ItemTimer from './components/ItemTimer'
-import Title from './components/Title'
-import TravelTimer from './components/TravelTimer'
-import ContractsDisplay from './components/ContractsDisplay'
 import Sidebar from './components/Sidebar'
 
 /**
@@ -24,11 +19,6 @@ const App = ({ handleInitializeApplication, planets }) => {
     <Box id="outer-container" fill>
       <Sidebar outerContainerId="outer-container" pageWrapId="page-wrap" />
       <Box id="page-wrap" margin={{ left: 'xlarge' }}>
-        <Title />
-        <ItemTimer />
-        <TravelTimer />
-        <CashDisplay />
-        <ContractsDisplay />
         <View />
       </Box>
     </Box>
