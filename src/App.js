@@ -7,9 +7,9 @@ import { Box } from 'grommet'
 import CashDisplay from './components/CashDisplay'
 import ItemTimer from './components/ItemTimer'
 import Title from './components/Title'
-import ViewSelector from './components/ViewSelector'
 import TravelTimer from './components/TravelTimer'
 import ContractsDisplay from './components/ContractsDisplay'
+import Sidebar from './components/Sidebar'
 
 /**
  * Hermes app.
@@ -21,14 +21,16 @@ const App = ({ handleInitializeApplication, planets }) => {
   }, [])
 
   return (
-    <Box fill>
-      <Title />
-      <ItemTimer />
-      <TravelTimer />
-      <CashDisplay />
-      <ContractsDisplay />
-      <ViewSelector />
-      <View />
+    <Box id="outer-container" fill>
+      <Sidebar outerContainerId="outer-container" pageWrapId="page-wrap" />
+      <Box id="page-wrap" margin={{ left: 'xlarge' }}>
+        <Title />
+        <ItemTimer />
+        <TravelTimer />
+        <CashDisplay />
+        <ContractsDisplay />
+        <View />
+      </Box>
     </Box>
   )
 }
