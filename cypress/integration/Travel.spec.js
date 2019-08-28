@@ -5,7 +5,7 @@ describe('Travel', () => {
       '#outer-container > div:nth-child(1) > div.bm-menu-wrap > div.bm-menu > nav > div > div > a.StyledAnchor-sc-1rp7lwl-0.fwWNdB'
     ).click()
     cy.get(
-      '#page-wrap > div:nth-child(5) > div:nth-child(2) > div.StyledBox-sc-13pk1d4-0.gQLnBt > button'
+      '#page-wrap > div > div:nth-child(2) > div.StyledBox-sc-13pk1d4-0.gQLnBt > button'
     ).click()
     cy.contains('Travel Timer').should('be', true)
   })
