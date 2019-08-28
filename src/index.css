@@ -28,8 +28,7 @@ body {
 }
 
 .bm-cross-button {
-  height: 24px;
-  width: 24px;
+  display: none;
 }
 
 .bm-cross {

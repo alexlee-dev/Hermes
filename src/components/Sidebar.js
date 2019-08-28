@@ -12,7 +12,12 @@ import { views } from '../constants'
 const Sidebar = ({ handleViewChange, outerContainerId, pageWrapId, view }) => {
   return (
     <Menu
+      customCrossIcon={null}
       disableAutoFocus
+      disableCloseOnEsc
+      disableOverlayClick
+      isOpen
+      noOverlay
       outerContainerId={outerContainerId}
       pageWrapId={pageWrapId}
     >
