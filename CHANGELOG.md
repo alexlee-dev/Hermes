@@ -1,6 +1,6 @@
 # Changelog
 
-## 📦 v0.2.0 (August 30, 20c19)
+## 📦 v0.3.0 (August 30, 2019)
 
 ### Added
 
@@ -24,7 +24,21 @@
 
 ### Fixed
 
-## 📦 v0.1.1 (August 21, 20c19)
+## 📦 v0.2.0 (August 23, 2019)
+
+### Added
+
+- ✨ - Item Count
+- ✨ - Testing Library
+
+### Changed
+
+- ✏️ - Item Timer based on real time
+- ✏️ - Additional badges in README
+
+### Fixed
+
+## 📦 v0.1.1 (August 21, 2019)
 
 ### Added
 
