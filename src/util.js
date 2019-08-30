@@ -2,11 +2,20 @@ import { itemList, planets } from './constants'
 import uuidv4 from 'uuid/v4'
 import moment from 'moment'
 
+/**
+ * Gets a name of a planet.
+ * @returns {string}
+ */
 const getPlanetName = () => {
   const planet = planets[Math.floor(Math.random() * planets.length)]
   return planet
 }
 
+/**
+ * Generates an array of item objects randomly.
+ * @param {array} possibleDestinations Array of possible destinations where the items could be going.
+ * @returns {array}
+ */
 export const generateItems = possibleDestinations => {
   const items = []
 
@@ -25,7 +34,8 @@ export const generateItems = possibleDestinations => {
           name: destinationPlanet.name,
           value: destinationPlanet.location
         },
-        quantity: 10
+        price: Math.floor(Math.random() * 10),
+        quantity: Math.floor(Math.random() * 10)
       }
     )
     items.push(item)
@@ -33,15 +43,20 @@ export const generateItems = possibleDestinations => {
   return items
 }
 
+/**
+ * Generataes an array of planet objects randomly.
+ * @returns {array}
+ */
 export const generatePlanets = () => {
   const planets = []
 
   for (let i = 0; i < 3; i++) {
+    const id = uuidv4()
     const isHomePlanet = i === 0
     const location = Math.floor(Math.random() * 100 + 1)
     const name = getPlanetName()
 
-    planets.push({ isHomePlanet, location, name })
+    planets.push({ id, isHomePlanet, location, name })
   }
 
   planets.forEach(planet => {
@@ -53,6 +68,10 @@ export const generatePlanets = () => {
   return planets
 }
 
+/**
+ * Loads the state of the application from localStorage if present.
+ * @returns {object}
+ */
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state')
@@ -65,6 +84,10 @@ export const loadState = () => {
   }
 }
 
+/**
+ * Saves the application state in localStorage.
+ * @param {object} state State of the application.
+ */
 export const saveState = state => {
   try {
     const serializedState = JSON.stringify(state)
@@ -74,6 +97,10 @@ export const saveState = state => {
   }
 }
 
+/**
+ * Creates a moment duration for the itemTimer
+ * @returns {duration}
+ */
 export const createDuration = () => {
   const deadline = moment().minutes(60)
   const now = moment()
@@ -85,4 +112,129 @@ export const createDuration = () => {
   const secondsLeft = 60 - now.seconds()
 
   return moment.duration({ minutes: minutesLeft, seconds: secondsLeft })
+}
+
+/**
+ * Creates a moment ETA for the ship to get to its destination.
+ * @param {object} destination Destination object.
+ * @param {object} ship Ship object.
+ * @returns {moment}
+ */
+export const createETA = (destination, ship) => {
+  const distance = Math.abs(destination.value - ship.location.value)
+  const seconds = distance * 10
+  const eta = moment()
+  eta.add(seconds, 'seconds')
+  eta.millisecond(0)
+
+  return eta
+}
+
+/**
+ * Creates a moment duration in the difference of time from now to the ETA.
+ * @param {Unix Millisecond Timestamp} eta Timestamp.
+ * @returns {duration}
+ */
+export const createDiffDuration = eta => {
+  const now = moment()
+  now.millisecond(0)
+  const differenceMill = moment(eta, 'x').diff(now)
+
+  return moment.duration({ milliseconds: differenceMill })
+}
+
+/**
+ * Generates a single contract.
+ * @param {array} planets Planet array.
+ * @param {string || undefined} itemType Item type name.
+ * @param {object || undefined} destination Destination object.
+ */
+export const generateContract = (planets, itemType, destination) => {
+  let finalItemType = itemType
+  if (!itemType) {
+    finalItemType = itemList[Math.floor(Math.random() * itemList.length)].name
+  }
+  let finalDestination = destination
+  if (!destination) {
+    finalDestination = planets[Math.floor(Math.random() * planets.length)]
+  }
+
+  return {
+    destination: {
+      name: finalDestination.name,
+      value: finalDestination.location
+    },
+    id: uuidv4(),
+    itemType: finalItemType,
+    value: itemList.find(item => item.name === finalItemType).value + 1,
+    volume: itemList.find(item => item.name === finalItemType).volume
+  }
+}
+
+/**
+ * Generates an array of item contracts randomly.
+ * @param {array} planets Array of planet objects.
+ * @returns {array}
+ */
+export const generateContracts = planets => {
+  const contracts = []
+
+  for (let i = 0; i < 5; i++) {
+    contracts.push(generateContract(planets))
+  }
+
+  return contracts
+}
+
+/**
+ * The logic for the travel timer.
+ * @param {object} ship Ship object
+ * @param {function} setTimeLeft State function to set the time left.
+ * @param {function} handleTimerStopped What to do when the timer stops.
+ */
+export const travelTimerLogic = (ship, setTimeLeft, handleTimerStopped) => {
+  if (ship.isShipTraveling) {
+    const travelTimer = setInterval(() => {
+      const diffDuration = createDiffDuration(ship.destination.eta)
+
+      diffDuration.subtract(1, 'second')
+
+      if (diffDuration.asMilliseconds() === 0) {
+        clearInterval(travelTimer)
+        handleTimerStopped(ship)
+      }
+
+      setTimeLeft(diffDuration)
+    }, 1000)
+  }
+}
+
+/**
+ * The logic for the item timer.
+ * @param {object} world World object.
+ * @param {function} setTimeLeft State function to set the time left.
+ * @param {function} handleTimerStarted What to do when the timer has started.
+ * @param {function} handleTimerStopped What to do when the timer has ended.
+ */
+export const itemTimerLogic = (
+  world,
+  setTimeLeft,
+  handleTimerStarted,
+  handleTimerStopped
+) => {
+  const { isTimerRunning } = world
+
+  let duration = createDuration()
+
+  if (!isTimerRunning) {
+    handleTimerStarted()
+    let timer = setInterval(() => {
+      duration.subtract(1, 'second')
+      setTimeLeft(`${duration.minutes()} minutes ${duration.seconds()} seconds`)
+      if (duration.asMilliseconds() === 0) {
+        clearInterval(timer)
+        handleTimerStopped()
+      }
+    }, 1000)
+  }
 }

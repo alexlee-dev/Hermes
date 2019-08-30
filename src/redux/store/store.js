@@ -29,6 +29,7 @@ store.subscribe(
       ui: store.getState().ui,
       user: store.getState().user,
       world: {
+        contracts: store.getState().world.contracts,
         isTimerRunning: false,
         planets: store.getState().world.planets
       }
