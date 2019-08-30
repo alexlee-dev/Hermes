@@ -23,6 +23,7 @@
     "grommet": "^2.7.6",
     "grommet-icons": "^4.3.0",
     "lodash": "^4.17.15",
+    "logrocket": "^1.0.3",
     "moment": "^2.24.0",
     "react": "^16.9.0",
     "react-burger-menu": "^2.6.11",
