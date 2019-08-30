@@ -1,41 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import {
-  setTimerRunning,
-  clearItems,
-  refreshItems
-} from '../redux/actions/world'
-import { createDuration } from '../util'
+import { setTimerRunning, itemTimerFinish } from '../redux/actions/world'
+import { itemTimerLogic } from '../util'
+import { Box, Heading } from 'grommet'
 
+/**
+ * A timer that refreshes the items when finished. Restarts itself.
+ */
 const ItemTimer = ({ handleTimerStarted, handleTimerStopped, world }) => {
-  const { isTimerRunning } = world
+  const [timeLeft, setTimeLeft] = useState(null)
 
-  let duration = createDuration()
-
-  const [timeLeft, setTimeLeft] = useState(
-    `${duration.minutes()} minutes ${duration.seconds()} seconds`
+  useEffect(
+    () =>
+      itemTimerLogic(
+        world,
+        setTimeLeft,
+        handleTimerStarted,
+        handleTimerStopped
+      ),
+    // eslint-disable-next-line
+    [world.isTimerRunning]
   )
 
-  const startTimer = () => {
-    if (!isTimerRunning) {
-      handleTimerStarted()
-      let timer = setInterval(() => {
-        duration.subtract(1, 'second')
-        setTimeLeft(
-          `${duration.minutes()} minutes ${duration.seconds()} seconds`
-        )
-        if (duration.asMilliseconds() === 0) {
-          clearInterval(timer)
-          handleTimerStopped()
-        }
-      }, 1000)
-    }
-  }
-
-  useEffect(startTimer, [isTimerRunning])
-
-  return <span>{timeLeft}</span>
+  return (
+    <Box>
+      <Heading level="3">Item Timer</Heading>
+      <span>{timeLeft}</span>
+    </Box>
+  )
 }
 
 ItemTimer.propTypes = {
@@ -47,14 +40,7 @@ const mapStateToProps = ({ world }) => ({ world })
 
 const mapDispatchToProps = dispatch => ({
   handleTimerStarted: () => dispatch(setTimerRunning(true)),
-  handleTimerStopped: () => {
-    // * Clear all items from planets
-    dispatch(clearItems())
-    // * Put new items on planets
-    dispatch(refreshItems())
-    // * Tell Redux the timer is no longer running
-    dispatch(setTimerRunning(false))
-  }
+  handleTimerStopped: () => dispatch(itemTimerFinish())
 })
 
 export default connect(

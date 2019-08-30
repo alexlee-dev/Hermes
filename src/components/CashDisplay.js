@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import { Heading, Text, Box } from 'grommet'
 import { connect } from 'react-redux'
 
+/**
+ * Displays the amount of Cash the user has.
+ */
 const CashDisplay = ({ cash }) => {
   return (
     <Box margin={{ bottom: 'small' }}>

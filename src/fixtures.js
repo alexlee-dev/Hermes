@@ -4,27 +4,41 @@ export const defaultState = {
       items: [],
       volumeRemaining: 5
     },
+    destination: null,
+    isShipTraveling: false,
     location: {
       name: null,
       value: null
-    }
+    },
+    travelDuration: null
   },
   ui: {
+    isCreatingContract: false,
     view: 'Ship'
   },
   user: {
     cash: 100
   },
   world: {
+    contracts: [
+      {
+        destination: { name: 'Test Planet 2', value: 50 },
+        id: '0',
+        itemType: 'Ore',
+        volume: 1,
+        value: 3
+      }
+    ],
     isTimerRunning: false,
     planets: [
       {
+        id: '0',
         isHomePlanet: true,
         location: 0,
         items: [
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '0',
             destination: {
@@ -34,7 +48,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '1',
             destination: {
@@ -44,7 +58,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '2',
             destination: {
@@ -54,7 +68,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '3',
             destination: {
@@ -64,7 +78,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '4',
             destination: {
@@ -76,12 +90,13 @@ export const defaultState = {
         name: 'Test Planet 1'
       },
       {
+        id: '1',
         isHomePlanet: false,
         location: 50,
         items: [
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '5',
             destination: {
@@ -91,7 +106,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '6',
             destination: {
@@ -101,7 +116,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '7',
             destination: {
@@ -111,7 +126,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '8',
             destination: {
@@ -121,7 +136,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '9',
             destination: {
@@ -133,12 +148,13 @@ export const defaultState = {
         name: 'Test Planet 2'
       },
       {
+        id: '2',
         isHomePlanet: false,
         location: 100,
         items: [
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '10',
             destination: {
@@ -148,7 +164,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '11',
             destination: {
@@ -158,7 +174,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '12',
             destination: {
@@ -168,7 +184,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '13',
             destination: {
@@ -178,7 +194,7 @@ export const defaultState = {
           },
           {
             name: 'Test Item',
-            space: 1,
+            volume: 1,
             value: 1,
             id: '14',
             destination: {
