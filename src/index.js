@@ -6,10 +6,13 @@ import * as serviceWorker from './serviceWorker'
 import * as Sentry from '@sentry/browser'
 import { Provider } from 'react-redux'
 import store from './redux/store/store'
+import LogRocket from 'logrocket'
 
 Sentry.init({
   dsn: 'https://f0118327f72d4186ace6ce17ecd278c9@sentry.io/1527426'
 })
+
+LogRocket.init('alex-lee/hermes-vjulr')
 
 ReactDOM.render(
   <Provider store={store}>
