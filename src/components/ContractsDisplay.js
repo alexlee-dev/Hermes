@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Box, Heading, Text, Button } from 'grommet'
+import { Box, Heading, Text, Button, Layer } from 'grommet'
 import { Checkmark, Close } from 'grommet-icons'
 import { connect } from 'react-redux'
 import { resetContract, setContract } from '../redux/actions/user'
@@ -18,16 +18,28 @@ const ContractsDisplay = ({
   handleSetContract,
   isCreatingContract
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleViewContracts = () => setIsModalOpen(true)
+
   return (
     <Box gap="small" margin={{ vertical: 'medium' }}>
-      <Box align="center" direction="row" gap="medium">
+      <Box>
         <Heading level="3">Contracts</Heading>
-        <Button
-          hoverIndicator
-          label="Create"
-          onClick={() => handleCreateInit()}
-          plain
-        />
+        <Box align="center" direction="row" justify="between" width="small">
+          <Button
+            hoverIndicator
+            label="Create"
+            onClick={() => handleCreateInit()}
+            plain
+          />
+          <Button
+            hoverIndicator
+            label="View"
+            onClick={() => handleViewContracts()}
+            plain
+          />
+        </Box>
       </Box>
       {isCreatingContract && <CreateContract />}
       {currentContract && (
@@ -41,26 +53,33 @@ const ContractsDisplay = ({
           />
         </Box>
       )}
-      {contracts.map(contract => (
-        <Box direction="row" key={contract.id} gap="small">
-          <Text weight="bold">Item Type</Text>
-          <Text>{contract.itemType}</Text>
-          <Text weight="bold">Volume</Text>
-          <Text>{contract.volume}</Text>
-          <Text weight="bold">Value</Text>
-          <Text>{contract.value}</Text>
-          <Text weight="bold">Destination</Text>
-          <Text>{contract.destination.name}</Text>
-          <Button
-            disabled={currentContract !== null}
-            hoverIndicator
-            icon={<Checkmark />}
-            onClick={() => handleSetContract(contract)}
-            plain
-            value={contract.id}
-          />
-        </Box>
-      ))}
+      {isModalOpen && (
+        <Layer
+          onClickOutside={() => setIsModalOpen(false)}
+          onEsc={() => setIsModalOpen(false)}
+        >
+          {contracts.map(contract => (
+            <Box direction="row" key={contract.id} gap="small" margin="large">
+              <Text weight="bold">Item Type</Text>
+              <Text>{contract.itemType}</Text>
+              <Text weight="bold">Volume</Text>
+              <Text>{contract.volume}</Text>
+              <Text weight="bold">Value</Text>
+              <Text>{contract.value}</Text>
+              <Text weight="bold">Destination</Text>
+              <Text>{contract.destination.name}</Text>
+              <Button
+                disabled={currentContract !== null}
+                hoverIndicator
+                icon={<Checkmark />}
+                onClick={() => handleSetContract(contract)}
+                plain
+                value={contract.id}
+              />
+            </Box>
+          ))}
+        </Layer>
+      )}
     </Box>
   )
 }
