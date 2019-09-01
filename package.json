@@ -1,6 +1,6 @@
 {
   "name": "hermes-game",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A game about space and junk.",
   "repository": {
     "type": "git",
@@ -23,10 +23,12 @@
     "grommet": "^2.7.6",
     "grommet-icons": "^4.3.0",
     "lodash": "^4.17.15",
+    "logrocket": "^1.0.3",
     "moment": "^2.24.0",
     "react": "^16.9.0",
     "react-burger-menu": "^2.6.11",
     "react-dom": "^16.9.0",
+    "react-ga": "^2.6.0",
     "react-redux": "^7.1.0",
     "react-scripts": "3.1.0",
     "react-tooltip": "^3.10.0",
@@ -54,7 +56,7 @@
     "test": "react-scripts test",
     "test:coverage": "yarn test --coverage --watchAll=false --collectCoverageFrom=src/components/**/* --collectCoverageFrom=src/views/**/* --collectCoverageFrom=src/util.js",
     "test:coveralls": "yarn test --coverage --watchAll=false --collectCoverageFrom=src/components/**/* --collectCoverageFrom=src/views/**/* --collectCoverageFrom=src/util.js --coverageReporters=text-lcov | coveralls",
-    "cypress:open": "cypress open",
+    "cy:open": "cypress open",
     "cy:verify": "cypress verify",
     "cy:run": "cypress run",
     "start:ci": "yarn start & wait-on http://localhost:3000"
