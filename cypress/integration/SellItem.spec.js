@@ -7,9 +7,9 @@ describe('Sell Item', () => {
   })
 
   it('Should sell an item.', () => {
-    cy.contains('100').should('be', true)
+    cy.get('body').contains('100')
     cy.get('button[data-testid="travel-button-Test Planet 2"').click()
     cy.wait(10000)
-    cy.contains('104').should('be', true)
+    cy.get('body').contains('104')
   })
 })

@@ -7,9 +7,9 @@ describe('Buy Item', () => {
   })
 
   it('Should buy an item.', () => {
-    cy.contains('100').should('be', true)
+    cy.get('body').contains('100')
     cy.get('#quantity-input-0').type('1')
     cy.get('button[data-testid="add-button-0').click()
-    cy.contains('94').should('be', true)
+    cy.get('body').contains('94')
   })
 })
