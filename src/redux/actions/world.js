@@ -7,6 +7,7 @@ const ADD_CONTRACT = 'ADD_CONTRACT'
 const CLEAR_ITEMS = 'CLEAR_ITEMS'
 const REFRESH_ITEMS = 'REFRESH_ITEMS'
 const REMOVE_ITEM = 'REMOVE_ITEM'
+const REPLACE_WORLD = 'REPLACE_WORLD'
 const SET_CONTRACTS = 'SET_CONTRACTS'
 const SET_PLANETS = 'SET_PLANETS'
 const SET_TIMER_RUNNING = 'SET_TIMER_RUNNING'
@@ -42,6 +43,15 @@ export const removeItem = (item, quantity) => ({
     item,
     quantity
   }
+})
+
+/**
+ * Replaces entire World.
+ * @param {Object} world World object from Redux store.
+ */
+export const replaceWorld = world => ({
+  type: REPLACE_WORLD,
+  payload: { world }
 })
 
 /**

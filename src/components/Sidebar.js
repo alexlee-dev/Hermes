@@ -11,6 +11,7 @@ import TravelTimer from './TravelTimer'
 import CashDisplay from './CashDisplay'
 import ContractsDisplay from './ContractsDisplay'
 import { exportGame } from '../util'
+import ImportButton from './ImportButton'
 
 /**
  * Sidebar component.
@@ -48,12 +49,15 @@ const Sidebar = ({ handleViewChange, outerContainerId, pageWrapId, view }) => {
         <Heading level="3" margin={{ top: 'xlarge' }}>
           Settings
         </Heading>
-        <Button
-          data-testid="button-export"
-          label="Export Game"
-          onClick={exportGame}
-          plain
-        />
+        <Box direction="row" gap="medium">
+          <Button
+            data-testid="button-export"
+            label="Export Game"
+            onClick={exportGame}
+            plain
+          />
+          <ImportButton />
+        </Box>
       </Box>
     </Menu>
   )

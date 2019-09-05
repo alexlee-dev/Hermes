@@ -4,6 +4,7 @@ import { createETA } from '../../util'
 
 // * ACTION TYPES
 const REMOVE_CARGO = 'REMOVE_CARGO'
+const REPLACE_SHIP = 'REPLACE_SHIP'
 const SET_DESTINATION = 'SET_DESTINATION'
 const SET_ETA = 'SET_ETA'
 const SET_SHIP_LOCATION = 'SET_SHIP_LOCATION'
@@ -22,6 +23,12 @@ export const removeCargo = item => ({
     item
   }
 })
+
+/**
+ * Replaces the entire Ship.
+ * @param {Object} ship Ship object from Redux store.
+ */
+export const replaceShip = ship => ({ type: REPLACE_SHIP, payload: { ship } })
 
 /**
  * Sets the ship's destination.

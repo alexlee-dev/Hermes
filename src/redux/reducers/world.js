@@ -69,6 +69,8 @@ export default (state = worldDefaultState, action) => {
       })
 
       return { ...state, planets: updatedPlanets }
+    case 'REPLACE_WORLD':
+      return { ...action.payload.world }
     case 'SET_CONTRACTS':
       return { ...state, contracts: action.payload.contracts }
     case 'SET_PLANETS':

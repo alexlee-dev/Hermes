@@ -9,6 +9,8 @@ export default (state = userDefaultState, action) => {
       return { ...state, cash: state.cash + action.payload.amount }
     case 'REMOVE_CASH':
       return { ...state, cash: state.cash - action.payload.amount }
+    case 'REPLACE_USER':
+      return { ...action.payload.user }
     case 'RESET_CONTRACT':
       return { ...state, contract: null }
     case 'SET_CONTRACT':
