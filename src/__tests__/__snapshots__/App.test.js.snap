@@ -105,13 +105,36 @@ exports[`<App /> Should render the <App /> component. 1`] = `
               >
                 Settings
               </h3>
-              <button
-                class="StyledButton-sc-323bzc-0 jfbKsv"
-                data-testid="button-export"
-                type="button"
+              <div
+                class="StyledBox-sc-13pk1d4-0 ffeAql"
               >
-                Export Game
-              </button>
+                <button
+                  class="StyledButton-sc-323bzc-0 jfbKsv"
+                  data-testid="button-export"
+                  type="button"
+                >
+                  Export Game
+                </button>
+                <div
+                  class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hyyRSo"
+                />
+                <div
+                  class="StyledBox-sc-13pk1d4-0 IRSNj"
+                >
+                  <button
+                    class="StyledButton-sc-323bzc-0 jfbKsv"
+                    type="button"
+                  >
+                    Import Game
+                  </button>
+                  <input
+                    accept=".json"
+                    data-testid="input-import"
+                    style="display: none;"
+                    type="file"
+                  />
+                </div>
+              </div>
             </div>
           </nav>
         </div>

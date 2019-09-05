@@ -25,6 +25,8 @@ export default (state = shipDefaultState, action) => {
             state.cargo.volumeRemaining + action.payload.item.quantity
         }
       }
+    case 'REPLACE_SHIP':
+      return { ...action.payload.ship }
     case 'SET_DESTINATION':
       return { ...state, destination: action.payload.destination }
     case 'SET_ETA':
