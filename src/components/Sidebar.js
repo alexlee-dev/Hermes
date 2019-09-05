@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { push as Menu } from 'react-burger-menu'
-import { Anchor, Heading, Box } from 'grommet'
+import { Anchor, Heading, Box, Button } from 'grommet'
 import { connect } from 'react-redux'
 import { setView } from '../redux/actions/ui'
 import { views } from '../constants'
@@ -10,6 +10,7 @@ import ItemTimer from './ItemTimer'
 import TravelTimer from './TravelTimer'
 import CashDisplay from './CashDisplay'
 import ContractsDisplay from './ContractsDisplay'
+import { exportGame } from '../util'
 
 /**
  * Sidebar component.
@@ -44,6 +45,15 @@ const Sidebar = ({ handleViewChange, outerContainerId, pageWrapId, view }) => {
         <TravelTimer />
         <CashDisplay />
         <ContractsDisplay />
+        <Heading level="3" margin={{ top: 'xlarge' }}>
+          Settings
+        </Heading>
+        <Button
+          data-testid="button-export"
+          label="Export Game"
+          onClick={exportGame}
+          plain
+        />
       </Box>
     </Menu>
   )

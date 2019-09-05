@@ -100,6 +100,18 @@ exports[`<App /> Should render the <App /> component. 1`] = `
                   </div>
                 </div>
               </div>
+              <h3
+                class="StyledHeading-sc-1rdh4aw-0 cVyJbT"
+              >
+                Settings
+              </h3>
+              <button
+                class="StyledButton-sc-323bzc-0 jfbKsv"
+                data-testid="button-export"
+                type="button"
+              >
+                Export Game
+              </button>
             </div>
           </nav>
         </div>

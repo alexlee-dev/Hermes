@@ -1,6 +1,7 @@
 import { itemList, planets } from './constants'
 import uuidv4 from 'uuid/v4'
 import moment from 'moment'
+import { saveAs } from 'file-saver'
 
 /**
  * Gets a name of a planet.
@@ -237,4 +238,19 @@ export const itemTimerLogic = (
       }
     }, 1000)
   }
+}
+
+/**
+ * Exports the game state as a JSON file.
+ */
+export const exportGame = () => {
+  const state = loadState()
+  const blob = new Blob([JSON.stringify(state, null, 2)], {
+    type: 'application/json'
+  })
+  if (window.Cypress) {
+    localStorage.setItem('exportedGame', blob)
+    return
+  }
+  saveAs(blob, 'hermes.json')
 }
