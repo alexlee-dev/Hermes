@@ -4,14 +4,13 @@ import { connect } from 'react-redux'
 import { Box, Button, Heading, Text } from 'grommet'
 import { Target } from 'grommet-icons'
 import { departShip } from '../redux/actions/ship'
-import ItemDisplay from './ItemDisplay'
 import { createETA, createDiffDuration } from '../util'
 
 /**
  * Displays planet statistics.
  */
 const PlanetDisplay = ({ handleShipTravel, planet, ship }) => {
-  const { isHomePlanet, items, location, name } = planet
+  const { isHomePlanet, location, name } = planet
   const shipLocationValue = ship.location.value
 
   const eta = createETA({ value: planet.location }, ship)
@@ -39,10 +38,6 @@ const PlanetDisplay = ({ handleShipTravel, planet, ship }) => {
           </Text>
         )}
       </Box>
-      <span>Items:</span>
-      {items.map(item => (
-        <ItemDisplay key={item.id} item={item} location={location} />
-      ))}
     </div>
   )
 }

@@ -46,13 +46,4 @@ describe('<PlanetsView />', () => {
     )
     fireEvent.click(button)
   })
-
-  it('Should handle adding an item to ship cargo.', async () => {
-    const { getByTestId } = customRender({
-      component: PlanetsView,
-      state: customState
-    })
-    const button = await waitForElement(() => getByTestId('add-button-1'))
-    fireEvent.click(button)
-  })
 })
