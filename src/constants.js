@@ -1,3 +1,4 @@
+import MarketView from './views/market'
 import PlanetsView from './views/planets'
 import ShipView from './views/ship'
 
@@ -5,6 +6,7 @@ import ShipView from './views/ship'
  * Views object.
  */
 export const views = {
+  Market: MarketView,
   Planets: PlanetsView,
   Ship: ShipView
 }

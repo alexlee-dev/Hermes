@@ -8,6 +8,7 @@ describe('Buy Item', () => {
 
   it('Should buy an item.', () => {
     cy.get('body').contains('100')
+    cy.contains('Market').click()
     cy.get('#quantity-input-0').type('1')
     cy.get('button[data-testid="add-button-0').click()
     cy.get('body').contains('94')
