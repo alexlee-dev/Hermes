@@ -1,12 +1,16 @@
 import { generateItems } from '../../util'
 
 const worldDefaultState = {
+  contracts: [],
   isTimerRunning: false,
   planets: []
 }
 
 export default (state = worldDefaultState, action) => {
   switch (action.type) {
+    case 'ADD_CONTRACT':
+      state.contracts.push(action.payload.contract)
+      return { ...state, contracts: state.contracts }
     case 'CLEAR_ITEMS':
       return {
         ...state,
@@ -65,6 +69,25 @@ export default (state = worldDefaultState, action) => {
       })
 
       return { ...state, planets: updatedPlanets }
+    case 'REMOVE_CONTRACT':
+      const itemIndex = state.contracts.indexOf(
+        contract => contract.id === action.payload.id
+      )
+      const updatedContracts = Array.from(state.contracts)
+      updatedContracts.splice(itemIndex, 1)
+
+      return { ...state, contracts: updatedContracts }
+    case 'REPLACE_WORLD':
+      return { ...action.payload.world }
+    case 'SET_CONTRACT_TIMEOUT_CREATED':
+      const contract = state.contracts.find(
+        ({ id }) => id === action.payload.id
+      )
+      contract.timeoutCreated = action.payload.timeoutCreated
+
+      return state
+    case 'SET_CONTRACTS':
+      return { ...state, contracts: action.payload.contracts }
     case 'SET_PLANETS':
       return { ...state, planets: action.payload.planets }
     case 'SET_TIMER_RUNNING':

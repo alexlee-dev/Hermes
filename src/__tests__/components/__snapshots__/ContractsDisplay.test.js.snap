@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ContractsDisplay /> Should render the <ContractsDisplay /> component. 1`] = `
+<DocumentFragment>
+  <div
+    class="StyledBox-sc-13pk1d4-0 laNWCK"
+  >
+    <div
+      class="StyledBox-sc-13pk1d4-0 IRSNj"
+    >
+      <h3
+        class="StyledHeading-sc-1rdh4aw-0 ftOecI"
+      >
+        Contracts
+      </h3>
+      <div
+        class="StyledBox-sc-13pk1d4-0 LPrfA"
+      >
+        <button
+          class="StyledButton-sc-323bzc-0 lnKzGb"
+          type="button"
+        >
+          Create
+        </button>
+        <button
+          class="StyledButton-sc-323bzc-0 lnKzGb"
+          type="button"
+        >
+          View
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

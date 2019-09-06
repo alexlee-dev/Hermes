@@ -11,15 +11,15 @@ const customState = {
     cargo: {
       items: [
         {
-          name: 'Test Item',
-          space: 1,
-          quantity: 1,
-          value: 1,
-          id: '0',
           destination: {
             name: 'Test Planet 2',
             value: 50
-          }
+          },
+          id: '0',
+          name: 'Test Item',
+          quantity: 1,
+          value: 1,
+          volume: 1
         }
       ],
       volumeRemaining: 4
@@ -44,15 +44,6 @@ describe('<PlanetsView />', () => {
     const button = await waitForElement(() =>
       getByTestId('travel-button-Test Planet 2')
     )
-    fireEvent.click(button)
-  })
-
-  it('Should handle adding an item to ship cargo.', async () => {
-    const { getByTestId } = customRender({
-      component: PlanetsView,
-      state: customState
-    })
-    const button = await waitForElement(() => getByTestId('add-button-1'))
     fireEvent.click(button)
   })
 })

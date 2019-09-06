@@ -1,19 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
+exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
 <DocumentFragment>
-  <div>
-    <div>
-      <div
-        class="StyledBox-sc-13pk1d4-0 ffeAql"
+  <div
+    class="StyledBox-sc-13pk1d4-0 IRSNj"
+  >
+    <div
+      class="StyledBox-sc-13pk1d4-0 IRSNj"
+    >
+      <h2
+        class="StyledHeading-sc-1rdh4aw-0 yhirM"
       >
-        <h2
-          class="StyledHeading-sc-1rdh4aw-0 yhirM"
-        >
-          Test Planet 1 - Home Planet
-        </h2>
-      </div>
-      <span>
+        Test Planet 1
+      </h2>
+      <span
+        class="StyledText-sc-1sadyjn-0 fWSbXS"
+      >
         Items:
       </span>
       <div
@@ -27,6 +29,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           >
             Name: Test Item
           </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="0"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
         </div>
         <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
@@ -43,7 +64,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -61,8 +82,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="0"
+        >
+          <span />
         </div>
         <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
@@ -119,6 +156,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="1"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -133,7 +189,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -151,8 +207,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="1"
+        >
+          <span />
         </div>
         <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
@@ -209,6 +281,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="2"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -223,7 +314,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -241,8 +332,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="2"
+        >
+          <span />
         </div>
         <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
@@ -299,6 +406,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="3"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -313,7 +439,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -331,8 +457,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="3"
+        >
+          <span />
         </div>
         <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
@@ -389,6 +531,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="4"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -403,7 +564,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -421,8 +582,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="4"
+        >
+          <span />
         </div>
         <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
@@ -467,38 +644,17 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
         </div>
       </div>
     </div>
-    <div>
-      <div
-        class="StyledBox-sc-13pk1d4-0 ffeAql"
+    <div
+      class="StyledBox-sc-13pk1d4-0 IRSNj"
+    >
+      <h2
+        class="StyledHeading-sc-1rdh4aw-0 yhirM"
       >
-        <h2
-          class="StyledHeading-sc-1rdh4aw-0 yhirM"
-        >
-          Test Planet 2
-        </h2>
-        <div
-          class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hyyRSo"
-        />
-        <button
-          class="StyledButton-sc-323bzc-0 jAPRVi"
-          data-testid="travel-button-Test Planet 2"
-          type="button"
-        >
-          <svg
-            aria-label="Target"
-            class="StyledIcon-ofa7kd-0 iOkQrb"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M23,12 C23,18.075 18.075,23 12,23 C5.925,23 1,18.075 1,12 C1,5.925 5.925,1 12,1 C18.075,1 23,5.925 23,12 L23,12 Z M18,12 C18,8.691 15.309,6 12,6 C8.691,6 6,8.691 6,12 C6,15.309 8.691,18 12,18 C15.309,18 18,15.309 18,12 L18,12 Z M13,12 C13,11.448 12.552,11 12,11 C11.448,11 11,11.448 11,12 C11,12.552 11.448,13 12,13 C12.552,13 13,12.552 13,12 L13,12 Z"
-              fill="none"
-              stroke="#000"
-              stroke-width="2"
-            />
-          </svg>
-        </button>
-      </div>
-      <span>
+        Test Planet 2
+      </h2>
+      <span
+        class="StyledText-sc-1sadyjn-0 fWSbXS"
+      >
         Items:
       </span>
       <div
@@ -514,6 +670,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="5"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -528,7 +703,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -546,8 +721,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 1
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="5"
+        >
+          <span />
         </div>
       </div>
       <div
@@ -563,6 +754,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="6"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -577,7 +787,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -595,8 +805,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 1
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="6"
+        >
+          <span />
         </div>
       </div>
       <div
@@ -612,6 +838,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="7"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -626,7 +871,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -644,8 +889,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 1
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="7"
+        >
+          <span />
         </div>
       </div>
       <div
@@ -661,6 +922,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="8"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -675,7 +955,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -693,8 +973,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 1
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="8"
+        >
+          <span />
         </div>
       </div>
       <div
@@ -710,6 +1006,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="9"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -724,7 +1039,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -742,43 +1057,38 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 1
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="9"
+        >
+          <span />
         </div>
       </div>
     </div>
-    <div>
-      <div
-        class="StyledBox-sc-13pk1d4-0 ffeAql"
+    <div
+      class="StyledBox-sc-13pk1d4-0 IRSNj"
+    >
+      <h2
+        class="StyledHeading-sc-1rdh4aw-0 yhirM"
       >
-        <h2
-          class="StyledHeading-sc-1rdh4aw-0 yhirM"
-        >
-          Test Planet 3
-        </h2>
-        <div
-          class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hyyRSo"
-        />
-        <button
-          class="StyledButton-sc-323bzc-0 jAPRVi"
-          data-testid="travel-button-Test Planet 3"
-          type="button"
-        >
-          <svg
-            aria-label="Target"
-            class="StyledIcon-ofa7kd-0 iOkQrb"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M23,12 C23,18.075 18.075,23 12,23 C5.925,23 1,18.075 1,12 C1,5.925 5.925,1 12,1 C18.075,1 23,5.925 23,12 L23,12 Z M18,12 C18,8.691 15.309,6 12,6 C8.691,6 6,8.691 6,12 C6,15.309 8.691,18 12,18 C15.309,18 18,15.309 18,12 L18,12 Z M13,12 C13,11.448 12.552,11 12,11 C11.448,11 11,11.448 11,12 C11,12.552 11.448,13 12,13 C12.552,13 13,12.552 13,12 L13,12 Z"
-              fill="none"
-              stroke="#000"
-              stroke-width="2"
-            />
-          </svg>
-        </button>
-      </div>
-      <span>
+        Test Planet 3
+      </h2>
+      <span
+        class="StyledText-sc-1sadyjn-0 fWSbXS"
+      >
         Items:
       </span>
       <div
@@ -794,6 +1104,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="10"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -808,7 +1137,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -826,8 +1155,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="10"
+        >
+          <span />
         </div>
       </div>
       <div
@@ -843,6 +1188,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="11"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -857,7 +1221,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -875,8 +1239,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="11"
+        >
+          <span />
         </div>
       </div>
       <div
@@ -892,6 +1272,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="12"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -906,7 +1305,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -924,8 +1323,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="12"
+        >
+          <span />
         </div>
       </div>
       <div
@@ -941,6 +1356,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="13"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -955,7 +1389,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -973,8 +1407,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="13"
+        >
+          <span />
         </div>
       </div>
       <div
@@ -990,6 +1440,25 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           </span>
         </div>
         <div
+          class="StyledBox-sc-13pk1d4-0 IRSNj"
+        >
+          <svg
+            aria-label="StatusUnknown"
+            class="StyledIcon-ofa7kd-0 iOkQrb"
+            currentitem="false"
+            data-for="14"
+            data-tip="true"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+              fill="none"
+              stroke="#000"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
           class="StyledBox-sc-13pk1d4-0 hroMnY"
         >
           <span
@@ -1004,7 +1473,7 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
-            Space: 1
+            Volume: 1
           </span>
         </div>
         <div
@@ -1022,8 +1491,24 @@ exports[`<PlanetsView /> Should render the <PlanetsView /> component. 1`] = `
           <span
             class="StyledText-sc-1sadyjn-0 fWSbXS"
           >
+            Price: 
+          </span>
+        </div>
+        <div
+          class="StyledBox-sc-13pk1d4-0 hroMnY"
+        >
+          <span
+            class="StyledText-sc-1sadyjn-0 fWSbXS"
+          >
             Destination: Test Planet 2
           </span>
+        </div>
+        <div
+          class="__react_component_tooltip place-top type-dark "
+          data-id="tooltip"
+          id="14"
+        >
+          <span />
         </div>
       </div>
     </div>
