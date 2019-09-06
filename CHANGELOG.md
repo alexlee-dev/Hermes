@@ -1,5 +1,27 @@
 # Changelog
 
+## 📦 v0.4.0 (September 6, 2019)
+
+### Added
+
+- 💾 - Ability to import game from JSON file
+- 💾 - Ability to export game to JSON file
+- 📈 - Google Analytics
+- 🐛 - LogRocket
+- ✨ - Market view
+- ✨ - Ability to view item contracts
+- ✅ - Cypress Tests (Buy Item, Sell Item, Travel)
+
+### Changed
+
+- ✏️ - Use of NODE_ENV to call outside resources dynamically
+- ⏲️ - Item contracts expire at midnight of the day that they are created
+- 🚫 - No longer record video in Cypress tests if in Travis
+
+### Fixed
+
+- 🚫 - Disable Item button if the ship is traveling
+
 ## 📦 v0.3.0 (August 30, 2019)
 
 ### Added
