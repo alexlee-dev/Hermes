@@ -44,7 +44,7 @@ A game about space and junk.
 
 [npm-image]: https://img.shields.io/npm/v/hermes-game.svg
 [npm-downloads]: https://img.shields.io/npm/dt/hermes-game.svg
-[npm-url]: https://www.npmjs.com/package/hermes-gaame
+[npm-url]: https://www.npmjs.com/package/hermes-game
 [size-image]: https://img.shields.io/bundlephobia/minzip/hermes-game.svg
 [coverage-badge]: https://coveralls.io/repos/github/alexlee-dev/hermes/badge.svg?branch=develop
 [coverage-link]: https://coveralls.io/github/alexlee-dev/hermes?branch=master
