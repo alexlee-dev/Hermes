@@ -5,6 +5,8 @@ const uiDefaultState = {
 
 export default (state = uiDefaultState, action) => {
   switch (action.type) {
+    case 'REPLACE_UI':
+      return { ...action.payload.ui }
     case 'SET_IS_CREATING_CONTRACT':
       return { ...state, isCreatingContract: action.payload.isCreatingContract }
     case 'SET_VIEW':

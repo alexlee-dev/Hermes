@@ -1,12 +1,16 @@
+import { setMockState } from '../fixtures/default'
+
 describe('Travel', () => {
-  it('Should travel from the Home Planet to another planet.', () => {
+  beforeEach(() => {
+    setMockState()
     cy.visit('http://localhost:3000')
-    cy.get(
-      '#outer-container > div:nth-child(1) > div.bm-menu-wrap > div.bm-menu > nav > div > div > a.StyledAnchor-sc-1rp7lwl-0.fwWNdB'
-    ).click()
-    cy.get(
-      '#page-wrap > div > div:nth-child(2) > div.StyledBox-sc-13pk1d4-0.gQLnBt > button'
-    ).click()
-    cy.contains('Travel Timer').should('be', true)
+  })
+
+  it('Should travel from the Home Planet to another planet.', () => {
+    cy.get('body').contains('ETA: 0 minutes 10 seconds')
+    cy.get('button[data-testid="travel-button-Test Planet 2"').click()
+    cy.get('body').contains('Travel Timer')
+    cy.wait(10000)
+    cy.get('body').contains('ETA: 0 minutes 10 seconds')
   })
 })

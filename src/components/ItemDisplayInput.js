@@ -10,6 +10,7 @@ import { purchaseCargo } from '../redux/actions/ship'
  */
 const ItemDisplayInput = ({
   handleStoreCargo,
+  isShipTraveling,
   item,
   shipCargoVolumeRemaining,
   userCash
@@ -19,44 +20,48 @@ const ItemDisplayInput = ({
   const [value, setValue] = useState(0)
 
   return (
-    <Box gap="small" pad="medium">
-      <Button
-        data-testid={`add-button-${id}`}
-        disabled={
-          shipCargoVolumeRemaining === 0 ||
-          value === 0 ||
-          userCash < value * item.price
-        }
-        hoverIndicator
-        icon={<Add />}
-        onClick={() => handleStoreCargo(item, value)}
-        plain
-      />
-      <label htmlFor={`quantity-input-${id}`}>Quantity to Add</label>
-      <input
-        id={`quantity-input-${id}`}
-        max={
-          shipCargoVolumeRemaining > quantity
-            ? quantity
-            : shipCargoVolumeRemaining
-        }
-        min={0}
-        onChange={e => setValue(Number(e.target.value))}
-        type="number"
-        value={value}
-      />
-    </Box>
+    !isShipTraveling && (
+      <Box gap="small" pad="medium">
+        <Button
+          data-testid={`add-button-${id}`}
+          disabled={
+            shipCargoVolumeRemaining === 0 ||
+            value === 0 ||
+            userCash < value * item.price
+          }
+          hoverIndicator
+          icon={<Add />}
+          onClick={() => handleStoreCargo(item, value)}
+          plain
+        />
+        <label htmlFor={`quantity-input-${id}`}>Quantity to Add</label>
+        <input
+          id={`quantity-input-${id}`}
+          max={
+            shipCargoVolumeRemaining > quantity
+              ? quantity
+              : shipCargoVolumeRemaining
+          }
+          min={0}
+          onChange={e => setValue(Number(e.target.value))}
+          type="number"
+          value={value}
+        />
+      </Box>
+    )
   )
 }
 
 ItemDisplayInput.propTypes = {
   handleStoreCargo: PropTypes.func.isRequired,
+  isShipTraveling: PropTypes.bool.isRequired,
   item: PropTypes.object.isRequired,
   shipCargoVolumeRemaining: PropTypes.number.isRequired,
   userCash: PropTypes.number.isRequired
 }
 
 const mapStateToProps = ({ ship, user }) => ({
+  isShipTraveling: ship.isShipTraveling,
   shipCargoVolumeRemaining: ship.cargo.volumeRemaining,
   userCash: user.cash
 })

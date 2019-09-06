@@ -1,5 +1,10 @@
 import { setShipLocation } from './ship'
-import { generatePlanets, generateContracts } from '../../util'
+import {
+  createDiffDuration,
+  generatePlanets,
+  generateContracts,
+  isInPast
+} from '../../util'
 import { setIsCreatingContract } from './ui'
 
 // * ACTION TYPES
@@ -7,6 +12,9 @@ const ADD_CONTRACT = 'ADD_CONTRACT'
 const CLEAR_ITEMS = 'CLEAR_ITEMS'
 const REFRESH_ITEMS = 'REFRESH_ITEMS'
 const REMOVE_ITEM = 'REMOVE_ITEM'
+const REMOVE_CONTRACT = 'REMOVE_CONTRACT'
+const REPLACE_WORLD = 'REPLACE_WORLD'
+const SET_CONTRACT_TIMEOUT_CREATED = 'SET_CONTRACT_TIMEOUT_CREATED'
 const SET_CONTRACTS = 'SET_CONTRACTS'
 const SET_PLANETS = 'SET_PLANETS'
 const SET_TIMER_RUNNING = 'SET_TIMER_RUNNING'
@@ -42,6 +50,31 @@ export const removeItem = (item, quantity) => ({
     item,
     quantity
   }
+})
+
+/**
+ * Removes a specific item contract.
+ * @param {String} id Unique ID for item contract.
+ */
+export const removeContract = id => ({ type: REMOVE_CONTRACT, payload: { id } })
+
+/**
+ * Replaces entire World.
+ * @param {Object} world World object from Redux store.
+ */
+export const replaceWorld = world => ({
+  type: REPLACE_WORLD,
+  payload: { world }
+})
+
+/**
+ * Tells the application if a timeout for this item contract has been created to remove the contract.
+ * @param {String} id ID of item contract.
+ * @param {Boolean} timeoutCreated Has a timeout for this contract been created.
+ */
+export const setContractTimeoutCreated = (id, timeoutCreated) => ({
+  type: SET_CONTRACT_TIMEOUT_CREATED,
+  payload: { id, timeoutCreated }
 })
 
 /**
@@ -107,4 +140,19 @@ export const itemTimerFinish = () => dispatch => {
   dispatch(refreshItems())
   // * Tell Redux the timer is no longer running
   dispatch(setTimerRunning(false))
+}
+
+/**
+ * Handles setting up timeouts to remove item contracts when they expire.
+ * @param {Array} contracts Array of item contracts.
+ */
+export const calculateContractExpirations = contracts => dispatch => {
+  contracts.forEach(({ expiration, id, timeoutCreated }) => {
+    if (!timeoutCreated || isInPast(expiration)) {
+      dispatch(setContractTimeoutCreated(id, true))
+      setTimeout(() => {
+        dispatch(removeContract(id))
+      }, createDiffDuration(expiration).asMilliseconds())
+    }
+  })
 }
