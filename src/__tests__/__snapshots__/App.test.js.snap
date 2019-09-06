@@ -200,9 +200,9 @@ exports[`<App /> Should render the <App /> component. 1`] = `
       </div>
     </div>
     <div
-      class="StyledBox-sc-13pk1d4-0 cKZGPw"
+      class="StyledBox-sc-13pk1d4-0 fzdaRc"
       id="page-wrap"
-      style="transform: translate3d(300px, 0, 0); transition: all 0.5s;"
+      style="max-width: calc(100% - 300px); transform: translate3d(300px, 0, 0); transition: all 0.5s;"
     >
       <div>
         <h2>
@@ -224,6 +224,31 @@ exports[`<App /> Should render the <App /> component. 1`] = `
           >
             5
           </span>
+        </div>
+        <div
+          class="Table_tableWrapper__1fXsJ Table_tableScroll__zRwCt undefined"
+        >
+          <table
+            class="Table_table__1DoSj"
+          >
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Destination
+                </th>
+                <th>
+                  Quantity
+                </th>
+                <th>
+                  Remove
+                </th>
+              </tr>
+            </thead>
+            <tbody />
+          </table>
         </div>
         <h3>
           Location:

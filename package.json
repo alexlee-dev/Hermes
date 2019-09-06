@@ -21,6 +21,7 @@
   "dependencies": {
     "@sentry/browser": "^5.6.1",
     "file-saver": "^2.0.2",
+    "flwww": "^2.0.10",
     "grommet": "^2.7.6",
     "grommet-icons": "^4.3.0",
     "lodash": "^4.17.15",

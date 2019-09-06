@@ -27,7 +27,7 @@ const App = ({
   return (
     <Box id="outer-container" fill>
       <Sidebar outerContainerId="outer-container" pageWrapId="page-wrap" />
-      <Box id="page-wrap" margin={{ left: 'xlarge' }}>
+      <Box id="page-wrap" pad="25px" style={{ maxWidth: 'calc(100% - 300px)' }}>
         <View />
       </Box>
     </Box>

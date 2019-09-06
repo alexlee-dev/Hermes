@@ -24,66 +24,63 @@ exports[`<ShipView /> Should render the <ShipView /> component. 1`] = `
       </span>
     </div>
     <div
-      class="StyledBox-sc-13pk1d4-0 ffeAql"
+      class="Table_tableWrapper__1fXsJ Table_tableScroll__zRwCt undefined"
     >
-      <span
-        class="StyledText-sc-1sadyjn-0 fWSbXS"
+      <table
+        class="Table_table__1DoSj"
       >
-        Test Item
-      </span>
-      <div
-        class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hyyRSo"
-      />
-      <span
-        class="StyledText-sc-1sadyjn-0 bnqisW"
-      >
-        Destination:
-      </span>
-      <div
-        class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hyyRSo"
-      />
-      <span
-        class="StyledText-sc-1sadyjn-0 fWSbXS"
-      >
-        Test Planet 2
-      </span>
-      <div
-        class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hyyRSo"
-      />
-      <span
-        class="StyledText-sc-1sadyjn-0 bnqisW"
-      >
-        Quantity:
-      </span>
-      <div
-        class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hyyRSo"
-      />
-      <span
-        class="StyledText-sc-1sadyjn-0 fWSbXS"
-      >
-        1
-      </span>
-      <div
-        class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hyyRSo"
-      />
-      <button
-        class="StyledButton-sc-323bzc-0 jAPRVi"
-        data-testid="remove-button-0"
-        type="button"
-      >
-        <svg
-          aria-label="Subtract"
-          class="StyledIcon-ofa7kd-0 iOkQrb"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M2,12 L22,12"
-            fill="none"
-            stroke="#000"
-            stroke-width="2"
-          />
-        </svg>
-      </button>
+        <thead>
+          <tr>
+            <th>
+              Name
+            </th>
+            <th>
+              Destination
+            </th>
+            <th>
+              Quantity
+            </th>
+            <th>
+              Remove
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="sc-bdVaJa iJTrNS"
+          >
+            <td>
+              Test Item
+            </td>
+            <td>
+              Test Planet 2
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              <button
+                class="StyledButton-sc-323bzc-0 jAPRVi"
+                data-testid="remove-button-0"
+                type="button"
+              >
+                <svg
+                  aria-label="Subtract"
+                  class="StyledIcon-ofa7kd-0 iOkQrb"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M2,12 L22,12"
+                    fill="none"
+                    stroke="#000"
+                    stroke-width="2"
+                  />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <h3>
       Location:

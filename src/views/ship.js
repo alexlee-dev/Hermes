@@ -4,11 +4,27 @@ import { connect } from 'react-redux'
 import { Box, Text, Button } from 'grommet'
 import { Subtract } from 'grommet-icons'
 import { removeCargo } from '../redux/actions/ship'
+import { Table } from 'flwww'
 
 /**
  * Displays information about the user's ship.
  */
 const ShipView = ({ items, handleRemoveCargo, location, volumeRemaining }) => {
+  const columns = ['Name', 'Destination', 'Quantity', 'Remove']
+  const rows = items.map(item => ({
+    Name: item.name,
+    Destination: item.destination.name,
+    Quantity: item.quantity,
+    Remove: (
+      <Button
+        data-testid={`remove-button-${item.id}`}
+        hoverIndicator
+        icon={<Subtract />}
+        onClick={() => handleRemoveCargo(item)}
+        plain
+      />
+    )
+  }))
   return (
     <div>
       <h2>Your Ship</h2>
@@ -17,22 +33,7 @@ const ShipView = ({ items, handleRemoveCargo, location, volumeRemaining }) => {
         <Text weight="bold">Volume Remaining:</Text>
         <Text>{volumeRemaining}</Text>
       </Box>
-      {items.map(item => (
-        <Box direction="row" gap="medium" key={item.id}>
-          <Text>{item.name}</Text>
-          <Text weight="bold">Destination:</Text>
-          <Text>{item.destination.name}</Text>
-          <Text weight="bold">Quantity:</Text>
-          <Text>{item.quantity}</Text>
-          <Button
-            data-testid={`remove-button-${item.id}`}
-            hoverIndicator
-            icon={<Subtract />}
-            onClick={() => handleRemoveCargo(item)}
-            plain
-          />
-        </Box>
-      ))}
+      <Table bordered columns={columns} rows={rows} />
       <h3>Location:</h3>
       <Box gap="small" margin={{ left: 'medium' }}>
         <Text size="small" weight="bold">
