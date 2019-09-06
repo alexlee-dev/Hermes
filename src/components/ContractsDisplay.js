@@ -68,6 +68,8 @@ const ContractsDisplay = ({
               <Text>{contract.value}</Text>
               <Text weight="bold">Destination</Text>
               <Text>{contract.destination.name}</Text>
+              <Text weight="bold">Expiration</Text>
+              <Text>{contract.expiration}</Text>
               <Button
                 disabled={currentContract !== null}
                 hoverIndicator
@@ -100,16 +102,9 @@ const mapStateToProps = ({ ui, user, world }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleCreateInit: () => {
-    dispatch(setIsCreatingContract(true))
-  },
-  handleResetContract: () => {
-    dispatch(resetContract())
-  },
-  handleSetContract: contract => {
-    console.log({ contract })
-    dispatch(setContract(contract))
-  }
+  handleCreateInit: () => dispatch(setIsCreatingContract(true)),
+  handleResetContract: () => dispatch(resetContract()),
+  handleSetContract: contract => dispatch(setContract(contract))
 })
 
 export default connect(

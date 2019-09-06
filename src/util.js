@@ -145,6 +145,16 @@ export const createDiffDuration = eta => {
 }
 
 /**
+ * Generates an expiration date for an item contract.
+ * Currently sets the expiration to midnight of the day the contract is created.
+ */
+const generateExpiration = () =>
+  moment()
+    .add(1, 'day')
+    .startOf('day')
+    .format('x')
+
+/**
  * Generates a single contract.
  * @param {array} planets Planet array.
  * @param {string || undefined} itemType Item type name.
@@ -161,12 +171,14 @@ export const generateContract = (planets, itemType, destination) => {
   }
 
   return {
+    expiration: generateExpiration(),
     destination: {
       name: finalDestination.name,
       value: finalDestination.location
     },
     id: uuidv4(),
     itemType: finalItemType,
+    timeoutCreated: false,
     value: itemList.find(item => item.name === finalItemType).value + 1,
     volume: itemList.find(item => item.name === finalItemType).volume
   }
@@ -253,4 +265,15 @@ export const exportGame = () => {
     return
   }
   saveAs(blob, 'hermes.json')
+}
+
+/**
+ * Checks if a millisecond timestamp is from a date that is in the past.
+ * @param {String} x Millisecond timestamp.
+ * @returns {Boolean}
+ */
+export const isInPast = x => {
+  const now = moment()
+  const then = moment(x, 'x')
+  return now.diff(then) > 0
 }
