@@ -7,6 +7,7 @@ import { resetContract, setContract } from '../redux/actions/user'
 import CreateContract from './CreateContract'
 import { setIsCreatingContract } from '../redux/actions/ui'
 import { Table } from 'flwww'
+import { formatExpiration } from '../util'
 
 /**
  * Displays a set of item contracts.
@@ -36,7 +37,7 @@ const ContractsDisplay = ({
     Volume: contract.volume,
     Value: contract.value,
     Destination: contract.destination.name,
-    Expiration: contract.expiration,
+    Expiration: formatExpiration(contract.expiration),
     Add: (
       <Button
         disabled={currentContract !== null}
