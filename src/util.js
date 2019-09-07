@@ -277,3 +277,17 @@ export const isInPast = x => {
   const then = moment(x, 'x')
   return now.diff(then) > 0
 }
+
+/**
+ * Formats the Item Contract expiration in a readable format.
+ * @param {Millisecond Timestamp} expiration
+ */
+export const formatExpiration = expiration => {
+  const diff = createDiffDuration(expiration)
+  const days = diff.days()
+  const hours = diff.hours()
+  const minutes = diff.minutes()
+  const seconds = diff.seconds()
+
+  return `${days}D ${hours}H ${minutes}M ${seconds}S`
+}
