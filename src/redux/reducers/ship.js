@@ -8,7 +8,8 @@ const shipDefaultState = {
   location: {
     name: null,
     value: null
-  }
+  },
+  tripDuration: null
 }
 
 export default (state = shipDefaultState, action) => {
@@ -41,8 +42,8 @@ export default (state = shipDefaultState, action) => {
       }
     case 'SET_SHIP_TRAVELING':
       return { ...state, isShipTraveling: action.payload.isShipTraveling }
-    case 'SET_TRAVEL_DURATION':
-      return { ...state, travelDuration: action.payload.travelDuration }
+    case 'SET_TRIP_DURATION':
+      return { ...state, tripDuration: action.payload.tripDuration }
     case 'STORE_CARGO':
       let updatedItems = state.cargo.items.map(currentItem => {
         if (action.payload.item.id === currentItem.id) {

@@ -1,6 +1,7 @@
 import { addCash, removeCash } from './user'
 import { removeItem } from './world'
-import { createETA } from '../../util'
+import { createETA, createDiffDuration } from '../../util'
+import moment from 'moment'
 
 // * ACTION TYPES
 const REMOVE_CARGO = 'REMOVE_CARGO'
@@ -9,6 +10,7 @@ const SET_DESTINATION = 'SET_DESTINATION'
 const SET_ETA = 'SET_ETA'
 const SET_SHIP_LOCATION = 'SET_SHIP_LOCATION'
 const SET_SHIP_TRAVELING = 'SET_SHIP_TRAVELING'
+const SET_TRIP_DURATION = 'SET_TRIP_DURATION'
 const STORE_CARGO = 'STORE_CARGO'
 
 // * ACTION GENERATORS
@@ -67,6 +69,15 @@ export const setShipTraveling = isShipTraveling => ({
 })
 
 /**
+ * Sets the trip duration.
+ * @param {Moment Duration} tripDuration Moment duration.
+ */
+export const setTripDuration = tripDuration => ({
+  type: SET_TRIP_DURATION,
+  payload: { tripDuration }
+})
+
+/**
  * Stores an item in the ship's cargo.
  * @param {object} item Item to store.
  * @param {number} quantity Quantity of the item to store.
@@ -83,6 +94,40 @@ export const storeCargo = (item, quantity) => ({
 
 // * THUNKS
 /**
+ * The logic for the travel timer.
+ * @param {object} ship Ship object
+ * @param {function} setTimeLeft State function to set the time left.
+ * @param {function} setTripPercent State function to set the trip percent.
+ * @param {function} handleTimerStopped What to do when the timer stops.
+ */
+export const travelTimerLogic = (ship, setTimeLeft, setTripPercent) => (
+  dispatch,
+  getState
+) => {
+  if (ship.isShipTraveling) {
+    const travelTimer = setInterval(() => {
+      const diffDuration = createDiffDuration(ship.destination.eta)
+      const tripDuration = moment.duration(getState().ship.tripDuration)
+      const difference = tripDuration.clone().subtract(diffDuration)
+      const percent = Math.floor(
+        (difference.asMilliseconds() / tripDuration.asMilliseconds()) * 100
+      )
+
+      diffDuration.subtract(1, 'second')
+      setTripPercent(percent)
+
+      if (diffDuration.asMilliseconds() === 0) {
+        clearInterval(travelTimer)
+        dispatch(landShip(ship))
+        setTripPercent(0)
+      }
+
+      setTimeLeft(diffDuration)
+    }, 1000)
+  }
+}
+
+/**
  * Sets the ship to be traveling, sets the destination, and sets the ETA.
  * @param {object} destination Destination object.
  * @param {object} ship Ship object.
@@ -95,6 +140,9 @@ export const departShip = (destination, ship) => dispatch => {
   // * set ETA
   const eta = createETA(destination, ship)
   dispatch(setETA(eta.format('x')))
+  // * set Trip Duration
+  const tripDuration = createDiffDuration(eta)
+  dispatch(setTripDuration(tripDuration))
 }
 
 /**
@@ -120,6 +168,7 @@ export const landShip = ship => dispatch => {
     setShipLocation({ name: destination.name, value: destination.value })
   )
   dispatch(setDestination(null))
+  dispatch(setTripDuration(null))
   dispatch(setShipTraveling(false))
 }
 

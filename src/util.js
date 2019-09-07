@@ -200,29 +200,6 @@ export const generateContracts = planets => {
 }
 
 /**
- * The logic for the travel timer.
- * @param {object} ship Ship object
- * @param {function} setTimeLeft State function to set the time left.
- * @param {function} handleTimerStopped What to do when the timer stops.
- */
-export const travelTimerLogic = (ship, setTimeLeft, handleTimerStopped) => {
-  if (ship.isShipTraveling) {
-    const travelTimer = setInterval(() => {
-      const diffDuration = createDiffDuration(ship.destination.eta)
-
-      diffDuration.subtract(1, 'second')
-
-      if (diffDuration.asMilliseconds() === 0) {
-        clearInterval(travelTimer)
-        handleTimerStopped(ship)
-      }
-
-      setTimeLeft(diffDuration)
-    }, 1000)
-  }
-}
-
-/**
  * The logic for the item timer.
  * @param {object} world World object.
  * @param {function} setTimeLeft State function to set the time left.
