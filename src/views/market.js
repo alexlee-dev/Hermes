@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, Heading } from 'grommet'
+import { Box, Heading, Text } from 'grommet'
+import { StatusUnknown } from 'grommet-icons'
 import { connect } from 'react-redux'
 import ItemDisplayInput from '../components/ItemDisplayInput'
 import { Table } from 'flwww'
+import ReactTooltip from 'react-tooltip'
 
 /**
  * Displays information about the Markets.
@@ -22,7 +24,17 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
           'Add'
         ]
         const rows = items.map(item => ({
-          Item: item.name,
+          Item: (
+            <Box align="center" direction="row" gap="small">
+              <Text>{item.name}</Text>
+              <StatusUnknown data-tip data-for={item.id} />
+              {
+                <ReactTooltip id={item.id} type="info">
+                  <span>{item.description}</span>
+                </ReactTooltip>
+              }
+            </Box>
+          ),
           Quantity: item.quantity,
           Volume: item.volume,
           Value: item.value,
