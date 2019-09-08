@@ -57,13 +57,13 @@ const ContractsDisplay = ({
         <Box align="center" direction="row" justify="between" width="small">
           <Button
             hoverIndicator
-            label="Create"
+            label="Place Buy Order"
             onClick={() => handleCreateInit()}
             plain
           />
           <Button
             hoverIndicator
-            label="View"
+            label="View Contracts"
             onClick={() => handleViewContracts()}
             plain
           />

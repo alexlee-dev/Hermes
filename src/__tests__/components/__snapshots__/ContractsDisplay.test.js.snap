@@ -20,13 +20,13 @@ exports[`<ContractsDisplay /> Should render the <ContractsDisplay /> component. 
           class="StyledButton-sc-323bzc-0 lnKzGb"
           type="button"
         >
-          Create
+          Place Buy Order
         </button>
         <button
           class="StyledButton-sc-323bzc-0 lnKzGb"
           type="button"
         >
-          View
+          View Contracts
         </button>
       </div>
     </div>
