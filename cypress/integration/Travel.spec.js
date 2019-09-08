@@ -10,7 +10,7 @@ describe('Travel', () => {
     cy.get('body').contains('ETA: 0 minutes 10 seconds')
     cy.get('button[data-testid="travel-button-Test Planet 2"').click()
     cy.get('body').contains('Travel Timer')
-    cy.wait(10000)
+    cy.wait(12000)
     cy.get('body').contains('ETA: 0 minutes 10 seconds')
   })
 })
