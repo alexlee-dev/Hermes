@@ -116,7 +116,10 @@ export const travelTimerLogic = (ship, setTimeLeft, setTripPercent) => (
       diffDuration.subtract(1, 'second')
       setTripPercent(percent)
 
-      if (diffDuration.asMilliseconds() === 0) {
+      if (
+        diffDuration.asMilliseconds() === 0 ||
+        diffDuration.asMilliseconds() < 0
+      ) {
         clearInterval(travelTimer)
         dispatch(landShip(ship))
         setTripPercent(0)
