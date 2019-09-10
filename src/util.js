@@ -221,7 +221,7 @@ export const itemTimerLogic = (
     let timer = setInterval(() => {
       duration.subtract(1, 'second')
       setTimeLeft(`${duration.minutes()} minutes ${duration.seconds()} seconds`)
-      if (duration.asMilliseconds() === 0) {
+      if (duration.asMilliseconds() === 0 || duration.asMilliseconds() < 0) {
         clearInterval(timer)
         handleTimerStopped()
       }
