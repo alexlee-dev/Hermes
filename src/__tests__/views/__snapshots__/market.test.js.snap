@@ -68,12 +68,12 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                 class="StyledBox-sc-13pk1d4-0 lgQMws"
               >
                 <svg
-                  aria-label="CircleInformation"
+                  aria-label="LinkUp"
                   class="StyledIcon-ofa7kd-0 iOkQrb"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,10 L12,18 M12,6 L12,8"
+                    d="M12,2 L12,22 M3,11 L12,2 L21,11"
                     fill="none"
                     stroke="#000"
                     stroke-width="2"
@@ -86,45 +86,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                   class="StyledText-sc-1sadyjn-0 gNZQxf"
                 >
                   <strong>
-                    Tab 2
-                  </strong>
-                </span>
-              </div>
-            </div>
-          </button>
-          <button
-            aria-expanded="false"
-            aria-selected="false"
-            class="StyledButton-sc-323bzc-0 jfbKsv"
-            role="tab"
-            type="button"
-          >
-            <div
-              class="StyledTab-sc-1nnwnsb-0 dGMZCN StyledBox-sc-13pk1d4-0 ePEJdL"
-            >
-              <div
-                class="StyledBox-sc-13pk1d4-0 lgQMws"
-              >
-                <svg
-                  aria-label="CircleInformation"
-                  class="StyledIcon-ofa7kd-0 iOkQrb"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,10 L12,18 M12,6 L12,8"
-                    fill="none"
-                    stroke="#000"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class="StyledBox__StyledBoxGap-sc-13pk1d4-1 gufrXq"
-                />
-                <span
-                  class="StyledText-sc-1sadyjn-0 gNZQxf"
-                >
-                  <strong>
-                    Tab 3
+                    Sell
                   </strong>
                 </span>
               </div>

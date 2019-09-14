@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Box, Heading, Tab, Tabs, Text } from 'grommet'
-import { CircleInformation, LinkDown, StatusUnknown } from 'grommet-icons'
+import { LinkDown, LinkUp, StatusUnknown } from 'grommet-icons'
 import { connect } from 'react-redux'
 import ItemDisplayInput from '../components/ItemDisplayInput'
 import { Table } from 'flwww'
@@ -34,18 +34,9 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
               <Text>BUY INFO</Text>
             </Box>
           </Tab>
-          <Tab
-            title={<RichTabTitle icon={<CircleInformation />} label="Tab 2" />}
-          >
-            <Box align="center" background="red" justify="center" pad="large">
-              <Text>TAB 2 INFO</Text>
-            </Box>
-          </Tab>
-          <Tab
-            title={<RichTabTitle icon={<CircleInformation />} label="Tab 3" />}
-          >
+          <Tab title={<RichTabTitle icon={<LinkUp />} label="Sell" />}>
             <Box align="center" background="green" justify="center" pad="large">
-              <Text>TAB 3 INFO</Text>
+              <Text>SELL INFO</Text>
             </Box>
           </Tab>
         </Tabs>
