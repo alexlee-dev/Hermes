@@ -4,12 +4,32 @@ import { Box, Heading, Tab, Tabs, Text } from 'grommet'
 import { LinkDown, LinkUp, StatusUnknown } from 'grommet-icons'
 import { connect } from 'react-redux'
 import ItemDisplayInput from '../components/ItemDisplayInput'
-import { Table } from 'flwww'
+import { Table as FlawTable } from 'flwww'
 import ReactTooltip from 'react-tooltip'
 import { itemList } from '../constants'
-import Paper from '@material-ui/core/Paper'
-import MenuList from '@material-ui/core/MenuList'
-import MenuItem from '@material-ui/core/MenuItem'
+import {
+  Paper,
+  MenuItem,
+  MenuList,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow
+} from '@material-ui/core'
+
+const mockBuyersOrSellers = [
+  { id: 1, name: 'Sergio', price: '¥9.87', location: 'Argentina' },
+  { id: 2, name: 'Vonny', price: '¥6.28', location: 'Russia' },
+  { id: 3, name: 'Cassy', price: '¥8.87', location: 'Poland' },
+  { id: 4, name: 'Isabelita', price: '¥1.23', location: 'Nicaragua' },
+  { id: 5, name: 'Georas', price: '¥9.90', location: 'Indonesia' },
+  { id: 6, name: 'Milly', price: '¥2.44', location: 'Sweden' },
+  { id: 7, name: 'Gene', price: '¥7.23', location: 'Poland' },
+  { id: 8, name: 'Liliane', price: '¥5.48', location: 'Philippines' },
+  { id: 9, name: 'Roi', price: '¥2.12', location: 'Portugal' },
+  { id: 10, name: 'Casper', price: '¥1.01', location: 'France' }
+]
 
 const RichTabTitle = ({ icon, label }) => (
   <Box direction="row" align="center" gap="xsmall" margin="xsmall">
@@ -18,6 +38,41 @@ const RichTabTitle = ({ icon, label }) => (
       <strong>{label}</strong>
     </Text>
   </Box>
+)
+
+const MockInfo = ({ text }) => (
+  <Box
+    align="center"
+    background="yellow"
+    fill="horizontal"
+    justify="center"
+    pad="large"
+  >
+    <Text>{text}</Text>
+  </Box>
+)
+
+const MockTable = () => (
+  <Paper style={{ width: '100%' }}>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>Name</TableCell>
+          <TableCell align="right">Price</TableCell>
+          <TableCell align="right">Location</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {mockBuyersOrSellers.map(({ id, name, price, location }) => (
+          <TableRow key={id}>
+            <TableCell>{name}</TableCell>
+            <TableCell align="right">{price}</TableCell>
+            <TableCell align="right">{location}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </Paper>
 )
 
 /**
@@ -37,15 +92,7 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
                   ))}
                 </MenuList>
               </Paper>
-              <Box
-                align="center"
-                background="yellow"
-                fill="horizontal"
-                justify="center"
-                pad="large"
-              >
-                <Text>BUY INFO</Text>
-              </Box>
+              <MockTable />
             </Box>
           </Tab>
           <Tab title={<RichTabTitle icon={<LinkUp />} label="Sell" />}>
@@ -57,15 +104,7 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
                   ))}
                 </MenuList>
               </Paper>
-              <Box
-                align="center"
-                background="green"
-                fill="horizontal"
-                justify="center"
-                pad="large"
-              >
-                <Text>SELL INFO</Text>
-              </Box>
+              <MockInfo text="SELL INFO" />
             </Box>
           </Tab>
         </Tabs>
@@ -112,7 +151,7 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
           return (
             <Box key={id}>
               <Heading level="2">{name}</Heading>
-              <Table bordered columns={columns} rows={rows} />
+              <FlawTable bordered columns={columns} rows={rows} />
             </Box>
           )
         })}
