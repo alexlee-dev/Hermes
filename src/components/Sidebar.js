@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { push as Menu } from 'react-burger-menu'
-import { Anchor, Heading, Box, Button } from 'grommet'
+import { Anchor, Heading, Box, Button, Text } from 'grommet'
 import { connect } from 'react-redux'
 import { setView } from '../redux/actions/ui'
 import { views } from '../constants'
@@ -12,11 +12,18 @@ import CashDisplay from './CashDisplay'
 import ContractsDisplay from './ContractsDisplay'
 import { exportGame } from '../util'
 import ImportButton from './ImportButton'
+import { Tag } from 'flwww'
 
 /**
  * Sidebar component.
  */
-const Sidebar = ({ handleViewChange, outerContainerId, pageWrapId, view }) => {
+const Sidebar = ({
+  handleViewChange,
+  isShipTraveling,
+  outerContainerId,
+  pageWrapId,
+  view
+}) => {
   return (
     <Menu
       customCrossIcon={null}
@@ -37,7 +44,14 @@ const Sidebar = ({ handleViewChange, outerContainerId, pageWrapId, view }) => {
               color="white"
               disabled={view === viewName}
               key={i}
-              label={viewName}
+              label={
+                <Box align="center" direction="row" gap="small">
+                  <Text>{viewName}</Text>
+                  {viewName === 'Ship' && isShipTraveling && (
+                    <Tag>Traveling</Tag>
+                  )}
+                </Box>
+              }
               onClick={() => handleViewChange(viewName)}
             />
           ))}
@@ -65,12 +79,16 @@ const Sidebar = ({ handleViewChange, outerContainerId, pageWrapId, view }) => {
 
 Sidebar.propTypes = {
   handleViewChange: PropTypes.func.isRequired,
+  isShipTraveling: PropTypes.bool.isRequired,
   outerContainerId: PropTypes.string,
   pageWrapId: PropTypes.string,
   view: PropTypes.string.isRequired
 }
 
-const mapStateToProps = ({ ui }) => ({ view: ui.view })
+const mapStateToProps = ({ ship, ui }) => ({
+  isShipTraveling: ship.isShipTraveling,
+  view: ui.view
+})
 
 const mapDispatchToProps = dispatch => ({
   handleViewChange: view => dispatch(setView(view))

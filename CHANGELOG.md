@@ -1,5 +1,23 @@
 # Changelog
 
+## 📦 v0.5.0 (September 13, 2019)
+
+### Added
+
+- ✨ - Tables for better viewing of data
+- 🚀 - Ship Travel Indicator
+- 🚀 - Ship Travel Progress Bar
+
+### Changed
+
+- ✏️ - Formatting of item contract expirations
+- ✏️ - "Create" -> "Place Buy Order"
+
+### Fixed
+
+- 0️⃣ - Item quantity sometimes being 0
+- ⏲️ - Travel Timer not stopping at 0
+
 ## 📦 v0.4.0 (September 6, 2019)
 
 ### Added
