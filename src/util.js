@@ -35,8 +35,8 @@ export const generateItems = possibleDestinations => {
           name: destinationPlanet.name,
           value: destinationPlanet.location
         },
-        price: Math.floor(Math.random() * 10),
-        quantity: Math.floor(Math.random() * 10)
+        price: Math.ceil(Math.random() * 10),
+        quantity: Math.ceil(Math.random() * 10)
       }
     )
     items.push(item)
@@ -200,29 +200,6 @@ export const generateContracts = planets => {
 }
 
 /**
- * The logic for the travel timer.
- * @param {object} ship Ship object
- * @param {function} setTimeLeft State function to set the time left.
- * @param {function} handleTimerStopped What to do when the timer stops.
- */
-export const travelTimerLogic = (ship, setTimeLeft, handleTimerStopped) => {
-  if (ship.isShipTraveling) {
-    const travelTimer = setInterval(() => {
-      const diffDuration = createDiffDuration(ship.destination.eta)
-
-      diffDuration.subtract(1, 'second')
-
-      if (diffDuration.asMilliseconds() === 0) {
-        clearInterval(travelTimer)
-        handleTimerStopped(ship)
-      }
-
-      setTimeLeft(diffDuration)
-    }, 1000)
-  }
-}
-
-/**
  * The logic for the item timer.
  * @param {object} world World object.
  * @param {function} setTimeLeft State function to set the time left.
@@ -244,7 +221,7 @@ export const itemTimerLogic = (
     let timer = setInterval(() => {
       duration.subtract(1, 'second')
       setTimeLeft(`${duration.minutes()} minutes ${duration.seconds()} seconds`)
-      if (duration.asMilliseconds() === 0) {
+      if (duration.asMilliseconds() === 0 || duration.asMilliseconds() < 0) {
         clearInterval(timer)
         handleTimerStopped()
       }
@@ -276,4 +253,18 @@ export const isInPast = x => {
   const now = moment()
   const then = moment(x, 'x')
   return now.diff(then) > 0
+}
+
+/**
+ * Formats the Item Contract expiration in a readable format.
+ * @param {Millisecond Timestamp} expiration
+ */
+export const formatExpiration = expiration => {
+  const diff = createDiffDuration(expiration)
+  const days = diff.days()
+  const hours = diff.hours()
+  const minutes = diff.minutes()
+  const seconds = diff.seconds()
+
+  return `${days}D ${hours}H ${minutes}M ${seconds}S`
 }

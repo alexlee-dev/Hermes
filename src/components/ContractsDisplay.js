@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import { resetContract, setContract } from '../redux/actions/user'
 import CreateContract from './CreateContract'
 import { setIsCreatingContract } from '../redux/actions/ui'
+import { Table } from 'flwww'
+import { formatExpiration } from '../util'
 
 /**
  * Displays a set of item contracts.
@@ -22,6 +24,32 @@ const ContractsDisplay = ({
 
   const handleViewContracts = () => setIsModalOpen(true)
 
+  const columns = [
+    'Item Type',
+    'Volume',
+    'Value',
+    'Destination',
+    'Expiration',
+    'Add'
+  ]
+  const rows = contracts.map(contract => ({
+    'Item Type': contract.itemType,
+    Volume: contract.volume,
+    Value: contract.value,
+    Destination: contract.destination.name,
+    Expiration: formatExpiration(contract.expiration),
+    Add: (
+      <Button
+        disabled={currentContract !== null}
+        hoverIndicator
+        icon={<Checkmark />}
+        onClick={() => handleSetContract(contract)}
+        plain
+        value={contract.id}
+      />
+    )
+  }))
+
   return (
     <Box gap="small" margin={{ vertical: 'medium' }}>
       <Box>
@@ -29,13 +57,13 @@ const ContractsDisplay = ({
         <Box align="center" direction="row" justify="between" width="small">
           <Button
             hoverIndicator
-            label="Create"
+            label="Place Buy Order"
             onClick={() => handleCreateInit()}
             plain
           />
           <Button
             hoverIndicator
-            label="View"
+            label="View Contracts"
             onClick={() => handleViewContracts()}
             plain
           />
@@ -58,28 +86,12 @@ const ContractsDisplay = ({
           onClickOutside={() => setIsModalOpen(false)}
           onEsc={() => setIsModalOpen(false)}
         >
-          {contracts.map(contract => (
-            <Box direction="row" key={contract.id} gap="small" margin="large">
-              <Text weight="bold">Item Type</Text>
-              <Text>{contract.itemType}</Text>
-              <Text weight="bold">Volume</Text>
-              <Text>{contract.volume}</Text>
-              <Text weight="bold">Value</Text>
-              <Text>{contract.value}</Text>
-              <Text weight="bold">Destination</Text>
-              <Text>{contract.destination.name}</Text>
-              <Text weight="bold">Expiration</Text>
-              <Text>{contract.expiration}</Text>
-              <Button
-                disabled={currentContract !== null}
-                hoverIndicator
-                icon={<Checkmark />}
-                onClick={() => handleSetContract(contract)}
-                plain
-                value={contract.id}
-              />
-            </Box>
-          ))}
+          <Box pad="medium">
+            <Heading level="2" margin={{ top: 'none', bottom: 'small' }}>
+              Contracts
+            </Heading>
+            <Table bordered columns={columns} rows={rows} />
+          </Box>
         </Layer>
       )}
     </Box>
