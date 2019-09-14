@@ -223,13 +223,233 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               </ul>
             </div>
             <div
-              class="StyledBox-sc-13pk1d4-0 bYpjqp"
+              class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+              style="width: 100%;"
             >
-              <span
-                class="StyledText-sc-1sadyjn-0 fWSbXS"
+              <table
+                class="MuiTable-root"
               >
-                BUY INFO
-              </span>
+                <thead
+                  class="MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head"
+                      scope="col"
+                    >
+                      Name
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
+                      scope="col"
+                    >
+                      Price
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
+                      scope="col"
+                    >
+                      Location
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                >
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Sergio
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      ¥9.87
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Argentina
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Vonny
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      ¥6.28
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Russia
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Cassy
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      ¥8.87
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Poland
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Isabelita
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      ¥1.23
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Nicaragua
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Georas
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      ¥9.90
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Indonesia
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Milly
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      ¥2.44
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Sweden
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Gene
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      ¥7.23
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Poland
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Liliane
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      ¥5.48
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Philippines
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Roi
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      ¥2.12
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Portugal
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Casper
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      ¥1.01
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      France
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
