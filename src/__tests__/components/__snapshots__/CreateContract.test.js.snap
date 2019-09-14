@@ -3,7 +3,7 @@
 exports[`<CreateContract /> Should render the <CreateContract /> component. 1`] = `
 <DocumentFragment>
   <div
-    class="StyledBox-sc-13pk1d4-0 ipWbUu"
+    class="StyledBox-sc-13pk1d4-0 dygfSD"
   >
     <label
       for="item-type"

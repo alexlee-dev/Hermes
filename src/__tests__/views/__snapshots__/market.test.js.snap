@@ -3,17 +3,17 @@
 exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
 <DocumentFragment>
   <div
-    class="StyledBox-sc-13pk1d4-0 IRSNj"
+    class="StyledBox-sc-13pk1d4-0 fWrrBh"
   >
     <div
-      class="StyledBox-sc-13pk1d4-0 IRSNj"
+      class="StyledBox-sc-13pk1d4-0 fWrrBh"
     >
       <div
-        class="StyledTabs-a4fwxl-2 jBsJwq StyledBox-sc-13pk1d4-0 IRSNj"
+        class="StyledTabs-a4fwxl-2 jBsJwq StyledBox-sc-13pk1d4-0 fWrrBh"
         role="tablist"
       >
         <div
-          class="StyledTabs__StyledTabsHeader-a4fwxl-0 cjlqAH StyledBox-sc-13pk1d4-0 gZEJFb"
+          class="StyledTabs__StyledTabsHeader-a4fwxl-0 cjlqAH StyledBox-sc-13pk1d4-0 ckzykU"
         >
           <button
             aria-expanded="true"
@@ -23,10 +23,10 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
             type="button"
           >
             <div
-              class="StyledTab-sc-1nnwnsb-0 dGMZCN StyledBox-sc-13pk1d4-0 kvUzDk"
+              class="StyledTab-sc-1nnwnsb-0 dGMZCN StyledBox-sc-13pk1d4-0 hAQvDd"
             >
               <div
-                class="StyledBox-sc-13pk1d4-0 lgQMws"
+                class="StyledBox-sc-13pk1d4-0 bWRWBf"
               >
                 <svg
                   aria-label="LinkDown"
@@ -62,10 +62,10 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
             type="button"
           >
             <div
-              class="StyledTab-sc-1nnwnsb-0 dGMZCN StyledBox-sc-13pk1d4-0 ePEJdL"
+              class="StyledTab-sc-1nnwnsb-0 dGMZCN StyledBox-sc-13pk1d4-0 kyubVG"
             >
               <div
-                class="StyledBox-sc-13pk1d4-0 lgQMws"
+                class="StyledBox-sc-13pk1d4-0 bWRWBf"
               >
                 <svg
                   aria-label="LinkUp"
@@ -99,22 +99,147 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
           role="tabpanel"
         >
           <div
-            class="StyledBox-sc-13pk1d4-0 fDHfYM"
+            class="StyledBox-sc-13pk1d4-0 ekjAwv"
           >
-            <span
-              class="StyledText-sc-1sadyjn-0 fWSbXS"
+            <div
+              class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+              style="width: 200px;"
             >
-              BUY INFO
-            </span>
+              <ul
+                class="MuiList-root MuiList-padding"
+                role="menu"
+                tabindex="-1"
+              >
+                <li
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  Ore
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </li>
+                <li
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  Plasma
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </li>
+                <li
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  Space Junk
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </li>
+                <li
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  Antibiotics
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </li>
+                <li
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  Tobacco
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </li>
+                <li
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  Soil
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </li>
+                <li
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  Ammunition
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </li>
+                <li
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  Glass
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </li>
+                <li
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  Silver
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </li>
+                <li
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+                  role="menuitem"
+                  tabindex="-1"
+                >
+                  Gold
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </li>
+              </ul>
+            </div>
+            <div
+              class="StyledBox-sc-13pk1d4-0 bYpjqp"
+            >
+              <span
+                class="StyledText-sc-1sadyjn-0 fWSbXS"
+              >
+                BUY INFO
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="StyledBox-sc-13pk1d4-0 gCCuzl"
+      class="StyledBox-sc-13pk1d4-0 hLaOSi"
     >
       <div
-        class="StyledBox-sc-13pk1d4-0 IRSNj"
+        class="StyledBox-sc-13pk1d4-0 fWrrBh"
       >
         <h2
           class="StyledHeading-sc-1rdh4aw-0 yhirM"
@@ -158,7 +283,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -208,7 +333,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                 </td>
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 hroMnY"
+                    class="StyledBox-sc-13pk1d4-0 jmTEfZ"
                   >
                     <button
                       class="StyledButton-sc-323bzc-0 jJyttA"
@@ -255,7 +380,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -305,7 +430,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                 </td>
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 hroMnY"
+                    class="StyledBox-sc-13pk1d4-0 jmTEfZ"
                   >
                     <button
                       class="StyledButton-sc-323bzc-0 jJyttA"
@@ -352,7 +477,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -402,7 +527,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                 </td>
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 hroMnY"
+                    class="StyledBox-sc-13pk1d4-0 jmTEfZ"
                   >
                     <button
                       class="StyledButton-sc-323bzc-0 jJyttA"
@@ -449,7 +574,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -499,7 +624,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                 </td>
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 hroMnY"
+                    class="StyledBox-sc-13pk1d4-0 jmTEfZ"
                   >
                     <button
                       class="StyledButton-sc-323bzc-0 jJyttA"
@@ -546,7 +671,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -596,7 +721,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                 </td>
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 hroMnY"
+                    class="StyledBox-sc-13pk1d4-0 jmTEfZ"
                   >
                     <button
                       class="StyledButton-sc-323bzc-0 jJyttA"
@@ -643,7 +768,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
         </div>
       </div>
       <div
-        class="StyledBox-sc-13pk1d4-0 IRSNj"
+        class="StyledBox-sc-13pk1d4-0 fWrrBh"
       >
         <h2
           class="StyledHeading-sc-1rdh4aw-0 yhirM"
@@ -684,7 +809,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -738,7 +863,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -792,7 +917,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -846,7 +971,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -900,7 +1025,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -954,7 +1079,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
         </div>
       </div>
       <div
-        class="StyledBox-sc-13pk1d4-0 IRSNj"
+        class="StyledBox-sc-13pk1d4-0 fWrrBh"
       >
         <h2
           class="StyledHeading-sc-1rdh4aw-0 yhirM"
@@ -995,7 +1120,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -1049,7 +1174,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -1103,7 +1228,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -1157,7 +1282,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"
@@ -1211,7 +1336,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
               >
                 <td>
                   <div
-                    class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                    class="StyledBox-sc-13pk1d4-0 hfsUvK"
                   >
                     <span
                       class="StyledText-sc-1sadyjn-0 fWSbXS"

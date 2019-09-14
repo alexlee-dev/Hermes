@@ -6,6 +6,10 @@ import { connect } from 'react-redux'
 import ItemDisplayInput from '../components/ItemDisplayInput'
 import { Table } from 'flwww'
 import ReactTooltip from 'react-tooltip'
+import { itemList } from '../constants'
+import Paper from '@material-ui/core/Paper'
+import MenuList from '@material-ui/core/MenuList'
+import MenuItem from '@material-ui/core/MenuItem'
 
 const RichTabTitle = ({ icon, label }) => (
   <Box direction="row" align="center" gap="xsmall" margin="xsmall">
@@ -25,22 +29,48 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
       <Box>
         <Tabs>
           <Tab title={<RichTabTitle icon={<LinkDown />} label="Buy" />}>
-            <Box
-              align="center"
-              background="yellow"
-              justify="center"
-              pad="large"
-            >
-              <Text>BUY INFO</Text>
+            <Box direction="row">
+              <Paper style={{ width: '200px' }}>
+                <MenuList>
+                  {itemList.map(({ description, name, value, volume }) => (
+                    <MenuItem key={name}>{name}</MenuItem>
+                  ))}
+                </MenuList>
+              </Paper>
+              <Box
+                align="center"
+                background="yellow"
+                fill="horizontal"
+                justify="center"
+                pad="large"
+              >
+                <Text>BUY INFO</Text>
+              </Box>
             </Box>
           </Tab>
           <Tab title={<RichTabTitle icon={<LinkUp />} label="Sell" />}>
-            <Box align="center" background="green" justify="center" pad="large">
-              <Text>SELL INFO</Text>
+            <Box direction="row">
+              <Paper style={{ width: '200px' }}>
+                <MenuList>
+                  {itemList.map(({ description, name, value, volume }) => (
+                    <MenuItem key={name}>{name}</MenuItem>
+                  ))}
+                </MenuList>
+              </Paper>
+              <Box
+                align="center"
+                background="green"
+                fill="horizontal"
+                justify="center"
+                pad="large"
+              >
+                <Text>SELL INFO</Text>
+              </Box>
             </Box>
           </Tab>
         </Tabs>
       </Box>
+
       <Box margin={{ top: 'large' }}>
         {planets.map(({ id, items, location, name }) => {
           const columns = [
@@ -54,7 +84,7 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
           ]
           const rows = items.map(item => ({
             Item: (
-              <Box align="center" direction="row" gap="small">
+              <Box align="center" direction="row" gap="small" key={item.id}>
                 <Text>{item.name}</Text>
                 <StatusUnknown data-tip data-for={item.id} />
                 {
