@@ -1,6 +1,18 @@
 import MarketView from './views/market'
 import PlanetsView from './views/planets'
 import ShipView from './views/ship'
+import {
+  Aid,
+  Cafeteria,
+  Cloud,
+  Diamond,
+  Grow,
+  Inspect,
+  Target,
+  Test,
+  Threats,
+  Trash
+} from 'grommet-icons'
 
 /**
  * Views object.
@@ -14,6 +26,7 @@ export const views = {
 const spaceJunk = {
   description:
     'Junk! Space junk, to be exact. Prevalent throughout the galaxy.',
+  icon: Trash,
   name: 'Space Junk',
   value: 1,
   volume: 0.1
@@ -21,6 +34,7 @@ const spaceJunk = {
 
 const ore = {
   description: 'Your garden variety ore. From a rock. A space rock.',
+  icon: Cloud,
   name: 'Ore',
   value: 2,
   volume: 1
@@ -28,6 +42,7 @@ const ore = {
 
 const plasma = {
   description: 'Not the kind in your blood, but just as valuable.',
+  icon: Test,
   name: 'Plasma',
   value: 3,
   volume: 0.4
@@ -35,6 +50,7 @@ const plasma = {
 
 const antibiotics = {
   description: 'Still used to fight the common cold!',
+  icon: Aid,
   name: 'Antibiotics',
   value: 2,
   volume: 0.1
@@ -43,6 +59,7 @@ const antibiotics = {
 const tobacco = {
   description:
     'Smoke it or chew it. Farmed on distant planets by astronauts in overalls.',
+  icon: Threats,
   name: 'Tobacco',
   value: 3,
   volume: 0.2
@@ -50,6 +67,7 @@ const tobacco = {
 
 const soil = {
   description: "It's not dirt! It's soil.",
+  icon: Grow,
   name: 'Soil',
   volume: 2,
   value: 0.5
@@ -57,6 +75,7 @@ const soil = {
 
 const ammunition = {
   description: "Bullets used for shootin'.",
+  icon: Target,
   name: 'Ammunition',
   value: 3,
   volume: 0.8
@@ -64,6 +83,7 @@ const ammunition = {
 
 const glass = {
   description: 'Melted sand.',
+  icon: Inspect,
   name: 'Glass',
   value: 1,
   volume: 1
@@ -71,6 +91,7 @@ const glass = {
 
 const silver = {
   description: 'Shiny!',
+  icon: Cafeteria,
   name: 'Silver',
   value: 4,
   volume: 0.5
@@ -78,6 +99,7 @@ const silver = {
 
 const gold = {
   description: "Midas' favorite.",
+  icon: Diamond,
   name: 'Gold',
   value: 5,
   volume: 0.5
