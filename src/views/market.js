@@ -1,11 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Box, Heading, Tab, Tabs, Text } from 'grommet'
-import { LinkDown, LinkUp, StatusUnknown } from 'grommet-icons'
+import { Box, Tab, Tabs, Text } from 'grommet'
+import { LinkDown, LinkUp } from 'grommet-icons'
 import { connect } from 'react-redux'
-import ItemDisplayInput from '../components/ItemDisplayInput'
-import { Table as FlawTable } from 'flwww'
-import ReactTooltip from 'react-tooltip'
 import { itemList } from '../constants'
 import {
   Paper,
@@ -17,6 +14,7 @@ import {
   TableHead,
   TableRow
 } from '@material-ui/core'
+import ItemCard from '../components/ItemCard'
 
 const mockBuyers = [
   { id: 1, name: 'Sergio', price: '¥9.87', location: 'Argentina' },
@@ -53,8 +51,9 @@ const RichTabTitle = ({ icon, label }) => (
   </Box>
 )
 
-const MockTable = ({ data }) => (
+const MockTable = ({ data, item }) => (
   <Paper style={{ width: '100%' }}>
+    <ItemCard item={item} />
     <Table>
       <TableHead>
         <TableRow>
@@ -80,6 +79,8 @@ const MockTable = ({ data }) => (
  * Displays information about the Markets.
  */
 const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
+  const [item, setItem] = useState(itemList[0].name)
+
   return (
     <Box>
       <Box>
@@ -89,11 +90,17 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
               <Paper style={{ width: '200px' }}>
                 <MenuList>
                   {itemList.map(({ description, name, value, volume }) => (
-                    <MenuItem key={name}>{name}</MenuItem>
+                    <MenuItem
+                      key={name}
+                      onClick={() => setItem(name)}
+                      selected={name === item}
+                    >
+                      {name}
+                    </MenuItem>
                   ))}
                 </MenuList>
               </Paper>
-              <MockTable data={mockBuyers} />
+              <MockTable data={mockBuyers} item={item} />
             </Box>
           </Tab>
           <Tab title={<RichTabTitle icon={<LinkUp />} label="Sell" />}>
@@ -101,61 +108,20 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
               <Paper style={{ width: '200px' }}>
                 <MenuList>
                   {itemList.map(({ description, name, value, volume }) => (
-                    <MenuItem key={name}>{name}</MenuItem>
+                    <MenuItem
+                      key={name}
+                      onClick={() => setItem(name)}
+                      selected={name === item}
+                    >
+                      {name}
+                    </MenuItem>
                   ))}
                 </MenuList>
               </Paper>
-              <MockTable data={mockSellers} />
+              <MockTable data={mockSellers} item={item} />
             </Box>
           </Tab>
         </Tabs>
-      </Box>
-
-      <Box margin={{ top: 'large' }}>
-        {planets.map(({ id, items, location, name }) => {
-          const columns = [
-            'Item',
-            'Quantity',
-            'Volume',
-            'Value',
-            'Price',
-            'Destination',
-            'Add'
-          ]
-          const rows = items.map(item => ({
-            Item: (
-              <Box align="center" direction="row" gap="small" key={item.id}>
-                <Text>{item.name}</Text>
-                <StatusUnknown data-tip data-for={item.id} />
-                {
-                  <ReactTooltip id={item.id} type="info">
-                    <span>{item.description}</span>
-                  </ReactTooltip>
-                }
-              </Box>
-            ),
-            Quantity: item.quantity,
-            Volume: item.volume,
-            Value: item.value,
-            Price: item.price,
-            Destination: item.destination.name,
-            Add:
-              shipLocationValue === location ? (
-                <ItemDisplayInput item={item} />
-              ) : (
-                ''
-              )
-          }))
-
-          if (shipLocationValue !== location || isShipTraveling) columns.pop()
-
-          return (
-            <Box key={id}>
-              <Heading level="2">{name}</Heading>
-              <FlawTable bordered columns={columns} rows={rows} />
-            </Box>
-          )
-        })}
       </Box>
     </Box>
   )
