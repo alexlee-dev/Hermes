@@ -122,7 +122,14 @@ export const mockSellers = [
     jumps: 3,
     item: 'Silver'
   },
-  { id: 4, name: 'Hew', price: 3.46, location: 'China', jumps: 1, item: 'Silver' },
+  {
+    id: 4,
+    name: 'Hew',
+    price: 3.46,
+    location: 'China',
+    jumps: 1,
+    item: 'Silver'
+  },
   {
     id: 5,
     name: 'Kellia',
@@ -268,16 +275,16 @@ const gold = {
  * List of items.
  */
 export const itemList = [
+  ammunition,
+  antibiotics,
+  glass,
+  gold,
   ore,
   plasma,
-  spaceJunk,
-  antibiotics,
-  tobacco,
-  soil,
-  ammunition,
-  glass,
   silver,
-  gold
+  soil,
+  spaceJunk,
+  tobacco
 ]
 
 /**
