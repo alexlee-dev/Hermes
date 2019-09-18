@@ -36,7 +36,8 @@ const MarketTable = ({ data, item }) => {
   }
 
   const sortRows = (data, sortOrder, sortBy) => {
-    const stableArr = data.map((element, i) => [element, i])
+    const dataByItem = data.filter(datum => datum.item === item)
+    const stableArr = dataByItem.map((element, i) => [element, i])
     stableArr.sort(compareBySortOrder(sortOrder, sortBy))
 
     return stableArr.map(el => el[0])
