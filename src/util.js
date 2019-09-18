@@ -1,4 +1,4 @@
-import { itemList, planets, firstNames, lastNames } from './constants'
+import { itemList, planets, firstNames, lastNames, colors } from './constants'
 import uuidv4 from 'uuid/v4'
 import moment from 'moment'
 import { saveAs } from 'file-saver'
@@ -158,6 +158,7 @@ const generateName = () =>
   `${getRandomItem(firstNames)} ${getRandomItem(lastNames)}`
 
 const generateBuyer = planets => ({
+  color: getRandomItem(colors),
   id: uuidv4(),
   name: generateName(),
   price: Math.ceil(Math.random() * 10),
@@ -167,6 +168,7 @@ const generateBuyer = planets => ({
 })
 
 const generateSeller = planets => ({
+  color: getRandomItem(colors),
   id: uuidv4(),
   name: generateName(),
   price: Math.ceil(Math.random() * 10),
@@ -324,4 +326,4 @@ export const simpleCompare = (a, b) => {
   return 0
 }
 
-const getRandomItem = arr => arr[Math.floor(Math.random() * arr.length)]
+export const getRandomItem = arr => arr[Math.floor(Math.random() * arr.length)]
