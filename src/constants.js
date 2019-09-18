@@ -15,29 +15,162 @@ import {
 } from 'grommet-icons'
 
 export const mockBuyers = [
-  { id: 1, name: 'Sergio', price: 9.87, location: 'Argentina', jumps: 0 },
-  { id: 2, name: 'Vonny', price: 6.28, location: 'Russia', jumps: 2 },
-  { id: 3, name: 'Cassy', price: 8.87, location: 'Poland', jumps: 5 },
-  { id: 4, name: 'Isabelita', price: 1.23, location: 'Nicaragua', jumps: 1 },
-  { id: 5, name: 'Georas', price: 9.9, location: 'Indonesia', jumps: 13 },
-  { id: 6, name: 'Milly', price: 2.44, location: 'Sweden', jumps: 2 },
-  { id: 7, name: 'Gene', price: 7.23, location: 'Poland', jumps: 40 },
-  { id: 8, name: 'Liliane', price: 5.48, location: 'Philippines', jumps: 2 },
-  { id: 9, name: 'Roi', price: 2.12, location: 'Portugal', jumps: 5 },
-  { id: 10, name: 'Casper', price: 1.01, location: 'France', jumps: 8 }
+  {
+    id: 1,
+    name: 'Sergio',
+    price: 9.87,
+    location: 'Argentina',
+    jumps: 0,
+    item: 'Oree'
+  },
+  {
+    id: 2,
+    name: 'Vonny',
+    price: 6.28,
+    location: 'Russia',
+    jumps: 2,
+    item: 'Plasma'
+  },
+  {
+    id: 3,
+    name: 'Cassy',
+    price: 8.87,
+    location: 'Poland',
+    jumps: 5,
+    item: 'Ore'
+  },
+  {
+    id: 4,
+    name: 'Isabelita',
+    price: 1.23,
+    location: 'Nicaragua',
+    jumps: 1,
+    item: 'Space Junk'
+  },
+  {
+    id: 5,
+    name: 'Georas',
+    price: 9.9,
+    location: 'Indonesia',
+    jumps: 13,
+    item: 'Ammunition'
+  },
+  {
+    id: 6,
+    name: 'Milly',
+    price: 2.44,
+    location: 'Sweden',
+    jumps: 2,
+    item: 'Glass'
+  },
+  {
+    id: 7,
+    name: 'Gene',
+    price: 7.23,
+    location: 'Poland',
+    jumps: 40,
+    item: 'Ore'
+  },
+  {
+    id: 8,
+    name: 'Liliane',
+    price: 5.48,
+    location: 'Philippines',
+    jumps: 2,
+    item: 'Glass'
+  },
+  {
+    id: 9,
+    name: 'Roi',
+    price: 2.12,
+    location: 'Portugal',
+    jumps: 5,
+    item: 'Gold'
+  },
+  {
+    id: 10,
+    name: 'Casper',
+    price: 1.01,
+    location: 'France',
+    jumps: 8,
+    item: 'Gold'
+  }
 ]
 
 export const mockSellers = [
-  { id: 1, name: 'Mikol', price: 7.41, location: 'China', jumps: 7 },
-  { id: 2, name: 'Leonhard', price: 1.78, location: 'Kuwait', jumps: 10 },
-  { id: 3, name: 'Jule', price: 7.34, location: 'Poland', jumps: 3 },
-  { id: 4, name: 'Hew', price: 3.46, location: 'China', jumps: 1 },
-  { id: 5, name: 'Kellia', price: 2.49, location: 'Cyprus', jumps: 6 },
-  { id: 6, name: 'Yancey', price: 3.1, location: 'China', jumps: 4 },
-  { id: 7, name: 'Maridel', price: 2.54, location: 'Sweden', jumps: 5 },
-  { id: 8, name: 'Amandy', price: 4.64, location: 'China', jumps: 5 },
-  { id: 9, name: 'Parker', price: 4.5, location: 'Philippines', jumps: 50 },
-  { id: 10, name: 'Kylynn', price: 5.03, location: 'Morocco', jumps: 14 }
+  {
+    id: 1,
+    name: 'Mikol',
+    price: 7.41,
+    location: 'China',
+    jumps: 7,
+    item: 'Gold'
+  },
+  {
+    id: 2,
+    name: 'Leonhard',
+    price: 1.78,
+    location: 'Kuwait',
+    jumps: 10,
+    item: 'Ore'
+  },
+  {
+    id: 3,
+    name: 'Jule',
+    price: 7.34,
+    location: 'Poland',
+    jumps: 3,
+    item: 'Silver'
+  },
+  { id: 4, name: 'Hew', price: 3.46, location: 'China', jumps: 1, item: 'Silver' },
+  {
+    id: 5,
+    name: 'Kellia',
+    price: 2.49,
+    location: 'Cyprus',
+    jumps: 6,
+    item: 'Silver'
+  },
+  {
+    id: 6,
+    name: 'Yancey',
+    price: 3.1,
+    location: 'China',
+    jumps: 4,
+    item: 'Ore'
+  },
+  {
+    id: 7,
+    name: 'Maridel',
+    price: 2.54,
+    location: 'Sweden',
+    jumps: 5,
+    item: 'Glass'
+  },
+  {
+    id: 8,
+    name: 'Amandy',
+    price: 4.64,
+    location: 'China',
+    jumps: 5,
+    item: 'Gold'
+  },
+  {
+    id: 9,
+    name: 'Parker',
+    price: 4.5,
+    location: 'Philippines',
+    jumps: 50,
+    item: 'Ore'
+  },
+  {
+    id: 10,
+    name: 'Kylynn',
+    price: 5.03,
+    location: 'Morocco',
+    jumps: 14,
+    item: 'Silver'
+  }
 ]
 
 /**
