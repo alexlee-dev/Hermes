@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core'
 import ItemCard from '../components/ItemCard'
 import { simpleCompare } from '../util'
+import MarketAvatar from './MarketAvatar'
 
 const MarketTable = ({ data, item }) => {
   const [sortOrder, setSortOrder] = useState('asc')
@@ -74,14 +75,18 @@ const MarketTable = ({ data, item }) => {
         </TableHead>
         <TableBody>
           {sortRows(data, sortOrder, sortBy).map(
-            ({ id, item, jumps, location, name, price }) => (
-              <TableRow key={id}>
-                <TableCell>{name}</TableCell>
-                <TableCell align="right">${price}</TableCell>
-                <TableCell align="right">{location.name}</TableCell>
-                <TableCell align="right">{jumps}</TableCell>
-              </TableRow>
-            )
+            ({ color, id, item, jumps, location, name, price }) => {
+              return (
+                <TableRow key={id}>
+                  <TableCell>
+                    <MarketAvatar color={color} name={name} />
+                  </TableCell>
+                  <TableCell align="right">${price}</TableCell>
+                  <TableCell align="right">{location.name}</TableCell>
+                  <TableCell align="right">{jumps}</TableCell>
+                </TableRow>
+              )
+            }
           )}
         </TableBody>
       </Table>
