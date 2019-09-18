@@ -154,6 +154,44 @@ const generateExpiration = () =>
     .startOf('day')
     .format('x')
 
+const generateBuyer = planets => ({
+  id: uuidv4(),
+  name: 'RAND_NAME',
+  price: Math.ceil(Math.random() * 10),
+  location: getRandomItem(planets),
+  jumps: Math.ceil(Math.random() * 10),
+  item: getRandomItem(itemList)
+})
+
+const generateSeller = planets => ({
+  id: uuidv4(),
+  name: 'RAND_NAME',
+  price: Math.ceil(Math.random() * 10),
+  location: getRandomItem(planets),
+  jumps: Math.ceil(Math.random() * 10),
+  item: getRandomItem(itemList)
+})
+
+export const generateBuyers = planets => {
+  const buyers = []
+
+  for (let i = 0; i < 10; i++) {
+    buyers.push(generateBuyer(planets))
+  }
+
+  return buyers
+}
+
+export const generateSellers = planets => {
+  const sellers = []
+
+  for (let i = 0; i < 10; i++) {
+    sellers.push(generateSeller(planets))
+  }
+
+  return sellers
+}
+
 /**
  * Generates a single contract.
  * @param {array} planets Planet array.
@@ -282,3 +320,5 @@ export const simpleCompare = (a, b) => {
   }
   return 0
 }
+
+const getRandomItem = arr => arr[Math.floor(Math.random() * arr.length)]

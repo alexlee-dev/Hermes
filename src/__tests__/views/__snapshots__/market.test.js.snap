@@ -351,56 +351,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                 </thead>
                 <tbody
                   class="MuiTableBody-root"
-                >
-                  <tr
-                    class="MuiTableRow-root"
-                  >
-                    <td
-                      class="MuiTableCell-root MuiTableCell-body"
-                    >
-                      Gene
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      $7.23
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      Poland
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      40
-                    </td>
-                  </tr>
-                  <tr
-                    class="MuiTableRow-root"
-                  >
-                    <td
-                      class="MuiTableCell-root MuiTableCell-body"
-                    >
-                      Cassy
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      $8.87
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      Poland
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      5
-                    </td>
-                  </tr>
-                </tbody>
+                />
               </table>
             </div>
           </div>
