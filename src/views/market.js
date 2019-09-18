@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Box, Tab, Tabs, Text } from 'grommet'
 import { LinkDown, LinkUp } from 'grommet-icons'
 import { connect } from 'react-redux'
-import { itemList, mockBuyers, mockSellers } from '../constants'
+import { itemList } from '../constants'
 import { Paper, MenuItem, MenuList } from '@material-ui/core'
 import MarketTable from '../components/MarketTable'
 
@@ -19,7 +19,13 @@ const RichTabTitle = ({ icon, label }) => (
 /**
  * Displays information about the Markets.
  */
-const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
+const MarketView = ({
+  buyers,
+  isShipTraveling,
+  shipLocationValue,
+  planets,
+  sellers
+}) => {
   const [item, setItem] = useState(itemList[0].name)
 
   return (
@@ -41,7 +47,7 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
                   ))}
                 </MenuList>
               </Paper>
-              <MarketTable data={mockBuyers} item={item} />
+              <MarketTable data={buyers} item={item} />
             </Box>
           </Tab>
           <Tab title={<RichTabTitle icon={<LinkUp />} label="Sell" />}>
@@ -59,7 +65,7 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
                   ))}
                 </MenuList>
               </Paper>
-              <MarketTable data={mockSellers} item={item} />
+              <MarketTable data={sellers} item={item} />
             </Box>
           </Tab>
         </Tabs>
@@ -69,15 +75,19 @@ const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
 }
 
 MarketView.propTypes = {
+  buyers: PropTypes.array.isRequired,
   isShipTraveling: PropTypes.bool.isRequired,
   shipLocationValue: PropTypes.number.isRequired,
-  planets: PropTypes.array.isRequired
+  planets: PropTypes.array.isRequired,
+  sellers: PropTypes.array.isRequired
 }
 
-const mapStateToProps = ({ ship, world }) => ({
+const mapStateToProps = ({ market, ship, world }) => ({
+  buyers: market.buyers,
   isShipTraveling: ship.isShipTraveling,
   shipLocationValue: ship.location.value,
-  planets: world.planets
+  planets: world.planets,
+  sellers: market.sellers
 })
 
 export default connect(mapStateToProps)(MarketView)
