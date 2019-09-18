@@ -175,7 +175,7 @@ const generateSeller = planets => ({
 export const generateBuyers = planets => {
   const buyers = []
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 100; i++) {
     buyers.push(generateBuyer(planets))
   }
 
@@ -185,7 +185,7 @@ export const generateBuyers = planets => {
 export const generateSellers = planets => {
   const sellers = []
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 100; i++) {
     sellers.push(generateSeller(planets))
   }
 
