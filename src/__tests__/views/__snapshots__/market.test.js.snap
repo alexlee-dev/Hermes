@@ -324,6 +324,29 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     >
                       Location
                     </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
+                      scope="col"
+                    >
+                      <span
+                        class="MuiButtonBase-root MuiTableSortLabel-root"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Jumps Away
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                          />
+                        </svg>
+                      </span>
+                    </th>
                   </tr>
                 </thead>
                 <tbody
@@ -340,12 +363,17 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      1.01
+                      $1.01
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
                       France
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      8
                     </td>
                   </tr>
                   <tr
@@ -359,12 +387,17 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      1.23
+                      $1.23
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
                       Nicaragua
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      1
                     </td>
                   </tr>
                   <tr
@@ -378,12 +411,17 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      2.12
+                      $2.12
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
                       Portugal
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      5
                     </td>
                   </tr>
                   <tr
@@ -397,12 +435,17 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      2.44
+                      $2.44
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
                       Sweden
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      2
                     </td>
                   </tr>
                   <tr
@@ -416,12 +459,17 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      5.48
+                      $5.48
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
                       Philippines
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      2
                     </td>
                   </tr>
                   <tr
@@ -435,12 +483,17 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      6.28
+                      $6.28
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
                       Russia
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      2
                     </td>
                   </tr>
                   <tr
@@ -454,12 +507,17 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      7.23
+                      $7.23
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
                       Poland
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      40
                     </td>
                   </tr>
                   <tr
@@ -473,12 +531,17 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      8.87
+                      $8.87
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
                       Poland
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      5
                     </td>
                   </tr>
                   <tr
@@ -492,12 +555,17 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      9.87
+                      $9.87
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
                       Argentina
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      0
                     </td>
                   </tr>
                   <tr
@@ -511,12 +579,17 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      9.9
+                      $9.9
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
                       Indonesia
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      13
                     </td>
                   </tr>
                 </tbody>
