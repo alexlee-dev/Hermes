@@ -15,12 +15,15 @@ const MarketTable = ({ data, item }) => {
   const [sortOrder, setSortOrder] = useState('asc')
   const [sortBy, setSortBy] = useState('price')
 
-  const handleSortPrice = () => {
+  const createSortHandler = property => () => handleSortClick(property)
+
+  const handleSortClick = property => {
     if (sortOrder === 'asc') {
       setSortOrder('desc')
     } else {
       setSortOrder('asc')
     }
+    setSortBy(property)
   }
 
   const compareBySortOrder = (sortOrder, sortBy) => (a, b) => {
@@ -48,23 +51,33 @@ const MarketTable = ({ data, item }) => {
             <TableCell>Name</TableCell>
             <TableCell align="right" sortDirection={sortOrder}>
               <TableSortLabel
-                active={true}
+                active={sortBy === 'price'}
                 direction={sortOrder}
-                onClick={() => handleSortPrice()}
+                onClick={createSortHandler('price')}
               >
                 Price
               </TableSortLabel>
             </TableCell>
             <TableCell align="right">Location</TableCell>
+            <TableCell align="right">
+              <TableSortLabel
+                active={sortBy === 'jumps'}
+                direction={sortOrder}
+                onClick={createSortHandler('jumps')}
+              >
+                Jumps Away
+              </TableSortLabel>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {sortRows(data, sortOrder, sortBy).map(
-            ({ id, name, price, location }) => (
+            ({ id, name, price, location, jumps }) => (
               <TableRow key={id}>
                 <TableCell>{name}</TableCell>
-                <TableCell align="right">{price}</TableCell>
+                <TableCell align="right">${price}</TableCell>
                 <TableCell align="right">{location}</TableCell>
+                <TableCell align="right">{jumps}</TableCell>
               </TableRow>
             )
           )}
