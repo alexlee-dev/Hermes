@@ -295,10 +295,28 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                       Name
                     </th>
                     <th
+                      aria-sort="ascending"
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
                       scope="col"
                     >
-                      Price
+                      <span
+                        class="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-active"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Price
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                          />
+                        </svg>
+                      </span>
                     </th>
                     <th
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
@@ -317,55 +335,17 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-body"
                     >
-                      Sergio
+                      Casper
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      ¥9.87
+                      1.01
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      Argentina
-                    </td>
-                  </tr>
-                  <tr
-                    class="MuiTableRow-root"
-                  >
-                    <td
-                      class="MuiTableCell-root MuiTableCell-body"
-                    >
-                      Vonny
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      ¥6.28
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      Russia
-                    </td>
-                  </tr>
-                  <tr
-                    class="MuiTableRow-root"
-                  >
-                    <td
-                      class="MuiTableCell-root MuiTableCell-body"
-                    >
-                      Cassy
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      ¥8.87
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      Poland
+                      France
                     </td>
                   </tr>
                   <tr
@@ -379,7 +359,7 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      ¥1.23
+                      1.23
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
@@ -393,88 +373,12 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-body"
                     >
-                      Georas
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      ¥9.90
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      Indonesia
-                    </td>
-                  </tr>
-                  <tr
-                    class="MuiTableRow-root"
-                  >
-                    <td
-                      class="MuiTableCell-root MuiTableCell-body"
-                    >
-                      Milly
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      ¥2.44
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      Sweden
-                    </td>
-                  </tr>
-                  <tr
-                    class="MuiTableRow-root"
-                  >
-                    <td
-                      class="MuiTableCell-root MuiTableCell-body"
-                    >
-                      Gene
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      ¥7.23
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      Poland
-                    </td>
-                  </tr>
-                  <tr
-                    class="MuiTableRow-root"
-                  >
-                    <td
-                      class="MuiTableCell-root MuiTableCell-body"
-                    >
-                      Liliane
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      ¥5.48
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
-                    >
-                      Philippines
-                    </td>
-                  </tr>
-                  <tr
-                    class="MuiTableRow-root"
-                  >
-                    <td
-                      class="MuiTableCell-root MuiTableCell-body"
-                    >
                       Roi
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      ¥2.12
+                      2.12
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
@@ -488,17 +392,131 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-body"
                     >
-                      Casper
+                      Milly
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      ¥1.01
+                      2.44
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
                     >
-                      France
+                      Sweden
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Liliane
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      5.48
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Philippines
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Vonny
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      6.28
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Russia
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Gene
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      7.23
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Poland
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Cassy
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      8.87
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Poland
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Sergio
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      9.87
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Argentina
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      Georas
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      9.9
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-body"
+                    >
+                      Indonesia
                     </td>
                   </tr>
                 </tbody>
