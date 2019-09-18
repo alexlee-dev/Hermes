@@ -1,44 +1,53 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Box, Tab, Tabs, Text } from 'grommet'
-import { LinkDown, LinkUp } from 'grommet-icons'
+import { Box } from 'grommet'
 import { connect } from 'react-redux'
 import { itemList } from '../constants'
 import MarketTable from '../components/MarketTable'
 import MarketItemList from '../components/MarketItemList'
+import { AppBar, Tabs, Tab } from '@material-ui/core'
+import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
 
-const RichTabTitle = ({ icon, label }) => (
-  <Box direction="row" align="center" gap="xsmall" margin="xsmall">
-    {icon}
-    <Text size="small">
-      <strong>{label}</strong>
-    </Text>
-  </Box>
-)
+const Table = ({ buyers, item, sellers, setItem, value }) => {
+  return (
+    <Box direction="row">
+      <MarketItemList item={item} setItem={setItem} />
+      <MarketTable data={value === 0 ? buyers : sellers} item={item} />
+    </Box>
+  )
+}
 
 /**
  * Displays information about the Markets.
  */
 const MarketView = ({ buyers, sellers }) => {
   const [item, setItem] = useState(itemList[0].name)
+  const [value, setValue] = useState(0)
+
+  const handleTabClick = (e, value) => setValue(value)
 
   return (
     <Box>
       <Box>
-        <Tabs>
-          <Tab title={<RichTabTitle icon={<LinkDown />} label="Buy" />}>
-            <Box direction="row">
-              <MarketItemList item={item} setItem={setItem} />
-              <MarketTable data={buyers} item={item} />
-            </Box>
-          </Tab>
-          <Tab title={<RichTabTitle icon={<LinkUp />} label="Sell" />}>
-            <Box direction="row">
-              <MarketItemList item={item} setItem={setItem} />
-              <MarketTable data={sellers} item={item} />
-            </Box>
-          </Tab>
-        </Tabs>
+        <AppBar color="default" position="static">
+          <Tabs
+            centered
+            indicatorColor="primary"
+            onChange={handleTabClick}
+            textColor="primary"
+            value={value}
+          >
+            <Tab label="Buy" icon={<ArrowDownward />} />
+            <Tab label="Sell" icon={<ArrowUpward />} />
+          </Tabs>
+        </AppBar>
+        <Table
+          buyers={buyers}
+          item={item}
+          sellers={sellers}
+          setItem={setItem}
+          value={value}
+        />
       </Box>
     </Box>
   )

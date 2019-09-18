@@ -8,353 +8,337 @@ exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
     <div
       class="StyledBox-sc-13pk1d4-0 fWrrBh"
     >
-      <div
-        class="StyledTabs-a4fwxl-2 jBsJwq StyledBox-sc-13pk1d4-0 fWrrBh"
-        role="tablist"
+      <header
+        class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault"
       >
         <div
-          class="StyledTabs__StyledTabsHeader-a4fwxl-0 cjlqAH StyledBox-sc-13pk1d4-0 ckzykU"
-        >
-          <button
-            aria-expanded="true"
-            aria-selected="true"
-            class="StyledButton-sc-323bzc-0 jfbKsv"
-            role="tab"
-            type="button"
-          >
-            <div
-              class="StyledTab-sc-1nnwnsb-0 dGMZCN StyledBox-sc-13pk1d4-0 hAQvDd"
-            >
-              <div
-                class="StyledBox-sc-13pk1d4-0 bWRWBf"
-              >
-                <svg
-                  aria-label="LinkDown"
-                  class="StyledIcon-ofa7kd-0 iOkQrb"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12,2 L12,22 M3,11 L12,2 L21,11"
-                    fill="none"
-                    stroke="#000"
-                    stroke-width="2"
-                    transform="matrix(1 0 0 -1 0 24)"
-                  />
-                </svg>
-                <div
-                  class="StyledBox__StyledBoxGap-sc-13pk1d4-1 gufrXq"
-                />
-                <span
-                  class="StyledText-sc-1sadyjn-0 gNZQxf"
-                >
-                  <strong>
-                    Buy
-                  </strong>
-                </span>
-              </div>
-            </div>
-          </button>
-          <button
-            aria-expanded="false"
-            aria-selected="false"
-            class="StyledButton-sc-323bzc-0 jfbKsv"
-            role="tab"
-            type="button"
-          >
-            <div
-              class="StyledTab-sc-1nnwnsb-0 dGMZCN StyledBox-sc-13pk1d4-0 kyubVG"
-            >
-              <div
-                class="StyledBox-sc-13pk1d4-0 bWRWBf"
-              >
-                <svg
-                  aria-label="LinkUp"
-                  class="StyledIcon-ofa7kd-0 iOkQrb"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12,2 L12,22 M3,11 L12,2 L21,11"
-                    fill="none"
-                    stroke="#000"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class="StyledBox__StyledBoxGap-sc-13pk1d4-1 gufrXq"
-                />
-                <span
-                  class="StyledText-sc-1sadyjn-0 gNZQxf"
-                >
-                  <strong>
-                    Sell
-                  </strong>
-                </span>
-              </div>
-            </div>
-          </button>
-        </div>
-        <div
-          aria-label="1 Tab Contents"
-          class="StyledTabs__StyledTabPanel-a4fwxl-1 lchlbl"
-          role="tabpanel"
+          class="MuiTabs-root"
         >
           <div
-            class="StyledBox-sc-13pk1d4-0 ekjAwv"
+            class="MuiTabs-scroller MuiTabs-fixed"
+            style="overflow: hidden;"
           >
             <div
-              class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
-              style="width: 200px;"
+              class="MuiTabs-flexContainer MuiTabs-centered"
+              role="tablist"
             >
-              <ul
-                class="MuiList-root MuiList-padding"
-                role="menu"
-                tabindex="-1"
+              <button
+                aria-selected="true"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected MuiTab-labelIcon"
+                role="tab"
+                tabindex="0"
+                type="button"
               >
-                <li
-                  aria-disabled="false"
-                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root Mui-selected MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button Mui-selected"
-                  role="menuitem"
-                  tabindex="-1"
+                <span
+                  class="MuiTab-wrapper"
                 >
-                  Ammunition
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </li>
-                <li
-                  aria-disabled="false"
-                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
-                  role="menuitem"
-                  tabindex="-1"
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                    />
+                  </svg>
+                  Buy
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                aria-selected="false"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-labelIcon"
+                role="tab"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
                 >
-                  Antibiotics
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </li>
-                <li
-                  aria-disabled="false"
-                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
-                  role="menuitem"
-                  tabindex="-1"
-                >
-                  Glass
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </li>
-                <li
-                  aria-disabled="false"
-                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
-                  role="menuitem"
-                  tabindex="-1"
-                >
-                  Gold
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </li>
-                <li
-                  aria-disabled="false"
-                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
-                  role="menuitem"
-                  tabindex="-1"
-                >
-                  Ore
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </li>
-                <li
-                  aria-disabled="false"
-                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
-                  role="menuitem"
-                  tabindex="-1"
-                >
-                  Plasma
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </li>
-                <li
-                  aria-disabled="false"
-                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
-                  role="menuitem"
-                  tabindex="-1"
-                >
-                  Silver
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </li>
-                <li
-                  aria-disabled="false"
-                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
-                  role="menuitem"
-                  tabindex="-1"
-                >
-                  Soil
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </li>
-                <li
-                  aria-disabled="false"
-                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
-                  role="menuitem"
-                  tabindex="-1"
-                >
-                  Space Junk
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </li>
-                <li
-                  aria-disabled="false"
-                  class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
-                  role="menuitem"
-                  tabindex="-1"
-                >
-                  Tobacco
-                  <span
-                    class="MuiTouchRipple-root"
-                  />
-                </li>
-              </ul>
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+                    />
+                  </svg>
+                  Sell
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
             </div>
+            <span
+              class="PrivateTabIndicator-root-70 PrivateTabIndicator-colorPrimary-71 MuiTabs-indicator"
+              style="left: 0px; width: 0px;"
+            />
+          </div>
+        </div>
+      </header>
+      <div
+        class="StyledBox-sc-13pk1d4-0 ekjAwv"
+      >
+        <div
+          class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          style="width: 200px;"
+        >
+          <ul
+            class="MuiList-root MuiList-padding"
+            role="menu"
+            tabindex="-1"
+          >
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root Mui-selected MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button Mui-selected"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Ammunition
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Antibiotics
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Glass
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Gold
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Ore
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Plasma
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Silver
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Soil
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Space Junk
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Tobacco
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+          </ul>
+        </div>
+        <div
+          class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          style="width: 100%;"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
+          >
             <div
-              class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
-              style="width: 100%;"
+              class="MuiCardContent-root"
             >
               <div
-                class="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
+                class="MuiBox-root MuiBox-root-96"
               >
                 <div
-                  class="MuiCardContent-root"
+                  class="MuiBox-root MuiBox-root-97"
                 >
-                  <div
-                    class="MuiBox-root MuiBox-root-53"
+                  <h2
+                    class="MuiTypography-root MuiTypography-h5"
                   >
-                    <div
-                      class="MuiBox-root MuiBox-root-54"
-                    >
-                      <h2
-                        class="MuiTypography-root MuiTypography-h5"
-                      >
-                        Ammunition
-                      </h2>
-                      <svg
-                        aria-label="Target"
-                        class="StyledIcon-ofa7kd-0 iOkQrb"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M23,12 C23,18.075 18.075,23 12,23 C5.925,23 1,18.075 1,12 C1,5.925 5.925,1 12,1 C18.075,1 23,5.925 23,12 L23,12 Z M18,12 C18,8.691 15.309,6 12,6 C8.691,6 6,8.691 6,12 C6,15.309 8.691,18 12,18 C15.309,18 18,15.309 18,12 L18,12 Z M13,12 C13,11.448 12.552,11 12,11 C11.448,11 11,11.448 11,12 C11,12.552 11.448,13 12,13 C12.552,13 13,12.552 13,12 L13,12 Z"
-                          fill="none"
-                          stroke="#000"
-                          stroke-width="2"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="MuiBox-root MuiBox-root-85"
-                    >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
-                      >
-                        Bullets used for shootin'.
-                      </p>
-                      <span
-                        class="MuiTypography-root MuiTypography-caption"
-                      >
-                        Value: 3
-                      </span>
-                      <br />
-                      <span
-                        class="MuiTypography-root MuiTypography-caption"
-                      >
-                        Volume: 0.8
-                      </span>
-                    </div>
-                  </div>
+                    Ammunition
+                  </h2>
+                  <svg
+                    aria-label="Target"
+                    class="StyledIcon-ofa7kd-0 iOkQrb"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M23,12 C23,18.075 18.075,23 12,23 C5.925,23 1,18.075 1,12 C1,5.925 5.925,1 12,1 C18.075,1 23,5.925 23,12 L23,12 Z M18,12 C18,8.691 15.309,6 12,6 C8.691,6 6,8.691 6,12 C6,15.309 8.691,18 12,18 C15.309,18 18,15.309 18,12 L18,12 Z M13,12 C13,11.448 12.552,11 12,11 C11.448,11 11,11.448 11,12 C11,12.552 11.448,13 12,13 C12.552,13 13,12.552 13,12 L13,12 Z"
+                      fill="none"
+                      stroke="#000"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="MuiBox-root MuiBox-root-128"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                  >
+                    Bullets used for shootin'.
+                  </p>
+                  <span
+                    class="MuiTypography-root MuiTypography-caption"
+                  >
+                    Value: 3
+                  </span>
+                  <br />
+                  <span
+                    class="MuiTypography-root MuiTypography-caption"
+                  >
+                    Volume: 0.8
+                  </span>
                 </div>
               </div>
-              <table
-                class="MuiTable-root"
-              >
-                <thead
-                  class="MuiTableHead-root"
-                >
-                  <tr
-                    class="MuiTableRow-root MuiTableRow-head"
-                  >
-                    <th
-                      class="MuiTableCell-root MuiTableCell-head"
-                      scope="col"
-                    >
-                      Name
-                    </th>
-                    <th
-                      aria-sort="ascending"
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
-                      scope="col"
-                    >
-                      <span
-                        class="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-active"
-                        role="button"
-                        tabindex="0"
-                      >
-                        Price
-                        <svg
-                          aria-hidden="true"
-                          class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                          focusable="false"
-                          role="presentation"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
-                          />
-                        </svg>
-                      </span>
-                    </th>
-                    <th
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
-                      scope="col"
-                    >
-                      Location
-                    </th>
-                    <th
-                      class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
-                      scope="col"
-                    >
-                      <span
-                        class="MuiButtonBase-root MuiTableSortLabel-root"
-                        role="button"
-                        tabindex="0"
-                      >
-                        Jumps Away
-                        <svg
-                          aria-hidden="true"
-                          class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                          focusable="false"
-                          role="presentation"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
-                          />
-                        </svg>
-                      </span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody
-                  class="MuiTableBody-root"
-                />
-              </table>
             </div>
           </div>
+          <table
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
+            >
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Name
+                </th>
+                <th
+                  aria-sort="ascending"
+                  class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
+                  scope="col"
+                >
+                  <span
+                    class="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-active"
+                    role="button"
+                    tabindex="0"
+                  >
+                    Price
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                      />
+                    </svg>
+                  </span>
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
+                  scope="col"
+                >
+                  Location
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
+                  scope="col"
+                >
+                  <span
+                    class="MuiButtonBase-root MuiTableSortLabel-root"
+                    role="button"
+                    tabindex="0"
+                  >
+                    Jumps Away
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                      />
+                    </svg>
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
+            />
+          </table>
         </div>
       </div>
     </div>
