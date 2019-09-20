@@ -3,10 +3,10 @@
 exports[`<ContractsDisplay /> Should render the <ContractsDisplay /> component. 1`] = `
 <DocumentFragment>
   <div
-    class="StyledBox-sc-13pk1d4-0 laNWCK"
+    class="StyledBox-sc-13pk1d4-0 egwKgD"
   >
     <div
-      class="StyledBox-sc-13pk1d4-0 IRSNj"
+      class="StyledBox-sc-13pk1d4-0 fWrrBh"
     >
       <h3
         class="StyledHeading-sc-1rdh4aw-0 ftOecI"
@@ -14,7 +14,7 @@ exports[`<ContractsDisplay /> Should render the <ContractsDisplay /> component. 
         Contracts
       </h3>
       <div
-        class="StyledBox-sc-13pk1d4-0 LPrfA"
+        class="StyledBox-sc-13pk1d4-0 jhciyq"
       >
         <button
           class="StyledButton-sc-323bzc-0 lnKzGb"

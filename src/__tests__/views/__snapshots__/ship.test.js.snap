@@ -10,7 +10,7 @@ exports[`<ShipView /> Should render the <ShipView /> component. 1`] = `
       Cargo
     </h3>
     <div
-      class="StyledBox-sc-13pk1d4-0 IRSNj"
+      class="StyledBox-sc-13pk1d4-0 fWrrBh"
     >
       <span
         class="StyledText-sc-1sadyjn-0 bnqisW"
@@ -86,7 +86,7 @@ exports[`<ShipView /> Should render the <ShipView /> component. 1`] = `
       Location:
     </h3>
     <div
-      class="StyledBox-sc-13pk1d4-0 MmWcm"
+      class="StyledBox-sc-13pk1d4-0 jTvEOL"
     >
       <span
         class="StyledText-sc-1sadyjn-0 isVaoK"

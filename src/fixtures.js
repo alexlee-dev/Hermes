@@ -1,4 +1,150 @@
 export const defaultState = {
+  market: {
+    buyers: [
+      {
+        id: '0',
+        name: 'RAND_NAME',
+        price: 7,
+        location: {
+          id: '0',
+          isHomePlanet: true,
+          location: 0,
+          name: 'Test Planet 1',
+          items: [
+            {
+              name: 'Test Item',
+              volume: 1,
+              value: 1,
+              id: '0',
+              destination: {
+                name: 'Test Planet 2',
+                value: 50
+              }
+            },
+            {
+              name: 'Test Item',
+              volume: 1,
+              value: 1,
+              id: '1',
+              destination: {
+                name: 'Test Planet 2',
+                value: 50
+              }
+            },
+            {
+              name: 'Test Item',
+              volume: 1,
+              value: 1,
+              id: '2',
+              destination: {
+                name: 'Test Planet 2',
+                value: 50
+              }
+            },
+            {
+              name: 'Test Item',
+              volume: 1,
+              value: 1,
+              id: '3',
+              destination: {
+                name: 'Test Planet 2',
+                value: 50
+              }
+            },
+            {
+              name: 'Test Item',
+              volume: 1,
+              value: 1,
+              id: '4',
+              destination: {
+                name: 'Test Planet 2',
+                value: 50
+              }
+            }
+          ]
+        },
+        jumps: 9,
+        item: {
+          description: 'Melted sand.',
+          name: 'Glass',
+          value: 1,
+          volume: 1
+        }
+      }
+    ],
+    sellers: [
+      {
+        id: '0',
+        name: 'RAND_NAME',
+        price: 7,
+        location: {
+          id: '0',
+          isHomePlanet: true,
+          location: 0,
+          name: 'Test Planet 1',
+          items: [
+            {
+              name: 'Test Item',
+              volume: 1,
+              value: 1,
+              id: '0',
+              destination: {
+                name: 'Test Planet 2',
+                value: 50
+              }
+            },
+            {
+              name: 'Test Item',
+              volume: 1,
+              value: 1,
+              id: '1',
+              destination: {
+                name: 'Test Planet 2',
+                value: 50
+              }
+            },
+            {
+              name: 'Test Item',
+              volume: 1,
+              value: 1,
+              id: '2',
+              destination: {
+                name: 'Test Planet 2',
+                value: 50
+              }
+            },
+            {
+              name: 'Test Item',
+              volume: 1,
+              value: 1,
+              id: '3',
+              destination: {
+                name: 'Test Planet 2',
+                value: 50
+              }
+            },
+            {
+              name: 'Test Item',
+              volume: 1,
+              value: 1,
+              id: '4',
+              destination: {
+                name: 'Test Planet 2',
+                value: 50
+              }
+            }
+          ]
+        },
+        jumps: 9,
+        item: {
+          description: 'Melted sand.',
+          name: 'Glass',
+          value: 1,
+          volume: 1
+        }
+      }
+    ]
+  },
   ship: {
     cargo: {
       items: [],

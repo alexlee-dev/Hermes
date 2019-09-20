@@ -1,5 +1,6 @@
 import { createStore, compose, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import marketReducer from '../reducers/market'
 import shipReducer from '../reducers/ship'
 import uiReducer from '../reducers/ui'
 import userReducer from '../reducers/user'
@@ -13,6 +14,7 @@ const persistedState = loadState()
 
 const store = createStore(
   combineReducers({
+    market: marketReducer,
     ship: shipReducer,
     ui: uiReducer,
     user: userReducer,
@@ -25,6 +27,7 @@ const store = createStore(
 store.subscribe(
   throttle(() => {
     saveState({
+      market: store.getState().market,
       ship: store.getState().ship,
       ui: store.getState().ui,
       user: store.getState().user,
