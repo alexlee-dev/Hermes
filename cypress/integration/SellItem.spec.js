@@ -1,6 +1,6 @@
 import { setMockState } from '../fixtures/default'
 
-describe('Sell Item', () => {
+describe.skip('Sell Item', () => {
   beforeEach(() => {
     setMockState()
     cy.visit('http://localhost:3000')

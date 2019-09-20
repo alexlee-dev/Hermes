@@ -3,7 +3,7 @@
 exports[`<CreateContract /> Should render the <CreateContract /> component. 1`] = `
 <DocumentFragment>
   <div
-    class="StyledBox-sc-13pk1d4-0 ipWbUu"
+    class="StyledBox-sc-13pk1d4-0 dygfSD"
   >
     <label
       for="item-type"
@@ -13,6 +13,26 @@ exports[`<CreateContract /> Should render the <CreateContract /> component. 1`] 
     <select
       id="item-type"
     >
+      <option
+        value="{\\"description\\":\\"Bullets used for shootin'.\\",\\"name\\":\\"Ammunition\\",\\"value\\":3,\\"volume\\":0.8}"
+      >
+        Ammunition
+      </option>
+      <option
+        value="{\\"description\\":\\"Still used to fight the common cold!\\",\\"name\\":\\"Antibiotics\\",\\"value\\":2,\\"volume\\":0.1}"
+      >
+        Antibiotics
+      </option>
+      <option
+        value="{\\"description\\":\\"Melted sand.\\",\\"name\\":\\"Glass\\",\\"value\\":1,\\"volume\\":1}"
+      >
+        Glass
+      </option>
+      <option
+        value="{\\"description\\":\\"Midas' favorite.\\",\\"name\\":\\"Gold\\",\\"value\\":5,\\"volume\\":0.5}"
+      >
+        Gold
+      </option>
       <option
         value="{\\"description\\":\\"Your garden variety ore. From a rock. A space rock.\\",\\"name\\":\\"Ore\\",\\"value\\":2,\\"volume\\":1}"
       >
@@ -24,19 +44,9 @@ exports[`<CreateContract /> Should render the <CreateContract /> component. 1`] 
         Plasma
       </option>
       <option
-        value="{\\"description\\":\\"Junk! Space junk, to be exact. Prevalent throughout the galaxy.\\",\\"name\\":\\"Space Junk\\",\\"value\\":1,\\"volume\\":0.1}"
+        value="{\\"description\\":\\"Shiny!\\",\\"name\\":\\"Silver\\",\\"value\\":4,\\"volume\\":0.5}"
       >
-        Space Junk
-      </option>
-      <option
-        value="{\\"description\\":\\"Still used to fight the common cold!\\",\\"name\\":\\"Antibiotics\\",\\"value\\":2,\\"volume\\":0.1}"
-      >
-        Antibiotics
-      </option>
-      <option
-        value="{\\"description\\":\\"Smoke it or chew it. Farmed on distant planets by astronauts in overalls.\\",\\"name\\":\\"Tobacco\\",\\"value\\":3,\\"volume\\":0.2}"
-      >
-        Tobacco
+        Silver
       </option>
       <option
         value="{\\"description\\":\\"It's not dirt! It's soil.\\",\\"name\\":\\"Soil\\",\\"volume\\":2,\\"value\\":0.5}"
@@ -44,24 +54,14 @@ exports[`<CreateContract /> Should render the <CreateContract /> component. 1`] 
         Soil
       </option>
       <option
-        value="{\\"description\\":\\"Bullets used for shootin'.\\",\\"name\\":\\"Ammunition\\",\\"value\\":3,\\"volume\\":0.8}"
+        value="{\\"description\\":\\"Junk! Space junk, to be exact. Prevalent throughout the galaxy.\\",\\"name\\":\\"Space Junk\\",\\"value\\":1,\\"volume\\":0.1}"
       >
-        Ammunition
+        Space Junk
       </option>
       <option
-        value="{\\"description\\":\\"Melted sand.\\",\\"name\\":\\"Glass\\",\\"value\\":1,\\"volume\\":1}"
+        value="{\\"description\\":\\"Smoke it or chew it. Farmed on distant planets by astronauts in overalls.\\",\\"name\\":\\"Tobacco\\",\\"value\\":3,\\"volume\\":0.2}"
       >
-        Glass
-      </option>
-      <option
-        value="{\\"description\\":\\"Shiny!\\",\\"name\\":\\"Silver\\",\\"value\\":4,\\"volume\\":0.5}"
-      >
-        Silver
-      </option>
-      <option
-        value="{\\"description\\":\\"Midas' favorite.\\",\\"name\\":\\"Gold\\",\\"value\\":5,\\"volume\\":0.5}"
-      >
-        Gold
+        Tobacco
       </option>
     </select>
     <label
@@ -73,7 +73,7 @@ exports[`<CreateContract /> Should render the <CreateContract /> component. 1`] 
       disabled=""
       id="item-volume"
       type="number"
-      value="1"
+      value="0.8"
     />
     <label
       for="item-value"
@@ -84,7 +84,7 @@ exports[`<CreateContract /> Should render the <CreateContract /> component. 1`] 
       disabled=""
       id="item-value"
       type="number"
-      value="2"
+      value="3"
     />
     <label
       for="item-destination"

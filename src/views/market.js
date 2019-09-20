@@ -1,76 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Box, Heading, Text } from 'grommet'
-import { StatusUnknown } from 'grommet-icons'
+import { Box } from 'grommet'
 import { connect } from 'react-redux'
-import ItemDisplayInput from '../components/ItemDisplayInput'
-import { Table } from 'flwww'
-import ReactTooltip from 'react-tooltip'
+import { itemList } from '../constants'
+import MarketTable from '../components/MarketTable'
+import MarketItemList from '../components/MarketItemList'
+import { AppBar, Tabs, Tab } from '@material-ui/core'
+import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
+
+const Table = ({ buyers, item, sellers, setItem, value }) => {
+  return (
+    <Box direction="row">
+      <MarketItemList item={item} setItem={setItem} />
+      <MarketTable data={value === 0 ? buyers : sellers} item={item} />
+    </Box>
+  )
+}
 
 /**
  * Displays information about the Markets.
  */
-const MarketView = ({ isShipTraveling, shipLocationValue, planets }) => {
+const MarketView = ({ buyers, sellers }) => {
+  const [item, setItem] = useState(itemList[0].name)
+  const [value, setValue] = useState(0)
+
+  const handleTabClick = (e, value) => setValue(value)
+
   return (
     <Box>
-      {planets.map(({ id, items, location, name }) => {
-        const columns = [
-          'Item',
-          'Quantity',
-          'Volume',
-          'Value',
-          'Price',
-          'Destination',
-          'Add'
-        ]
-        const rows = items.map(item => ({
-          Item: (
-            <Box align="center" direction="row" gap="small">
-              <Text>{item.name}</Text>
-              <StatusUnknown data-tip data-for={item.id} />
-              {
-                <ReactTooltip id={item.id} type="info">
-                  <span>{item.description}</span>
-                </ReactTooltip>
-              }
-            </Box>
-          ),
-          Quantity: item.quantity,
-          Volume: item.volume,
-          Value: item.value,
-          Price: item.price,
-          Destination: item.destination.name,
-          Add:
-            shipLocationValue === location ? (
-              <ItemDisplayInput item={item} />
-            ) : (
-              ''
-            )
-        }))
-
-        if (shipLocationValue !== location || isShipTraveling) columns.pop()
-
-        return (
-          <Box key={id}>
-            <Heading level="2">{name}</Heading>
-            <Table bordered columns={columns} rows={rows} />
-          </Box>
-        )
-      })}
+      <Box>
+        <AppBar color="default" position="static">
+          <Tabs
+            centered
+            indicatorColor="primary"
+            onChange={handleTabClick}
+            textColor="primary"
+            value={value}
+          >
+            <Tab label="Buy" icon={<ArrowDownward />} />
+            <Tab label="Sell" icon={<ArrowUpward />} />
+          </Tabs>
+        </AppBar>
+        <Table
+          buyers={buyers}
+          item={item}
+          sellers={sellers}
+          setItem={setItem}
+          value={value}
+        />
+      </Box>
     </Box>
   )
 }
 
 MarketView.propTypes = {
-  isShipTraveling: PropTypes.bool.isRequired,
-  shipLocationValue: PropTypes.number.isRequired,
-  planets: PropTypes.array.isRequired
+  buyers: PropTypes.array.isRequired,
+  sellers: PropTypes.array.isRequired
 }
 
-const mapStateToProps = ({ ship, world }) => ({
-  isShipTraveling: ship.isShipTraveling,
-  shipLocationValue: ship.location.value,
-  planets: world.planets
+const mapStateToProps = ({ market }) => ({
+  buyers: market.buyers,
+  sellers: market.sellers
 })
 
 export default connect(mapStateToProps)(MarketView)

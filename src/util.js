@@ -1,4 +1,4 @@
-import { itemList, planets } from './constants'
+import { itemList, planets, firstNames, lastNames, colors } from './constants'
 import uuidv4 from 'uuid/v4'
 import moment from 'moment'
 import { saveAs } from 'file-saver'
@@ -154,6 +154,49 @@ const generateExpiration = () =>
     .startOf('day')
     .format('x')
 
+const generateName = () =>
+  `${getRandomItem(firstNames)} ${getRandomItem(lastNames)}`
+
+const generateBuyer = planets => ({
+  color: getRandomItem(colors),
+  id: uuidv4(),
+  name: generateName(),
+  price: Math.ceil(Math.random() * 10),
+  location: getRandomItem(planets),
+  jumps: Math.ceil(Math.random() * 10),
+  item: getRandomItem(itemList)
+})
+
+const generateSeller = planets => ({
+  color: getRandomItem(colors),
+  id: uuidv4(),
+  name: generateName(),
+  price: Math.ceil(Math.random() * 10),
+  location: getRandomItem(planets),
+  jumps: Math.ceil(Math.random() * 10),
+  item: getRandomItem(itemList)
+})
+
+export const generateBuyers = planets => {
+  const buyers = []
+
+  for (let i = 0; i < 100; i++) {
+    buyers.push(generateBuyer(planets))
+  }
+
+  return buyers
+}
+
+export const generateSellers = planets => {
+  const sellers = []
+
+  for (let i = 0; i < 100; i++) {
+    sellers.push(generateSeller(planets))
+  }
+
+  return sellers
+}
+
 /**
  * Generates a single contract.
  * @param {array} planets Planet array.
@@ -268,3 +311,19 @@ export const formatExpiration = expiration => {
 
   return `${days}D ${hours}H ${minutes}M ${seconds}S`
 }
+
+/**
+ * Comparison function.
+ * @param {Any} a First item
+ * @param {Any} b Second item
+ */
+export const simpleCompare = (a, b) => {
+  if (a < b) {
+    return -1
+  } else if (a > b) {
+    return 1
+  }
+  return 0
+}
+
+export const getRandomItem = arr => arr[Math.floor(Math.random() * arr.length)]

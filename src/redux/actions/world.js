@@ -1,11 +1,14 @@
 import { setShipLocation } from './ship'
 import {
   createDiffDuration,
+  generateBuyers,
   generatePlanets,
   generateContracts,
+  generateSellers,
   isInPast
 } from '../../util'
 import { setIsCreatingContract } from './ui'
+import { setBuyers, setSellers } from './market'
 
 // * ACTION TYPES
 const ADD_CONTRACT = 'ADD_CONTRACT'
@@ -124,10 +127,14 @@ export const initializeApplication = () => dispatch => {
   const homePlanet = planets.find(planet => planet.isHomePlanet === true)
   const location = { name: homePlanet.name, value: homePlanet.location }
   const contracts = generateContracts(planets)
+  const buyers = generateBuyers(planets)
+  const sellers = generateSellers(planets)
 
   dispatch(setPlanets(planets))
   dispatch(setShipLocation(location))
   dispatch(setContracts(contracts))
+  dispatch(setBuyers(buyers))
+  dispatch(setSellers(sellers))
 }
 
 /**

@@ -3,7 +3,7 @@
 exports[`<ImportButton /> Should render the <ImportButton /> component. 1`] = `
 <DocumentFragment>
   <div
-    class="StyledBox-sc-13pk1d4-0 IRSNj"
+    class="StyledBox-sc-13pk1d4-0 fWrrBh"
   >
     <button
       class="StyledButton-sc-323bzc-0 jfbKsv"

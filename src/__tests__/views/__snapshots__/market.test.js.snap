@@ -3,1157 +3,343 @@
 exports[`<MarketView /> Should render the <MarketView /> component. 1`] = `
 <DocumentFragment>
   <div
-    class="StyledBox-sc-13pk1d4-0 IRSNj"
+    class="StyledBox-sc-13pk1d4-0 fWrrBh"
   >
     <div
-      class="StyledBox-sc-13pk1d4-0 IRSNj"
+      class="StyledBox-sc-13pk1d4-0 fWrrBh"
     >
-      <h2
-        class="StyledHeading-sc-1rdh4aw-0 yhirM"
+      <header
+        class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault"
       >
-        Test Planet 1
-      </h2>
-      <div
-        class="Table_tableWrapper__1fXsJ Table_tableScroll__zRwCt undefined"
-      >
-        <table
-          class="Table_table__1DoSj"
+        <div
+          class="MuiTabs-root"
         >
-          <thead>
-            <tr>
-              <th>
-                Item
-              </th>
-              <th>
-                Quantity
-              </th>
-              <th>
-                Volume
-              </th>
-              <th>
-                Value
-              </th>
-              <th>
-                Price
-              </th>
-              <th>
-                Destination
-              </th>
-              <th>
-                Add
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              class="sc-bdVaJa iJTrNS"
+          <div
+            class="MuiTabs-scroller MuiTabs-fixed"
+            style="overflow: hidden;"
+          >
+            <div
+              class="MuiTabs-flexContainer MuiTabs-centered"
+              role="tablist"
             >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
+              <button
+                aria-selected="true"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected MuiTab-labelIcon"
+                role="tab"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
                 >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
                   <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="0"
-                    data-tip="true"
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    role="presentation"
                     viewBox="0 0 24 24"
                   >
                     <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
+                      d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
                     />
                   </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="0"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 2
-              </td>
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 hroMnY"
+                  Buy
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                aria-selected="false"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-labelIcon"
+                role="tab"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
                 >
-                  <button
-                    class="StyledButton-sc-323bzc-0 jJyttA"
-                    data-testid="add-button-0"
-                    disabled=""
-                    type="button"
-                  >
-                    <svg
-                      aria-label="Add"
-                      class="StyledIcon-ofa7kd-0 iOkQrb"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12,22 L12,2 M2,12 L22,12"
-                        fill="none"
-                        stroke="#000"
-                        stroke-width="2"
-                      />
-                    </svg>
-                  </button>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hPsznL"
-                  />
-                  <label
-                    for="quantity-input-0"
-                  >
-                    Quantity to Add
-                  </label>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hPsznL"
-                  />
-                  <input
-                    id="quantity-input-0"
-                    max="4"
-                    min="0"
-                    type="number"
-                    value="0"
-                  />
-                </div>
-              </td>
-            </tr>
-            <tr
-              class="sc-bdVaJa iJTrNS"
-            >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
-                >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
                   <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="1"
-                    data-tip="true"
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    role="presentation"
                     viewBox="0 0 24 24"
                   >
                     <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
+                      d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
                     />
                   </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="1"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 2
-              </td>
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 hroMnY"
-                >
-                  <button
-                    class="StyledButton-sc-323bzc-0 jJyttA"
-                    data-testid="add-button-1"
-                    disabled=""
-                    type="button"
-                  >
-                    <svg
-                      aria-label="Add"
-                      class="StyledIcon-ofa7kd-0 iOkQrb"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12,22 L12,2 M2,12 L22,12"
-                        fill="none"
-                        stroke="#000"
-                        stroke-width="2"
-                      />
-                    </svg>
-                  </button>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hPsznL"
-                  />
-                  <label
-                    for="quantity-input-1"
-                  >
-                    Quantity to Add
-                  </label>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hPsznL"
-                  />
-                  <input
-                    id="quantity-input-1"
-                    max="4"
-                    min="0"
-                    type="number"
-                    value="0"
-                  />
-                </div>
-              </td>
-            </tr>
-            <tr
-              class="sc-bdVaJa iJTrNS"
-            >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
-                >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="2"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="2"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 2
-              </td>
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 hroMnY"
-                >
-                  <button
-                    class="StyledButton-sc-323bzc-0 jJyttA"
-                    data-testid="add-button-2"
-                    disabled=""
-                    type="button"
-                  >
-                    <svg
-                      aria-label="Add"
-                      class="StyledIcon-ofa7kd-0 iOkQrb"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12,22 L12,2 M2,12 L22,12"
-                        fill="none"
-                        stroke="#000"
-                        stroke-width="2"
-                      />
-                    </svg>
-                  </button>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hPsznL"
-                  />
-                  <label
-                    for="quantity-input-2"
-                  >
-                    Quantity to Add
-                  </label>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hPsznL"
-                  />
-                  <input
-                    id="quantity-input-2"
-                    max="4"
-                    min="0"
-                    type="number"
-                    value="0"
-                  />
-                </div>
-              </td>
-            </tr>
-            <tr
-              class="sc-bdVaJa iJTrNS"
-            >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
-                >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="3"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="3"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 2
-              </td>
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 hroMnY"
-                >
-                  <button
-                    class="StyledButton-sc-323bzc-0 jJyttA"
-                    data-testid="add-button-3"
-                    disabled=""
-                    type="button"
-                  >
-                    <svg
-                      aria-label="Add"
-                      class="StyledIcon-ofa7kd-0 iOkQrb"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12,22 L12,2 M2,12 L22,12"
-                        fill="none"
-                        stroke="#000"
-                        stroke-width="2"
-                      />
-                    </svg>
-                  </button>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hPsznL"
-                  />
-                  <label
-                    for="quantity-input-3"
-                  >
-                    Quantity to Add
-                  </label>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hPsznL"
-                  />
-                  <input
-                    id="quantity-input-3"
-                    max="4"
-                    min="0"
-                    type="number"
-                    value="0"
-                  />
-                </div>
-              </td>
-            </tr>
-            <tr
-              class="sc-bdVaJa iJTrNS"
-            >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
-                >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="4"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="4"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 2
-              </td>
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 hroMnY"
-                >
-                  <button
-                    class="StyledButton-sc-323bzc-0 jJyttA"
-                    data-testid="add-button-4"
-                    disabled=""
-                    type="button"
-                  >
-                    <svg
-                      aria-label="Add"
-                      class="StyledIcon-ofa7kd-0 iOkQrb"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12,22 L12,2 M2,12 L22,12"
-                        fill="none"
-                        stroke="#000"
-                        stroke-width="2"
-                      />
-                    </svg>
-                  </button>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hPsznL"
-                  />
-                  <label
-                    for="quantity-input-4"
-                  >
-                    Quantity to Add
-                  </label>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 hPsznL"
-                  />
-                  <input
-                    id="quantity-input-4"
-                    max="4"
-                    min="0"
-                    type="number"
-                    value="0"
-                  />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div
-      class="StyledBox-sc-13pk1d4-0 IRSNj"
-    >
-      <h2
-        class="StyledHeading-sc-1rdh4aw-0 yhirM"
-      >
-        Test Planet 2
-      </h2>
+                  Sell
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <span
+              class="PrivateTabIndicator-root-70 PrivateTabIndicator-colorPrimary-71 MuiTabs-indicator"
+              style="left: 0px; width: 0px;"
+            />
+          </div>
+        </div>
+      </header>
       <div
-        class="Table_tableWrapper__1fXsJ Table_tableScroll__zRwCt undefined"
+        class="StyledBox-sc-13pk1d4-0 ekjAwv"
       >
-        <table
-          class="Table_table__1DoSj"
+        <div
+          class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          style="width: 200px;"
         >
-          <thead>
-            <tr>
-              <th>
-                Item
-              </th>
-              <th>
-                Quantity
-              </th>
-              <th>
-                Volume
-              </th>
-              <th>
-                Value
-              </th>
-              <th>
-                Price
-              </th>
-              <th>
-                Destination
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              class="sc-bwzfXH ddilgX"
+          <ul
+            class="MuiList-root MuiList-padding"
+            role="menu"
+            tabindex="-1"
+          >
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root Mui-selected MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button Mui-selected"
+              role="menuitem"
+              tabindex="-1"
             >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
-                >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="5"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="5"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 1
-              </td>
-            </tr>
-            <tr
-              class="sc-bwzfXH ddilgX"
+              Ammunition
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
             >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
-                >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="6"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="6"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 1
-              </td>
-            </tr>
-            <tr
-              class="sc-bwzfXH ddilgX"
+              Antibiotics
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
             >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
-                >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="7"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="7"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 1
-              </td>
-            </tr>
-            <tr
-              class="sc-bwzfXH ddilgX"
+              Glass
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
             >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
-                >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="8"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="8"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 1
-              </td>
-            </tr>
-            <tr
-              class="sc-bwzfXH ddilgX"
+              Gold
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
             >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
-                >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="9"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="9"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 1
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div
-      class="StyledBox-sc-13pk1d4-0 IRSNj"
-    >
-      <h2
-        class="StyledHeading-sc-1rdh4aw-0 yhirM"
-      >
-        Test Planet 3
-      </h2>
-      <div
-        class="Table_tableWrapper__1fXsJ Table_tableScroll__zRwCt undefined"
-      >
-        <table
-          class="Table_table__1DoSj"
+              Ore
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Plasma
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Silver
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Soil
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Space Junk
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+            <li
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+              role="menuitem"
+              tabindex="-1"
+            >
+              Tobacco
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </li>
+          </ul>
+        </div>
+        <div
+          class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          style="width: 100%;"
         >
-          <thead>
-            <tr>
-              <th>
-                Item
-              </th>
-              <th>
-                Quantity
-              </th>
-              <th>
-                Volume
-              </th>
-              <th>
-                Value
-              </th>
-              <th>
-                Price
-              </th>
-              <th>
-                Destination
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              class="sc-htpNat hXHBMU"
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
+          >
+            <div
+              class="MuiCardContent-root"
             >
-              <td>
+              <div
+                class="MuiBox-root MuiBox-root-96"
+              >
                 <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                  class="MuiBox-root MuiBox-root-97"
                 >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
+                  <h2
+                    class="MuiTypography-root MuiTypography-h5"
                   >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
+                    Ammunition
+                  </h2>
                   <svg
-                    aria-label="StatusUnknown"
+                    aria-label="Target"
                     class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="10"
-                    data-tip="true"
                     viewBox="0 0 24 24"
                   >
                     <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
+                      d="M23,12 C23,18.075 18.075,23 12,23 C5.925,23 1,18.075 1,12 C1,5.925 5.925,1 12,1 C18.075,1 23,5.925 23,12 L23,12 Z M18,12 C18,8.691 15.309,6 12,6 C8.691,6 6,8.691 6,12 C6,15.309 8.691,18 12,18 C15.309,18 18,15.309 18,12 L18,12 Z M13,12 C13,11.448 12.552,11 12,11 C11.448,11 11,11.448 11,12 C11,12.552 11.448,13 12,13 C12.552,13 13,12.552 13,12 L13,12 Z"
                       fill="none"
                       stroke="#000"
                       stroke-width="2"
                     />
                   </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="10"
-                  >
-                    <span />
-                  </div>
                 </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 2
-              </td>
-            </tr>
-            <tr
-              class="sc-htpNat hXHBMU"
-            >
-              <td>
                 <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                  class="MuiBox-root MuiBox-root-128"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                  >
+                    Bullets used for shootin'.
+                  </p>
+                  <span
+                    class="MuiTypography-root MuiTypography-caption"
+                  >
+                    Value: 3
+                  </span>
+                  <br />
+                  <span
+                    class="MuiTypography-root MuiTypography-caption"
+                  >
+                    Volume: 0.8
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <table
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
+            >
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Name
+                </th>
+                <th
+                  aria-sort="ascending"
+                  class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
+                  scope="col"
                 >
                   <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
+                    class="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-active"
+                    role="button"
+                    tabindex="0"
                   >
-                    Test Item
+                    Price
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                      />
+                    </svg>
                   </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="11"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="11"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 2
-              </td>
-            </tr>
-            <tr
-              class="sc-htpNat hXHBMU"
-            >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
+                  scope="col"
+                >
+                  Location
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-alignRight MuiTableCell-head"
+                  scope="col"
                 >
                   <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
+                    class="MuiButtonBase-root MuiTableSortLabel-root"
+                    role="button"
+                    tabindex="0"
                   >
-                    Test Item
+                    Jumps Away
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                      />
+                    </svg>
                   </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="12"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="12"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 2
-              </td>
-            </tr>
-            <tr
-              class="sc-htpNat hXHBMU"
-            >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
-                >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="13"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="13"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 2
-              </td>
-            </tr>
-            <tr
-              class="sc-htpNat hXHBMU"
-            >
-              <td>
-                <div
-                  class="StyledBox-sc-13pk1d4-0 gQLnBt"
-                >
-                  <span
-                    class="StyledText-sc-1sadyjn-0 fWSbXS"
-                  >
-                    Test Item
-                  </span>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <svg
-                    aria-label="StatusUnknown"
-                    class="StyledIcon-ofa7kd-0 iOkQrb"
-                    currentitem="false"
-                    data-for="14"
-                    data-tip="true"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2,3.99079514 C2,2.89130934 2.89821238,2 3.99079514,2 L20.0092049,2 C21.1086907,2 22,2.89821238 22,3.99079514 L22,20.0092049 C22,21.1086907 21.1017876,22 20.0092049,22 L3.99079514,22 C2.89130934,22 2,21.1017876 2,20.0092049 L2,3.99079514 Z M12,15 L12,14 C12,13 12,12.5 13,12 C14,11.5 15,11 15,9.5 C15,8.5 14,7 12,7 C10,7 9,8.26413718 9,10 M12,16 L12,18"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    />
-                  </svg>
-                  <div
-                    class="StyledBox__StyledBoxGap-sc-13pk1d4-1 iChEkS"
-                  />
-                  <div
-                    class="__react_component_tooltip place-top type-dark "
-                    data-id="tooltip"
-                    id="14"
-                  >
-                    <span />
-                  </div>
-                </div>
-              </td>
-              <td />
-              <td>
-                1
-              </td>
-              <td>
-                1
-              </td>
-              <td />
-              <td>
-                Test Planet 2
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
+            />
+          </table>
+        </div>
       </div>
     </div>
   </div>
