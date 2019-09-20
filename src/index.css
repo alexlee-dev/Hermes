@@ -52,3 +52,13 @@ body {
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
+
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
