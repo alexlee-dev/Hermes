@@ -48,6 +48,36 @@ const createLink = (svg, data) =>
     .append('line')
     .attr('stroke-width', 2)
 
+const addEventsToNodes = svg => {
+  svg.selectAll('.node-container').on('mouseover', function(data) {
+    // console.log({
+    //   data,
+    //   event: d3.event,
+    //   mouse: d3.mouse(this),
+    //   this: this
+    // })
+    console.log('MOUSEOVER')
+    d3.select(this)
+      .select('circle')
+      .attr('r', 8)
+    d3.select(this)
+      .select('text')
+      .style('font-size', '20px')
+  })
+  svg.selectAll('.node-container').on('mouseleave', function(data) {
+    console.log('MOUSELEAVE')
+    d3.select(this)
+      .select('circle')
+      .attr('r', 5)
+    d3.select(this)
+      .select('text')
+      .style('font-size', '16px')
+  })
+  svg.selectAll('.node-container').on('click', function(data) {
+    alert('Clicked!')
+  })
+}
+
 const Map = () => {
   const drawChart = () => {
     const height = d3.select('#map-root').property('clientHeight')
@@ -118,6 +148,8 @@ const Map = () => {
       .text(({ name }) => name)
       .attr('x', ({ x }) => x)
       .attr('y', ({ y }) => y)
+
+    addEventsToNodes(svg)
   }
 
   useEffect(() => {

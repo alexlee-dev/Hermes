@@ -27,7 +27,7 @@ const customState = {
   }
 }
 
-describe('<PlanetsView />', () => {
+describe.skip('<PlanetsView />', () => {
   it('Should render the <PlanetsView /> component.', () => {
     const container = customRender({
       component: PlanetsView,
