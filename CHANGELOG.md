@@ -1,5 +1,15 @@
 # Changelog
 
+## 📦 v0.6.0 (September 18, 2019)
+
+### Added
+
+- ✨ - Market Implementation
+
+### Changed
+
+### Fixed
+
 ## 📦 v0.5.0 (September 13, 2019)
 
 ### Added
