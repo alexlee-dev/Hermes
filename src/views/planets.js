@@ -1,18 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import PlanetDisplay from '../components/PlanetDisplay'
-
+import { Box } from '@material-ui/core'
+import Map from '../components/Map'
 /**
  * Displays information about the planets.
  */
 const PlanetsView = ({ planets }) => {
   return (
-    <div>
-      {planets.map((planet, i) => (
-        <PlanetDisplay key={i} planet={planet} />
-      ))}
-    </div>
+    <Box>
+      <Map />
+    </Box>
   )
 }
 
