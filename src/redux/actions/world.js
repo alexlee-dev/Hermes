@@ -138,18 +138,6 @@ export const initializeApplication = () => dispatch => {
 }
 
 /**
- * Clears and refreshes items, and sets the timer to be no longer running.
- */
-export const itemTimerFinish = () => dispatch => {
-  // * Clear all items from planets
-  dispatch(clearItems())
-  // * Put new items on planets
-  dispatch(refreshItems())
-  // * Tell Redux the timer is no longer running
-  dispatch(setTimerRunning(false))
-}
-
-/**
  * Handles setting up timeouts to remove item contracts when they expire.
  * @param {Array} contracts Array of item contracts.
  */

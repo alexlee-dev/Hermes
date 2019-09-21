@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { setView } from '../redux/actions/ui'
 import { views } from '../constants'
 import Title from './Title'
-import ItemTimer from './ItemTimer'
 import TravelTimer from './TravelTimer'
 import CashDisplay from './CashDisplay'
 import ContractsDisplay from './ContractsDisplay'
@@ -56,7 +55,6 @@ const Sidebar = ({
             />
           ))}
         </Box>
-        <ItemTimer />
         <TravelTimer />
         <CashDisplay />
         <ContractsDisplay />
