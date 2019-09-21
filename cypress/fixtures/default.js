@@ -1,4 +1,15 @@
-import { saveState } from '../../src/util'
+/**
+ * Saves the application state in localStorage.
+ * @param {object} state State of the application.
+ */
+const saveState = state => {
+  try {
+    const serializedState = JSON.stringify(state)
+    localStorage.setItem('state', serializedState)
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 export const mockState = {
   ship: {
@@ -76,6 +87,4 @@ export const mockState = {
   }
 }
 
-export const setMockState = () => {
-  saveState(mockState)
-}
+export const setMockState = () => saveState(mockState)

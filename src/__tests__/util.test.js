@@ -30,10 +30,6 @@ describe('Utilities', () => {
     expect(saveState({ mockedState: true })).toBe(undefined)
   })
 
-  it('Should test createDuration().', () => {
-    expect(typeof createDuration()).toBe('object')
-  })
-
   it('Should test createETA().', () => {
     expect(typeof createETA({ value: 0 }, { location: { value: 50 } })).toBe(
       'object'

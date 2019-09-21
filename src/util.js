@@ -99,23 +99,6 @@ export const saveState = state => {
 }
 
 /**
- * Creates a moment duration for the itemTimer
- * @returns {duration}
- */
-export const createDuration = () => {
-  const deadline = moment().minutes(60)
-  const now = moment()
-
-  const minutesLeft = deadline
-    .clone()
-    .subtract(now.minutes(), 'minutes')
-    .minutes()
-  const secondsLeft = 60 - now.seconds()
-
-  return moment.duration({ minutes: minutesLeft, seconds: secondsLeft })
-}
-
-/**
  * Creates a moment ETA for the ship to get to its destination.
  * @param {object} destination Destination object.
  * @param {object} ship Ship object.
@@ -240,36 +223,6 @@ export const generateContracts = planets => {
   }
 
   return contracts
-}
-
-/**
- * The logic for the item timer.
- * @param {object} world World object.
- * @param {function} setTimeLeft State function to set the time left.
- * @param {function} handleTimerStarted What to do when the timer has started.
- * @param {function} handleTimerStopped What to do when the timer has ended.
- */
-export const itemTimerLogic = (
-  world,
-  setTimeLeft,
-  handleTimerStarted,
-  handleTimerStopped
-) => {
-  const { isTimerRunning } = world
-
-  let duration = createDuration()
-
-  if (!isTimerRunning) {
-    handleTimerStarted()
-    let timer = setInterval(() => {
-      duration.subtract(1, 'second')
-      setTimeLeft(`${duration.minutes()} minutes ${duration.seconds()} seconds`)
-      if (duration.asMilliseconds() === 0 || duration.asMilliseconds() < 0) {
-        clearInterval(timer)
-        handleTimerStopped()
-      }
-    }, 1000)
-  }
 }
 
 /**

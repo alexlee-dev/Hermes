@@ -1,7 +1,6 @@
 import { customRender } from '../../test-utils'
 import { defaultState } from '../../fixtures'
 import PlanetsView from '../../views/planets'
-import { waitForElement, fireEvent } from '@testing-library/dom'
 
 const customState = {
   ...defaultState,
@@ -27,23 +26,12 @@ const customState = {
   }
 }
 
-describe.skip('<PlanetsView />', () => {
+describe('<PlanetsView />', () => {
   it('Should render the <PlanetsView /> component.', () => {
     const container = customRender({
       component: PlanetsView,
       state: customState
     })
     expect(container.asFragment()).toMatchSnapshot()
-  })
-
-  it('Should handle traveling.', async () => {
-    const { getByTestId } = customRender({
-      component: PlanetsView,
-      state: customState
-    })
-    const button = await waitForElement(() =>
-      getByTestId('travel-button-Test Planet 2')
-    )
-    fireEvent.click(button)
   })
 })
