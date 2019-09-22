@@ -20,7 +20,7 @@ describe('Map', () => {
     const stub = cy.stub()
     cy.on('window:alert', stub)
     cy.get('body')
-      .contains(mockState.world.planets[0].name)
+      .contains(mockState.world.planets[2].name)
       .click()
       .then(() => {
         expect(stub.getCall(0)).to.be.calledWith('Clicked!')
@@ -33,5 +33,27 @@ describe('Map', () => {
 
   it('Should indicate the ship current location.', () => {
     cy.get('body').contains('(YOUR_SHIP)')
+  })
+
+  it('Should not be able to interact with the planet that the ship is currently at.', () => {
+    const stub = cy.stub()
+    cy.on('window:alert', stub)
+    const currentPlanet = mockState.world.planets.find(
+      planet => planet.name === mockState.ship.location.name
+    )
+    cy.contains(currentPlanet.name)
+      .should('have.css', 'font-size')
+      .and('match', /16px/)
+    cy.contains(currentPlanet.name).trigger('mouseover')
+    cy.contains(currentPlanet.name)
+      .should('have.css', 'font-size')
+      .and('match', /16px/)
+
+    cy.get('body')
+      .contains(currentPlanet.name)
+      .click()
+      .then(() => {
+        expect(stub).not.to.be.called
+      })
   })
 })
