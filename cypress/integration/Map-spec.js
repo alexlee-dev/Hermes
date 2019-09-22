@@ -2,11 +2,11 @@
 
 import { setMockState, mockState } from '../fixtures/default'
 
-describe('Planets', () => {
+describe('Map', () => {
   beforeEach(() => {
     setMockState()
     cy.visit('/')
-    cy.contains('Planets').click()
+    cy.contains('Map').click()
   })
 
   it('Should display planets.', () => {
