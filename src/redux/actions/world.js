@@ -1,5 +1,5 @@
 import { setShipLocation } from './ship'
-import { generateBuyers, generatePlanets, generateSellers } from '../../util'
+import { generateBuyers, generatePlanets, generateSellers } from '../../util/main'
 import { setBuyers, setSellers } from './market'
 
 // * ACTION TYPES

@@ -9,7 +9,7 @@ import {
   TableSortLabel
 } from '@material-ui/core'
 import ItemCard from '../components/ItemCard'
-import { simpleCompare } from '../util'
+import { simpleCompare } from '../util/main'
 import MarketAvatar from './MarketAvatar'
 
 const MarketTable = ({ data, item }) => {

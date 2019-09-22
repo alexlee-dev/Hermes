@@ -5,7 +5,7 @@ import shipReducer from '../reducers/ship'
 import uiReducer from '../reducers/ui'
 import userReducer from '../reducers/user'
 import worldReducer from '../reducers/world'
-import { loadState, saveState } from '../../util'
+import { loadState, saveState } from '../../util/main'
 import throttle from 'lodash/throttle'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
