@@ -16,15 +16,11 @@ describe('Map', () => {
   })
 
   // * Update this in the future
-  it('Should display an alert when clicking a planet.', () => {
-    const stub = cy.stub()
-    cy.on('window:alert', stub)
+  it('Should display an prompt when clicking a planet.', () => {
     cy.get('body')
       .contains(mockState.world.planets[2].name)
       .click()
-      .then(() => {
-        expect(stub.getCall(0)).to.be.calledWith('Clicked!')
-      })
+    cy.get('body').contains('TRAVEL_PROMPT')
   })
 
   it('Should indicate the Home Planet.', () => {
@@ -36,8 +32,6 @@ describe('Map', () => {
   })
 
   it('Should not be able to interact with the planet that the ship is currently at.', () => {
-    const stub = cy.stub()
-    cy.on('window:alert', stub)
     const currentPlanet = mockState.world.planets.find(
       planet => planet.name === mockState.ship.location.name
     )
@@ -52,8 +46,6 @@ describe('Map', () => {
     cy.get('body')
       .contains(currentPlanet.name)
       .click()
-      .then(() => {
-        expect(stub).not.to.be.called
-      })
+    cy.contains('TRAVEL_PROMPT').should('not.exist')
   })
 })

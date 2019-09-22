@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Paper } from '@material-ui/core'
 import * as d3 from 'd3'
 import { connect } from 'react-redux'
+import TravelPrompt from './TravelPrompt'
 
 const radius = 23
 const fill = '#1976d2'
@@ -56,7 +57,7 @@ const createLink = (svg, data) =>
     .append('line')
     .attr('stroke-width', 2)
 
-const addEventsToNodes = svg => {
+const addEventsToNodes = (svg, setOpen) => {
   svg.selectAll('.node-container').on('mouseover', function(data) {
     // * Function has in scope: data, d3.event, d3.mouse(this), this
 
@@ -78,7 +79,7 @@ const addEventsToNodes = svg => {
       .style('font-size', '16px')
   })
   svg.selectAll('.node-container').on('click', function(data) {
-    if (!data.isHomePlanet) alert('Clicked!')
+    if (!data.isHomePlanet) setOpen(true)
   })
 }
 
@@ -175,7 +176,7 @@ const Map = ({ planets, ship }) => {
       .attr('y', ({ y }) => y)
       .style('font-size', '10px')
 
-    addEventsToNodes(svg)
+    addEventsToNodes(svg, setOpen)
   }
 
   useEffect(() => {
@@ -183,7 +184,14 @@ const Map = ({ planets, ship }) => {
     // eslint-disable-next-line
   }, [])
 
-  return <Paper id="map-root" style={{ height: 'calc(100vh - 50px)' }} />
+  const [open, setOpen] = useState(false)
+
+  return (
+    <Fragment>
+      <Paper id="map-root" style={{ height: 'calc(100vh - 50px)' }} />
+      <TravelPrompt open={open} setOpen={setOpen} />
+    </Fragment>
+  )
 }
 
 Map.propTypes = {
@@ -193,4 +201,9 @@ Map.propTypes = {
 
 const mapStateToProps = ({ ship, world }) => ({ planets: world.planets, ship })
 
-export default connect(mapStateToProps)(Map)
+const mapDispatchToProps = dispatch => ({})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Map)
