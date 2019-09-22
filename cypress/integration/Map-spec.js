@@ -26,4 +26,8 @@ describe('Map', () => {
         expect(stub.getCall(0)).to.be.calledWith('Clicked!')
       })
   })
+
+  it('Should indicate the Home Planet.', () => {
+    cy.get('body').contains('(Home Planet)')
+  })
 })
