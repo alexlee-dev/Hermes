@@ -37,7 +37,10 @@ const createNode = (svg, data) =>
     .data(data)
     .enter()
     .append('g')
-    .attr('class', 'node-container')
+    .attr('class', planet =>
+      planet.isHomePlanet ? 'node-container home-planet' : 'node-container'
+    )
+    .attr('style', planet => (planet.isHomePlanet ? 'cursor: default' : ''))
     .attr('id', planet => planet.name)
     .append('circle')
     .attr('r', radius)
@@ -56,16 +59,17 @@ const createLink = (svg, data) =>
 const addEventsToNodes = svg => {
   svg.selectAll('.node-container').on('mouseover', function(data) {
     // * Function has in scope: data, d3.event, d3.mouse(this), this
-    console.log('MOUSEOVER')
-    d3.select(this)
-      .select('circle')
-      .attr('fill', fillHover)
-    d3.select(this)
-      .select('text')
-      .style('font-size', '20px')
+
+    if (!data.isHomePlanet) {
+      d3.select(this)
+        .select('text')
+        .style('font-size', '20px')
+      d3.select(this)
+        .select('circle')
+        .attr('fill', fillHover)
+    }
   })
   svg.selectAll('.node-container').on('mouseleave', function(data) {
-    console.log('MOUSELEAVE')
     d3.select(this)
       .select('circle')
       .attr('fill', fill)
@@ -74,12 +78,11 @@ const addEventsToNodes = svg => {
       .style('font-size', '16px')
   })
   svg.selectAll('.node-container').on('click', function(data) {
-    alert('Clicked!')
+    if (!data.isHomePlanet) alert('Clicked!')
   })
 }
 
 const Map = ({ planets, ship }) => {
-  console.log({ ship })
   const drawChart = () => {
     const height = d3.select('#map-root').property('clientHeight')
     const width = d3.select('#map-root').property('clientWidth')
