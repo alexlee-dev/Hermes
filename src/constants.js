@@ -1,5 +1,5 @@
 import MarketView from './views/market'
-import PlanetsView from './views/planets'
+import MapView from './views/map'
 import ShipView from './views/ship'
 import {
   Aid,
@@ -230,7 +230,7 @@ export const mockSellers = [
  */
 export const views = {
   Market: MarketView,
-  Planets: PlanetsView,
+  Map: MapView,
   Ship: ShipView
 }
 
