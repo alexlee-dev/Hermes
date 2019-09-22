@@ -1,6 +1,6 @@
 import { addCash, removeCash } from './user'
 import { removeItem } from './world'
-import { createETA, createDiffDuration } from '../../util'
+import { createETA, createDiffDuration } from '../../util/main'
 import moment from 'moment'
 
 // * ACTION TYPES
@@ -187,4 +187,8 @@ export const purchaseCargo = (item, quantity) => dispatch => {
   dispatch(storeCargo(item, quantity))
   // * dispatch an action to remove the item from the list of stored items on this planet
   dispatch(removeItem(item, quantity))
+}
+
+export const instantTravel = destination => dispatch => {
+  dispatch(setShipLocation({ name: destination.name }))
 }

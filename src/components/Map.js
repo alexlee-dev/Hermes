@@ -4,202 +4,103 @@ import { Paper } from '@material-ui/core'
 import * as d3 from 'd3'
 import { connect } from 'react-redux'
 import TravelPrompt from './TravelPrompt'
+import {
+  addEventsToNodes,
+  createHomePlanetInd,
+  createLabels,
+  createLinks,
+  createNodes,
+  createShipInd,
+  createSimulation,
+  createSvg,
+  getHeight,
+  getWidth,
+  updateShipLocation
+} from '../util/map'
 
-const radius = 23
-const fill = '#1976d2'
-const fillHover = 'rgb(17, 82, 147)'
-
-const createSvg = (selector, height, width) =>
-  d3
-    .select(selector)
-    .append('svg')
-    .attr('height', height)
-    .attr('width', width)
-
-const createSimulation = nodes => d3.forceSimulation().nodes(nodes)
-
-const updateLinks = link =>
-  link
-    .attr('x1', d => d.source.x)
-    .attr('y1', d => d.source.y)
-    .attr('x2', d => d.target.x)
-    .attr('y2', d => d.target.y)
-
-const addForces = (simulation, height, width) =>
-  simulation
-    .force('charge_force', d3.forceManyBody())
-    .force('center_force', d3.forceCenter(width / 2, height / 2))
-
-const createNode = (svg, data) =>
-  svg
-    .append('g')
-    .attr('class', 'nodes')
-    .selectAll('circle')
-    .data(data)
-    .enter()
-    .append('g')
-    .attr('class', planet =>
-      planet.isHomePlanet ? 'node-container home-planet' : 'node-container'
-    )
-    .attr('style', planet => (planet.isHomePlanet ? 'cursor: default' : ''))
-    .attr('id', planet => planet.name)
-    .append('circle')
-    .attr('r', radius)
-    .attr('fill', fill)
-
-const createLink = (svg, data) =>
-  svg
-    .append('g')
-    .attr('class', 'links')
-    .selectAll('line')
-    .data(data)
-    .enter()
-    .append('line')
-    .attr('stroke-width', 2)
-
-const addEventsToNodes = (svg, setOpen) => {
-  svg.selectAll('.node-container').on('mouseover', function(data) {
-    // * Function has in scope: data, d3.event, d3.mouse(this), this
-
-    if (!data.isHomePlanet) {
-      d3.select(this)
-        .select('text')
-        .style('font-size', '20px')
-      d3.select(this)
-        .select('circle')
-        .attr('fill', fillHover)
-    }
-  })
-  svg.selectAll('.node-container').on('mouseleave', function(data) {
-    d3.select(this)
-      .select('circle')
-      .attr('fill', fill)
-    d3.select(this)
-      .select('text')
-      .style('font-size', '16px')
-  })
-  svg.selectAll('.node-container').on('click', function(data) {
-    if (!data.isHomePlanet) setOpen(true)
-  })
-}
-
-const Map = ({ planets, ship }) => {
+/**
+ * TODO - Edit generatePlanets to modify the location to be a random x and random y
+ * TODO - Modify the calculation for centering elements on the circle x. Needs to include calculation for width of element itself
+ */
+const Map = ({ currentShipLocation, planets, ship }) => {
   const drawChart = () => {
-    const height = d3.select('#map-root').property('clientHeight')
-    const width = d3.select('#map-root').property('clientWidth')
+    const height = getHeight('#map-root')
+    const width = getWidth('#map-root')
 
     const svg = createSvg('#map-root', height, width)
 
-    const nodes_data = planets
-
-    const simulation = createSimulation(nodes_data)
-
-    const handleTick = () => {
-      //update circle positions each tick of the simulation
-      node.attr('cx', d => d.x).attr('cy', d => d.y)
-
-      textLabels
-        .attr('x', ({ x }) => x + radius + 2)
-        .attr('y', ({ y }) => y + radius / 2)
-
-      homePlanetInd
-        .attr('x', ({ x }) => x + radius + 2)
-        .attr('y', ({ y }) => y - 10)
-
-      shipInd.attr('x', ({ x }) => x + radius + 2).attr('y', ({ y }) => y + 30)
-
-      //update link positions
-      //simply tells one end of the line to follow one node around
-      //and the other end of the line to follow the other node around
-      updateLinks(link)
-    }
-    //add forces
-    //we're going to add a charge to each node
-    //also going to add a centering force
-    addForces(simulation, height, width)
-
-    //draw circles for the nodes
-    const node = createNode(svg, nodes_data)
-
-    //add tick instructions:
-    simulation.on('tick', handleTick)
-
-    //Time for the links
-
-    //Create links data
-    const links_data = [
-      { source: planets[0].name, target: planets[1].name, distance: 5 },
-      { source: planets[1].name, target: planets[2].name, distance: 10 }
+    // TODO - Incorporate this into generatePlanets()
+    const planet1Location = { x: -0.25, y: 0 }
+    const planet2Location = { x: 0, y: 0 }
+    const planet3Location = { x: 0.25, y: 0 }
+    const mockPlanetLocations = [
+      planet1Location,
+      planet2Location,
+      planet3Location
     ]
 
-    //Create the link force
-    //We need the id accessor to use named sources and targets
+    const nodes_data = planets.map((planet, i) => ({
+      ...planet,
+      location: mockPlanetLocations[i]
+    }))
 
-    const link_force = d3
-      .forceLink(links_data)
-      .id(d => d.name)
-      .distance(200)
+    const links_data = [
+      { source: nodes_data[0].name, target: nodes_data[1].name },
+      { source: nodes_data[1].name, target: nodes_data[2].name }
+    ]
 
-    //Add a links force to the simulation
-    //Specify links  in d3.forceLink argument
+    createSimulation(nodes_data)
 
-    simulation.force('links', link_force)
-    simulation.force('manyBody', d3.forceManyBody().strength(-800))
+    createNodes(svg, nodes_data, currentShipLocation, height, width)
 
-    //draw lines for the links
-    const link = createLink(svg, links_data)
+    createLinks(svg, links_data, height, width)
 
-    const textLabels = svg
-      .selectAll('.node-container')
-      .append('text')
-      .text(({ name }) => name)
-      .attr('x', ({ x }) => x)
-      .attr('y', ({ y }) => y)
+    createLabels(svg, height, width)
 
-    // Indicate home planet
-    const homePlanet = planets.find(planet => planet.isHomePlanet === true)
-    const homePlanetInd = svg
-      .select(`#${homePlanet.name}`)
-      .append('text')
-      .text('(Home Planet)')
-      .attr('id', 'home-planet-ind')
-      .attr('x', ({ x }) => x)
-      .attr('y', ({ y }) => y)
-      .style('font-size', '10px')
+    createHomePlanetInd(svg, planets, height, width)
 
-    const shipInd = svg
-      .select(`#${ship.location.name}`)
-      .append('text')
-      .text('(YOUR_SHIP)')
-      .attr('id', 'ship-ind')
-      .attr('x', ({ x }) => x)
-      .attr('y', ({ y }) => y)
-      .style('font-size', '10px')
+    createShipInd(svg, ship, height, width)
 
-    addEventsToNodes(svg, setOpen)
+    addEventsToNodes(svg, setDestination, setOpen, currentShipLocation)
   }
+
+  const [open, setOpen] = useState(false)
+  const [destination, setDestination] = useState({})
 
   useEffect(() => {
     drawChart()
     // eslint-disable-next-line
   }, [])
 
-  const [open, setOpen] = useState(false)
+  useEffect(() => {
+    updateShipLocation(
+      currentShipLocation,
+      setOpen,
+      setDestination,
+      d3.select('#map-root').property('clientHeight'),
+      d3.select('#map-root').property('clientWidth')
+    )
+  }, [currentShipLocation])
 
   return (
     <Fragment>
       <Paper id="map-root" style={{ height: 'calc(100vh - 50px)' }} />
-      <TravelPrompt open={open} setOpen={setOpen} />
+      <TravelPrompt destination={destination} open={open} setOpen={setOpen} />
     </Fragment>
   )
 }
 
 Map.propTypes = {
+  currentShipLocation: PropTypes.object.isRequired,
   planets: PropTypes.array.isRequired,
   ship: PropTypes.object.isRequired
 }
 
-const mapStateToProps = ({ ship, world }) => ({ planets: world.planets, ship })
+const mapStateToProps = ({ ship, world }) => ({
+  currentShipLocation: ship.location,
+  planets: world.planets,
+  ship
+})
 
 const mapDispatchToProps = dispatch => ({})
 

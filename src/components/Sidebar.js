@@ -8,7 +8,7 @@ import { views } from '../constants'
 import Title from './Title'
 import TravelTimer from './TravelTimer'
 import CashDisplay from './CashDisplay'
-import { exportGame } from '../util'
+import { exportGame } from '../util/main'
 import ImportButton from './ImportButton'
 import { Tag } from 'flwww'
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Box, Button, Heading, Text } from 'grommet'
 import { Target } from 'grommet-icons'
 import { departShip } from '../redux/actions/ship'
-import { createETA, createDiffDuration } from '../util'
+import { createETA, createDiffDuration } from '../util/main'
 
 /**
  * Displays planet statistics.

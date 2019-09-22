@@ -1,4 +1,4 @@
-import { generateItems } from '../../util'
+import { generateItems } from '../../util/main'
 
 const worldDefaultState = {
   isTimerRunning: false,

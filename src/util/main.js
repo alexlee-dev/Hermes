@@ -1,4 +1,4 @@
-import { itemList, planets, firstNames, lastNames, colors } from './constants'
+import { itemList, planets, firstNames, lastNames, colors } from '../constants'
 import uuidv4 from 'uuid/v4'
 import moment from 'moment'
 import { saveAs } from 'file-saver'
