@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { setMockState } from '../fixtures/default'
+import { setMockState, mockState } from '../fixtures/default'
 
 describe('Planets', () => {
   beforeEach(() => {
@@ -10,8 +10,20 @@ describe('Planets', () => {
   })
 
   it('Should display planets.', () => {
-    cy.get('body').contains('Planet 1')
-    cy.get('body').contains('Planet 2')
-    cy.get('body').contains('Planet 3')
+    cy.get('body').contains(mockState.world.planets[0].name)
+    cy.get('body').contains(mockState.world.planets[1].name)
+    cy.get('body').contains(mockState.world.planets[2].name)
+  })
+
+  // * Update this in the future
+  it('Should display an alert when clicking a planet.', () => {
+    const stub = cy.stub()
+    cy.on('window:alert', stub)
+    cy.get('body')
+      .contains(mockState.world.planets[0].name)
+      .click()
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith('Clicked!')
+      })
   })
 })
