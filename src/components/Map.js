@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { Paper } from '@material-ui/core'
 import * as d3 from 'd3'
 
-const radius = 5
+const radius = 23
+const fill = '#1976d2'
+const fillHover = 'rgb(17, 82, 147)'
 
 const createSvg = (selector, height, width) =>
   d3
@@ -36,7 +38,7 @@ const createNode = (svg, data) =>
     .attr('class', 'node-container')
     .append('circle')
     .attr('r', radius)
-    .attr('fill', 'red')
+    .attr('fill', fill)
 
 const createLink = (svg, data) =>
   svg
@@ -50,16 +52,11 @@ const createLink = (svg, data) =>
 
 const addEventsToNodes = svg => {
   svg.selectAll('.node-container').on('mouseover', function(data) {
-    // console.log({
-    //   data,
-    //   event: d3.event,
-    //   mouse: d3.mouse(this),
-    //   this: this
-    // })
+    // * Function has in scope: data, d3.event, d3.mouse(this), this
     console.log('MOUSEOVER')
     d3.select(this)
       .select('circle')
-      .attr('r', 8)
+      .attr('fill', fillHover)
     d3.select(this)
       .select('text')
       .style('font-size', '20px')
@@ -68,7 +65,7 @@ const addEventsToNodes = svg => {
     console.log('MOUSELEAVE')
     d3.select(this)
       .select('circle')
-      .attr('r', 5)
+      .attr('fill', fill)
     d3.select(this)
       .select('text')
       .style('font-size', '16px')
@@ -98,8 +95,8 @@ const Map = () => {
       node.attr('cx', d => d.x).attr('cy', d => d.y)
 
       textLabels
-        .attr('x', ({ x }) => x + radius + 5)
-        .attr('y', ({ y }) => y + radius)
+        .attr('x', ({ x }) => x + radius + 2)
+        .attr('y', ({ y }) => y + radius / 2)
 
       //update link positions
       //simply tells one end of the line to follow one node around
