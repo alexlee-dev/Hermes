@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { Paper } from '@material-ui/core'
 import * as d3 from 'd3'
+import { connect } from 'react-redux'
 
 const radius = 23
 const fill = '#1976d2'
@@ -75,7 +77,7 @@ const addEventsToNodes = svg => {
   })
 }
 
-const Map = () => {
+const Map = ({ planets }) => {
   const drawChart = () => {
     const height = d3.select('#map-root').property('clientHeight')
     const width = d3.select('#map-root').property('clientWidth')
@@ -83,9 +85,9 @@ const Map = () => {
     const svg = createSvg('#map-root', height, width)
 
     const nodes_data = [
-      { name: 'Planet 1' },
-      { name: 'Planet 2' },
-      { name: 'Planet 3' }
+      { name: planets[0].name },
+      { name: planets[1].name },
+      { name: planets[2].name }
     ]
 
     const simulation = createSimulation(nodes_data)
@@ -118,8 +120,8 @@ const Map = () => {
 
     //Create links data
     const links_data = [
-      { source: 'Planet 1', target: 'Planet 2', distance: 5 },
-      { source: 'Planet 2', target: 'Planet 3', distance: 10 }
+      { source: planets[0].name, target: planets[1].name, distance: 5 },
+      { source: planets[1].name, target: planets[2].name, distance: 10 }
     ]
 
     //Create the link force
@@ -151,9 +153,16 @@ const Map = () => {
 
   useEffect(() => {
     drawChart()
+    // eslint-disable-next-line
   }, [])
 
   return <Paper id="map-root" style={{ height: 'calc(100vh - 50px)' }} />
 }
 
-export default Map
+Map.propTypes = {
+  planets: PropTypes.array.isRequired
+}
+
+const mapStateToProps = ({ world }) => ({ planets: world.planets })
+
+export default connect(mapStateToProps)(Map)
