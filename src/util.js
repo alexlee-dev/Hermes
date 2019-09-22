@@ -127,16 +127,6 @@ export const createDiffDuration = eta => {
   return moment.duration({ milliseconds: differenceMill })
 }
 
-/**
- * Generates an expiration date for an item contract.
- * Currently sets the expiration to midnight of the day the contract is created.
- */
-const generateExpiration = () =>
-  moment()
-    .add(1, 'day')
-    .startOf('day')
-    .format('x')
-
 const generateName = () =>
   `${getRandomItem(firstNames)} ${getRandomItem(lastNames)}`
 
@@ -181,51 +171,6 @@ export const generateSellers = planets => {
 }
 
 /**
- * Generates a single contract.
- * @param {array} planets Planet array.
- * @param {string || undefined} itemType Item type name.
- * @param {object || undefined} destination Destination object.
- */
-export const generateContract = (planets, itemType, destination) => {
-  let finalItemType = itemType
-  if (!itemType) {
-    finalItemType = itemList[Math.floor(Math.random() * itemList.length)].name
-  }
-  let finalDestination = destination
-  if (!destination) {
-    finalDestination = planets[Math.floor(Math.random() * planets.length)]
-  }
-
-  return {
-    expiration: generateExpiration(),
-    destination: {
-      name: finalDestination.name,
-      value: finalDestination.location
-    },
-    id: uuidv4(),
-    itemType: finalItemType,
-    timeoutCreated: false,
-    value: itemList.find(item => item.name === finalItemType).value + 1,
-    volume: itemList.find(item => item.name === finalItemType).volume
-  }
-}
-
-/**
- * Generates an array of item contracts randomly.
- * @param {array} planets Array of planet objects.
- * @returns {array}
- */
-export const generateContracts = planets => {
-  const contracts = []
-
-  for (let i = 0; i < 5; i++) {
-    contracts.push(generateContract(planets))
-  }
-
-  return contracts
-}
-
-/**
  * Exports the game state as a JSON file.
  */
 export const exportGame = () => {
@@ -249,20 +194,6 @@ export const isInPast = x => {
   const now = moment()
   const then = moment(x, 'x')
   return now.diff(then) > 0
-}
-
-/**
- * Formats the Item Contract expiration in a readable format.
- * @param {Millisecond Timestamp} expiration
- */
-export const formatExpiration = expiration => {
-  const diff = createDiffDuration(expiration)
-  const days = diff.days()
-  const hours = diff.hours()
-  const minutes = diff.minutes()
-  const seconds = diff.seconds()
-
-  return `${days}D ${hours}H ${minutes}M ${seconds}S`
 }
 
 /**

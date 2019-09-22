@@ -8,7 +8,6 @@ import { views } from '../constants'
 import Title from './Title'
 import TravelTimer from './TravelTimer'
 import CashDisplay from './CashDisplay'
-import ContractsDisplay from './ContractsDisplay'
 import { exportGame } from '../util'
 import ImportButton from './ImportButton'
 import { Tag } from 'flwww'
@@ -57,7 +56,6 @@ const Sidebar = ({
         </Box>
         <TravelTimer />
         <CashDisplay />
-        <ContractsDisplay />
         <Heading level="3" margin={{ top: 'xlarge' }}>
           Settings
         </Heading>
