@@ -38,6 +38,7 @@ const createNode = (svg, data) =>
     .enter()
     .append('g')
     .attr('class', 'node-container')
+    .attr('id', planet => planet.name)
     .append('circle')
     .attr('r', radius)
     .attr('fill', fill)
@@ -84,11 +85,7 @@ const Map = ({ planets }) => {
 
     const svg = createSvg('#map-root', height, width)
 
-    const nodes_data = [
-      { name: planets[0].name },
-      { name: planets[1].name },
-      { name: planets[2].name }
-    ]
+    const nodes_data = planets
 
     const simulation = createSimulation(nodes_data)
 
@@ -99,6 +96,10 @@ const Map = ({ planets }) => {
       textLabels
         .attr('x', ({ x }) => x + radius + 2)
         .attr('y', ({ y }) => y + radius / 2)
+
+      homePlanetInd
+        .attr('x', ({ x }) => x + radius + 2)
+        .attr('y', ({ y }) => y - 10)
 
       //update link positions
       //simply tells one end of the line to follow one node around
@@ -147,6 +148,17 @@ const Map = ({ planets }) => {
       .text(({ name }) => name)
       .attr('x', ({ x }) => x)
       .attr('y', ({ y }) => y)
+
+    // Indicate home planet
+    const homePlanet = planets.find(planet => planet.isHomePlanet === true)
+    const homePlanetInd = svg
+      .select(`#${homePlanet.name}`)
+      .append('text')
+      .text('(Home Planet)')
+      .attr('id', 'home-planet-ind')
+      .attr('x', ({ x }) => x)
+      .attr('y', ({ y }) => y)
+      .style('font-size', '10px')
 
     addEventsToNodes(svg)
   }
