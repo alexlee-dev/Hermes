@@ -30,4 +30,8 @@ describe('Map', () => {
   it('Should indicate the Home Planet.', () => {
     cy.get('body').contains('(Home Planet)')
   })
+
+  it('Should indicate the ship current location.', () => {
+    cy.get('body').contains('(YOUR_SHIP)')
+  })
 })
