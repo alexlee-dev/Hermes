@@ -1,9 +1,11 @@
+/// <reference types="cypress" />
+
 import { setMockState } from '../fixtures/default'
 
 describe('Export Game', () => {
   beforeEach(() => {
     setMockState()
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   it('Should export the game state to a JSON file.', () => {
