@@ -78,7 +78,8 @@ const addEventsToNodes = svg => {
   })
 }
 
-const Map = ({ planets }) => {
+const Map = ({ planets, ship }) => {
+  console.log({ ship })
   const drawChart = () => {
     const height = d3.select('#map-root').property('clientHeight')
     const width = d3.select('#map-root').property('clientWidth')
@@ -100,6 +101,8 @@ const Map = ({ planets }) => {
       homePlanetInd
         .attr('x', ({ x }) => x + radius + 2)
         .attr('y', ({ y }) => y - 10)
+
+      shipInd.attr('x', ({ x }) => x + radius + 2).attr('y', ({ y }) => y + 30)
 
       //update link positions
       //simply tells one end of the line to follow one node around
@@ -160,6 +163,15 @@ const Map = ({ planets }) => {
       .attr('y', ({ y }) => y)
       .style('font-size', '10px')
 
+    const shipInd = svg
+      .select(`#${ship.location.name}`)
+      .append('text')
+      .text('(YOUR_SHIP)')
+      .attr('id', 'ship-ind')
+      .attr('x', ({ x }) => x)
+      .attr('y', ({ y }) => y)
+      .style('font-size', '10px')
+
     addEventsToNodes(svg)
   }
 
@@ -172,9 +184,10 @@ const Map = ({ planets }) => {
 }
 
 Map.propTypes = {
-  planets: PropTypes.array.isRequired
+  planets: PropTypes.array.isRequired,
+  ship: PropTypes.object.isRequired
 }
 
-const mapStateToProps = ({ world }) => ({ planets: world.planets })
+const mapStateToProps = ({ ship, world }) => ({ planets: world.planets, ship })
 
 export default connect(mapStateToProps)(Map)
