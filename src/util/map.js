@@ -81,13 +81,24 @@ export const createLinks = (svg, data, height, width) =>
         height / 2 + svg.select(`#${target}`).data()[0].location.y * height
     )
 
-export const createLabels = (svg, height, width) =>
-  svg
+const getLabelWidth = (svg, selector) =>
+  svg.select(selector).property('children')[1].textLength.baseVal.value
+
+export const createLabels = (svg, height, width) => {
+  const selection = svg
     .selectAll('.node-container')
     .append('text')
     .text(({ name }) => name)
-    .attr('x', ({ location }) => width / 2 + location.x * width - radius)
+    .attr(
+      'x',
+      ({ location, name }) =>
+        width / 2 + location.x * width - getLabelWidth(svg, `#${name}`) / 2
+    )
     .attr('y', ({ location }) => height / 2 + location.y * height + radius + 20)
+
+  console.log({ selection })
+  return selection
+}
 
 export const createHomePlanetInd = (svg, planets, height, width) => {
   const homePlanet = planets.find(planet => planet.isHomePlanet === true)
@@ -98,7 +109,7 @@ export const createHomePlanetInd = (svg, planets, height, width) => {
     .text('(Home Planet)')
     .attr('id', 'home-planet-ind')
     .style('font-size', '10px')
-    .attr('x', ({ location }) => width / 2 + location.x * width - radius - 4)
+    .attr('x', ({ location }) => width / 2 + location.x * width - 58.61 / 2)
     .attr('y', ({ location }) => height / 2 + location.y * height + radius + 40)
 
   return selection
@@ -111,14 +122,15 @@ export const createShipInd = (svg, ship, height, width) =>
     .text('(YOUR_SHIP)')
     .attr('id', 'ship-ind')
     .style('font-size', '10px')
-    .attr('x', ({ location }) => width / 2 + location.x * width - radius - 8)
+    .attr('x', ({ location }) => width / 2 + location.x * width - 61.67 / 2)
     .attr('y', ({ location }) => height / 2 + location.y * height - radius - 10)
 
 export const addEventsToNodes = (
   svg,
   setDestination,
   setOpen,
-  currentShipLocation
+  currentShipLocation,
+  width
 ) => {
   svg.selectAll('.node-container').on('mouseover', function(planet) {
     // * Function has in scope: data, d3.event, d3.mouse(this), this
@@ -127,6 +139,11 @@ export const addEventsToNodes = (
       d3.select(this)
         .select('text')
         .style('font-size', '20px')
+        .attr(
+          'x',
+          ({ location, name }) =>
+            width / 2 + location.x * width - getLabelWidth(svg, `#${name}`) / 2
+        )
       d3.select(this)
         .select('circle')
         .attr('fill', fillHover)
@@ -139,6 +156,11 @@ export const addEventsToNodes = (
     d3.select(this)
       .select('text')
       .style('font-size', '16px')
+      .attr(
+        'x',
+        ({ location, name }) =>
+          width / 2 + location.x * width - getLabelWidth(svg, `#${name}`) / 2
+      )
   })
   svg.selectAll('.node-container').on('click', function(planet) {
     if (planet.name !== currentShipLocation.name) {
@@ -176,7 +198,7 @@ export const updateShipLocation = (
   svg.selectAll('.node-container').on('mouseleave', null)
   svg.selectAll('.node-container').on('click', null)
 
-  addEventsToNodes(svg, setDestination, setOpen, currentShipLocation)
+  addEventsToNodes(svg, setDestination, setOpen, currentShipLocation, width)
 
   // * Update cursor stuff
   modifyCursor(svg.selectAll('.node-container'), currentShipLocation)
