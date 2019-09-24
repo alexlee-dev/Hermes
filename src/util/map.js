@@ -10,7 +10,7 @@ export const createSvg = (selector, height, width) =>
     .append('svg')
     .attr('height', height)
     .attr('width', width)
-    // .style('padding', '25px')
+// .style('padding', '25px')
 
 export const createSimulation = data =>
   d3
@@ -60,9 +60,7 @@ export const createLinks = (svg, data, height, width) =>
     .attr(
       'x1',
       ({ source }) =>
-        width / 2 +
-        svg.select(`#${source}`).data()[0].location.x * width +
-        radius
+        width / 2 + svg.select(`#${source}`).data()[0].location.x * width
     )
     .attr(
       'y1',
@@ -72,9 +70,7 @@ export const createLinks = (svg, data, height, width) =>
     .attr(
       'x2',
       ({ target }) =>
-        width / 2 +
-        svg.select(`#${target}`).data()[0].location.x * width -
-        radius
+        width / 2 + svg.select(`#${target}`).data()[0].location.x * width
     )
     .attr(
       'y2',
