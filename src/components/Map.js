@@ -30,19 +30,21 @@ const Map = ({ currentShipLocation, planets, ship }) => {
     const svg = createSvg('#map-root', height, width)
 
     // TODO - Incorporate this into generatePlanets()
-    const planet1Location = { x: -0.25, y: 0 }
-    const planet2Location = { x: 0, y: 0 }
-    const planet3Location = { x: 0.25, y: 0 }
-    const mockPlanetLocations = [
-      planet1Location,
-      planet2Location,
-      planet3Location
-    ]
+    // const planet1Location = { x: 0.1, y: 0.4 }
+    // const planet2Location = { x: -0.01, y: -0.03 }
+    // const planet3Location = { x: 0.03, y: 0.36 }
+    // const mockPlanetLocations = [
+    //   planet1Location,
+    //   planet2Location,
+    //   planet3Location
+    // ]
 
-    const nodes_data = planets.map((planet, i) => ({
-      ...planet,
-      location: mockPlanetLocations[i]
-    }))
+    // const nodes_data = planets.map((planet, i) => ({
+    //   ...planet,
+    //   location: mockPlanetLocations[i]
+    // }))
+
+    const nodes_data = planets
 
     const links_data = [
       { source: nodes_data[0].name, target: nodes_data[1].name },

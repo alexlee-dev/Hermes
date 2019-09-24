@@ -44,6 +44,34 @@ export const generateItems = possibleDestinations => {
   return items
 }
 
+const randomSign = () => (Math.random() >= 0.5 ? 1 : -1)
+
+const randomCoordinate = () =>
+  Math.round(100 * (randomSign() * (Math.random() * 0.4))) / 100
+
+const generateCoordinate = planets => {
+  let coordinate = randomCoordinate()
+  while (
+    planets.some(
+      // ? Should I be concerned about this?
+      // eslint-disable-next-line
+      ({ location }) =>
+        location.x - coordinate < 0.1 && location.y - coordinate < 0.1
+    )
+  ) {
+    coordinate = randomCoordinate()
+  }
+  return coordinate
+}
+
+const generateLocation = planets => {
+  console.log(planets)
+  return {
+    x: generateCoordinate(planets),
+    y: generateCoordinate(planets)
+  }
+}
+
 /**
  * Generataes an array of planet objects randomly.
  * @returns {array}
@@ -54,7 +82,7 @@ export const generatePlanets = () => {
   for (let i = 0; i < 3; i++) {
     const id = uuidv4()
     const isHomePlanet = i === 0
-    const location = Math.floor(Math.random() * 100 + 1)
+    const location = generateLocation(planets)
     const name = getPlanetName()
 
     planets.push({ id, isHomePlanet, location, name })
