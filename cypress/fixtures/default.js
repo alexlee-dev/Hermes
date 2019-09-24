@@ -37,7 +37,10 @@ export const mockState = {
         location: {
           id: 'd23cd552-b79b-4752-86d8-9abb22d04c27',
           isHomePlanet: true,
-          location: 99,
+          location: {
+            x: 0.22,
+            y: 0.03
+          },
           name: 'Kennajeannet',
           items: [
             {
@@ -83,7 +86,10 @@ export const mockState = {
         location: {
           id: '83a7a2b7-3e94-4968-ab35-edb37c30f6ea',
           isHomePlanet: false,
-          location: 51,
+          location: {
+            x: -0.3,
+            y: -0.14
+          },
           name: 'Gaffey',
           items: [
             {
@@ -131,7 +137,10 @@ export const mockState = {
         location: {
           id: 'd23cd552-b79b-4752-86d8-9abb22d04c27',
           isHomePlanet: true,
-          location: 99,
+          location: {
+            x: 0.22,
+            y: 0.03
+          },
           name: 'Kennajeannet',
           items: [
             {
@@ -178,7 +187,10 @@ export const mockState = {
         location: {
           id: '83a7a2b7-3e94-4968-ab35-edb37c30f6ea',
           isHomePlanet: false,
-          location: 51,
+          location: {
+            x: -0.3,
+            y: -0.14
+          },
           name: 'Gaffey',
           items: [
             {
@@ -219,7 +231,10 @@ export const mockState = {
       {
         id: 'd23cd552-b79b-4752-86d8-9abb22d04c27',
         isHomePlanet: true,
-        location: 99,
+        location: {
+          x: 0.22,
+          y: 0.03
+        },
         name: 'Kennajeannet',
         items: [
           {
@@ -237,7 +252,10 @@ export const mockState = {
       {
         id: '650f6b64-a7ff-4b72-b75c-a376bf1e4446',
         isHomePlanet: false,
-        location: 96,
+        location: {
+          x: -0.29,
+          y: -0.32
+        },
         name: 'Richardspalding',
         items: [
           {
@@ -255,7 +273,10 @@ export const mockState = {
       {
         id: '83a7a2b7-3e94-4968-ab35-edb37c30f6ea',
         isHomePlanet: false,
-        location: 51,
+        location: {
+          x: -0.3,
+          y: -0.14
+        },
         name: 'Gaffey',
         items: [
           {

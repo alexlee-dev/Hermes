@@ -10,6 +10,7 @@ export const createSvg = (selector, height, width) =>
     .append('svg')
     .attr('height', height)
     .attr('width', width)
+    // .style('padding', '25px')
 
 export const createSimulation = data =>
   d3
@@ -66,7 +67,7 @@ export const createLinks = (svg, data, height, width) =>
     .attr(
       'y1',
       ({ source }) =>
-        height / 2 + svg.select(`#${source}`).data()[0].location.y * height
+        height / 2 - svg.select(`#${source}`).data()[0].location.y * height
     )
     .attr(
       'x2',
@@ -78,7 +79,7 @@ export const createLinks = (svg, data, height, width) =>
     .attr(
       'y2',
       ({ target }) =>
-        height / 2 + svg.select(`#${target}`).data()[0].location.y * height
+        height / 2 - svg.select(`#${target}`).data()[0].location.y * height
     )
 
 const getLabelWidth = (svg, selector) =>
@@ -94,7 +95,7 @@ export const createLabels = (svg, height, width) => {
       ({ location, name }) =>
         width / 2 + location.x * width - getLabelWidth(svg, `#${name}`) / 2
     )
-    .attr('y', ({ location }) => height / 2 + location.y * height + radius + 20)
+    .attr('y', ({ location }) => height / 2 - location.y * height + radius + 20)
 
   console.log({ selection })
   return selection
@@ -110,7 +111,7 @@ export const createHomePlanetInd = (svg, planets, height, width) => {
     .attr('id', 'home-planet-ind')
     .style('font-size', '10px')
     .attr('x', ({ location }) => width / 2 + location.x * width - 58.61 / 2)
-    .attr('y', ({ location }) => height / 2 + location.y * height + radius + 40)
+    .attr('y', ({ location }) => height / 2 - location.y * height + radius + 40)
 
   return selection
 }
@@ -123,7 +124,7 @@ export const createShipInd = (svg, ship, height, width) =>
     .attr('id', 'ship-ind')
     .style('font-size', '10px')
     .attr('x', ({ location }) => width / 2 + location.x * width - 61.67 / 2)
-    .attr('y', ({ location }) => height / 2 + location.y * height - radius - 10)
+    .attr('y', ({ location }) => height / 2 - location.y * height - radius - 10)
 
 export const addEventsToNodes = (
   svg,
@@ -190,7 +191,7 @@ export const updateShipLocation = (
     .attr(
       'y',
       () =>
-        height / 2 + destinationNode.data()[0].location.y * height - radius - 10
+        height / 2 - destinationNode.data()[0].location.y * height - radius - 10
     )
 
   // * Remove event listeners from nodes
