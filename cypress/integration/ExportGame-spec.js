@@ -9,7 +9,8 @@ describe('Export Game', () => {
   })
 
   it('Should export the game state to a JSON file.', () => {
-    cy.get('button[data-testid="button-export"]')
+    cy.get('#view-speeddial').trigger('mouseover', { force: true })
+    cy.get('button[title="Export Game"]')
       .click()
       .then(() => {
         expect(typeof localStorage.getItem('exportedGame')).to.equal('string')

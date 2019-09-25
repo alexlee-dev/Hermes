@@ -6,7 +6,8 @@ describe('Map', () => {
   beforeEach(() => {
     setMockState()
     cy.visit('/')
-    cy.contains('Map').click()
+    cy.get('#view-speeddial').trigger('mouseover', { force: true })
+    cy.get('button[title="Map"]').click()
   })
 
   it('Should display planets.', () => {
@@ -49,7 +50,7 @@ describe('Map', () => {
     cy.contains('TRAVEL_PROMPT').should('not.exist')
   })
 
-  it('Should be able to instantaneously travel to a planet.', () => {
+  it.skip('Should be able to instantaneously travel to a planet.', () => {
     const destinationPlanet = mockState.world.planets.find(
       planet => planet.name !== mockState.ship.location.name
     )

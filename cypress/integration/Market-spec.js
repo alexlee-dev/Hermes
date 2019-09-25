@@ -6,7 +6,8 @@ describe('Market', () => {
   beforeEach(() => {
     setMockState()
     cy.visit('/')
-    cy.contains('Market').click()
+    cy.get('#view-speeddial').trigger('mouseover', { force: true })
+    cy.get('button[title="Market"]').click()
   })
 
   it('Should click the "Sell" tab.', () => {
@@ -16,7 +17,7 @@ describe('Market', () => {
     cy.contains('Kreia Protheans').should('not.be.visible')
   })
 
-  it('Should click the "Jumps Away" column labeel.', () => {
+  it('Should click the "Jumps Away" column label.', () => {
     cy.contains('Jumps Away').click()
   })
 })

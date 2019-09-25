@@ -3,64 +3,32 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { initializeApplication } from './redux/actions/world'
 import View from './views/View'
-import { Box, Heading, Button as GromButt } from 'grommet'
-import { views } from './constants'
-import { Button } from '@material-ui/core'
+import { Box } from 'grommet'
 import { setView } from './redux/actions/ui'
 import TravelTimer from './components/TravelTimer'
 import CashDisplay from './components/CashDisplay'
-import { exportGame } from './util/main'
 import ImportButton from './components/ImportButton'
+import ViewSpeeddial from './components/ViewSpeeddial'
 
 /**
  * Hermes app.
  */
-const App = ({
-  handleInitializeApplication,
-  handleViewChange,
-  isShipTraveling,
-  planets,
-  view
-}) => {
+const App = ({ handleInitializeApplication, planets }) => {
   useEffect(() => {
     if (planets.length === 0) handleInitializeApplication()
     // eslint-disable-next-line
   }, [])
 
   return (
-    <Box id="outer-container" fill>
-      <Box
-        style={{
-          background: 'rgba(173, 216, 230, 0.3)',
-          position: 'absolute',
-          zIndex: '1000000'
-        }}
-      >
-        {Object.keys(views).map((viewName, i) => (
-          <Button
-            disabled={view === viewName}
-            key={i}
-            onClick={() => handleViewChange(viewName)}
-          >
-            {viewName}
-          </Button>
-        ))}
-        <TravelTimer />
-        <CashDisplay />
-        <Heading level="3" margin={{ top: 'xlarge' }}>
-          Settings
-        </Heading>
-        <Box direction="row" gap="medium">
-          <GromButt
-            data-testid="button-export"
-            label="Export Game"
-            onClick={exportGame}
-            plain
-          />
+    <Box fill>
+      {/* <TravelTimer />  */}
+      <ViewSpeeddial />
+
+      {/* <CashDisplay />
           <ImportButton />
-        </Box>
-      </Box>
-      <Box pad="25px">
+        </Box> */}
+      {/* </Box> */}
+      <Box pad={{ left: '100px', top: '25px', right: '25px', bottom: '25px' }}>
         <View />
       </Box>
     </Box>
@@ -72,10 +40,8 @@ App.propTypes = {
   planets: PropTypes.array.isRequired
 }
 
-const mapStateToProps = ({ ship, ui, world }) => ({
-  isShipTraveling: ship.isShipTraveling,
-  planets: world.planets,
-  view: ui.view
+const mapStateToProps = ({ world }) => ({
+  planets: world.planets
 })
 
 const mapDispatchToProps = dispatch => ({
