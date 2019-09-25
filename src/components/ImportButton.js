@@ -17,9 +17,11 @@ const ImportButton = ({ handleImportGame }) => {
       localStorage.setItem('importedGame', true)
       return
     }
+    /* istanbul ignore next */
     inputRef.current.click()
   }
 
+  /* istanbul ignore next */
   const handleFileAdded = e => {
     const reader = new FileReader()
 
@@ -52,6 +54,7 @@ ImportButton.propTypes = {
   handleImportGame: PropTypes.func.isRequired
 }
 
+/* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
   handleImportGame: ({ ship, ui, user, world }) => {
     dispatch(replaceShip(ship))
