@@ -1,11 +1,11 @@
-import React, { createRef } from 'react'
+import React, { Fragment, createRef } from 'react'
 import PropTypes from 'prop-types'
-import { Box, Button } from 'grommet'
 import { connect } from 'react-redux'
 import { replaceShip } from '../redux/actions/ship'
 import { replaceUI } from '../redux/actions/ui'
 import { replaceUser } from '../redux/actions/user'
 import { replaceWorld } from '../redux/actions/world'
+import Icon from '@material-ui/core/Icon'
 
 /**
  * Allows the user to import their game from an exported file.
@@ -34,8 +34,8 @@ const ImportButton = ({ handleImportGame }) => {
   }
 
   return (
-    <Box>
-      <Button label="Import Game" onClick={handleImportGameClick} plain />
+    <Fragment>
+      <Icon className="fas fa-download" onClick={handleImportGameClick} />
       <input
         accept=".json"
         data-testid="input-import"
@@ -44,7 +44,7 @@ const ImportButton = ({ handleImportGame }) => {
         style={{ display: 'none' }}
         type="file"
       />
-    </Box>
+    </Fragment>
   )
 }
 

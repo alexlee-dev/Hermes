@@ -6,6 +6,7 @@ import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@material-ui/lab'
 import Icon from '@material-ui/core/Icon'
 import { setView } from '../redux/actions/ui'
 import { exportGame } from '../util/main'
+import ImportButton from './ImportButton'
 
 const useStyles = makeStyles(theme => ({
   exampleWrapper: {
@@ -48,7 +49,7 @@ const ViewSpeeddial = ({ handleViewChange }) => {
       onClick: () => handleViewChange('Ship')
     },
     {
-      icon: <Icon className="fas fa-download" />,
+      icon: <ImportButton />,
       name: 'Import Game',
       onClick: () => {}
     },
