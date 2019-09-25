@@ -19,7 +19,10 @@ const App = ({ handleInitializeApplication, planets }) => {
   return (
     <Box fill>
       <ViewSpeeddial />
-      <Box pad={{ left: '100px', top: '25px', right: '25px', bottom: '25px' }}>
+      <Box
+        pad={{ left: '100px', top: '25px', right: '25px', bottom: '25px' }}
+        style={{ maxHeight: '100vh', overflow: 'auto' }}
+      >
         <View />
       </Box>
     </Box>
