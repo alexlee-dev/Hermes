@@ -8,7 +8,7 @@ describe('Import Game', () => {
     cy.visit('/')
   })
 
-  it.skip('Should import the game state from a JSON file.', () => {
+  it('Should import the game state from a JSON file.', () => {
     cy.get('#view-speeddial').trigger('mouseover', { force: true })
     cy.get('button[title="Import Game"]')
       .click()

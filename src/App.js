@@ -5,9 +5,6 @@ import { initializeApplication } from './redux/actions/world'
 import View from './views/View'
 import { Box } from 'grommet'
 import { setView } from './redux/actions/ui'
-import TravelTimer from './components/TravelTimer'
-import CashDisplay from './components/CashDisplay'
-import ImportButton from './components/ImportButton'
 import ViewSpeeddial from './components/ViewSpeeddial'
 
 /**
@@ -21,13 +18,7 @@ const App = ({ handleInitializeApplication, planets }) => {
 
   return (
     <Box fill>
-      {/* <TravelTimer />  */}
       <ViewSpeeddial />
-
-      {/* <CashDisplay />
-          <ImportButton />
-        </Box> */}
-      {/* </Box> */}
       <Box pad={{ left: '100px', top: '25px', right: '25px', bottom: '25px' }}>
         <View />
       </Box>
