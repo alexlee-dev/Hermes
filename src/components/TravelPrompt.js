@@ -13,12 +13,13 @@ import { instantTravel } from '../redux/actions/ship'
 
 const TravelPrompt = ({ destination, handleTravel, open, setOpen }) => {
   const handleClose = () => setOpen(false)
+
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog id="travel-prompt" open={open} onClose={handleClose}>
       <DialogTitle>TRAVEL_PROMPT</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Are you sure you want to travel to PLANET_NAME?
+          Are you sure you want to travel to {destination.name}?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
