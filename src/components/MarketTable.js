@@ -46,9 +46,9 @@ const MarketTable = ({ data, item }) => {
   }
 
   return (
-    <Paper style={{ width: '100%' }}>
+    <Paper style={{ overflow: 'auto', width: '100%' }}>
       <ItemCard item={item} />
-      <Table>
+      <Table stickyHeader>
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>

@@ -16,3 +16,7 @@ body {
 .node-container:hover {
   cursor: pointer;
 }
+
+.MuiTableCell-stickyHeader {
+  top: 104px !important;
+}
