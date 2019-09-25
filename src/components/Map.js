@@ -18,31 +18,12 @@ import {
   updateShipLocation
 } from '../util/map'
 
-/**
- * TODO - Edit generatePlanets to modify the location to be a random x and random y
- * TODO - Modify the calculation for centering elements on the circle x. Needs to include calculation for width of element itself
- */
 const Map = ({ currentShipLocation, planets, ship }) => {
   const drawChart = () => {
     const height = getHeight('#map-root')
     const width = getWidth('#map-root')
 
     const svg = createSvg('#map-root', height, width)
-
-    // TODO - Incorporate this into generatePlanets()
-    // const planet1Location = { x: 0.1, y: 0.4 }
-    // const planet2Location = { x: -0.01, y: -0.03 }
-    // const planet3Location = { x: 0.03, y: 0.36 }
-    // const mockPlanetLocations = [
-    //   planet1Location,
-    //   planet2Location,
-    //   planet3Location
-    // ]
-
-    // const nodes_data = planets.map((planet, i) => ({
-    //   ...planet,
-    //   location: mockPlanetLocations[i]
-    // }))
 
     const nodes_data = planets
 
