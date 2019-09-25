@@ -17,11 +17,18 @@ describe('Map', () => {
   })
 
   // * Update this in the future
-  it('Should display an prompt when clicking a planet.', () => {
+  it('Should display a prompt when clicking a planet.', () => {
     cy.get('body')
       .contains(mockState.world.planets[2].name)
       .click()
-    cy.get('body').contains('TRAVEL_PROMPT')
+    cy.get('#travel-prompt').contains('TRAVEL_PROMPT')
+  })
+
+  it("Should display the clicked planet's name in the Travel Prompt.", () => {
+    cy.get('body')
+      .contains(mockState.world.planets[2].name)
+      .click()
+    cy.get('#travel-prompt').contains(mockState.world.planets[2].name)
   })
 
   it('Should indicate the Home Planet.', () => {
