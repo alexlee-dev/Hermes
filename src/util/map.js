@@ -93,7 +93,6 @@ export const createLabels = (svg, height, width) => {
     )
     .attr('y', ({ location }) => height / 2 - location.y * height + radius + 20)
 
-  console.log({ selection })
   return selection
 }
 
@@ -126,9 +125,9 @@ export const addEventsToNodes = (
   svg,
   setDestination,
   setOpen,
-  currentShipLocation,
-  width
+  currentShipLocation
 ) => {
+  const width = getWidth('#map-root')
   svg.selectAll('.node-container').on('mouseover', function(planet) {
     // * Function has in scope: data, d3.event, d3.mouse(this), this
 
@@ -195,7 +194,7 @@ export const updateShipLocation = (
   svg.selectAll('.node-container').on('mouseleave', null)
   svg.selectAll('.node-container').on('click', null)
 
-  addEventsToNodes(svg, setDestination, setOpen, currentShipLocation, width)
+  addEventsToNodes(svg, setDestination, setOpen, currentShipLocation)
 
   // * Update cursor stuff
   modifyCursor(svg.selectAll('.node-container'), currentShipLocation)
