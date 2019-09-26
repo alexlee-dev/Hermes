@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { initializeApplication } from './redux/actions/world'
@@ -11,20 +11,31 @@ import ViewSpeeddial from './components/ViewSpeeddial'
  * Hermes app.
  */
 const App = ({ handleInitializeApplication, planets }) => {
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     if (planets.length === 0) handleInitializeApplication()
     // eslint-disable-next-line
   }, [])
 
+  useEffect(() => setIsLoading(false), [planets.length])
+
   return (
     <Box fill>
-      <ViewSpeeddial />
-      <Box
-        pad={{ left: '100px', top: '25px', right: '25px', bottom: '25px' }}
-        style={{ maxHeight: '100vh', overflow: 'auto' }}
-      >
-        <View />
-      </Box>
+      {isLoading ? (
+        <span style={{ top: '50%', left: '50%', position: 'absolute' }}>
+          LOADING
+        </span>
+      ) : (
+        <Fragment>
+          <ViewSpeeddial />
+          <Box
+            pad={{ left: '100px', top: '25px', right: '25px', bottom: '25px' }}
+            style={{ maxHeight: '100vh', overflow: 'auto' }}
+          >
+            <View />
+          </Box>
+        </Fragment>
+      )}
     </Box>
   )
 }
