@@ -64,13 +64,10 @@ const generateCoordinate = planets => {
   return coordinate
 }
 
-const generateLocation = planets => {
-  console.log(planets)
-  return {
-    x: generateCoordinate(planets),
-    y: generateCoordinate(planets)
-  }
-}
+const generateLocation = planets => ({
+  x: generateCoordinate(planets),
+  y: generateCoordinate(planets)
+})
 
 /**
  * Generataes an array of planet objects randomly.
@@ -88,10 +85,22 @@ export const generatePlanets = () => {
     planets.push({ id, isHomePlanet, location, name })
   }
 
+  // * generate items
   planets.forEach(planet => {
     planet.items = generateItems(
       planets.filter(currentPlanet => currentPlanet !== planet)
     )
+  })
+
+  // * calculate proximity
+  planets.forEach(planet => {
+    planet.proximity = {}
+    const otherPlanets = planets.filter(({ id }) => id !== planet.id)
+    otherPlanets.forEach(otherPlanet => {
+      planet.proximity[otherPlanet.id] = Math.abs(
+        planets.indexOf(planet) - planets.indexOf(otherPlanet)
+      )
+    })
   })
 
   return planets
