@@ -159,6 +159,7 @@ export const addEventsToNodes = (
       )
   })
   svg.selectAll('.node-container').on('click', function(planet) {
+    // debugger;
     if (planet.name !== currentShipLocation.name) {
       setDestination(planet)
       setOpen(true)
@@ -173,7 +174,7 @@ export const updateShipLocation = (
   height,
   width
 ) => {
-  const svg = d3.select('svg')
+  const svg = d3.select('#map-root > svg')
   const destinationNode = svg.select(`#${currentShipLocation.name}`)
 
   svg
