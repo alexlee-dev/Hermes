@@ -236,6 +236,10 @@ export const mockState = {
           y: 0.03
         },
         name: 'Kennajeannet',
+        proximity: {
+          '650f6b64-a7ff-4b72-b75c-a376bf1e4446': 1,
+          '83a7a2b7-3e94-4968-ab35-edb37c30f6ea': 2
+        },
         items: [
           {
             description: "Midas' favorite.",
@@ -257,6 +261,10 @@ export const mockState = {
           y: -0.32
         },
         name: 'Richardspalding',
+        proximity: {
+          'd23cd552-b79b-4752-86d8-9abb22d04c27': 1,
+          '83a7a2b7-3e94-4968-ab35-edb37c30f6ea': 1
+        },
         items: [
           {
             description: 'Still used to fight the common cold!',
@@ -278,6 +286,10 @@ export const mockState = {
           y: -0.14
         },
         name: 'Gaffey',
+        proximity: {
+          '650f6b64-a7ff-4b72-b75c-a376bf1e4446': 1,
+          'd23cd552-b79b-4752-86d8-9abb22d04c27': 2
+        },
         items: [
           {
             description: "Bullets used for shootin'.",
