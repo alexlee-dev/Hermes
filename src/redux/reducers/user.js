@@ -1,6 +1,5 @@
 const userDefaultState = {
-  cash: 100,
-  contract: null
+  cash: 100
 }
 
 export default (state = userDefaultState, action) => {
@@ -11,10 +10,8 @@ export default (state = userDefaultState, action) => {
       return { ...state, cash: state.cash - action.payload.amount }
     case 'REPLACE_USER':
       return { ...action.payload.user }
-    case 'RESET_CONTRACT':
-      return { ...state, contract: null }
-    case 'SET_CONTRACT':
-      return { ...state, contract: action.payload.contract }
+    case 'RESET_USER':
+      return userDefaultState
     default:
       return state
   }

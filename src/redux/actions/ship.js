@@ -1,6 +1,6 @@
 import { addCash, removeCash } from './user'
 import { removeItem } from './world'
-import { createETA, createDiffDuration } from '../../util'
+import { createETA, createDiffDuration } from '../../util/main'
 import moment from 'moment'
 
 // * ACTION TYPES
@@ -12,6 +12,7 @@ const SET_SHIP_LOCATION = 'SET_SHIP_LOCATION'
 const SET_SHIP_TRAVELING = 'SET_SHIP_TRAVELING'
 const SET_TRIP_DURATION = 'SET_TRIP_DURATION'
 const STORE_CARGO = 'STORE_CARGO'
+const RESET_SHIP = 'RESET_SHIP'
 
 // * ACTION GENERATORS
 
@@ -89,6 +90,8 @@ export const storeCargo = (item, quantity) => ({
     quantity
   }
 })
+
+export const resetShip = () => ({ type: RESET_SHIP })
 
 // * PROMISES
 
@@ -187,4 +190,8 @@ export const purchaseCargo = (item, quantity) => dispatch => {
   dispatch(storeCargo(item, quantity))
   // * dispatch an action to remove the item from the list of stored items on this planet
   dispatch(removeItem(item, quantity))
+}
+
+export const instantTravel = destination => dispatch => {
+  dispatch(setShipLocation({ name: destination.name }))
 }

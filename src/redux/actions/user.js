@@ -2,8 +2,7 @@
 const ADD_CASH = 'ADD_CASH'
 const REMOVE_CASH = 'REMOVE_CASH'
 const REPLACE_USER = 'REPLACE_USER'
-const RESET_CONTRACT = 'RESET_CONTRACT'
-const SET_CONTRACT = 'SET_CONTRACT'
+const RESET_USER = 'RESET_USER'
 
 // * ACTION GENERATORS
 /**
@@ -24,19 +23,7 @@ export const removeCash = amount => ({ type: REMOVE_CASH, payload: { amount } })
  */
 export const replaceUser = user => ({ type: REPLACE_USER, payload: { user } })
 
-/**
- * Resets the chosen contract to `null`.
- */
-export const resetContract = () => ({ type: RESET_CONTRACT })
-
-/**
- * Sets the chosen item contract.
- * @param {object} contract Contract to be set.
- */
-export const setContract = contract => ({
-  type: SET_CONTRACT,
-  payload: { contract }
-})
+export const resetUser = () => ({ type: RESET_USER })
 
 // * PROMISES
 

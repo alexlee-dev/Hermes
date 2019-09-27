@@ -6,7 +6,7 @@ const ItemCard = ({ item }) => {
   const currentItem = itemList.find(({ name }) => name === item)
   const Icon = currentItem.icon
   return (
-    <Card>
+    <Card style={{ position: 'sticky', top: '0', zIndex: '1' }}>
       <CardContent>
         <Box
           alignItems="center"
