@@ -1,6 +1,7 @@
 // * ACTION TYPES
 const REPLACE_UI = 'REPLACE_UI'
 const SET_VIEW = 'SET_VIEW'
+const RESET_UI = 'RESET_UI'
 
 // * ACTION GENERATORS
 /**
@@ -19,6 +20,8 @@ export const setView = view => ({
     view
   }
 })
+
+export const resetUI = () => ({ type: RESET_UI })
 
 // * PROMISES
 

@@ -6,6 +6,7 @@ import View from './views/View'
 import { Box } from 'grommet'
 import { setView } from './redux/actions/ui'
 import ViewSpeeddial from './components/ViewSpeeddial'
+import ResetState from './components/ResetState'
 
 /**
  * Hermes app.
@@ -34,6 +35,8 @@ const App = ({ handleInitializeApplication, planets }) => {
           >
             <View />
           </Box>
+          {(process.env.NODE_ENV === 'development' ||
+            process.env.NODE_ENV === 'test') && <ResetState />}
         </Fragment>
       )}
     </Box>

@@ -20,3 +20,8 @@ body {
 .MuiTableCell-stickyHeader {
   top: 104px !important;
 }
+
+.reset-state {
+  position: absolute !important;
+  bottom: 0 !important;
+}

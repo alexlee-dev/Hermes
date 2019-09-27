@@ -77,6 +77,8 @@ export default (state = shipDefaultState, action) => {
           volumeRemaining: state.cargo.volumeRemaining - action.payload.quantity
         }
       }
+    case 'RESET_SHIP':
+      return shipDefaultState
     default:
       return state
   }

@@ -71,6 +71,8 @@ export default (state = worldDefaultState, action) => {
       return { ...state, planets: action.payload.planets }
     case 'SET_TIMER_RUNNING':
       return { ...state, isTimerRunning: action.payload.isTimerRunning }
+    case 'RESET_WORLD':
+      return worldDefaultState
     default:
       return state
   }

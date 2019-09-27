@@ -9,6 +9,8 @@ export default (state = marketDefaultState, action) => {
       return { ...state, buyers: action.payload.buyers }
     case 'SET_SELLERS':
       return { ...state, sellers: action.payload.sellers }
+    case 'RESET_MARKET':
+      return marketDefaultState
     default:
       return state
   }

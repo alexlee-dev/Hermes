@@ -1,6 +1,12 @@
-import { setShipLocation } from './ship'
-import { generateBuyers, generatePlanets, generateSellers } from '../../util/main'
-import { setBuyers, setSellers } from './market'
+import { setShipLocation, resetShip } from './ship'
+import {
+  generateBuyers,
+  generatePlanets,
+  generateSellers
+} from '../../util/main'
+import { setBuyers, setSellers, resetMarket } from './market'
+import { resetUser } from './user'
+import { resetUI } from './ui'
 
 // * ACTION TYPES
 const CLEAR_ITEMS = 'CLEAR_ITEMS'
@@ -9,6 +15,7 @@ const REMOVE_ITEM = 'REMOVE_ITEM'
 const REPLACE_WORLD = 'REPLACE_WORLD'
 const SET_PLANETS = 'SET_PLANETS'
 const SET_TIMER_RUNNING = 'SET_TIMER_RUNNING'
+const RESET_WORLD = 'RESET_WORLD'
 
 // * ACTION GENERATORS
 /**
@@ -61,6 +68,8 @@ export const setTimerRunning = isTimerRunning => ({
   payload: { isTimerRunning }
 })
 
+export const resetWorld = () => ({ type: RESET_WORLD })
+
 // * PROMISES
 
 // * THUNKS
@@ -78,4 +87,13 @@ export const initializeApplication = () => dispatch => {
   dispatch(setShipLocation(location))
   dispatch(setBuyers(buyers))
   dispatch(setSellers(sellers))
+}
+
+export const resetState = () => dispatch => {
+  dispatch(resetMarket())
+  dispatch(resetShip())
+  dispatch(resetUI())
+  dispatch(resetUser())
+  dispatch(resetWorld())
+  dispatch(initializeApplication())
 }
