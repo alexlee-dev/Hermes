@@ -8,6 +8,8 @@ export default (state = uiDefaultState, action) => {
       return { ...action.payload.ui }
     case 'SET_VIEW':
       return { ...state, view: action.payload.view }
+    case 'RESET_UI':
+      return uiDefaultState
     default:
       return state
   }

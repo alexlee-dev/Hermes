@@ -2,6 +2,7 @@
 const ADD_CASH = 'ADD_CASH'
 const REMOVE_CASH = 'REMOVE_CASH'
 const REPLACE_USER = 'REPLACE_USER'
+const RESET_USER = 'RESET_USER'
 
 // * ACTION GENERATORS
 /**
@@ -21,6 +22,8 @@ export const removeCash = amount => ({ type: REMOVE_CASH, payload: { amount } })
  * @param {Object} user User object from Redux store.
  */
 export const replaceUser = user => ({ type: REPLACE_USER, payload: { user } })
+
+export const resetUser = () => ({ type: RESET_USER })
 
 // * PROMISES
 

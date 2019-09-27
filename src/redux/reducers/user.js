@@ -10,6 +10,8 @@ export default (state = userDefaultState, action) => {
       return { ...state, cash: state.cash - action.payload.amount }
     case 'REPLACE_USER':
       return { ...action.payload.user }
+    case 'RESET_USER':
+      return userDefaultState
     default:
       return state
   }

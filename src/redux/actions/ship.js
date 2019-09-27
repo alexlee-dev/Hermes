@@ -12,6 +12,7 @@ const SET_SHIP_LOCATION = 'SET_SHIP_LOCATION'
 const SET_SHIP_TRAVELING = 'SET_SHIP_TRAVELING'
 const SET_TRIP_DURATION = 'SET_TRIP_DURATION'
 const STORE_CARGO = 'STORE_CARGO'
+const RESET_SHIP = 'RESET_SHIP'
 
 // * ACTION GENERATORS
 
@@ -89,6 +90,8 @@ export const storeCargo = (item, quantity) => ({
     quantity
   }
 })
+
+export const resetShip = () => ({ type: RESET_SHIP })
 
 // * PROMISES
 
