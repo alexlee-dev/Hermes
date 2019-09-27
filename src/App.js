@@ -1,56 +1,63 @@
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import {
-  initializeApplication,
-  calculateContractExpirations
-} from './redux/actions/world'
+import { initializeApplication } from './redux/actions/world'
 import View from './views/View'
 import { Box } from 'grommet'
-import Sidebar from './components/Sidebar'
+import { setView } from './redux/actions/ui'
+import ViewSpeeddial from './components/ViewSpeeddial'
+import ResetState from './components/ResetState'
 
 /**
  * Hermes app.
  */
-const App = ({
-  contracts,
-  handleContractExpirations,
-  handleInitializeApplication,
-  planets
-}) => {
+const App = ({ handleInitializeApplication, planets }) => {
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     if (planets.length === 0) handleInitializeApplication()
-    if (contracts.length > 0) handleContractExpirations(contracts)
     // eslint-disable-next-line
-  }, [contracts.length])
+  }, [])
+
+  useEffect(() => setIsLoading(false), [planets.length])
 
   return (
-    <Box id="outer-container" fill>
-      <Sidebar outerContainerId="outer-container" pageWrapId="page-wrap" />
-      <Box id="page-wrap" pad="25px" style={{ maxWidth: 'calc(100% - 300px)' }}>
-        <View />
-      </Box>
+    <Box fill>
+      {isLoading ? (
+        <span style={{ top: '50%', left: '50%', position: 'absolute' }}>
+          LOADING
+        </span>
+      ) : (
+        <Fragment>
+          <ViewSpeeddial />
+          <Box
+            pad={{ left: '100px', top: '25px', right: '25px', bottom: '25px' }}
+            style={{ maxHeight: '100vh', overflow: 'auto' }}
+          >
+            <View />
+          </Box>
+          {(process.env.NODE_ENV === 'development' ||
+            process.env.NODE_ENV === 'test') && <ResetState />}
+        </Fragment>
+      )}
     </Box>
   )
 }
 
 App.propTypes = {
-  contracts: PropTypes.array.isRequired,
-  handleContractExpirations: PropTypes.func.isRequired,
   handleInitializeApplication: PropTypes.func.isRequired,
   planets: PropTypes.array.isRequired
 }
 
 const mapStateToProps = ({ world }) => ({
-  contracts: world.contracts,
   planets: world.planets
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleContractExpirations: contracts => {
-    if (!window.Cypress) dispatch(calculateContractExpirations(contracts))
-  },
-  handleInitializeApplication: () => dispatch(initializeApplication())
+  handleInitializeApplication: () => dispatch(initializeApplication()),
+  handleViewChange: view => {
+    console.log({ view })
+    dispatch(setView(view))
+  }
 })
 
 export default connect(

@@ -9,7 +9,7 @@ import {
   TableSortLabel
 } from '@material-ui/core'
 import ItemCard from '../components/ItemCard'
-import { simpleCompare } from '../util'
+import { simpleCompare } from '../util/main'
 import MarketAvatar from './MarketAvatar'
 
 const MarketTable = ({ data, item }) => {
@@ -46,9 +46,9 @@ const MarketTable = ({ data, item }) => {
   }
 
   return (
-    <Paper style={{ width: '100%' }}>
+    <Paper style={{ overflow: 'auto', width: '100%' }}>
       <ItemCard item={item} />
-      <Table>
+      <Table stickyHeader>
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>

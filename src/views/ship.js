@@ -39,7 +39,7 @@ const ShipView = ({ items, handleRemoveCargo, location, volumeRemaining }) => {
         <Text size="small" weight="bold">
           Value:
         </Text>
-        <Text size="small">{location.value}</Text>
+        {/* <Text size="small">{location.value}</Text> */}
         <Text size="small" weight="bold">
           Name:
         </Text>

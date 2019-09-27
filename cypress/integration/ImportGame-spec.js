@@ -1,13 +1,16 @@
+/// <reference types="cypress" />
+
 import { setMockState } from '../fixtures/default'
 
 describe('Import Game', () => {
   beforeEach(() => {
     setMockState()
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   it('Should import the game state from a JSON file.', () => {
-    cy.contains('Import Game')
+    cy.get('#view-speeddial').trigger('mouseover', { force: true })
+    cy.get('button[title="Import Game"]')
       .click()
       .then(() => {
         expect(localStorage.getItem('importedGame')).to.equal('true')
