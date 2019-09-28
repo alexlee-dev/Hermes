@@ -9,10 +9,18 @@ import {
   DialogTitle
 } from '@material-ui/core'
 import { connect } from 'react-redux'
-import { instantTravel } from '../redux/actions/ship'
+import { instantTravel, setDestination } from '../redux/actions/ship'
 import { hidePlanets } from '../util/map'
 
-const TravelPrompt = ({ destination, handleTravel, open, setOpen }) => {
+const TravelPrompt = ({
+  destination,
+  handleTravel,
+  planets,
+  open,
+  setDestination,
+  setOpen,
+  ship
+}) => {
   const handleClose = () => setOpen(false)
 
   return (
@@ -29,7 +37,16 @@ const TravelPrompt = ({ destination, handleTravel, open, setOpen }) => {
         </Button>
         <Button
           id="travel-button"
-          onClick={() => handleTravel(destination, setOpen)}
+          onClick={() =>
+            handleTravel(
+              destination,
+              setOpen,
+              planets,
+              ship,
+              setDestination,
+              setOpen
+            )
+          }
           color="primary"
         >
           TRAVEL
@@ -42,15 +59,18 @@ const TravelPrompt = ({ destination, handleTravel, open, setOpen }) => {
 TravelPrompt.propTypes = {
   destination: PropTypes.object.isRequired,
   handleTravel: PropTypes.func.isRequired,
+  planets: PropTypes.array.isRequired,
   open: PropTypes.bool.isRequired,
-  setOpen: PropTypes.func.isRequired
+  setDestination: PropTypes.func.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  ship: PropTypes.object.isRequired
 }
 
-const mapStateToProps = () => ({})
+const mapStateToProps = ({ ship, world }) => ({ planets: world.planets, ship })
 
 const mapDispatchToProps = dispatch => ({
-  handleTravel: (destination, setOpen) => {
-    hidePlanets(destination, dispatch)
+  handleTravel: (destination, setOpen, planets, ship, setDestination) => {
+    hidePlanets(destination, dispatch, planets, ship, setDestination, setOpen)
     // dispatch(instantTravel(destination))
     setOpen(false)
   }
