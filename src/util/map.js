@@ -211,21 +211,42 @@ export const getHeight = selector =>
 
 export const getWidth = selector => d3.select(selector).property('clientWidth')
 
-export const hidePlanets = (destination, dispatch) => {
+export const hidePlanets = (
+  destination,
+  dispatch,
+  planets,
+  ship,
+  setDestination,
+  setOpen
+) => {
   d3.selectAll('g').style('pointer-events', 'none')
   let value = 1.0
   const interval = setInterval(() => {
     if (value <= 0) {
       clearInterval(interval)
       d3.selectAll('g').remove()
-      showWarpingTo(destination, dispatch)
+      showWarpingTo(
+        destination,
+        dispatch,
+        planets,
+        ship,
+        setDestination,
+        setOpen
+      )
     }
     d3.selectAll('g').style('opacity', value - 0.05)
     value -= 0.05
   }, 100)
 }
 
-const showWarpingTo = (destination, dispatch) => {
+const showWarpingTo = (
+  destination,
+  dispatch,
+  planets,
+  ship,
+  setDestination,
+  setOpen
+) => {
   const svg = d3.select('#map-root > svg')
   const height = getHeight('#map-root > svg')
   const width = getWidth('#map-root > svg')
@@ -233,18 +254,38 @@ const showWarpingTo = (destination, dispatch) => {
   svg
     .append('text')
     .text(`Warping to ${destination.name}...`)
-    .attr('id', 'warping-to')
-    .attr('x', () => width / 2 - getLabelWidth(svg, `#warping-to`) / 2)
+    .attr('id', 'warp-text')
+    .attr('x', () => width / 2 - getLabelWidth(svg, `#warp-text`) / 2)
     .attr('y', height / 2)
 
   setTimeout(() => {
     svg
       .select('text')
       .text('Warp complete!')
-      .attr('x', () => width / 2 - getLabelWidth(svg, `#warping-to`) / 2)
+      .attr('x', () => width / 2 - getLabelWidth(svg, `#warp-text`) / 2)
       .attr('y', height / 2)
 
     dispatch(setShipLocation(destination))
-    alert(destination.name)
+
+    const nodes_data = planets
+
+    const links_data = [
+      { source: nodes_data[0].name, target: nodes_data[1].name },
+      { source: nodes_data[1].name, target: nodes_data[2].name }
+    ]
+
+    createSimulation(nodes_data)
+
+    createNodes(svg, nodes_data, destination, height, width)
+
+    createLinks(svg, links_data, height, width)
+
+    createLabels(svg, height, width)
+
+    createHomePlanetInd(svg, planets, height, width)
+
+    createShipInd(svg, ship, height, width)
+
+    addEventsToNodes(svg, setDestination, setOpen, destination)
   }, 10000)
 }

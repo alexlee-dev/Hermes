@@ -68,7 +68,12 @@ const Map = ({ currentShipLocation, planets, ship }) => {
   return (
     <Fragment>
       <Paper id="map-root" style={{ height: 'calc(100vh - 50px)' }} />
-      <TravelPrompt destination={destination} open={open} setOpen={setOpen} />
+      <TravelPrompt
+        destination={destination}
+        open={open}
+        setDestination={setDestination}
+        setOpen={setOpen}
+      />
     </Fragment>
   )
 }
