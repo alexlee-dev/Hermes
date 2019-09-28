@@ -50,8 +50,8 @@ const mapStateToProps = () => ({})
 
 const mapDispatchToProps = dispatch => ({
   handleTravel: (destination, setOpen) => {
-    hidePlanets()
-    dispatch(instantTravel(destination))
+    hidePlanets(destination)
+    // dispatch(instantTravel(destination))
     setOpen(false)
   }
 })
