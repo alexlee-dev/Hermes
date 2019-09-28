@@ -65,5 +65,7 @@ describe('Map', () => {
     cy.get('#travel-button').click()
     cy.wait(1000)
     cy.get('body').contains(`Warping to ${destinationPlanet.name}...`)
+    cy.wait(11000)
+    cy.get('body').contains('Warp complete!')
   })
 })
