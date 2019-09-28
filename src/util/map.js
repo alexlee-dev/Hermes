@@ -78,9 +78,13 @@ export const createLinks = (svg, data, height, width) =>
         height / 2 - svg.select(`#${target}`).data()[0].location.y * height
     )
 
-const getLabelWidth = (svg, selector) =>
-  svg.select(selector).property('children')[1].textLength.baseVal.value
-
+const getLabelWidth = (svg, selector) => {
+  if (svg.select(selector).property('children')[1]) {
+    return svg.select(selector).property('children')[1].textLength.baseVal.value
+  } else {
+    return svg.select(selector)._groups[0][0].textLength.baseVal.value
+  }
+}
 export const createLabels = (svg, height, width) => {
   const selection = svg
     .selectAll('.node-container')
@@ -206,15 +210,29 @@ export const getHeight = selector =>
 
 export const getWidth = selector => d3.select(selector).property('clientWidth')
 
-export const hidePlanets = () => {
+export const hidePlanets = destination => {
+  d3.selectAll('g').style('pointer-events', 'none')
   let value = 1.0
   const interval = setInterval(() => {
-    console.log({ value })
     if (value <= 0) {
       clearInterval(interval)
       d3.selectAll('g').remove()
+      showWarpingTo(destination)
     }
     d3.selectAll('g').style('opacity', value - 0.05)
     value -= 0.05
   }, 100)
+}
+
+const showWarpingTo = destination => {
+  const svg = d3.select('#map-root > svg')
+  const height = getHeight('#map-root > svg')
+  const width = getWidth('#map-root > svg')
+
+  svg
+    .append('text')
+    .text(`Warping to ${destination.name}...`)
+    .attr('id', 'warping-to')
+    .attr('x', () => width / 2 - getLabelWidth(svg, `#warping-to`) / 2)
+    .attr('y', height / 2)
 }

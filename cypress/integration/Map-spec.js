@@ -57,24 +57,13 @@ describe('Map', () => {
     cy.contains('TRAVEL_PROMPT').should('not.exist')
   })
 
-  it.skip('Should be able to instantaneously travel to a planet.', () => {
-    const destinationPlanet = mockState.world.planets.find(
-      planet => planet.name !== mockState.ship.location.name
-    )
-    cy.contains(destinationPlanet.name).click()
-    cy.contains('TRAVEL').click()
-    // ! Assert that the new planet is traveled to
-  })
-
-  it("Should hide all 'g' components after traveling to the chosen planet.", () => {
+  it('Should travel to a planet.', () => {
     const destinationPlanet = mockState.world.planets.find(
       planet => planet.name !== mockState.ship.location.name
     )
     cy.contains(destinationPlanet.name).click()
     cy.get('#travel-button').click()
     cy.wait(1000)
-    cy.get('#map-root > svg')
-      .children()
-      .should('have.length', 0)
+    cy.get('body').contains(`Warping to ${destinationPlanet.name}...`)
   })
 })
