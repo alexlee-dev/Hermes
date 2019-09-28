@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core'
 import { connect } from 'react-redux'
 import { instantTravel } from '../redux/actions/ship'
+import { hidePlanets } from '../util/map'
 
 const TravelPrompt = ({ destination, handleTravel, open, setOpen }) => {
   const handleClose = () => setOpen(false)
@@ -27,6 +28,7 @@ const TravelPrompt = ({ destination, handleTravel, open, setOpen }) => {
           Cancel
         </Button>
         <Button
+          id="travel-button"
           onClick={() => handleTravel(destination, setOpen)}
           color="primary"
         >
@@ -48,6 +50,7 @@ const mapStateToProps = () => ({})
 
 const mapDispatchToProps = dispatch => ({
   handleTravel: (destination, setOpen) => {
+    hidePlanets()
     dispatch(instantTravel(destination))
     setOpen(false)
   }

@@ -205,3 +205,16 @@ export const getHeight = selector =>
   d3.select(selector).property('clientHeight')
 
 export const getWidth = selector => d3.select(selector).property('clientWidth')
+
+export const hidePlanets = () => {
+  let value = 1.0
+  const interval = setInterval(() => {
+    console.log({ value })
+    if (value <= 0) {
+      clearInterval(interval)
+      d3.selectAll('g').remove()
+    }
+    d3.selectAll('g').style('opacity', value - 0.05)
+    value -= 0.05
+  }, 100)
+}
