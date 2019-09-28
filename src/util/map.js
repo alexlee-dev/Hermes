@@ -235,4 +235,12 @@ const showWarpingTo = destination => {
     .attr('id', 'warping-to')
     .attr('x', () => width / 2 - getLabelWidth(svg, `#warping-to`) / 2)
     .attr('y', height / 2)
+
+  setTimeout(() => {
+    svg
+      .select('text')
+      .text('Warp complete!')
+      .attr('x', () => width / 2 - getLabelWidth(svg, `#warping-to`) / 2)
+      .attr('y', height / 2)
+  }, 10000)
 }
