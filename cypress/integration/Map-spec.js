@@ -58,6 +58,10 @@ describe('Map', () => {
   })
 
   it('Should travel to a planet.', () => {
+    const stub = cy.stub()
+
+    cy.on('window:alert', stub)
+
     const destinationPlanet = mockState.world.planets.find(
       planet => planet.name !== mockState.ship.location.name
     )
@@ -66,6 +70,10 @@ describe('Map', () => {
     cy.wait(1000)
     cy.get('body').contains(`Warping to ${destinationPlanet.name}...`)
     cy.wait(11000)
-    cy.get('body').contains('Warp complete!')
+    cy.get('body')
+      .contains('Warp complete!')
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith(destinationPlanet.name)
+      })
   })
 })

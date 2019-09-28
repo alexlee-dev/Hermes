@@ -1,4 +1,5 @@
 import * as d3 from 'd3'
+import { setShipLocation } from '../redux/actions/ship'
 
 const radius = 23
 const fill = '#1976d2'
@@ -210,21 +211,21 @@ export const getHeight = selector =>
 
 export const getWidth = selector => d3.select(selector).property('clientWidth')
 
-export const hidePlanets = destination => {
+export const hidePlanets = (destination, dispatch) => {
   d3.selectAll('g').style('pointer-events', 'none')
   let value = 1.0
   const interval = setInterval(() => {
     if (value <= 0) {
       clearInterval(interval)
       d3.selectAll('g').remove()
-      showWarpingTo(destination)
+      showWarpingTo(destination, dispatch)
     }
     d3.selectAll('g').style('opacity', value - 0.05)
     value -= 0.05
   }, 100)
 }
 
-const showWarpingTo = destination => {
+const showWarpingTo = (destination, dispatch) => {
   const svg = d3.select('#map-root > svg')
   const height = getHeight('#map-root > svg')
   const width = getWidth('#map-root > svg')
@@ -242,5 +243,8 @@ const showWarpingTo = destination => {
       .text('Warp complete!')
       .attr('x', () => width / 2 - getLabelWidth(svg, `#warping-to`) / 2)
       .attr('y', height / 2)
+
+    dispatch(setShipLocation(destination))
+    alert(destination.name)
   }, 10000)
 }
