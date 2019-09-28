@@ -259,11 +259,7 @@ const showWarpingTo = (
     .attr('y', height / 2)
 
   setTimeout(() => {
-    svg
-      .select('text')
-      .text('Warp complete!')
-      .attr('x', () => width / 2 - getLabelWidth(svg, `#warp-text`) / 2)
-      .attr('y', height / 2)
+    svg.select('#warp-text').remove()
 
     dispatch(setShipLocation(destination))
 
