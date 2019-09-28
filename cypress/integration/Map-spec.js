@@ -65,4 +65,16 @@ describe('Map', () => {
     cy.contains('TRAVEL').click()
     // ! Assert that the new planet is traveled to
   })
+
+  it("Should hide all 'g' components after traveling to the chosen planet.", () => {
+    const destinationPlanet = mockState.world.planets.find(
+      planet => planet.name !== mockState.ship.location.name
+    )
+    cy.contains(destinationPlanet.name).click()
+    cy.get('#travel-button').click()
+    cy.wait(1000)
+    cy.get('#map-root > svg')
+      .children()
+      .should('have.length', 0)
+  })
 })
