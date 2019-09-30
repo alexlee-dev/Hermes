@@ -280,7 +280,7 @@ const showWarpingTo = (
 
     createHomePlanetInd(svg, planets, height, width)
 
-    createShipInd(svg, ship, height, width)
+    createShipInd(svg, { location: destination }, height, width)
 
     addEventsToNodes(svg, setDestination, setOpen, destination)
   }, 10000)
