@@ -258,6 +258,23 @@ const showWarpingTo = (
     .attr('x', () => width / 2 - getLabelWidth(svg, `#warp-text`) / 2)
     .attr('y', height / 2)
 
+  svg
+    .append('text')
+    .text('10 sec')
+    .attr('id', 'warp-timer')
+    .attr('x', () => width / 2 - getLabelWidth(svg, '#warp-timer') / 2)
+    .attr('y', height / 2 + 50)
+
+  let secLeft = 10
+  const warpInt = setInterval(() => {
+    secLeft -= 1
+    svg.select('#warp-timer').text(`${secLeft} sec`)
+    if (secLeft === 0) {
+      svg.select('#warp-timer').remove()
+      clearInterval(warpInt)
+    }
+  }, 1000)
+
   setTimeout(() => {
     svg.select('#warp-text').remove()
 

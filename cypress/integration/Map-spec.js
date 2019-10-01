@@ -69,10 +69,12 @@ describe('Map', () => {
     cy.get('#travel-button').click()
     cy.wait(1000)
     cy.get('body').contains(`Warping to ${destinationPlanet.name}...`)
+    cy.get('body').contains(`10 sec`)
     cy.wait(13000)
     mockState.world.planets.forEach(planet => {
       cy.get('body').contains(planet.name)
     })
     cy.get('#warp-text').should('not.exist')
+    cy.get('#warp-timer').should('not.exist')
   })
 })
