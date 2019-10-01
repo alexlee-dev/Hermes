@@ -8,7 +8,7 @@ describe('Reset State', () => {
     cy.visit('/')
   })
 
-  it('Should reset the state.', () => {
+  it.skip('Should reset the state.', () => {
     cy.get('#view-speeddial').trigger('mouseover', { force: true })
     cy.get('button[title="Market"]').click()
     cy.get('body').contains('Ammunition')
