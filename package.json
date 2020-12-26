@@ -24,6 +24,7 @@
   },
   "scripts": {
     "build": "webpack",
+    "format": "prettier --write .",
     "develop": "webpack serve",
     "start": "serve -s build"
   },
@@ -37,6 +38,7 @@
     "eslint": "^7.16.0",
     "eslint-plugin-react": "^7.21.5",
     "html-webpack-plugin": "^4.5.0",
+    "prettier": "^2.2.1",
     "serve": "^11.3.2",
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.12",
