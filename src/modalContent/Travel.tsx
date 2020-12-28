@@ -1,18 +1,16 @@
 import * as React from "react";
-import addSeconds from "date-fns/addSeconds";
-import differenceInSeconds from "date-fns/differenceInSeconds";
 
 import { stations } from "../constants";
-import { arraysMatch } from "../util";
+import { arraysMatch, calculateDistance, calculateEta } from "../util";
 
 import { Station } from "../types";
 
 interface TravelContentProps {
   setEta: (eta: number) => void;
   setModalIsOpen: (modalIsOpen: boolean) => void;
-  setUserDestination: (userDestination: [number, number]) => void;
+  setUserDestination: (userDestination: Station) => void;
   setUserIsTraveling: (userIsTraveling: boolean) => void;
-  userLocation: [number, number];
+  userLocation: Station;
 }
 
 const TravelContent: React.FunctionComponent<TravelContentProps> = (
@@ -40,20 +38,16 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
     setUserIsTraveling(true);
 
     // * Set an ETA based on the distance to travel
+    const distance = calculateDistance(userLocation, destination);
 
-    const lhs = Math.pow(destination?.location[0] - userLocation[0], 2);
-    const rhs = Math.pow(destination?.location[1] - userLocation[1], 2);
-    const sum = lhs + rhs;
-    const distance = Math.sqrt(sum);
-    const now = Date.now();
     // * Should edit this depending on ship stats later
     const speed = 1;
     // * In seconds
     const travelTime = distance * speed;
-    const etaDate = addSeconds(now, travelTime);
-    const eta = differenceInSeconds(etaDate, now);
+    const eta = calculateEta(travelTime);
+
     setEta(eta);
-    setUserDestination(destination.location);
+    setUserDestination(destination);
   };
 
   const handleDestinationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -75,7 +69,9 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
       <select id="destination" onChange={handleDestinationChange}>
         <option value="">-- Please select a destination --</option>
         {stations
-          .filter((station) => !arraysMatch(station.location, userLocation))
+          .filter(
+            (station) => !arraysMatch(station.location, userLocation.location)
+          )
           .map((station) => (
             <option key={station.id} value={station.id}>
               {station.name}

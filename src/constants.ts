@@ -77,3 +77,5 @@ export const stations: Station[] = [
     name: "Station 3",
   },
 ];
+
+export const startingStation = stations[0];

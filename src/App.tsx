@@ -3,22 +3,22 @@ import * as React from "react";
 import Modal from "./components/Modal";
 import StationDisplay from "./components/StationDisplay";
 
-import { stations } from "./constants";
+import { startingStation, stations } from "./constants";
 import useInterval from "./hooks/useInterval";
+
+import { Station } from "./types";
 
 const App: React.FunctionComponent<unknown> = () => {
   const [modalContent, setModalContent] = React.useState<string>("");
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
   const [modalTitle, setModalTitle] = React.useState<string>("");
 
-  // TODO - Refactor these to always be a type of Station
-  const [userLocation, setUserLocation] = React.useState<[number, number]>([
-    0,
-    0,
-  ]);
-  const [userDestination, setUserDestination] = React.useState<
-    [number, number] | null
-  >(null);
+  const [userLocation, setUserLocation] = React.useState<Station>(
+    startingStation
+  );
+  const [userDestination, setUserDestination] = React.useState<Station | null>(
+    null
+  );
   const [userIsTraveling, setUserIsTraveling] = React.useState<boolean>(false);
   // * In Seconds
   const [eta, setEta] = React.useState<number | null>(null);
@@ -27,8 +27,8 @@ const App: React.FunctionComponent<unknown> = () => {
     !userIsTraveling &&
     stations.find(
       (station) =>
-        station.location[0] === userLocation[0] &&
-        station.location[1] === userLocation[1]
+        station.location[0] === userLocation.location[0] &&
+        station.location[1] === userLocation.location[1]
     );
 
   const handleClickTravel = () => {

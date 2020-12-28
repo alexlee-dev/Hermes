@@ -1,16 +1,17 @@
 import * as React from "react";
 
 import TravelContent from "../modalContent/Travel";
+import { Station } from "../types";
 
 export interface ModalProps {
   content: string;
   display: boolean;
   setEta: (eta: number) => void;
   setModalIsOpen: (modalIsOpen: boolean) => void;
-  setUserDestination: (userDestination: [number, number]) => void;
+  setUserDestination: (userDestination: Station) => void;
   setUserIsTraveling: (userIsTraveling: boolean) => void;
   title: string;
-  userLocation: [number, number];
+  userLocation: Station;
 }
 
 const contents: { [index: string]: React.FunctionComponent<any> } = {
