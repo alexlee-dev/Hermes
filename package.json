@@ -19,6 +19,7 @@
   },
   "homepage": "https://hermes-game.netlify.com/",
   "dependencies": {
+    "date-fns": "^2.16.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
@@ -29,6 +30,7 @@
     "start": "serve -s build"
   },
   "devDependencies": {
+    "@types/date-fns": "^2.6.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.11.0",

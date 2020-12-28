@@ -2,3 +2,18 @@ table,
 td {
   border: 1px solid #333;
 }
+
+.blur {
+  filter: blur(3px);
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.75);
+  bottom: 0;
+  color: white;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 5;
+}
