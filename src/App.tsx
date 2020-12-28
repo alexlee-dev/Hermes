@@ -11,10 +11,14 @@ const App: React.FunctionComponent<unknown> = () => {
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
   const [modalTitle, setModalTitle] = React.useState<string>("");
 
+  // TODO - Refactor these to always be a type of Station
   const [userLocation, setUserLocation] = React.useState<[number, number]>([
     0,
     0,
   ]);
+  const [userDestination, setUserDestination] = React.useState<
+    [number, number] | null
+  >(null);
   const [userIsTraveling, setUserIsTraveling] = React.useState<boolean>(false);
   // * In Seconds
   const [eta, setEta] = React.useState<number | null>(null);
@@ -37,8 +41,13 @@ const App: React.FunctionComponent<unknown> = () => {
     if (userIsTraveling && eta) {
       // * Update the ETA every 1 second
       if (eta === 1) {
+        if (!userDestination) {
+          throw new Error("No user destination!");
+        }
         setUserIsTraveling(false);
         setEta(null);
+        setUserLocation(userDestination);
+        setUserDestination(null);
       } else {
         setEta(eta - 1);
       }
@@ -77,6 +86,7 @@ const App: React.FunctionComponent<unknown> = () => {
         display={modalIsOpen}
         setEta={setEta}
         setModalIsOpen={setModalIsOpen}
+        setUserDestination={setUserDestination}
         setUserIsTraveling={setUserIsTraveling}
         title={modalTitle}
         userLocation={userLocation}

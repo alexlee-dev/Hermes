@@ -1,13 +1,13 @@
 import * as React from "react";
 
 import TravelContent from "../modalContent/Travel";
-import { stations } from "../constants";
 
 export interface ModalProps {
   content: string;
   display: boolean;
   setEta: (eta: number) => void;
   setModalIsOpen: (modalIsOpen: boolean) => void;
+  setUserDestination: (userDestination: [number, number]) => void;
   setUserIsTraveling: (userIsTraveling: boolean) => void;
   title: string;
   userLocation: [number, number];
@@ -23,6 +23,7 @@ const Modal: React.FunctionComponent<ModalProps> = (props: ModalProps) => {
     display,
     setEta,
     setModalIsOpen,
+    setUserDestination,
     setUserIsTraveling,
     title,
     userLocation,
@@ -39,8 +40,8 @@ const Modal: React.FunctionComponent<ModalProps> = (props: ModalProps) => {
       <Content
         setEta={setEta}
         setModalIsOpen={setModalIsOpen}
+        setUserDestination={setUserDestination}
         setUserIsTraveling={setUserIsTraveling}
-        stations={stations}
         userLocation={userLocation}
       />
     </div>
