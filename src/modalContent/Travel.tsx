@@ -1,11 +1,12 @@
 import * as React from "react";
 import addSeconds from "date-fns/addSeconds";
+import differenceInSeconds from "date-fns/differenceInSeconds";
 
 import { Station } from "../types";
 import { arraysMatch } from "../util";
 
 interface TravelContentProps {
-  setEta: (eta: Date) => void;
+  setEta: (eta: number) => void;
   setModalIsOpen: (modalIsOpen: boolean) => void;
   setUserIsTraveling: (userIsTraveling: boolean) => void;
   stations: Station[];
@@ -36,8 +37,8 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
     // * Set an ETA based on the distance to travel
     const now = Date.now();
     const etaDate = addSeconds(now, 10);
-    console.log(etaDate);
-    setEta(etaDate);
+    const eta = differenceInSeconds(etaDate, now);
+    setEta(eta);
   };
 
   return (

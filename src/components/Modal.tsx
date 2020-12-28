@@ -6,7 +6,7 @@ import { stations } from "../constants";
 export interface ModalProps {
   content: string;
   display: boolean;
-  setEta: (eta: Date) => void;
+  setEta: (eta: number) => void;
   setModalIsOpen: (modalIsOpen: boolean) => void;
   setUserIsTraveling: (userIsTraveling: boolean) => void;
   title: string;

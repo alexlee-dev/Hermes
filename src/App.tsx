@@ -1,7 +1,4 @@
 import * as React from "react";
-import intervalToDuration from "date-fns/intervalToDuration";
-import subSeconds from "date-fns/subSeconds";
-import differenceInSeconds from "date-fns/differenceInSeconds";
 
 import Modal from "./components/Modal";
 import StationDisplay from "./components/StationDisplay";
@@ -19,7 +16,8 @@ const App: React.FunctionComponent<unknown> = () => {
     0,
   ]);
   const [userIsTraveling, setUserIsTraveling] = React.useState<boolean>(false);
-  const [eta, setEta] = React.useState<Date | null>(null);
+  // * In Seconds
+  const [eta, setEta] = React.useState<number | null>(null);
 
   const currentStation =
     !userIsTraveling &&
@@ -38,15 +36,11 @@ const App: React.FunctionComponent<unknown> = () => {
   useInterval(() => {
     if (userIsTraveling && eta) {
       // * Update the ETA every 1 second
-      const secondsLeft = differenceInSeconds(Date.now(), eta);
-      console.log({ secondsLeft });
-      // ? 1
-      if (secondsLeft === 0) {
+      if (eta === 1) {
         setUserIsTraveling(false);
         setEta(null);
       } else {
-        const newEta = subSeconds(eta, 1);
-        setEta(newEta);
+        setEta(eta - 1);
       }
     }
   }, 1000);
@@ -66,7 +60,7 @@ const App: React.FunctionComponent<unknown> = () => {
           {userIsTraveling && eta && (
             <div>
               <h3>ETA</h3>
-              {eta.toLocaleTimeString()}
+              {eta}
             </div>
           )}
         </div>
