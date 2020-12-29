@@ -1,10 +1,11 @@
 import * as React from "react";
 
 import Modal from "./components/Modal";
-import StationDisplay from "./components/StationDisplay";
 
-import { startingStation, stations } from "./constants";
+import { startingStation } from "./constants";
+import GameDisplay from "./GameDisplay";
 import useInterval from "./hooks/useInterval";
+import TravelMapScene from "./TravelMapScene";
 
 import { Station } from "./types";
 
@@ -22,20 +23,6 @@ const App: React.FunctionComponent<unknown> = () => {
   const [userIsTraveling, setUserIsTraveling] = React.useState<boolean>(false);
   // * In Seconds
   const [eta, setEta] = React.useState<number | null>(null);
-
-  const currentStation =
-    !userIsTraveling &&
-    stations.find(
-      (station) =>
-        station.location[0] === userLocation.location[0] &&
-        station.location[1] === userLocation.location[1]
-    );
-
-  const handleClickTravel = () => {
-    setModalContent("travel");
-    setModalTitle("Travel");
-    setModalIsOpen(true);
-  };
 
   useInterval(() => {
     if (userIsTraveling && eta) {
@@ -55,31 +42,17 @@ const App: React.FunctionComponent<unknown> = () => {
   }, 1000);
 
   return (
-    <div>
-      <div className={modalIsOpen ? "blur" : undefined}>
-        <h1>Hermes</h1>
-        <div>
-          <h2>User Location</h2>
-          {currentStation ? currentStation.name : "Traveling..."}
-          {!userIsTraveling && (
-            <button onClick={handleClickTravel} type="button">
-              Travel
-            </button>
-          )}
-          {userIsTraveling && eta && (
-            <div>
-              <h3>ETA</h3>
-              {eta}
-            </div>
-          )}
-        </div>
-        {!userIsTraveling && (
-          <div>
-            <h2>Current Station</h2>
-            {currentStation && <StationDisplay station={currentStation} />}
-          </div>
-        )}
-      </div>
+    <>
+      <GameDisplay
+        eta={eta}
+        modalIsOpen={modalIsOpen}
+        setModalContent={setModalContent}
+        setModalIsOpen={setModalIsOpen}
+        setModalTitle={setModalTitle}
+        userIsTraveling={userIsTraveling}
+        userLocation={userLocation}
+      />
+      <TravelMapScene />
 
       <Modal
         content={modalContent}
@@ -91,7 +64,7 @@ const App: React.FunctionComponent<unknown> = () => {
         title={modalTitle}
         userLocation={userLocation}
       />
-    </div>
+    </>
   );
 };
 
