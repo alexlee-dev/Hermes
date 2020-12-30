@@ -4,6 +4,7 @@ import {
   DirectionalLight,
   GridHelper,
   Mesh,
+  Object3D,
   PerspectiveCamera,
   Scene,
   WebGL1Renderer,
@@ -34,6 +35,111 @@ class TravelMapScene extends React.Component<unknown, unknown> {
   // * -------------------------
   componentDidMount(): void {
     this.init();
+  }
+
+  createLabel(
+    text: string,
+    backgroundColor: string,
+    textColor: string,
+    positionX: number,
+    positionY: number,
+    positionZ: number
+  ): Object3D {
+    const size = 32;
+    const baseWidth = 150;
+    const borderSize = 2;
+    const ctx = document.createElement("canvas").getContext("2d");
+    const font = `${size}px bold sans-serif`;
+    if (!ctx) {
+      throw new Error("No ctx!");
+    }
+    ctx.font = font;
+    const textWidth = ctx.measureText(text).width;
+    const doubleBorderSize = borderSize * 2;
+    const width = baseWidth + doubleBorderSize;
+    const height = size + doubleBorderSize;
+    ctx.canvas.width = width;
+    ctx.canvas.height = height;
+    // need to set font again after resizing canvas
+    ctx.font = font;
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+
+    ctx.fillStyle = backgroundColor;
+    ctx.fillRect(0, 0, width, height);
+
+    // scale to fit but don't stretch
+    const scaleFactor = Math.min(1, baseWidth / textWidth);
+    ctx.translate(width / 2, height / 2);
+    ctx.scale(scaleFactor, 1);
+    ctx.fillStyle = textColor;
+    ctx.fillText(text, 0, 0);
+    const canvas = ctx.canvas;
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.minFilter = THREE.LinearFilter;
+    texture.wrapS = THREE.ClampToEdgeWrapping;
+    texture.wrapT = THREE.ClampToEdgeWrapping;
+
+    const labelMaterial = new THREE.SpriteMaterial({
+      map: texture,
+      transparent: true,
+    });
+
+    const labelBaseScale = 0.01;
+    const label = new THREE.Sprite(labelMaterial);
+
+    const root = new THREE.Object3D();
+    root.add(label);
+
+    label.position.set(positionX, positionY, positionZ);
+    label.scale.x = canvas.width * labelBaseScale;
+    label.scale.y = canvas.height * labelBaseScale;
+    this.scene.add(root);
+
+    return root;
+  }
+
+  createLabels(): void {
+    const userShipLabel = this.createLabel(
+      "Ship",
+      "blue",
+      "white",
+      this.userShip.position.x,
+      this.userShip.position.y - 1.5,
+      this.userShip.position.z
+    );
+    this.scene.add(userShipLabel);
+
+    const station1Label = this.createLabel(
+      "Station 1",
+      "blue",
+      "white",
+      this.station1.position.x,
+      this.station1.position.y - 1.5,
+      this.station1.position.z
+    );
+    this.scene.add(station1Label);
+
+    const station2Label = this.createLabel(
+      "Station 2",
+      "blue",
+      "white",
+      this.station2.position.x,
+      this.station2.position.y - 1.5,
+      this.station2.position.z
+    );
+    this.scene.add(station2Label);
+
+    const station3Label = this.createLabel(
+      "Station 3",
+      "blue",
+      "white",
+      this.station3.position.x,
+      this.station3.position.y - 1.5,
+      this.station3.position.z
+    );
+    this.scene.add(station3Label);
   }
 
   // * -------------------------
@@ -94,6 +200,7 @@ class TravelMapScene extends React.Component<unknown, unknown> {
     // * Setup base scene
     this.setupBaseScene();
     this.createObjects();
+    this.createLabels();
     this.setupListeners();
 
     this.tick = this.tick.bind(this);
