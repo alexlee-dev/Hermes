@@ -2,10 +2,8 @@ import * as React from "react";
 import * as THREE from "three";
 import {
   DirectionalLight,
-  DirectionalLightHelper,
-  HemisphereLight,
+  GridHelper,
   Mesh,
-  Object3D,
   PerspectiveCamera,
   Scene,
   WebGL1Renderer,
@@ -16,24 +14,20 @@ class TravelMapScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);
     this.state = {};
-    this.lightHelperEnabled = false;
   }
 
   // * Properties
-  backdrop!: Mesh;
   camera!: PerspectiveCamera;
   container!: HTMLDivElement | null;
-  cube!: Mesh;
   directionalLight!: DirectionalLight;
-  hemisphereLight!: HemisphereLight;
-  lightHelper!: DirectionalLightHelper;
-  lightHelperEnabled!: boolean;
+  grid!: GridHelper;
   orbitControls!: OrbitControls;
-  polygon!: Mesh;
   renderer!: WebGL1Renderer;
   scene!: Scene;
-  tree!: Object3D;
-  treeBase!: Object3D;
+  station1!: Mesh;
+  station2!: Mesh;
+  station3!: Mesh;
+  userShip!: Mesh;
 
   // * -------------------------
   // * Lifecycle Events
@@ -46,43 +40,54 @@ class TravelMapScene extends React.Component<unknown, unknown> {
   // * Methods
   // * -------------------------
   createObjects(): void {
-    // * Backdrop
-    const backdropGeometry = new THREE.BoxGeometry(500, 500, 1);
-    const backdropMaterial = new THREE.MeshPhongMaterial({ color: 0x60cbe6 });
-    const backdrop = new THREE.Mesh(backdropGeometry, backdropMaterial);
-    this.backdrop = backdrop;
-    this.scene.add(this.backdrop);
-
     // * Light
     this.directionalLight = new DirectionalLight(0xffffff, 1);
     this.directionalLight.position.set(0, -900, 1200);
     this.scene.add(this.directionalLight);
-
-    this.hemisphereLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6);
-    this.hemisphereLight.color.setHSL(0.6, 1, 0.6);
-    this.hemisphereLight.groundColor.setHSL(0.095, 1, 0.75);
-    this.hemisphereLight.position.set(0, 50, 0);
-    this.hemisphereLight.intensity = 0.4;
-    this.scene.add(this.hemisphereLight);
-
-    if (this.lightHelperEnabled) {
-      this.lightHelper = new THREE.DirectionalLightHelper(
-        this.directionalLight,
-        200
-      );
-      this.scene.add(this.lightHelper);
-    }
 
     this.orbitControls = new OrbitControls(
       this.camera,
       this.renderer.domElement
     );
 
-    const geometry = new THREE.BoxGeometry(50, 50, 50);
-    const material = new THREE.MeshPhongMaterial({ color: "red" });
-    this.cube = new THREE.Mesh(geometry, material);
-    this.cube.position.set(0, 0, 0);
-    this.scene.add(this.cube);
+    (window as any).camera = this.camera;
+
+    // * Grid
+    const gridHelper = new THREE.GridHelper(100, 10);
+    gridHelper.rotation.set(1.57, 0, 0);
+    this.scene.add(gridHelper);
+
+    (window as any).gridHelper = gridHelper;
+
+    // * User Ship
+    const userShipGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+    const userShipMaterial = new THREE.MeshPhongMaterial({ color: "red" });
+    this.userShip = new THREE.Mesh(userShipGeometry, userShipMaterial);
+    this.userShip.position.set(0, 0, 0);
+    this.scene.add(this.userShip);
+
+    // * Station 1
+    const station1Geometry = new THREE.BoxGeometry(1, 1, 1);
+    const station1Material = new THREE.MeshPhongMaterial({ color: "blue" });
+    this.station1 = new THREE.Mesh(station1Geometry, station1Material);
+    this.station1.position.set(0, 0, 0);
+    this.scene.add(this.station1);
+
+    // * Station 2
+    const station2Geometry = new THREE.BoxGeometry(1, 1, 1);
+    const station2Material = new THREE.MeshPhongMaterial({ color: "green" });
+    this.station2 = new THREE.Mesh(station2Geometry, station2Material);
+    this.station2.position.set(10, 0, 0);
+    this.scene.add(this.station2);
+
+    // * Station 3
+    const station3Geometry = new THREE.BoxGeometry(1, 1, 1);
+    const station3Material = new THREE.MeshPhongMaterial({ color: "yellow" });
+    this.station3 = new THREE.Mesh(station3Geometry, station3Material);
+    this.station3.position.set(20, 0, 0);
+    this.scene.add(this.station3);
+
+    (window as any).userShip = this.userShip;
   }
 
   init(): void {
@@ -111,7 +116,7 @@ class TravelMapScene extends React.Component<unknown, unknown> {
       nearPlane,
       farPlane
     );
-    this.camera.position.set(0, 0, 200);
+    this.camera.position.set(0, 0, 50);
     // * Setup Renderer
     this.renderer = new THREE.WebGL1Renderer({ alpha: true, antialias: true });
     this.renderer.setSize(width, height);
@@ -147,10 +152,6 @@ class TravelMapScene extends React.Component<unknown, unknown> {
 
     // * Additional updates
     this.orbitControls.update();
-
-    if (this.lightHelperEnabled) {
-      this.lightHelper.update();
-    }
   }
 
   // * -------------------------
