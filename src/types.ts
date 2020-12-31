@@ -15,8 +15,12 @@ export interface ShipTravelEvent extends Event {
 }
 
 export interface Station {
+  color: string;
+  depth: number;
+  height: number;
   id: string;
   location: [number, number];
   market: Item[];
   name: string;
+  width: number;
 }

@@ -11,8 +11,12 @@ import {
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
+import { stations } from "./constants";
+
 import { ShipTravelEvent } from "./types";
 
+// TODO - User ship label does not move with the ship
+// TODO - User ship can only be animated on the x axis currently
 class TravelMapScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);
@@ -28,9 +32,6 @@ class TravelMapScene extends React.Component<unknown, unknown> {
   orbitControls!: OrbitControls;
   renderer!: WebGL1Renderer;
   scene!: Scene;
-  station1!: Mesh;
-  station2!: Mesh;
-  station3!: Mesh;
   travelDistance?: number;
   travelDuration?: number;
   travelStartTimestamp?: number;
@@ -102,51 +103,40 @@ class TravelMapScene extends React.Component<unknown, unknown> {
     label.position.set(positionX, positionY, positionZ);
     label.scale.x = canvas.width * labelBaseScale;
     label.scale.y = canvas.height * labelBaseScale;
-    this.scene.add(root);
 
     return root;
   }
 
   createLabels(): void {
-    const userShipLabel = this.createLabel(
-      "Ship",
-      "blue",
-      "white",
-      this.userShip.position.x,
-      this.userShip.position.y - 1.5,
-      this.userShip.position.z
-    );
-    this.scene.add(userShipLabel);
+    const labels = [
+      {
+        text: "Ship",
+        x: this.userShip.position.x,
+        y: this.userShip.position.y - 1.5,
+        z: this.userShip.position.z,
+      },
+    ];
 
-    const station1Label = this.createLabel(
-      "Station 1",
-      "blue",
-      "white",
-      this.station1.position.x,
-      this.station1.position.y - 1.5,
-      this.station1.position.z
-    );
-    this.scene.add(station1Label);
+    stations.forEach((station) => {
+      labels.push({
+        text: station.name,
+        x: station.location[0],
+        y: station.location[1] - 1.5,
+        z: 0,
+      });
+    });
 
-    const station2Label = this.createLabel(
-      "Station 2",
-      "blue",
-      "white",
-      this.station2.position.x,
-      this.station2.position.y - 1.5,
-      this.station2.position.z
-    );
-    this.scene.add(station2Label);
-
-    const station3Label = this.createLabel(
-      "Station 3",
-      "blue",
-      "white",
-      this.station3.position.x,
-      this.station3.position.y - 1.5,
-      this.station3.position.z
-    );
-    this.scene.add(station3Label);
+    labels.forEach((label) => {
+      const object = this.createLabel(
+        label.text,
+        "blue",
+        "white",
+        label.x,
+        label.y,
+        label.z
+      );
+      this.scene.add(object);
+    });
   }
 
   // * -------------------------
@@ -175,26 +165,18 @@ class TravelMapScene extends React.Component<unknown, unknown> {
     this.userShip.position.set(0, 0, 0);
     this.scene.add(this.userShip);
 
-    // * Station 1
-    const station1Geometry = new THREE.BoxGeometry(1, 1, 1);
-    const station1Material = new THREE.MeshPhongMaterial({ color: "blue" });
-    this.station1 = new THREE.Mesh(station1Geometry, station1Material);
-    this.station1.position.set(0, 0, 0);
-    this.scene.add(this.station1);
-
-    // * Station 2
-    const station2Geometry = new THREE.BoxGeometry(1, 1, 1);
-    const station2Material = new THREE.MeshPhongMaterial({ color: "green" });
-    this.station2 = new THREE.Mesh(station2Geometry, station2Material);
-    this.station2.position.set(10, 0, 0);
-    this.scene.add(this.station2);
-
-    // * Station 3
-    const station3Geometry = new THREE.BoxGeometry(1, 1, 1);
-    const station3Material = new THREE.MeshPhongMaterial({ color: "yellow" });
-    this.station3 = new THREE.Mesh(station3Geometry, station3Material);
-    this.station3.position.set(20, 0, 0);
-    this.scene.add(this.station3);
+    // * Stations
+    stations.forEach((station) => {
+      const geometry = new THREE.BoxGeometry(
+        station.width,
+        station.height,
+        station.depth
+      );
+      const material = new THREE.MeshPhongMaterial({ color: station.color });
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.position.set(station.location[0], station.location[1], 0);
+      this.scene.add(mesh);
+    });
   }
 
   init(): void {
