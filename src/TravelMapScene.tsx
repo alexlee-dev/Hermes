@@ -3,7 +3,6 @@ import * as THREE from "three";
 import {
   DirectionalLight,
   GridHelper,
-  Mesh,
   Object3D,
   PerspectiveCamera,
   Scene,
@@ -12,6 +11,8 @@ import {
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 import { stations } from "./constants";
+import Station from "./objects/Station";
+import UserShip from "./objects/UserShip";
 
 import { ShipTravelEvent } from "./types";
 
@@ -36,107 +37,13 @@ class TravelMapScene extends React.Component<unknown, unknown> {
   travelDuration?: number;
   travelStartTimestamp?: number;
   userIsTraveling: boolean;
-  userShip!: Mesh;
+  userShip!: Object3D;
 
   // * -------------------------
   // * Lifecycle Events
   // * -------------------------
   componentDidMount(): void {
     this.init();
-  }
-
-  createLabel(
-    text: string,
-    backgroundColor: string,
-    textColor: string,
-    positionX: number,
-    positionY: number,
-    positionZ: number
-  ): Object3D {
-    const size = 32;
-    const baseWidth = 150;
-    const borderSize = 2;
-    const ctx = document.createElement("canvas").getContext("2d");
-    const font = `${size}px bold sans-serif`;
-    if (!ctx) {
-      throw new Error("No ctx!");
-    }
-    ctx.font = font;
-    const textWidth = ctx.measureText(text).width;
-    const doubleBorderSize = borderSize * 2;
-    const width = baseWidth + doubleBorderSize;
-    const height = size + doubleBorderSize;
-    ctx.canvas.width = width;
-    ctx.canvas.height = height;
-    // need to set font again after resizing canvas
-    ctx.font = font;
-    ctx.textBaseline = "middle";
-    ctx.textAlign = "center";
-
-    ctx.fillStyle = backgroundColor;
-    ctx.fillRect(0, 0, width, height);
-
-    // scale to fit but don't stretch
-    const scaleFactor = Math.min(1, baseWidth / textWidth);
-    ctx.translate(width / 2, height / 2);
-    ctx.scale(scaleFactor, 1);
-    ctx.fillStyle = textColor;
-    ctx.fillText(text, 0, 0);
-    const canvas = ctx.canvas;
-
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.minFilter = THREE.LinearFilter;
-    texture.wrapS = THREE.ClampToEdgeWrapping;
-    texture.wrapT = THREE.ClampToEdgeWrapping;
-
-    const labelMaterial = new THREE.SpriteMaterial({
-      map: texture,
-      transparent: true,
-    });
-
-    const labelBaseScale = 0.01;
-    const label = new THREE.Sprite(labelMaterial);
-
-    const root = new THREE.Object3D();
-    root.add(label);
-
-    label.position.set(positionX, positionY, positionZ);
-    label.scale.x = canvas.width * labelBaseScale;
-    label.scale.y = canvas.height * labelBaseScale;
-
-    return root;
-  }
-
-  createLabels(): void {
-    const labels = [
-      {
-        text: "Ship",
-        x: this.userShip.position.x,
-        y: this.userShip.position.y - 1.5,
-        z: this.userShip.position.z,
-      },
-    ];
-
-    stations.forEach((station) => {
-      labels.push({
-        text: station.name,
-        x: station.location[0],
-        y: station.location[1] - 1.5,
-        z: 0,
-      });
-    });
-
-    labels.forEach((label) => {
-      const object = this.createLabel(
-        label.text,
-        "blue",
-        "white",
-        label.x,
-        label.y,
-        label.z
-      );
-      this.scene.add(object);
-    });
   }
 
   // * -------------------------
@@ -159,23 +66,28 @@ class TravelMapScene extends React.Component<unknown, unknown> {
     this.scene.add(gridHelper);
 
     // * User Ship
-    const userShipGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-    const userShipMaterial = new THREE.MeshPhongMaterial({ color: "red" });
-    this.userShip = new THREE.Mesh(userShipGeometry, userShipMaterial);
-    this.userShip.position.set(0, 0, 0);
-    this.scene.add(this.userShip);
+    const userShipObject = new UserShip({
+      label: "User Ship",
+      x: 0,
+      y: 0,
+      z: 0,
+    });
+    this.userShip = userShipObject.object;
+    this.scene.add(userShipObject.object);
 
     // * Stations
     stations.forEach((station) => {
-      const geometry = new THREE.BoxGeometry(
-        station.width,
-        station.height,
-        station.depth
-      );
-      const material = new THREE.MeshPhongMaterial({ color: station.color });
-      const mesh = new THREE.Mesh(geometry, material);
-      mesh.position.set(station.location[0], station.location[1], 0);
-      this.scene.add(mesh);
+      const stationObject = new Station({
+        color: station.color,
+        depth: station.depth,
+        height: station.height,
+        label: station.name,
+        width: station.width,
+        x: station.location[0],
+        y: station.location[1],
+        z: 0,
+      });
+      this.scene.add(stationObject.object);
     });
   }
 
@@ -183,7 +95,6 @@ class TravelMapScene extends React.Component<unknown, unknown> {
     // * Setup base scene
     this.setupBaseScene();
     this.createObjects();
-    this.createLabels();
     this.setupListeners();
 
     this.tick = this.tick.bind(this);
