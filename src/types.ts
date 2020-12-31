@@ -5,6 +5,15 @@ export interface Item {
   price: number;
 }
 
+export interface ShipTravelEvent extends Event {
+  detail?: {
+    // * In "units" ...?
+    travelDistance: number;
+    // * In miliseconds
+    travelDuration: number;
+  };
+}
+
 export interface Station {
   id: string;
   location: [number, number];

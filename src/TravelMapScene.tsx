@@ -11,10 +11,13 @@ import {
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
+import { ShipTravelEvent } from "./types";
+
 class TravelMapScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);
     this.state = {};
+    this.userIsTraveling = false;
   }
 
   // * Properties
@@ -28,6 +31,10 @@ class TravelMapScene extends React.Component<unknown, unknown> {
   station1!: Mesh;
   station2!: Mesh;
   station3!: Mesh;
+  travelDistance?: number;
+  travelDuration?: number;
+  travelStartTimestamp?: number;
+  userIsTraveling: boolean;
   userShip!: Mesh;
 
   // * -------------------------
@@ -156,14 +163,10 @@ class TravelMapScene extends React.Component<unknown, unknown> {
       this.renderer.domElement
     );
 
-    (window as any).camera = this.camera;
-
     // * Grid
     const gridHelper = new THREE.GridHelper(100, 10);
     gridHelper.rotation.set(1.57, 0, 0);
     this.scene.add(gridHelper);
-
-    (window as any).gridHelper = gridHelper;
 
     // * User Ship
     const userShipGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
@@ -192,8 +195,6 @@ class TravelMapScene extends React.Component<unknown, unknown> {
     this.station3 = new THREE.Mesh(station3Geometry, station3Material);
     this.station3.position.set(20, 0, 0);
     this.scene.add(this.station3);
-
-    (window as any).userShip = this.userShip;
   }
 
   init(): void {
@@ -246,19 +247,49 @@ class TravelMapScene extends React.Component<unknown, unknown> {
       },
       false
     );
+
+    window.addEventListener("shipTravel", (e: ShipTravelEvent) => {
+      if (!e.detail) {
+        throw new Error("No detail!");
+      }
+      console.log("SHIP TRAVELING");
+      this.userIsTraveling = true;
+      this.travelDistance = e.detail.travelDistance;
+      this.travelDuration = e.detail.travelDuration;
+    });
   }
 
-  tick(): void {
-    this.update();
+  tick(timestamp?: number): void {
+    if (timestamp && this.userIsTraveling) {
+      if (!this.travelDuration || !this.travelDistance) {
+        throw new Error("Not enough info!");
+      }
+      if (this.travelStartTimestamp === undefined)
+        this.travelStartTimestamp = timestamp;
+      // * elapsed is time elapsed since ship began moving, in miliseconds.
+      const elapsed = timestamp - this.travelStartTimestamp;
 
-    requestAnimationFrame(this.tick);
-  }
+      const journeyPercentage = elapsed / this.travelDuration;
 
-  update(): void {
+      this.userShip.position.set(
+        this.travelDistance * journeyPercentage,
+        this.userShip.position.y,
+        this.userShip.position.z
+      );
+
+      if (elapsed >= this.travelDuration) {
+        // * Stop the animation after duration of travel
+        console.log("STOP");
+        this.userIsTraveling = false;
+      }
+    }
+
     this.renderer.render(this.scene, this.camera);
 
     // * Additional updates
     this.orbitControls.update();
+
+    requestAnimationFrame(this.tick);
   }
 
   // * -------------------------

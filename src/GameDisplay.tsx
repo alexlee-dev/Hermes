@@ -3,8 +3,6 @@ import * as React from "react";
 import StationDisplay from "./components/StationDisplay";
 import { stations } from "./constants";
 
-import { Station } from "./types";
-
 export interface GameDisplayProps {
   eta: number | null;
   modalIsOpen: boolean;
@@ -12,7 +10,7 @@ export interface GameDisplayProps {
   setModalIsOpen: (modalIsOpen: boolean) => void;
   setModalTitle: (modalTitle: string) => void;
   userIsTraveling: boolean;
-  userLocation: Station;
+  userLocation: [number, number];
 }
 
 const GameDisplay: React.FunctionComponent<GameDisplayProps> = (
@@ -38,8 +36,8 @@ const GameDisplay: React.FunctionComponent<GameDisplayProps> = (
     !userIsTraveling &&
     stations.find(
       (station) =>
-        station.location[0] === userLocation.location[0] &&
-        station.location[1] === userLocation.location[1]
+        station.location[0] === userLocation[0] &&
+        station.location[1] === userLocation[1]
     );
 
   return (

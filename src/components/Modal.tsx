@@ -11,7 +11,7 @@ export interface ModalProps {
   setUserDestination: (userDestination: Station) => void;
   setUserIsTraveling: (userIsTraveling: boolean) => void;
   title: string;
-  userLocation: Station;
+  userLocation: [number, number];
 }
 
 const contents: { [index: string]: React.FunctionComponent<any> } = {

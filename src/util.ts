@@ -18,11 +18,11 @@ export const arraysMatch = (arr1: any[], arr2: any[]): boolean => {
 };
 
 export const calculateDistance = (
-  origin: Station,
+  origin: [number, number],
   destination: Station
 ): number => {
-  const lhs = Math.pow(destination.location[0] - origin.location[0], 2);
-  const rhs = Math.pow(destination.location[1] - origin.location[1], 2);
+  const lhs = Math.pow(destination.location[0] - origin[0], 2);
+  const rhs = Math.pow(destination.location[1] - origin[1], 2);
   const sum = lhs + rhs;
   const distance = Math.sqrt(sum);
   return distance;

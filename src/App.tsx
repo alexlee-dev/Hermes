@@ -6,6 +6,7 @@ import { startingStation } from "./constants";
 import GameDisplay from "./GameDisplay";
 import useInterval from "./hooks/useInterval";
 import TravelMapScene from "./TravelMapScene";
+import { calculateDistance } from "./util";
 
 import { Station } from "./types";
 
@@ -14,8 +15,8 @@ const App: React.FunctionComponent<unknown> = () => {
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
   const [modalTitle, setModalTitle] = React.useState<string>("");
 
-  const [userLocation, setUserLocation] = React.useState<Station>(
-    startingStation
+  const [userLocation, setUserLocation] = React.useState<[number, number]>(
+    startingStation.location
   );
   const [userDestination, setUserDestination] = React.useState<Station | null>(
     null
@@ -33,9 +34,10 @@ const App: React.FunctionComponent<unknown> = () => {
         }
         setUserIsTraveling(false);
         setEta(null);
-        setUserLocation(userDestination);
+        setUserLocation(userDestination.location);
         setUserDestination(null);
       } else {
+        // TODO - Render the ship traveling through the map
         setEta(eta - 1);
       }
     }
