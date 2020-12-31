@@ -16,8 +16,10 @@ import UserShip from "./objects/UserShip";
 
 import { ShipTravelEvent } from "./types";
 
-// TODO - User ship label does not move with the ship
+// TODO - Camera should follow user ship
 // TODO - User ship can only be animated on the x axis currently
+// TODO - ability to have camera focus on other objects
+// TODO - I don't think you can go from Station 1 to Station 2 and Station 1 again correctly. Fix it.
 class TravelMapScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);
