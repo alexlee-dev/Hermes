@@ -16,7 +16,6 @@ import UserShip from "./objects/UserShip";
 
 import { ShipTravelEvent } from "./types";
 
-// TODO - Camera should follow user ship
 // TODO - User ship can only be animated on the x axis currently
 // TODO - ability to have camera focus on other objects
 // TODO - I don't think you can go from Station 1 to Station 2 and Station 1 again correctly. Fix it.
@@ -181,7 +180,12 @@ class TravelMapScene extends React.Component<unknown, unknown> {
 
     this.renderer.render(this.scene, this.camera);
 
-    // * Additional updates
+    // * Focus orbit camera on the user ship
+    this.orbitControls.target.set(
+      this.userShip.position.x,
+      this.userShip.position.y,
+      this.userShip.position.z
+    );
     this.orbitControls.update();
 
     requestAnimationFrame(this.tick);
