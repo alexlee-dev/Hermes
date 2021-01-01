@@ -50,7 +50,11 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
     setUserDestination(destination);
 
     const event = new CustomEvent("shipTravel", {
-      detail: { travelDistance: distance, travelDuration: eta * 1000 },
+      detail: {
+        travelDestination: destination,
+        travelDistance: distance,
+        travelDuration: eta * 1000,
+      },
     });
     window.dispatchEvent(event);
   };

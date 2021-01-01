@@ -7,6 +7,7 @@ export interface Item {
 
 export interface ShipTravelEvent extends Event {
   detail?: {
+    travelDestination: Station;
     // * In "units" ...?
     travelDistance: number;
     // * In miliseconds

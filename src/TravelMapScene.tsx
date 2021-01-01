@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as THREE from "three";
+import * as TWEEN from "@tweenjs/tween.js";
 import {
   DirectionalLight,
   GridHelper,
@@ -16,9 +17,11 @@ import UserShip from "./objects/UserShip";
 
 import { ShipTravelEvent } from "./types";
 
-// TODO - User ship can only be animated on the x axis currently
+// TODO - Add easing to tween
+// TODO - Test out a station on a Y that isn't 0
 // TODO - ability to have camera focus on other objects
-// TODO - I don't think you can go from Station 1 to Station 2 and Station 1 again correctly. Fix it.
+// TODO - There is a slight delay between the animation truly stoping and the gui being updated
+// * ---- I think it needs to come from the .onComplete() instead of a timer in the gui part
 class TravelMapScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);
@@ -34,8 +37,6 @@ class TravelMapScene extends React.Component<unknown, unknown> {
   orbitControls!: OrbitControls;
   renderer!: WebGL1Renderer;
   scene!: Scene;
-  travelDistance?: number;
-  travelDuration?: number;
   travelStartTimestamp?: number;
   userIsTraveling: boolean;
   userShip!: Object3D;
@@ -146,37 +147,33 @@ class TravelMapScene extends React.Component<unknown, unknown> {
       if (!e.detail) {
         throw new Error("No detail!");
       }
+
+      const tween = new TWEEN.Tween({
+        x: this.userShip.position.x,
+        y: this.userShip.position.y,
+      })
+        .to(
+          {
+            x: e.detail.travelDestination.location[0],
+            y: e.detail.travelDestination.location[1],
+          },
+          e.detail.travelDuration
+        )
+        .onUpdate((posObj) => {
+          this.userShip.position.set(posObj.x, posObj.y, 0);
+        })
+        .onComplete((posObj) => {
+          console.log("STOP");
+        });
+
       console.log("SHIP TRAVELING");
+      tween.start();
       this.userIsTraveling = true;
-      this.travelDistance = e.detail.travelDistance;
-      this.travelDuration = e.detail.travelDuration;
     });
   }
 
   tick(timestamp?: number): void {
-    if (timestamp && this.userIsTraveling) {
-      if (!this.travelDuration || !this.travelDistance) {
-        throw new Error("Not enough info!");
-      }
-      if (this.travelStartTimestamp === undefined)
-        this.travelStartTimestamp = timestamp;
-      // * elapsed is time elapsed since ship began moving, in miliseconds.
-      const elapsed = timestamp - this.travelStartTimestamp;
-
-      const journeyPercentage = elapsed / this.travelDuration;
-
-      this.userShip.position.set(
-        this.travelDistance * journeyPercentage,
-        this.userShip.position.y,
-        this.userShip.position.z
-      );
-
-      if (elapsed >= this.travelDuration) {
-        // * Stop the animation after duration of travel
-        console.log("STOP");
-        this.userIsTraveling = false;
-      }
-    }
+    TWEEN.update(timestamp);
 
     this.renderer.render(this.scene, this.camera);
 
