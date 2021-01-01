@@ -26,9 +26,9 @@ const App: React.FunctionComponent<unknown> = () => {
   const [eta, setEta] = React.useState<number | null>(null);
 
   useInterval(() => {
-    if (userIsTraveling && eta) {
+    if (userIsTraveling) {
       // * Update the ETA every 1 second
-      if (eta === 1) {
+      if ((window as any).travelComplete) {
         if (!userDestination) {
           throw new Error("No user destination!");
         }
@@ -37,6 +37,9 @@ const App: React.FunctionComponent<unknown> = () => {
         setUserLocation(userDestination.location);
         setUserDestination(null);
       } else {
+        if (!eta) {
+          throw new Error("no eta!");
+        }
         // TODO - Render the ship traveling through the map
         setEta(eta - 1);
       }

@@ -18,8 +18,7 @@ import UserShip from "./objects/UserShip";
 import { ShipTravelEvent } from "./types";
 
 // TODO - ability to have camera focus on other objects
-// TODO - There is a slight delay between the animation truly stoping and the gui being updated
-// * ---- I think it needs to come from the .onComplete() instead of a timer in the gui part
+// TODO - Ability to travel on the z axis as well
 class TravelMapScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);
@@ -163,9 +162,11 @@ class TravelMapScene extends React.Component<unknown, unknown> {
         })
         .onComplete((posObj) => {
           console.log("STOP");
+          (window as any).travelComplete = true;
         });
 
       console.log("SHIP TRAVELING");
+      (window as any).travelComplete = false;
       tween.start();
       this.userIsTraveling = true;
     });
