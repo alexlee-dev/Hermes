@@ -17,8 +17,6 @@ import UserShip from "./objects/UserShip";
 
 import { ShipTravelEvent } from "./types";
 
-// TODO - Add easing to tween
-// TODO - Test out a station on a Y that isn't 0
 // TODO - ability to have camera focus on other objects
 // TODO - There is a slight delay between the animation truly stoping and the gui being updated
 // * ---- I think it needs to come from the .onComplete() instead of a timer in the gui part
@@ -159,6 +157,7 @@ class TravelMapScene extends React.Component<unknown, unknown> {
           },
           e.detail.travelDuration
         )
+        .easing(TWEEN.Easing.Quintic.InOut)
         .onUpdate((posObj) => {
           this.userShip.position.set(posObj.x, posObj.y, 0);
         })
