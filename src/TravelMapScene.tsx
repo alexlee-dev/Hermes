@@ -104,8 +104,8 @@ class TravelMapScene extends React.Component<unknown, unknown> {
     // * Setup Scene
     this.scene = new THREE.Scene();
     // * Setup Camera
-    const height = window.innerHeight * 0.33;
-    const width = height;
+    const height = window.innerHeight * 0.5;
+    const width = window.innerWidth;
     const aspectRatio = width / height;
     const fieldOfView = 60;
     const nearPlane = 1;
@@ -131,8 +131,8 @@ class TravelMapScene extends React.Component<unknown, unknown> {
     window.addEventListener(
       "resize",
       () => {
-        const height = window.innerHeight * 0.33;
-        const width = height;
+        const height = window.innerHeight * 0.5;
+        const width = window.innerWidth;
         this.renderer.setSize(width, height);
         this.camera.aspect = width / height;
         this.camera.updateProjectionMatrix();

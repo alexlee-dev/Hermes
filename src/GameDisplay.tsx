@@ -41,7 +41,7 @@ const GameDisplay: React.FunctionComponent<GameDisplayProps> = (
     );
 
   return (
-    <div className={modalIsOpen ? "blur" : undefined}>
+    <div className={modalIsOpen ? "blur" : undefined} id="game-display">
       <h1>Hermes</h1>
       <div>
         <h2>User Location</h2>

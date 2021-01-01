@@ -37,10 +37,10 @@ class UserShip extends React.Component<unknown, unknown> {
     // * Create User Ship Label
     const label = createLabel(
       this.label,
-      "blue",
+      "red",
       "white",
       this.object.position.x,
-      this.object.position.y - 1.5,
+      this.object.position.y + 1.5,
       this.object.position.z
     );
 

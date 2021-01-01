@@ -4,14 +4,17 @@ body {
 
 #root {
   display: flex;
-  height: 100vh;
-  width: 100vw;
+  flex-direction: column;
+}
+
+#game-display {
+  max-height: 50vh;
+  overflow: scroll;
 }
 
 #scene {
+  bottom: 0;
   position: absolute;
-  right: 0;
-  top: 0;
 }
 
 #scene > canvas {
