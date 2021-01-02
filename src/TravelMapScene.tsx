@@ -16,7 +16,6 @@ import UserShip from "./objects/UserShip";
 
 import { ShipTravelEvent } from "./types";
 
-// TODO - GameDisplay as a part of the TravelMapScene
 // TODO - ability to have camera focus on other objects
 // TODO - See if you can refactor what logic goes in what file(s)
 // TODO - "Space" background/atmosphere
@@ -99,7 +98,7 @@ class TravelMapScene extends React.Component<unknown, unknown> {
     // * Setup Scene
     this.scene = new THREE.Scene();
     // * Setup Camera
-    const height = window.innerHeight * 0.5;
+    const height = window.innerHeight;
     const width = window.innerWidth;
     const aspectRatio = width / height;
     const fieldOfView = 60;
@@ -126,7 +125,7 @@ class TravelMapScene extends React.Component<unknown, unknown> {
     window.addEventListener(
       "resize",
       () => {
-        const height = window.innerHeight * 0.5;
+        const height = window.innerHeight;
         const width = window.innerWidth;
         this.renderer.setSize(width, height);
         this.camera.aspect = width / height;

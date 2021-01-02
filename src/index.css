@@ -2,23 +2,13 @@ body {
   margin: 0;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-}
-
 #game-display {
-  max-height: 50vh;
+  background-color: rgb(215 215 215 / 0.7);
+  height: 100vh;
+  max-width: 15%;
   overflow: scroll;
-}
-
-#scene {
-  bottom: 0;
+  padding: 10px;
   position: absolute;
-}
-
-#scene > canvas {
-  outline: 3px solid black;
 }
 
 table,
