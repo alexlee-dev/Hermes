@@ -58,6 +58,7 @@ const GameDisplay: React.FunctionComponent<GameDisplayProps> = (
   return (
     <div className={modalIsOpen ? "blur" : undefined} id="game-display">
       <h1>Hermes</h1>
+      <i className="fas fa-user"></i>
       <div>
         <h2>User Location</h2>
         {location}

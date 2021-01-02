@@ -16,9 +16,11 @@ import UserShip from "./objects/UserShip";
 
 import { ShipTravelEvent } from "./types";
 
+// TODO - GameDisplay is a sidebar that opens other modals
 // TODO - ability to have camera focus on other objects
 // TODO - See if you can refactor what logic goes in what file(s)
 // TODO - "Space" background/atmosphere
+// TODO - Ability to show labels only on hover / all the time / never
 class TravelMapScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);
