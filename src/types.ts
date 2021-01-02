@@ -5,6 +5,13 @@ export interface Item {
   price: number;
 }
 
+export type MapCoordinate = [xCoordinate, yCoordinate, zCoordinate];
+
+export interface MenuType {
+  name: "travel" | "userLocation";
+  title: string;
+}
+
 export interface ShipTravelEvent extends Event {
   detail?: {
     travelDestination: Station;
@@ -25,8 +32,6 @@ export interface Station {
   name: string;
   width: number;
 }
-
-export type MapCoordinate = [xCoordinate, yCoordinate, zCoordinate];
 
 type xCoordinate = number;
 type yCoordinate = number;

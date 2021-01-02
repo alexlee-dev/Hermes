@@ -11,6 +11,11 @@ body {
   position: absolute;
 }
 
+#game-display > div {
+  display: flex;
+  flex-direction: column;
+}
+
 table,
 td {
   border: 1px solid #333;

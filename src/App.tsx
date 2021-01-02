@@ -1,11 +1,12 @@
 import * as React from "react";
+import ReactTooltip from "react-tooltip";
 
 import Modal from "./components/Modal";
 
 import { startingLocation } from "./constants";
-import GameDisplay from "./GameDisplay";
+import Sidebar from "./components/Sidebar";
 import useInterval from "./hooks/useInterval";
-import TravelMapScene from "./TravelMapScene";
+import GameScene from "./GameScene";
 
 import { MapCoordinate, Station } from "./types";
 
@@ -48,17 +49,15 @@ const App: React.FunctionComponent<unknown> = () => {
 
   return (
     <>
-      <GameDisplay
+      <Sidebar
         eta={eta}
         modalIsOpen={modalIsOpen}
         setModalContent={setModalContent}
         setModalIsOpen={setModalIsOpen}
         setModalTitle={setModalTitle}
         userIsTraveling={userIsTraveling}
-        userLocation={userLocation}
       />
-      <TravelMapScene />
-
+      <GameScene />
       <Modal
         content={modalContent}
         display={modalIsOpen}
@@ -67,8 +66,10 @@ const App: React.FunctionComponent<unknown> = () => {
         setUserDestination={setUserDestination}
         setUserIsTraveling={setUserIsTraveling}
         title={modalTitle}
+        userIsTraveling={userIsTraveling}
         userLocation={userLocation}
       />
+      <ReactTooltip />
     </>
   );
 };
