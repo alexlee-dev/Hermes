@@ -2,21 +2,20 @@ import * as React from "react";
 
 import Modal from "./components/Modal";
 
-import { startingStation } from "./constants";
+import { startingLocation } from "./constants";
 import GameDisplay from "./GameDisplay";
 import useInterval from "./hooks/useInterval";
 import TravelMapScene from "./TravelMapScene";
-import { calculateDistance } from "./util";
 
-import { Station } from "./types";
+import { MapCoordinate, Station } from "./types";
 
 const App: React.FunctionComponent<unknown> = () => {
   const [modalContent, setModalContent] = React.useState<string>("");
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
   const [modalTitle, setModalTitle] = React.useState<string>("");
 
-  const [userLocation, setUserLocation] = React.useState<[number, number]>(
-    startingStation.location
+  const [userLocation, setUserLocation] = React.useState<MapCoordinate>(
+    startingLocation
   );
   const [userDestination, setUserDestination] = React.useState<Station | null>(
     null
@@ -28,6 +27,7 @@ const App: React.FunctionComponent<unknown> = () => {
   useInterval(() => {
     if (userIsTraveling) {
       // * Update the ETA every 1 second
+      // TODO Probably do this better somehow
       if ((window as any).travelComplete) {
         if (!userDestination) {
           throw new Error("No user destination!");

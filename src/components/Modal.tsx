@@ -1,7 +1,8 @@
 import * as React from "react";
 
 import TravelContent from "../modalContent/Travel";
-import { Station } from "../types";
+
+import { MapCoordinate, Station } from "../types";
 
 export interface ModalProps {
   content: string;
@@ -11,7 +12,7 @@ export interface ModalProps {
   setUserDestination: (userDestination: Station) => void;
   setUserIsTraveling: (userIsTraveling: boolean) => void;
   title: string;
-  userLocation: [number, number];
+  userLocation: MapCoordinate;
 }
 
 const contents: { [index: string]: React.FunctionComponent<any> } = {

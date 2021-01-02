@@ -3,7 +3,6 @@ import * as THREE from "three";
 import * as TWEEN from "@tweenjs/tween.js";
 import {
   DirectionalLight,
-  GridHelper,
   Object3D,
   PerspectiveCamera,
   Scene,
@@ -17,8 +16,10 @@ import UserShip from "./objects/UserShip";
 
 import { ShipTravelEvent } from "./types";
 
+// TODO - GameDisplay as a part of the TravelMapScene
 // TODO - ability to have camera focus on other objects
-// TODO - Ability to travel on the z axis as well
+// TODO - See if you can refactor what logic goes in what file(s)
+// TODO - "Space" background/atmosphere
 class TravelMapScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);
@@ -30,7 +31,6 @@ class TravelMapScene extends React.Component<unknown, unknown> {
   camera!: PerspectiveCamera;
   container!: HTMLDivElement | null;
   directionalLight!: DirectionalLight;
-  grid!: GridHelper;
   orbitControls!: OrbitControls;
   renderer!: WebGL1Renderer;
   scene!: Scene;
@@ -59,11 +59,6 @@ class TravelMapScene extends React.Component<unknown, unknown> {
       this.renderer.domElement
     );
 
-    // * Grid
-    const gridHelper = new THREE.GridHelper(100, 10);
-    gridHelper.rotation.set(1.57, 0, 0);
-    this.scene.add(gridHelper);
-
     // * User Ship
     const userShipObject = new UserShip({
       label: "User Ship",
@@ -84,7 +79,7 @@ class TravelMapScene extends React.Component<unknown, unknown> {
         width: station.width,
         x: station.location[0],
         y: station.location[1],
-        z: 0,
+        z: station.location[2],
       });
       this.scene.add(stationObject.object);
     });
@@ -148,17 +143,20 @@ class TravelMapScene extends React.Component<unknown, unknown> {
       const tween = new TWEEN.Tween({
         x: this.userShip.position.x,
         y: this.userShip.position.y,
+        z: this.userShip.position.z,
       })
         .to(
           {
-            x: e.detail.travelDestination.location[0],
+            // * The 0.75 makes the ship appear to "dock" with the station, instead of just getting "consumed" by it
+            x: e.detail.travelDestination.location[0] - 0.75,
             y: e.detail.travelDestination.location[1],
+            z: e.detail.travelDestination.location[2],
           },
           e.detail.travelDuration
         )
         .easing(TWEEN.Easing.Quintic.InOut)
         .onUpdate((posObj) => {
-          this.userShip.position.set(posObj.x, posObj.y, 0);
+          this.userShip.position.set(posObj.x, posObj.y, posObj.z);
         })
         .onComplete((posObj) => {
           console.log("STOP");

@@ -20,8 +20,14 @@ export interface Station {
   depth: number;
   height: number;
   id: string;
-  location: [number, number];
+  location: MapCoordinate;
   market: Item[];
   name: string;
   width: number;
 }
+
+export type MapCoordinate = [xCoordinate, yCoordinate, zCoordinate];
+
+type xCoordinate = number;
+type yCoordinate = number;
+type zCoordinate = number;

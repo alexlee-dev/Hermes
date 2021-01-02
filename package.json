@@ -27,8 +27,9 @@
   },
   "scripts": {
     "build": "webpack",
-    "format": "prettier --write .",
     "develop": "webpack serve",
+    "format": "prettier --write .",
+    "lint": "eslint ./src",
     "start": "serve -s build"
   },
   "devDependencies": {

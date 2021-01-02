@@ -3,6 +3,8 @@ import * as React from "react";
 import StationDisplay from "./components/StationDisplay";
 import { stations } from "./constants";
 
+import { MapCoordinate } from "./types";
+
 export interface GameDisplayProps {
   eta: number | null;
   modalIsOpen: boolean;
@@ -10,7 +12,7 @@ export interface GameDisplayProps {
   setModalIsOpen: (modalIsOpen: boolean) => void;
   setModalTitle: (modalTitle: string) => void;
   userIsTraveling: boolean;
-  userLocation: [number, number];
+  userLocation: MapCoordinate;
 }
 
 const GameDisplay: React.FunctionComponent<GameDisplayProps> = (
@@ -37,15 +39,28 @@ const GameDisplay: React.FunctionComponent<GameDisplayProps> = (
     stations.find(
       (station) =>
         station.location[0] === userLocation[0] &&
-        station.location[1] === userLocation[1]
+        station.location[1] === userLocation[1] &&
+        station.location[2] === userLocation[2]
     );
+
+  let location;
+
+  if (currentStation && currentStation.name) {
+    location = currentStation.name;
+  } else {
+    if (userIsTraveling) {
+      location = "Traveling...";
+    } else {
+      location = "In space...";
+    }
+  }
 
   return (
     <div className={modalIsOpen ? "blur" : undefined} id="game-display">
       <h1>Hermes</h1>
       <div>
         <h2>User Location</h2>
-        {currentStation ? currentStation.name : "Traveling..."}
+        {location}
         {!userIsTraveling && (
           <button onClick={handleClickTravel} type="button">
             Travel
