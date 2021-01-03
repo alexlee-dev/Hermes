@@ -3,9 +3,11 @@ import * as React from "react";
 import { stations } from "../constants";
 import { arraysMatch, calculateDistance, calculateEta } from "../util";
 
-import { Station } from "../types";
+import { CameraTarget, Station } from "../types";
 
 interface TravelContentProps {
+  cameraTarget: CameraTarget;
+  setCameraTarget: (cameraTarget: CameraTarget) => void;
   setEta: (eta: number) => void;
   setModalIsOpen: (modalIsOpen: boolean) => void;
   setUserDestination: (userDestination: Station) => void;

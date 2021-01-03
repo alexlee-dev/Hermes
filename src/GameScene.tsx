@@ -14,10 +14,8 @@ import { stations } from "./constants";
 import Station from "./objects/Station";
 import UserShip from "./objects/UserShip";
 
-import { ShipTravelEvent } from "./types";
+import { CameraTargetChangeEvent, ShipTravelEvent } from "./types";
 
-// TODO - Move Market into it's own Sidebar Menu
-// TODO - ability to have camera focus on other objects
 // TODO - See if you can refactor what logic goes in what file(s)
 // TODO - "Space" background/atmosphere
 // TODO - Ability to show labels only on hover / all the time / never
@@ -26,10 +24,12 @@ class GameScene extends React.Component<unknown, unknown> {
     super(props);
     this.state = {};
     this.userIsTraveling = false;
+    this.cameraTarget = undefined;
   }
 
   // * Properties
   camera!: PerspectiveCamera;
+  cameraTarget: Object3D | undefined;
   container!: HTMLDivElement | null;
   directionalLight!: DirectionalLight;
   orbitControls!: OrbitControls;
@@ -76,6 +76,7 @@ class GameScene extends React.Component<unknown, unknown> {
         color: station.color,
         depth: station.depth,
         height: station.height,
+        id: station.id,
         label: station.name,
         width: station.width,
         x: station.location[0],
@@ -91,6 +92,7 @@ class GameScene extends React.Component<unknown, unknown> {
     this.setupBaseScene();
     this.createObjects();
     this.setupListeners();
+    this.cameraTarget = this.userShip;
 
     this.tick = this.tick.bind(this);
     this.tick();
@@ -169,6 +171,32 @@ class GameScene extends React.Component<unknown, unknown> {
       tween.start();
       this.userIsTraveling = true;
     });
+
+    window.addEventListener(
+      "cameraTargetChange",
+      (e: CameraTargetChangeEvent) => {
+        if (!e.detail) {
+          throw new Error("No detail!");
+        }
+
+        let correspondingObject: Object3D | undefined = this.userShip;
+        if (e.detail.cameraTarget !== "ship") {
+          correspondingObject = this.scene.children.find(
+            (object) =>
+              object.userData && object.userData.id === e.detail?.cameraTarget
+          );
+        }
+        this.cameraTarget = correspondingObject;
+        if (!this.cameraTarget) {
+          throw new Error("No camera target!");
+        }
+        this.camera.position.set(
+          this.cameraTarget.position.x,
+          this.cameraTarget.position.y,
+          this.cameraTarget.position.z + 10
+        );
+      }
+    );
   }
 
   tick(timestamp?: number): void {
@@ -176,11 +204,14 @@ class GameScene extends React.Component<unknown, unknown> {
 
     this.renderer.render(this.scene, this.camera);
 
-    // * Focus orbit camera on the user ship
+    // * Focus orbit camera on the camera target
+    if (!this.cameraTarget) {
+      throw new Error("No camera target!");
+    }
     this.orbitControls.target.set(
-      this.userShip.position.x,
-      this.userShip.position.y,
-      this.userShip.position.z
+      this.cameraTarget.position.x,
+      this.cameraTarget.position.y,
+      this.cameraTarget.position.z
     );
     this.orbitControls.update();
 

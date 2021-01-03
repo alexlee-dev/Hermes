@@ -1,3 +1,11 @@
+export type CameraTarget = string;
+
+export interface CameraTargetChangeEvent extends Event {
+  detail?: {
+    cameraTarget: CameraTarget;
+  };
+}
+
 export interface Item {
   description: string;
   inventory: number;
@@ -8,7 +16,7 @@ export interface Item {
 export type MapCoordinate = [xCoordinate, yCoordinate, zCoordinate];
 
 export interface MenuType {
-  name: "market" | "travel" | "userLocation";
+  name: "camera" | "market" | "travel" | "userLocation";
   title: string;
 }
 

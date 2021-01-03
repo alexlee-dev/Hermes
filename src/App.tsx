@@ -8,10 +8,12 @@ import Sidebar from "./components/Sidebar";
 import useInterval from "./hooks/useInterval";
 import GameScene from "./GameScene";
 
-import { MapCoordinate, Station } from "./types";
+import { CameraTarget, MapCoordinate, Station } from "./types";
 
 // TODO - State persists on reload
+// TODO - State Management (Redux or Redux Toolkit?)
 const App: React.FunctionComponent<unknown> = () => {
+  const [cameraTarget, setCameraTarget] = React.useState<CameraTarget>("ship");
   const [modalContent, setModalContent] = React.useState<string>("");
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
   const [modalTitle, setModalTitle] = React.useState<string>("");
@@ -59,8 +61,10 @@ const App: React.FunctionComponent<unknown> = () => {
       />
       <GameScene />
       <Modal
+        cameraTarget={cameraTarget}
         content={modalContent}
         display={modalIsOpen}
+        setCameraTarget={setCameraTarget}
         setEta={setEta}
         setModalIsOpen={setModalIsOpen}
         setUserDestination={setUserDestination}

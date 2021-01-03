@@ -7,6 +7,7 @@ interface StationProps {
   color: string;
   depth: number;
   height: number;
+  id: string;
   label: string;
   width: number;
   x: number;
@@ -21,6 +22,7 @@ class Station extends React.Component<unknown, unknown> {
     this.color = props.color;
     this.depth = props.depth;
     this.height = props.height;
+    this.id = props.id;
     this.label = props.label;
     this.object = new THREE.Object3D();
     this.width = props.width;
@@ -33,6 +35,7 @@ class Station extends React.Component<unknown, unknown> {
   color: string;
   depth: number;
   height: number;
+  id: string;
   label: string;
   object: THREE.Object3D;
   width: number;
@@ -56,6 +59,7 @@ class Station extends React.Component<unknown, unknown> {
       this.object.position.z
     );
 
+    this.object.userData = { id: this.id, name: this.label };
     this.object.add(mesh);
     this.object.add(label);
     this.object.position.set(this.x, this.y, this.z);

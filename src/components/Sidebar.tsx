@@ -53,6 +53,14 @@ const Sidebar: React.FunctionComponent<SidebarProps> = (
           setModalIsOpen={setModalIsOpen}
           setModalTitle={setModalTitle}
         />
+        <SidebarButton
+          icon="far fa-camera-movie"
+          label="Camera"
+          menuType={{ name: "camera", title: "Camera" }}
+          setModalContent={setModalContent}
+          setModalIsOpen={setModalIsOpen}
+          setModalTitle={setModalTitle}
+        />
         {userIsTraveling && eta && (
           <div>
             <h3>ETA</h3>

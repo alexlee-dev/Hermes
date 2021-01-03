@@ -1,14 +1,17 @@
 import * as React from "react";
+import CameraContent from "../modalContent/Camera";
 
 import MarketContent from "../modalContent/Market";
 import TravelContent from "../modalContent/Travel";
 import UserLocation from "../modalContent/UserLocation";
 
-import { MapCoordinate, Station } from "../types";
+import { CameraTarget, MapCoordinate, Station } from "../types";
 
 export interface ModalProps {
+  cameraTarget: CameraTarget;
   content: string;
   display: boolean;
+  setCameraTarget: (cameraTarget: CameraTarget) => void;
   setEta: (eta: number) => void;
   setModalIsOpen: (modalIsOpen: boolean) => void;
   setUserDestination: (userDestination: Station) => void;
@@ -19,6 +22,7 @@ export interface ModalProps {
 }
 
 const contents: { [index: string]: React.FunctionComponent<any> } = {
+  camera: CameraContent,
   market: MarketContent,
   travel: TravelContent,
   userLocation: UserLocation,
@@ -26,8 +30,10 @@ const contents: { [index: string]: React.FunctionComponent<any> } = {
 
 const Modal: React.FunctionComponent<ModalProps> = (props: ModalProps) => {
   const {
+    cameraTarget,
     content,
     display,
+    setCameraTarget,
     setEta,
     setModalIsOpen,
     setUserDestination,
@@ -46,6 +52,8 @@ const Modal: React.FunctionComponent<ModalProps> = (props: ModalProps) => {
       </button>
       <h1>{title}</h1>
       <Content
+        cameraTarget={cameraTarget}
+        setCameraTarget={setCameraTarget}
         setEta={setEta}
         setModalIsOpen={setModalIsOpen}
         setUserDestination={setUserDestination}
