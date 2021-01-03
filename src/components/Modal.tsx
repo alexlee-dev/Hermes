@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import MarketContent from "../modalContent/Market";
 import TravelContent from "../modalContent/Travel";
 import UserLocation from "../modalContent/UserLocation";
 
@@ -18,6 +19,7 @@ export interface ModalProps {
 }
 
 const contents: { [index: string]: React.FunctionComponent<any> } = {
+  market: MarketContent,
   travel: TravelContent,
   userLocation: UserLocation,
 };

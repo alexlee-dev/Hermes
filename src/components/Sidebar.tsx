@@ -45,6 +45,14 @@ const Sidebar: React.FunctionComponent<SidebarProps> = (
             setModalTitle={setModalTitle}
           />
         )}
+        <SidebarButton
+          icon="far fa-chart-line"
+          label="Market"
+          menuType={{ name: "market", title: "Market" }}
+          setModalContent={setModalContent}
+          setModalIsOpen={setModalIsOpen}
+          setModalTitle={setModalTitle}
+        />
         {userIsTraveling && eta && (
           <div>
             <h3>ETA</h3>

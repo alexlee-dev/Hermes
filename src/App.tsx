@@ -10,6 +10,7 @@ import GameScene from "./GameScene";
 
 import { MapCoordinate, Station } from "./types";
 
+// TODO - State persists on reload
 const App: React.FunctionComponent<unknown> = () => {
   const [modalContent, setModalContent] = React.useState<string>("");
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
@@ -41,7 +42,6 @@ const App: React.FunctionComponent<unknown> = () => {
         if (!eta) {
           throw new Error("no eta!");
         }
-        // TODO - Render the ship traveling through the map
         setEta(eta - 1);
       }
     }

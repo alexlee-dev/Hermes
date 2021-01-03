@@ -8,7 +8,7 @@ export interface Item {
 export type MapCoordinate = [xCoordinate, yCoordinate, zCoordinate];
 
 export interface MenuType {
-  name: "travel" | "userLocation";
+  name: "market" | "travel" | "userLocation";
   title: string;
 }
 
