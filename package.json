@@ -27,7 +27,8 @@
     "three": "^0.124.0"
   },
   "scripts": {
-    "build": "webpack && copyfiles -u 2 ./src/assets/**/* build/assets/ --error --verbose",
+    "build-local": "webpack && copyfiles -u 2 ./src/assets/**/* build/assets/ --error --verbose",
+    "build": "webpack",
     "develop": "webpack serve",
     "format": "prettier --write .",
     "lint": "eslint ./src",
