@@ -1,27 +1,37 @@
-html,
 body {
   margin: 0;
 }
 
-.links line {
-  stroke: #999;
-  stroke-opacity: 0.6;
+#game-display {
+  background-color: rgb(215 215 215 / 0.7);
+  height: 100vh;
+  max-width: 15%;
+  overflow: scroll;
+  padding: 10px;
+  position: absolute;
 }
 
-.nodes circle {
-  stroke: #fff;
-  stroke-width: 1.5px;
+#game-display > div {
+  display: flex;
+  flex-direction: column;
 }
 
-.node-container:hover {
-  cursor: pointer;
+table,
+td {
+  border: 1px solid #333;
 }
 
-.MuiTableCell-stickyHeader {
-  top: 104px !important;
+.blur {
+  filter: blur(3px);
 }
 
-.reset-state {
-  position: absolute !important;
-  bottom: 0 !important;
+.modal {
+  background-color: rgba(0, 0, 0, 0.75);
+  bottom: 0;
+  color: white;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 5;
 }
