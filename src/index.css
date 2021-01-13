@@ -1,3 +1,21 @@
+body {
+  margin: 0;
+}
+
+#game-display {
+  background-color: rgb(215 215 215 / 0.7);
+  height: 100vh;
+  max-width: 15%;
+  overflow: scroll;
+  padding: 10px;
+  position: absolute;
+}
+
+#game-display > div {
+  display: flex;
+  flex-direction: column;
+}
+
 table,
 td {
   border: 1px solid #333;

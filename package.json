@@ -19,23 +19,30 @@
   },
   "homepage": "https://hermes-game.netlify.com/",
   "dependencies": {
+    "@tweenjs/tween.js": "^18.6.4",
     "date-fns": "^2.16.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-tooltip": "^4.2.11",
+    "three": "^0.124.0"
   },
   "scripts": {
-    "build": "webpack",
-    "format": "prettier --write .",
+    "build": "webpack && copyfiles -u 2 ./src/assets/**/* build/assets/ --error --verbose",
     "develop": "webpack serve",
-    "start": "serve -s build"
+    "format": "prettier --write .",
+    "lint": "eslint ./src",
+    "start": "serve build"
   },
   "devDependencies": {
     "@types/date-fns": "^2.6.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-tooltip": "^4.2.4",
+    "@types/three": "^0.103.2",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.11.0",
     "clean-webpack-plugin": "^3.0.0",
+    "copyfiles": "^2.4.1",
     "css-loader": "^5.0.1",
     "eslint": "^7.16.0",
     "eslint-plugin-react": "^7.21.5",

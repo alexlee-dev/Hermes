@@ -1,9 +1,12 @@
-import { Station } from "./types";
+import { MapCoordinate, Station } from "./types";
 
 export const stations: Station[] = [
   {
-    id: "0",
-    location: [0, 0],
+    color: "blue",
+    depth: 1,
+    height: 1,
+    id: "1",
+    location: [0, 15, 20],
     market: [
       {
         description: "Item 1 description.",
@@ -25,10 +28,14 @@ export const stations: Station[] = [
       },
     ],
     name: "Station 1",
+    width: 1,
   },
   {
-    id: "1",
-    location: [0, 10],
+    color: "green",
+    depth: 1,
+    height: 1,
+    id: "2",
+    location: [10, 0, 4],
     market: [
       {
         description: "Item 1 description.",
@@ -50,10 +57,14 @@ export const stations: Station[] = [
       },
     ],
     name: "Station 2",
+    width: 1,
   },
   {
-    id: "2",
-    location: [0, 20],
+    color: "yellow",
+    depth: 1,
+    height: 1,
+    id: "3",
+    location: [20, 30, -10],
     market: [
       {
         description: "Item 1 description.",
@@ -75,7 +86,8 @@ export const stations: Station[] = [
       },
     ],
     name: "Station 3",
+    width: 1,
   },
 ];
 
-export const startingStation = stations[0];
+export const startingLocation: MapCoordinate = [0, 0, 0];

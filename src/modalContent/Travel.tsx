@@ -3,14 +3,16 @@ import * as React from "react";
 import { stations } from "../constants";
 import { arraysMatch, calculateDistance, calculateEta } from "../util";
 
-import { Station } from "../types";
+import { CameraTarget, Station } from "../types";
 
 interface TravelContentProps {
+  cameraTarget: CameraTarget;
+  setCameraTarget: (cameraTarget: CameraTarget) => void;
   setEta: (eta: number) => void;
   setModalIsOpen: (modalIsOpen: boolean) => void;
   setUserDestination: (userDestination: Station) => void;
   setUserIsTraveling: (userIsTraveling: boolean) => void;
-  userLocation: Station;
+  userLocation: [number, number];
 }
 
 const TravelContent: React.FunctionComponent<TravelContentProps> = (
@@ -48,6 +50,15 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
 
     setEta(eta);
     setUserDestination(destination);
+
+    const event = new CustomEvent("shipTravel", {
+      detail: {
+        travelDestination: destination,
+        travelDistance: distance,
+        travelDuration: eta * 1000,
+      },
+    });
+    window.dispatchEvent(event);
   };
 
   const handleDestinationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -69,9 +80,7 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
       <select id="destination" onChange={handleDestinationChange}>
         <option value="">-- Please select a destination --</option>
         {stations
-          .filter(
-            (station) => !arraysMatch(station.location, userLocation.location)
-          )
+          .filter((station) => !arraysMatch(station.location, userLocation))
           .map((station) => (
             <option key={station.id} value={station.id}>
               {station.name}

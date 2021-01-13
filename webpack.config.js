@@ -7,6 +7,10 @@ const mode = process.env.NODE_ENV || "development";
 
 const config = {
   entry: "./src/index.tsx",
+  devServer: {
+    contentBase: path.join(__dirname, 'src/assets/'),
+    contentBasePublicPath: '/assets'
+  },
   mode,
   module: {
     rules: [

@@ -1,20 +1,25 @@
 import * as React from "react";
+import ReactTooltip from "react-tooltip";
 
 import Modal from "./components/Modal";
-import StationDisplay from "./components/StationDisplay";
 
-import { startingStation, stations } from "./constants";
+import { startingLocation } from "./constants";
+import Sidebar from "./components/Sidebar";
 import useInterval from "./hooks/useInterval";
+import GameScene from "./GameScene";
 
-import { Station } from "./types";
+import { CameraTarget, MapCoordinate, Station } from "./types";
 
+// TODO - State persists on reload
+// TODO - State Management (Redux or Redux Toolkit?)
 const App: React.FunctionComponent<unknown> = () => {
+  const [cameraTarget, setCameraTarget] = React.useState<CameraTarget>("ship");
   const [modalContent, setModalContent] = React.useState<string>("");
   const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
   const [modalTitle, setModalTitle] = React.useState<string>("");
 
-  const [userLocation, setUserLocation] = React.useState<Station>(
-    startingStation
+  const [userLocation, setUserLocation] = React.useState<MapCoordinate>(
+    startingLocation
   );
   const [userDestination, setUserDestination] = React.useState<Station | null>(
     null
@@ -23,75 +28,53 @@ const App: React.FunctionComponent<unknown> = () => {
   // * In Seconds
   const [eta, setEta] = React.useState<number | null>(null);
 
-  const currentStation =
-    !userIsTraveling &&
-    stations.find(
-      (station) =>
-        station.location[0] === userLocation.location[0] &&
-        station.location[1] === userLocation.location[1]
-    );
-
-  const handleClickTravel = () => {
-    setModalContent("travel");
-    setModalTitle("Travel");
-    setModalIsOpen(true);
-  };
-
   useInterval(() => {
-    if (userIsTraveling && eta) {
+    if (userIsTraveling) {
       // * Update the ETA every 1 second
-      if (eta === 1) {
+      // TODO Probably do this better somehow
+      if ((window as any).travelComplete) {
         if (!userDestination) {
           throw new Error("No user destination!");
         }
         setUserIsTraveling(false);
         setEta(null);
-        setUserLocation(userDestination);
+        setUserLocation(userDestination.location);
         setUserDestination(null);
       } else {
+        if (!eta) {
+          throw new Error("no eta!");
+        }
         setEta(eta - 1);
       }
     }
   }, 1000);
 
   return (
-    <div>
-      <div className={modalIsOpen ? "blur" : undefined}>
-        <h1>Hermes</h1>
-        <div>
-          <h2>User Location</h2>
-          {currentStation ? currentStation.name : "Traveling..."}
-          {!userIsTraveling && (
-            <button onClick={handleClickTravel} type="button">
-              Travel
-            </button>
-          )}
-          {userIsTraveling && eta && (
-            <div>
-              <h3>ETA</h3>
-              {eta}
-            </div>
-          )}
-        </div>
-        {!userIsTraveling && (
-          <div>
-            <h2>Current Station</h2>
-            {currentStation && <StationDisplay station={currentStation} />}
-          </div>
-        )}
-      </div>
-
+    <>
+      <Sidebar
+        eta={eta}
+        modalIsOpen={modalIsOpen}
+        setModalContent={setModalContent}
+        setModalIsOpen={setModalIsOpen}
+        setModalTitle={setModalTitle}
+        userIsTraveling={userIsTraveling}
+      />
+      <GameScene />
       <Modal
+        cameraTarget={cameraTarget}
         content={modalContent}
         display={modalIsOpen}
+        setCameraTarget={setCameraTarget}
         setEta={setEta}
         setModalIsOpen={setModalIsOpen}
         setUserDestination={setUserDestination}
         setUserIsTraveling={setUserIsTraveling}
         title={modalTitle}
+        userIsTraveling={userIsTraveling}
         userLocation={userLocation}
       />
-    </div>
+      <ReactTooltip />
+    </>
   );
 };
 
