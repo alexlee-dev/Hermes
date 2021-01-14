@@ -18,9 +18,6 @@ import UserShip from "./objects/UserShip";
 
 import { CameraTargetChangeEvent, ShipTravelEvent } from "./types";
 
-// TODO - See if you can refactor what logic goes in what file(s)
-// TODO - Ability to show labels only on hover / all the time / never
-// TODO - Better "space" - like actual objects instead of a sphere illusion
 class GameScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);

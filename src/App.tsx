@@ -10,8 +10,6 @@ import GameScene from "./GameScene";
 
 import { CameraTarget, MapCoordinate, Station } from "./types";
 
-// TODO - State persists on reload
-// TODO - State Management (Redux or Redux Toolkit?)
 const App: React.FunctionComponent<unknown> = () => {
   const [cameraTarget, setCameraTarget] = React.useState<CameraTarget>("ship");
   const [modalContent, setModalContent] = React.useState<string>("");
