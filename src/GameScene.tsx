@@ -2,6 +2,7 @@ import * as React from "react";
 import * as THREE from "three";
 import * as TWEEN from "@tweenjs/tween.js";
 import {
+  AmbientLight,
   DirectionalLight,
   Object3D,
   PerspectiveCamera,
@@ -11,14 +12,15 @@ import {
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 import { stations } from "./constants";
+import Starfield from "./objects/Starfield";
 import Station from "./objects/Station";
 import UserShip from "./objects/UserShip";
 
 import { CameraTargetChangeEvent, ShipTravelEvent } from "./types";
 
 // TODO - See if you can refactor what logic goes in what file(s)
-// TODO - "Space" background/atmosphere
 // TODO - Ability to show labels only on hover / all the time / never
+// TODO - Better "space" - like actual objects instead of a sphere illusion
 class GameScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);
@@ -28,6 +30,7 @@ class GameScene extends React.Component<unknown, unknown> {
   }
 
   // * Properties
+  ambientLight!: AmbientLight;
   camera!: PerspectiveCamera;
   cameraTarget: Object3D | undefined;
   container!: HTMLDivElement | null;
@@ -35,6 +38,7 @@ class GameScene extends React.Component<unknown, unknown> {
   orbitControls!: OrbitControls;
   renderer!: WebGL1Renderer;
   scene!: Scene;
+  starfield!: Object3D;
   travelStartTimestamp?: number;
   userIsTraveling: boolean;
   userShip!: Object3D;
@@ -51,9 +55,11 @@ class GameScene extends React.Component<unknown, unknown> {
   // * -------------------------
   createObjects(): void {
     // * Light
-    this.directionalLight = new DirectionalLight(0xffffff, 1);
-    this.directionalLight.position.set(0, -900, 1200);
+    this.ambientLight = new AmbientLight(0x888888);
+    this.directionalLight = new DirectionalLight(0xfdfcf0, 1);
+    this.directionalLight.position.set(20, 10, 20);
     this.scene.add(this.directionalLight);
+    this.scene.add(this.ambientLight);
 
     this.orbitControls = new OrbitControls(
       this.camera,
@@ -85,6 +91,12 @@ class GameScene extends React.Component<unknown, unknown> {
       });
       this.scene.add(stationObject.object);
     });
+
+    // * Starfield
+    const starfield = new Starfield({});
+    this.starfield = starfield.object;
+    (window as any).starfield = this.starfield;
+    this.scene.add(this.starfield);
   }
 
   init(): void {
