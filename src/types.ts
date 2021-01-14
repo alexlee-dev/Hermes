@@ -1,3 +1,5 @@
+import { Router } from "express";
+
 export type CameraTarget = string;
 
 export interface CameraTargetChangeEvent extends Event {
@@ -5,6 +7,12 @@ export interface CameraTargetChangeEvent extends Event {
     cameraTarget: CameraTarget;
   };
 }
+
+export type Controller = {
+  router: Router;
+};
+
+export type Domain = string | undefined;
 
 export interface Item {
   description: string;

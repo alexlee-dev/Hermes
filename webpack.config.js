@@ -6,7 +6,7 @@ const webpack = require("webpack");
 const mode = process.env.NODE_ENV || "development";
 
 const config = {
-  entry: "./src/index.tsx",
+  entry: "./src/game/index.tsx",
   devServer: {
     contentBase: path.join(__dirname, 'src/assets/'),
     contentBasePublicPath: '/assets'
@@ -48,12 +48,12 @@ const config = {
     },
   },
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "./src/index.html"),
+      template: path.join(__dirname, "./src/game/index.html"),
     }),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(mode),

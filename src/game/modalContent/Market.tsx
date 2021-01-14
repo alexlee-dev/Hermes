@@ -1,7 +1,7 @@
 import * as React from "react";
 import { stations } from "../constants";
 
-import { CameraTarget, Station } from "../types";
+import { CameraTarget, Station } from "../../types";
 
 interface MarketContentProps {
   cameraTarget: CameraTarget;

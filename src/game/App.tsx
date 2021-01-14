@@ -8,7 +8,7 @@ import Sidebar from "./components/Sidebar";
 import useInterval from "./hooks/useInterval";
 import GameScene from "./GameScene";
 
-import { CameraTarget, MapCoordinate, Station } from "./types";
+import { CameraTarget, MapCoordinate, Station } from "../types";
 
 const App: React.FunctionComponent<unknown> = () => {
   const [cameraTarget, setCameraTarget] = React.useState<CameraTarget>("ship");

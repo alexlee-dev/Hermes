@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { MenuType } from "../types";
+import { MenuType } from "../../types";
 
 export interface SidebarButtonProps {
   icon: string;

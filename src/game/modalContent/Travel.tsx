@@ -3,7 +3,7 @@ import * as React from "react";
 import { stations } from "../constants";
 import { arraysMatch, calculateDistance, calculateEta } from "../util";
 
-import { CameraTarget, Station } from "../types";
+import { CameraTarget, Station } from "../../types";
 
 interface TravelContentProps {
   cameraTarget: CameraTarget;

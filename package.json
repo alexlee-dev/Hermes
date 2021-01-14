@@ -20,7 +20,12 @@
   "homepage": "https://hermes-game.netlify.com/",
   "dependencies": {
     "@tweenjs/tween.js": "^18.6.4",
+    "chalk": "^4.1.0",
+    "cors": "^2.8.5",
     "date-fns": "^2.16.1",
+    "env-cmd": "^10.1.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-tooltip": "^4.2.11",
@@ -28,15 +33,19 @@
     "three": "^0.124.0"
   },
   "scripts": {
-    "build-local": "webpack && copyfiles -u 2 ./src/assets/**/* build/assets/ --error --verbose",
-    "build": "webpack",
+    "build-game": "webpack",
+    "build-server": "rimraf build && tsc && copyfiles -u 2 ./src/assets/**/* build/assets --error --verbose",
+    "build": "npm run build-game && npm run build-server",
     "develop": "webpack serve",
     "format": "prettier --write .",
     "lint": "eslint ./src",
-    "start": "serve build"
+    "start": "env-cmd node build/index.js"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.9",
     "@types/date-fns": "^2.6.0",
+    "@types/express": "^4.17.11",
+    "@types/morgan": "^1.9.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-tooltip": "^4.2.4",
@@ -50,6 +59,7 @@
     "eslint-plugin-react": "^7.21.5",
     "html-webpack-plugin": "^4.5.0",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.12",
     "typescript": "^4.1.3",
