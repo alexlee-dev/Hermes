@@ -14,6 +14,12 @@ export type Controller = {
 
 export type Domain = string | undefined;
 
+export interface GameState {
+  market: {
+    lol: [];
+  };
+}
+
 export interface Item {
   description: string;
   inventory: number;
