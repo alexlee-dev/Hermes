@@ -23,7 +23,11 @@ class Server {
     this.app.use(express.json());
     this.app.use(morgan("dev"));
 
-    const whitelistDomains: Domain[] = ["http://localhost:5555", undefined];
+    const whitelistDomains: Domain[] = [
+      "https://hermes-game.herokuapp.com",
+      "http://localhost:5555",
+      undefined,
+    ];
 
     const corsOptions: CorsOptions = {
       origin: (
