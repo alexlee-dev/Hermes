@@ -1,4 +1,4 @@
-import { MapCoordinate, Station } from "./types";
+import { MapCoordinate, Station } from "../types";
 
 export const stations: Station[] = [
   {

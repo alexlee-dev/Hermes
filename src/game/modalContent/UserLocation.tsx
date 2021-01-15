@@ -3,7 +3,7 @@ import * as React from "react";
 import StationDisplay from "../components/StationDisplay";
 import { stations } from "../constants";
 
-import { MapCoordinate, Station } from "../types";
+import { MapCoordinate, Station } from "../../types";
 
 interface UserLocationProps {
   setEta: (eta: number) => void;

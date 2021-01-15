@@ -5,7 +5,7 @@ import MarketContent from "../modalContent/Market";
 import TravelContent from "../modalContent/Travel";
 import UserLocation from "../modalContent/UserLocation";
 
-import { CameraTarget, MapCoordinate, Station } from "../types";
+import { CameraTarget, MapCoordinate, Station } from "../../types";
 
 export interface ModalProps {
   cameraTarget: CameraTarget;

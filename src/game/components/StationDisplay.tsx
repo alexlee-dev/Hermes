@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Station } from "../types";
+import { Station } from "../../types";
 
 interface StationDisplayProps {
   station: Station;

@@ -3,7 +3,7 @@ import differenceInSeconds from "date-fns/differenceInSeconds";
 import * as THREE from "three";
 import { Object3D } from "three";
 
-import { Station } from "./types";
+import { Station } from "../types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const arraysMatch = (arr1: any[], arr2: any[]): boolean => {

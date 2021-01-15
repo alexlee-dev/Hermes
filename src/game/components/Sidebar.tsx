@@ -28,7 +28,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = (
       <h1>Hermes</h1>
       <div>
         <SidebarButton
-          icon="far fa-location-circle"
+          iconLocation="/assets/compass.svg"
           label="User Location"
           menuType={{ name: "userLocation", title: "User Location" }}
           setModalContent={setModalContent}
@@ -37,7 +37,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = (
         />
         {!userIsTraveling && (
           <SidebarButton
-            icon="far fa-map-marked"
+            iconLocation="/assets/map.svg"
             label="Travel"
             menuType={{ name: "travel", title: "Travel" }}
             setModalContent={setModalContent}
@@ -46,7 +46,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = (
           />
         )}
         <SidebarButton
-          icon="far fa-chart-line"
+          iconLocation="/assets/graph-up.svg"
           label="Market"
           menuType={{ name: "market", title: "Market" }}
           setModalContent={setModalContent}
@@ -54,7 +54,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = (
           setModalTitle={setModalTitle}
         />
         <SidebarButton
-          icon="far fa-camera-movie"
+          iconLocation="/assets/camera-reels.svg"
           label="Camera"
           menuType={{ name: "camera", title: "Camera" }}
           setModalContent={setModalContent}

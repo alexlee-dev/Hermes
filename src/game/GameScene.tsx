@@ -16,7 +16,7 @@ import Starfield from "./objects/Starfield";
 import Station from "./objects/Station";
 import UserShip from "./objects/UserShip";
 
-import { CameraTargetChangeEvent, ShipTravelEvent } from "./types";
+import { CameraTargetChangeEvent, ShipTravelEvent } from "../types";
 
 class GameScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
