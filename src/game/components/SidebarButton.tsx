@@ -3,7 +3,7 @@ import * as React from "react";
 import { MenuType } from "../../types";
 
 export interface SidebarButtonProps {
-  icon: string;
+  iconLocation: string;
   label: string;
   menuType: MenuType;
   setModalContent: (modalContent: string) => void;
@@ -15,7 +15,7 @@ const SidebarButton: React.SFC<SidebarButtonProps> = (
   props: SidebarButtonProps
 ) => {
   const {
-    icon,
+    iconLocation,
     label,
     menuType,
     setModalContent,
@@ -32,12 +32,13 @@ const SidebarButton: React.SFC<SidebarButtonProps> = (
   return (
     <button
       aria-label={label}
+      className="sidebar__button"
       data-tip={label}
       data-type="info"
       onClick={() => handleOpenSidebarMenu(menuType)}
       type="button"
     >
-      <i className={icon} />
+      <img alt={label} src={iconLocation} />
     </button>
   );
 };

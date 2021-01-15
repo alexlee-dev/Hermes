@@ -5,9 +5,11 @@ class AssetsController {
   public router: Router = express.Router();
 
   static assetList: string[] = [
-    "font-awesome/css/all.min.css",
-    "font-awesome/webfonts/fa-regular-400.woff2",
+    "camera-reels.svg",
+    "compass.svg",
     "galaxy_starfield.png",
+    "graph-up.svg",
+    "map.svg",
   ];
 
   constructor() {
