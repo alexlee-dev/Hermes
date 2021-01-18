@@ -1,39 +1,27 @@
 import * as React from "react";
 import { connect, ConnectedProps } from "react-redux";
 
+import { handleSetModalIsOpen } from "../redux/actions/modal";
+import {
+  handleSetPlayerDestination,
+  handleSetPlayerEta,
+  handleSetPlayerIsTraveling,
+} from "../redux/actions/player";
+
 import { stations } from "../constants";
 import { arraysMatch, calculateDistance, calculateEta } from "../util";
 
-import {
-  ModalActionTypes,
-  RootState,
-  Station,
-  PlayerActionTypes,
-} from "../../types";
+import { RootState, Station } from "../../types";
 
 const mapState = (state: RootState) => ({
   playerLocation: state.player.location,
 });
 
 const mapDispatch = {
-  handleSetModalIsOpen: (isOpen: boolean): ModalActionTypes => ({
-    type: "SET_MODAL_IS_OPEN",
-    payload: { isOpen },
-  }),
-  handleSetPlayerDestination: (
-    destination: Station | null
-  ): PlayerActionTypes => ({
-    type: "SET_PLAYER_DESTINATION",
-    payload: { destination },
-  }),
-  handleSetPlayerEta: (eta: number | null): PlayerActionTypes => ({
-    type: "SET_PLAYER_ETA",
-    payload: { eta },
-  }),
-  handleSetPlayerIsTraveling: (isTraveling: boolean): PlayerActionTypes => ({
-    type: "SET_PLAYER_IS_TRAVELING",
-    payload: { isTraveling },
-  }),
+  handleSetModalIsOpen,
+  handleSetPlayerDestination,
+  handleSetPlayerEta,
+  handleSetPlayerIsTraveling,
 };
 
 const connector = connect(mapState, mapDispatch);

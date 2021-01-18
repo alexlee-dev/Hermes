@@ -6,7 +6,9 @@ import MarketContent from "../modalContent/Market";
 import TravelContent from "../modalContent/Travel";
 import PlayerLocation from "../modalContent/PlayerLocation";
 
-import { ModalActionTypes, RootState } from "../../types";
+import { handleSetModalIsOpen } from "../redux/actions/modal";
+
+import { RootState } from "../../types";
 
 const mapState = (state: RootState) => ({
   contentKey: state.modal.contentKey,
@@ -15,10 +17,7 @@ const mapState = (state: RootState) => ({
 });
 
 const mapDispatch = {
-  handleSetModalIsOpen: (isOpen: boolean): ModalActionTypes => ({
-    type: "SET_MODAL_IS_OPEN",
-    payload: { isOpen },
-  }),
+  handleSetModalIsOpen,
 };
 
 const connector = connect(mapState, mapDispatch);

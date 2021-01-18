@@ -9,7 +9,14 @@ import useInterval from "./hooks/useInterval";
 
 import GameScene from "./GameScene";
 
-import { MapCoordinate, RootState, Station, PlayerActionTypes } from "../types";
+import {
+  handleSetPlayerDestination,
+  handleSetPlayerEta,
+  handleSetPlayerIsTraveling,
+  handleSetPlayerLocation,
+} from "./redux/actions/player";
+
+import { RootState } from "../types";
 
 const mapState = (state: RootState) => ({
   playerEta: state.player.eta,
@@ -18,26 +25,10 @@ const mapState = (state: RootState) => ({
 });
 
 const mapDispatch = {
-  handleSetPlayerDestination: (
-    destination: Station | null
-  ): PlayerActionTypes => ({
-    type: "SET_PLAYER_DESTINATION",
-    payload: { destination },
-  }),
-  handleSetPlayerEta: (eta: number | null): PlayerActionTypes => ({
-    type: "SET_PLAYER_ETA",
-    payload: { eta },
-  }),
-  handleSetPlayerIsTraveling: (isTraveling: boolean): PlayerActionTypes => ({
-    type: "SET_PLAYER_IS_TRAVELING",
-    payload: {
-      isTraveling,
-    },
-  }),
-  handleSetPlayerLocation: (location: MapCoordinate): PlayerActionTypes => ({
-    type: "SET_PLAYER_LOCATION",
-    payload: { location },
-  }),
+  handleSetPlayerDestination,
+  handleSetPlayerEta,
+  handleSetPlayerIsTraveling,
+  handleSetPlayerLocation,
 };
 
 const connector = connect(mapState, mapDispatch);

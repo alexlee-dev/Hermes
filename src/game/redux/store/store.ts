@@ -12,6 +12,7 @@ import { RootState } from "../../../types";
 // import throttle from "lodash/throttle";
 
 const composeEnhancer =
+  // eslint-disable-next-line
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const persistedState: RootState | undefined = loadState();

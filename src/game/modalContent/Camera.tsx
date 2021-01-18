@@ -3,19 +3,16 @@ import { connect, ConnectedProps } from "react-redux";
 
 import { stations } from "../constants";
 
-import { CameraActionTypes, CameraTarget, RootState } from "../../types";
+import { handleSetCameraTarget } from "../redux/actions/camera";
+
+import { RootState } from "../../types";
 
 const mapState = (state: RootState) => ({
   cameraTarget: state.camera.target,
 });
 
 const mapDispatch = {
-  handleSetCameraTarget: (target: CameraTarget): CameraActionTypes => ({
-    type: "SET_CAMERA_TARGET",
-    payload: {
-      target,
-    },
-  }),
+  handleSetCameraTarget,
 };
 
 const connector = connect(mapState, mapDispatch);

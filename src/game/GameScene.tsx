@@ -22,7 +22,7 @@ class GameScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);
     this.state = {};
-    // TODO - Get this value from Redux;
+    // ? - Get this value from Redux;
     this.playerIsTraveling = false;
     this.cameraTarget = undefined;
   }
@@ -161,7 +161,7 @@ class GameScene extends React.Component<unknown, unknown> {
         .to(
           {
             // * The 0.75 makes the ship appear to "dock" with the station, instead of just getting "consumed" by it
-            // TODO - Use values from Redux
+            // ? - Use values from Redux
             x: e.detail.travelDestination.location[0] - 0.75,
             y: e.detail.travelDestination.location[1],
             z: e.detail.travelDestination.location[2],
