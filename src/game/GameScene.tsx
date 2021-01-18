@@ -14,7 +14,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { stations } from "./constants";
 import Starfield from "./objects/Starfield";
 import Station from "./objects/Station";
-import UserShip from "./objects/UserShip";
+import PlayerShip from "./objects/PlayerShip";
 
 import { CameraTargetChangeEvent, ShipTravelEvent } from "../types";
 
@@ -22,7 +22,8 @@ class GameScene extends React.Component<unknown, unknown> {
   constructor(props: unknown) {
     super(props);
     this.state = {};
-    this.userIsTraveling = false;
+    // ? - Get this value from Redux;
+    this.playerIsTraveling = false;
     this.cameraTarget = undefined;
   }
 
@@ -37,8 +38,8 @@ class GameScene extends React.Component<unknown, unknown> {
   scene!: Scene;
   starfield!: Object3D;
   travelStartTimestamp?: number;
-  userIsTraveling: boolean;
-  userShip!: Object3D;
+  playerIsTraveling: boolean;
+  playerShip!: Object3D;
 
   // * -------------------------
   // * Lifecycle Events
@@ -63,15 +64,15 @@ class GameScene extends React.Component<unknown, unknown> {
       this.renderer.domElement
     );
 
-    // * User Ship
-    const userShipObject = new UserShip({
-      label: "User Ship",
+    // * Player Ship
+    const playerShipObject = new PlayerShip({
+      label: "Player Ship",
       x: 0,
       y: 0,
       z: 0,
     });
-    this.userShip = userShipObject.object;
-    this.scene.add(userShipObject.object);
+    this.playerShip = playerShipObject.object;
+    this.scene.add(playerShipObject.object);
 
     // * Stations
     stations.forEach((station) => {
@@ -92,7 +93,6 @@ class GameScene extends React.Component<unknown, unknown> {
     // * Starfield
     const starfield = new Starfield({});
     this.starfield = starfield.object;
-    (window as any).starfield = this.starfield;
     this.scene.add(this.starfield);
   }
 
@@ -101,7 +101,7 @@ class GameScene extends React.Component<unknown, unknown> {
     this.setupBaseScene();
     this.createObjects();
     this.setupListeners();
-    this.cameraTarget = this.userShip;
+    this.cameraTarget = this.playerShip;
 
     this.tick = this.tick.bind(this);
     this.tick();
@@ -153,13 +153,14 @@ class GameScene extends React.Component<unknown, unknown> {
       }
 
       const tween = new TWEEN.Tween({
-        x: this.userShip.position.x,
-        y: this.userShip.position.y,
-        z: this.userShip.position.z,
+        x: this.playerShip.position.x,
+        y: this.playerShip.position.y,
+        z: this.playerShip.position.z,
       })
         .to(
           {
             // * The 0.75 makes the ship appear to "dock" with the station, instead of just getting "consumed" by it
+            // ? - Use values from Redux
             x: e.detail.travelDestination.location[0] - 0.75,
             y: e.detail.travelDestination.location[1],
             z: e.detail.travelDestination.location[2],
@@ -168,17 +169,19 @@ class GameScene extends React.Component<unknown, unknown> {
         )
         .easing(TWEEN.Easing.Quintic.InOut)
         .onUpdate((posObj) => {
-          this.userShip.position.set(posObj.x, posObj.y, posObj.z);
+          this.playerShip.position.set(posObj.x, posObj.y, posObj.z);
         })
-        .onComplete((posObj) => {
+        .onComplete(() => {
           console.log("STOP");
+          // eslint-disable-next-line
           (window as any).travelComplete = true;
         });
 
       console.log("SHIP TRAVELING");
+      // eslint-disable-next-line
       (window as any).travelComplete = false;
       tween.start();
-      this.userIsTraveling = true;
+      this.playerIsTraveling = true;
     });
 
     window.addEventListener(
@@ -188,7 +191,7 @@ class GameScene extends React.Component<unknown, unknown> {
           throw new Error("No detail!");
         }
 
-        let correspondingObject: Object3D | undefined = this.userShip;
+        let correspondingObject: Object3D | undefined = this.playerShip;
         if (e.detail.cameraTarget !== "ship") {
           correspondingObject = this.scene.children.find(
             (object) =>

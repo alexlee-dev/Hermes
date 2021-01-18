@@ -8,8 +8,8 @@ const mode = process.env.NODE_ENV || "development";
 const config = {
   entry: "./src/game/index.tsx",
   devServer: {
-    contentBase: path.join(__dirname, 'src/assets/'),
-    contentBasePublicPath: '/assets'
+    contentBase: path.join(__dirname, "src/assets/"),
+    contentBasePublicPath: "/assets",
   },
   mode,
   module: {

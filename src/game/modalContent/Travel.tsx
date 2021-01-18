@@ -1,29 +1,44 @@
 import * as React from "react";
+import { connect, ConnectedProps } from "react-redux";
+
+import { handleSetModalIsOpen } from "../redux/actions/modal";
+import {
+  handleSetPlayerDestination,
+  handleSetPlayerEta,
+  handleSetPlayerIsTraveling,
+} from "../redux/actions/player";
 
 import { stations } from "../constants";
 import { arraysMatch, calculateDistance, calculateEta } from "../util";
 
-import { CameraTarget, Station } from "../../types";
+import { GameState, Station } from "../../types";
 
-interface TravelContentProps {
-  cameraTarget: CameraTarget;
-  setCameraTarget: (cameraTarget: CameraTarget) => void;
-  setEta: (eta: number) => void;
-  setModalIsOpen: (modalIsOpen: boolean) => void;
-  setUserDestination: (userDestination: Station) => void;
-  setUserIsTraveling: (userIsTraveling: boolean) => void;
-  userLocation: [number, number];
-}
+const mapState = (state: GameState) => ({
+  playerLocation: state.player.location,
+});
+
+const mapDispatch = {
+  handleSetModalIsOpen,
+  handleSetPlayerDestination,
+  handleSetPlayerEta,
+  handleSetPlayerIsTraveling,
+};
+
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type TravelContentProps = PropsFromRedux;
 
 const TravelContent: React.FunctionComponent<TravelContentProps> = (
   props: TravelContentProps
 ) => {
   const {
-    setEta,
-    setModalIsOpen,
-    setUserDestination,
-    setUserIsTraveling,
-    userLocation,
+    handleSetModalIsOpen,
+    handleSetPlayerDestination,
+    handleSetPlayerEta,
+    handleSetPlayerIsTraveling,
+    playerLocation,
   } = props;
 
   const [destination, setDestination] = React.useState<Station | null>(null);
@@ -35,12 +50,12 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
     }
 
     // * Close modal
-    setModalIsOpen(false);
-    // * Set isUserTraveling to true
-    setUserIsTraveling(true);
+    handleSetModalIsOpen(false);
+    // * Set isPlayerTraveling to true
+    handleSetPlayerIsTraveling(true);
 
     // * Set an ETA based on the distance to travel
-    const distance = calculateDistance(userLocation, destination);
+    const distance = calculateDistance(playerLocation, destination);
 
     // * Should edit this depending on ship stats later
     const speed = 1;
@@ -48,8 +63,8 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
     const travelTime = distance * speed;
     const eta = calculateEta(travelTime);
 
-    setEta(eta);
-    setUserDestination(destination);
+    handleSetPlayerEta(eta);
+    handleSetPlayerDestination(destination);
 
     const event = new CustomEvent("shipTravel", {
       detail: {
@@ -80,7 +95,7 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
       <select id="destination" onChange={handleDestinationChange}>
         <option value="">-- Please select a destination --</option>
         {stations
-          .filter((station) => !arraysMatch(station.location, userLocation))
+          .filter((station) => !arraysMatch(station.location, playerLocation))
           .map((station) => (
             <option key={station.id} value={station.id}>
               {station.name}
@@ -94,4 +109,4 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
   );
 };
 
-export default TravelContent;
+export default connector(TravelContent);

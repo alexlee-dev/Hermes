@@ -1,27 +1,35 @@
 import * as React from "react";
+import { connect, ConnectedProps } from "react-redux";
+
 import { stations } from "../constants";
 
-import { CameraTarget, Station } from "../../types";
+import { handleSetCameraTarget } from "../redux/actions/camera";
 
-interface CameraContentProps {
-  cameraTarget: CameraTarget;
-  setCameraTarget: (cameraTarget: CameraTarget) => void;
-  setEta: (eta: number) => void;
-  setModalIsOpen: (modalIsOpen: boolean) => void;
-  setUserDestination: (userDestination: Station) => void;
-  setUserIsTraveling: (userIsTraveling: boolean) => void;
-  userLocation: [number, number];
-}
+import { GameState } from "../../types";
+
+const mapState = (state: GameState) => ({
+  cameraTarget: state.camera.target,
+});
+
+const mapDispatch = {
+  handleSetCameraTarget,
+};
+
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type CameraContentProps = PropsFromRedux;
 
 const CameraContent: React.FunctionComponent<CameraContentProps> = (
   props: CameraContentProps
 ) => {
-  const { cameraTarget, setCameraTarget } = props;
+  const { cameraTarget, handleSetCameraTarget } = props;
 
   const handleCameraTargetChange = (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setCameraTarget(e.target.value);
+    handleSetCameraTarget(e.target.value);
     const event = new CustomEvent("cameraTargetChange", {
       detail: {
         cameraTarget: e.target.value,
@@ -40,7 +48,7 @@ const CameraContent: React.FunctionComponent<CameraContentProps> = (
           onChange={handleCameraTargetChange}
           value={cameraTarget}
         >
-          <option value="ship">User Ship</option>
+          <option value="ship">Player Ship</option>
           {stations.map((station) => (
             <option key={station.id} value={station.id}>
               {station.name}
@@ -52,4 +60,4 @@ const CameraContent: React.FunctionComponent<CameraContentProps> = (
   );
 };
 
-export default CameraContent;
+export default connector(CameraContent);

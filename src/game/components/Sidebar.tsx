@@ -1,27 +1,28 @@
 import * as React from "react";
+import { connect, ConnectedProps } from "react-redux";
+
+import { GameState } from "../../types";
 
 import SidebarButton from "./SidebarButton";
 
-export interface SidebarProps {
-  eta: number | null;
-  modalIsOpen: boolean;
-  setModalContent: (modalContent: string) => void;
-  setModalIsOpen: (modalIsOpen: boolean) => void;
-  setModalTitle: (modalTitle: string) => void;
-  userIsTraveling: boolean;
-}
+const mapState = (state: GameState) => ({
+  modalIsOpen: state.modal.isOpen,
+  playerEta: state.player.eta,
+  playerIsTraveling: state.player.isTraveling,
+});
+
+const mapDispatch = {};
+
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type SidebarProps = PropsFromRedux;
 
 const Sidebar: React.FunctionComponent<SidebarProps> = (
   props: SidebarProps
 ) => {
-  const {
-    eta,
-    modalIsOpen,
-    setModalContent,
-    setModalIsOpen,
-    setModalTitle,
-    userIsTraveling,
-  } = props;
+  const { modalIsOpen, playerEta, playerIsTraveling } = props;
 
   return (
     <div className={modalIsOpen ? "blur" : undefined} id="game-display">
@@ -29,42 +30,30 @@ const Sidebar: React.FunctionComponent<SidebarProps> = (
       <div>
         <SidebarButton
           iconLocation="/assets/compass.svg"
-          label="User Location"
-          menuType={{ name: "userLocation", title: "User Location" }}
-          setModalContent={setModalContent}
-          setModalIsOpen={setModalIsOpen}
-          setModalTitle={setModalTitle}
+          label="Player Location"
+          menuType={{ name: "playerLocation", title: "Player Location" }}
         />
-        {!userIsTraveling && (
+        {!playerIsTraveling && (
           <SidebarButton
             iconLocation="/assets/map.svg"
             label="Travel"
             menuType={{ name: "travel", title: "Travel" }}
-            setModalContent={setModalContent}
-            setModalIsOpen={setModalIsOpen}
-            setModalTitle={setModalTitle}
           />
         )}
         <SidebarButton
           iconLocation="/assets/graph-up.svg"
           label="Market"
           menuType={{ name: "market", title: "Market" }}
-          setModalContent={setModalContent}
-          setModalIsOpen={setModalIsOpen}
-          setModalTitle={setModalTitle}
         />
         <SidebarButton
           iconLocation="/assets/camera-reels.svg"
           label="Camera"
           menuType={{ name: "camera", title: "Camera" }}
-          setModalContent={setModalContent}
-          setModalIsOpen={setModalIsOpen}
-          setModalTitle={setModalTitle}
         />
-        {userIsTraveling && eta && (
+        {playerIsTraveling && playerEta && (
           <div>
             <h3>ETA</h3>
-            {eta}
+            {playerEta}
           </div>
         )}
       </div>
@@ -72,4 +61,4 @@ const Sidebar: React.FunctionComponent<SidebarProps> = (
   );
 };
 
-export default Sidebar;
+export default connector(Sidebar);

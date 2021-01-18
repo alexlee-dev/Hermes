@@ -1,68 +1,56 @@
 import * as React from "react";
-import CameraContent from "../modalContent/Camera";
+import { connect, ConnectedProps } from "react-redux";
 
+import CameraContent from "../modalContent/Camera";
 import MarketContent from "../modalContent/Market";
 import TravelContent from "../modalContent/Travel";
-import UserLocation from "../modalContent/UserLocation";
+import PlayerLocation from "../modalContent/PlayerLocation";
 
-import { CameraTarget, MapCoordinate, Station } from "../../types";
+import { handleSetModalIsOpen } from "../redux/actions/modal";
 
-export interface ModalProps {
-  cameraTarget: CameraTarget;
-  content: string;
-  display: boolean;
-  setCameraTarget: (cameraTarget: CameraTarget) => void;
-  setEta: (eta: number) => void;
-  setModalIsOpen: (modalIsOpen: boolean) => void;
-  setUserDestination: (userDestination: Station) => void;
-  setUserIsTraveling: (userIsTraveling: boolean) => void;
-  title: string;
-  userIsTraveling: boolean;
-  userLocation: MapCoordinate;
-}
+import { GameState } from "../../types";
 
-const contents: { [index: string]: React.FunctionComponent<any> } = {
+const mapState = (state: GameState) => ({
+  contentKey: state.modal.contentKey,
+  isOpen: state.modal.isOpen,
+  title: state.modal.title,
+});
+
+const mapDispatch = {
+  handleSetModalIsOpen,
+};
+
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type ModalProps = PropsFromRedux;
+
+// TODO - Figure out how to correctly type these connected components
+const contents: {
+  // eslint-disable-next-line
+  [index: string]: any;
+} = {
   camera: CameraContent,
   market: MarketContent,
+  playerLocation: PlayerLocation,
   travel: TravelContent,
-  userLocation: UserLocation,
 };
 
 const Modal: React.FunctionComponent<ModalProps> = (props: ModalProps) => {
-  const {
-    cameraTarget,
-    content,
-    display,
-    setCameraTarget,
-    setEta,
-    setModalIsOpen,
-    setUserDestination,
-    setUserIsTraveling,
-    title,
-    userIsTraveling,
-    userLocation,
-  } = props;
+  const { contentKey, handleSetModalIsOpen, isOpen, title } = props;
 
-  const Content = contents[content];
+  const Content = contents[contentKey];
 
-  return display ? (
+  return isOpen ? (
     <div className="modal">
-      <button onClick={() => setModalIsOpen(false)} type="button">
+      <button onClick={() => handleSetModalIsOpen(false)} type="button">
         x
       </button>
       <h1>{title}</h1>
-      <Content
-        cameraTarget={cameraTarget}
-        setCameraTarget={setCameraTarget}
-        setEta={setEta}
-        setModalIsOpen={setModalIsOpen}
-        setUserDestination={setUserDestination}
-        setUserIsTraveling={setUserIsTraveling}
-        userIsTraveling={userIsTraveling}
-        userLocation={userLocation}
-      />
+      <Content />
     </div>
   ) : null;
 };
 
-export default Modal;
+export default connector(Modal);

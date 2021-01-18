@@ -1,79 +1,81 @@
 import * as React from "react";
+import { connect, ConnectedProps } from "react-redux";
 import ReactTooltip from "react-tooltip";
 
 import Modal from "./components/Modal";
-
-import { startingLocation } from "./constants";
 import Sidebar from "./components/Sidebar";
+
 import useInterval from "./hooks/useInterval";
+
 import GameScene from "./GameScene";
 
-import { CameraTarget, MapCoordinate, Station } from "../types";
+import {
+  handleSetPlayerDestination,
+  handleSetPlayerEta,
+  handleSetPlayerIsTraveling,
+  handleSetPlayerLocation,
+} from "./redux/actions/player";
 
-const App: React.FunctionComponent<unknown> = () => {
-  const [cameraTarget, setCameraTarget] = React.useState<CameraTarget>("ship");
-  const [modalContent, setModalContent] = React.useState<string>("");
-  const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
-  const [modalTitle, setModalTitle] = React.useState<string>("");
+import { GameState } from "../types";
 
-  const [userLocation, setUserLocation] = React.useState<MapCoordinate>(
-    startingLocation
-  );
-  const [userDestination, setUserDestination] = React.useState<Station | null>(
-    null
-  );
-  const [userIsTraveling, setUserIsTraveling] = React.useState<boolean>(false);
-  // * In Seconds
-  const [eta, setEta] = React.useState<number | null>(null);
+const mapState = (state: GameState) => ({
+  playerEta: state.player.eta,
+  playerDestination: state.player.destination,
+  playerIsTraveling: state.player.isTraveling,
+});
+
+const mapDispatch = {
+  handleSetPlayerDestination,
+  handleSetPlayerEta,
+  handleSetPlayerIsTraveling,
+  handleSetPlayerLocation,
+};
+
+const connector = connect(mapState, mapDispatch);
+
+type AppProps = ConnectedProps<typeof connector>;
+
+const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
+  const {
+    handleSetPlayerDestination,
+    handleSetPlayerEta,
+    handleSetPlayerIsTraveling,
+    handleSetPlayerLocation,
+    playerDestination,
+    playerEta,
+    playerIsTraveling,
+  } = props;
 
   useInterval(() => {
-    if (userIsTraveling) {
+    if (playerIsTraveling) {
       // * Update the ETA every 1 second
       // TODO Probably do this better somehow
+      // eslint-disable-next-line
       if ((window as any).travelComplete) {
-        if (!userDestination) {
-          throw new Error("No user destination!");
+        if (!playerDestination) {
+          throw new Error("No player destination!");
         }
-        setUserIsTraveling(false);
-        setEta(null);
-        setUserLocation(userDestination.location);
-        setUserDestination(null);
+        handleSetPlayerIsTraveling(false);
+        handleSetPlayerEta(null);
+        handleSetPlayerLocation(playerDestination.location);
+        handleSetPlayerDestination(null);
       } else {
-        if (!eta) {
+        if (!playerEta) {
           throw new Error("no eta!");
         }
-        setEta(eta - 1);
+        handleSetPlayerEta(playerEta - 1);
       }
     }
   }, 1000);
 
   return (
     <>
-      <Sidebar
-        eta={eta}
-        modalIsOpen={modalIsOpen}
-        setModalContent={setModalContent}
-        setModalIsOpen={setModalIsOpen}
-        setModalTitle={setModalTitle}
-        userIsTraveling={userIsTraveling}
-      />
+      <Sidebar />
       <GameScene />
-      <Modal
-        cameraTarget={cameraTarget}
-        content={modalContent}
-        display={modalIsOpen}
-        setCameraTarget={setCameraTarget}
-        setEta={setEta}
-        setModalIsOpen={setModalIsOpen}
-        setUserDestination={setUserDestination}
-        setUserIsTraveling={setUserIsTraveling}
-        title={modalTitle}
-        userIsTraveling={userIsTraveling}
-        userLocation={userLocation}
-      />
+      <Modal />
       <ReactTooltip />
     </>
   );
 };
 
-export default App;
+export default connector(App);

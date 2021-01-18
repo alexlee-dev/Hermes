@@ -1,21 +1,7 @@
 import * as React from "react";
 import { stations } from "../constants";
 
-import { CameraTarget, Station } from "../../types";
-
-interface MarketContentProps {
-  cameraTarget: CameraTarget;
-  setCameraTarget: (cameraTarget: CameraTarget) => void;
-  setEta: (eta: number) => void;
-  setModalIsOpen: (modalIsOpen: boolean) => void;
-  setUserDestination: (userDestination: Station) => void;
-  setUserIsTraveling: (userIsTraveling: boolean) => void;
-  userLocation: [number, number];
-}
-
-const MarketContent: React.FunctionComponent<MarketContentProps> = (
-  props: MarketContentProps
-) => {
+const MarketContent: React.FunctionComponent<unknown> = () => {
   return (
     <table>
       <thead>

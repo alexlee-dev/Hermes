@@ -3,7 +3,7 @@ import differenceInSeconds from "date-fns/differenceInSeconds";
 import * as THREE from "three";
 import { Object3D } from "three";
 
-import { Station } from "../types";
+import { MapCoordinate, GameState, Station } from "../types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const arraysMatch = (arr1: any[], arr2: any[]): boolean => {
@@ -21,7 +21,7 @@ export const arraysMatch = (arr1: any[], arr2: any[]): boolean => {
 };
 
 export const calculateDistance = (
-  origin: [number, number],
+  origin: MapCoordinate,
   destination: Station
 ): number => {
   const lhs = Math.pow(destination.location[0] - origin[0], 2);
@@ -98,4 +98,16 @@ export const createLabel = (
   label.scale.y = canvas.height * labelBaseScale;
 
   return root;
+};
+
+export const loadState = (): GameState | undefined => {
+  try {
+    const serializedState = localStorage.getItem("state");
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (error) {
+    console.error(error);
+  }
 };
