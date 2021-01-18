@@ -26,7 +26,9 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 
 type ModalProps = PropsFromRedux;
 
+// TODO - Figure out how to correctly type these connected components
 const contents: {
+  // eslint-disable-next-line
   [index: string]: any;
 } = {
   camera: CameraContent,

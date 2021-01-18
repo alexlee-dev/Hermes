@@ -50,6 +50,7 @@ const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
     if (playerIsTraveling) {
       // * Update the ETA every 1 second
       // TODO Probably do this better somehow
+      // eslint-disable-next-line
       if ((window as any).travelComplete) {
         if (!playerDestination) {
           throw new Error("No player destination!");

@@ -7,9 +7,7 @@ import {
   handleSetModalTitle,
 } from "../redux/actions/modal";
 
-import { MenuType, GameState } from "../../types";
-
-const mapState = (state: GameState) => ({});
+import { MenuType } from "../../types";
 
 const mapDispatch = {
   handleSetModalContentKey,
@@ -17,7 +15,7 @@ const mapDispatch = {
   handleSetModalTitle,
 };
 
-const connector = connect(mapState, mapDispatch);
+const connector = connect(null, mapDispatch);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 

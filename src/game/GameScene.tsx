@@ -93,7 +93,6 @@ class GameScene extends React.Component<unknown, unknown> {
     // * Starfield
     const starfield = new Starfield({});
     this.starfield = starfield.object;
-    (window as any).starfield = this.starfield;
     this.scene.add(this.starfield);
   }
 
@@ -172,12 +171,14 @@ class GameScene extends React.Component<unknown, unknown> {
         .onUpdate((posObj) => {
           this.playerShip.position.set(posObj.x, posObj.y, posObj.z);
         })
-        .onComplete((posObj) => {
+        .onComplete(() => {
           console.log("STOP");
+          // eslint-disable-next-line
           (window as any).travelComplete = true;
         });
 
       console.log("SHIP TRAVELING");
+      // eslint-disable-next-line
       (window as any).travelComplete = false;
       tween.start();
       this.playerIsTraveling = true;
