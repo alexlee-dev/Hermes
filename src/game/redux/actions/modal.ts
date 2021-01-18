@@ -1,7 +1,7 @@
-import { ModalActionTypes } from "../../../types";
+import { ContentKey, ModalActionTypes } from "../../../types";
 
 export const handleSetModalContentKey = (
-  contentKey: string
+  contentKey: ContentKey
 ): ModalActionTypes => ({
   type: "SET_MODAL_CONTENT_KEY",
   payload: {

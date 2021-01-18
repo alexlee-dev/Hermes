@@ -31,8 +31,8 @@ const contents: {
 } = {
   camera: CameraContent,
   market: MarketContent,
-  travel: TravelContent,
   playerLocation: PlayerLocation,
+  travel: TravelContent,
 };
 
 const Modal: React.FunctionComponent<ModalProps> = (props: ModalProps) => {

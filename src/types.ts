@@ -14,6 +14,8 @@ export interface CameraTargetChangeEvent extends Event {
   };
 }
 
+export type ContentKey = "" | "camera" | "market" | "playerLocation" | "travel";
+
 export type Controller = {
   router: Router;
 };
@@ -46,11 +48,22 @@ export type ModalActionTypes =
   | SetModalTitleAction;
 
 export interface ModalState {
-  // TODO - write out the keys, not just "string"
-  contentKey: string;
+  contentKey: ContentKey;
   isOpen: boolean;
-  // TODO - write out the titles, not just "string"
   title: string;
+}
+
+export type PlayerActionTypes =
+  | SetPlayerDestinationAction
+  | SetPlayerEtaAction
+  | SetPlayerIsTravelingAction
+  | SetPlayerLocationAction;
+
+export interface PlayerState {
+  destination: Station | null;
+  eta: number | null;
+  isTraveling: boolean;
+  location: MapCoordinate;
 }
 
 export interface SetCameraTargetAction {
@@ -63,7 +76,7 @@ export interface SetCameraTargetAction {
 export interface SetModalContentKeyAction {
   type: "SET_MODAL_CONTENT_KEY";
   payload: {
-    contentKey: string;
+    contentKey: ContentKey;
   };
 }
 
@@ -79,27 +92,6 @@ export interface SetModalTitleAction {
   payload: {
     title: string;
   };
-}
-
-export interface ShipTravelEvent extends Event {
-  detail?: {
-    travelDestination: Station;
-    // * In "units" ...?
-    travelDistance: number;
-    // * In miliseconds
-    travelDuration: number;
-  };
-}
-
-export interface Station {
-  color: string;
-  depth: number;
-  height: number;
-  id: string;
-  location: MapCoordinate;
-  market: Item[];
-  name: string;
-  width: number;
 }
 
 export interface SetPlayerDestinationAction {
@@ -130,17 +122,25 @@ export interface SetPlayerLocationAction {
   };
 }
 
-export type PlayerActionTypes =
-  | SetPlayerDestinationAction
-  | SetPlayerEtaAction
-  | SetPlayerIsTravelingAction
-  | SetPlayerLocationAction;
+export interface ShipTravelEvent extends Event {
+  detail?: {
+    travelDestination: Station;
+    // * In "units" ...?
+    travelDistance: number;
+    // * In miliseconds
+    travelDuration: number;
+  };
+}
 
-export interface PlayerState {
-  destination: Station | null;
-  eta: number | null;
-  isTraveling: boolean;
+export interface Station {
+  color: string;
+  depth: number;
+  height: number;
+  id: string;
   location: MapCoordinate;
+  market: Item[];
+  name: string;
+  width: number;
 }
 
 type xCoordinate = number;
