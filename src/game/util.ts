@@ -111,3 +111,12 @@ export const loadState = (): GameState | undefined => {
     console.error(error);
   }
 };
+
+export const saveState = (state: GameState): void => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("state", serializedState);
+  } catch (error) {
+    console.error(error);
+  }
+};

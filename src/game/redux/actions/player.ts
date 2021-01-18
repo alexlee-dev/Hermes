@@ -7,6 +7,13 @@ export const handleSetPlayerDestination = (
   payload: { destination },
 });
 
+export const handleSetPlayerDockedStation = (
+  dockedStation: Station | null
+): PlayerActionTypes => ({
+  type: "SET_PLAYER_DOCKED_STATION",
+  payload: { dockedStation },
+});
+
 export const handleSetPlayerEta = (eta: number | null): PlayerActionTypes => ({
   type: "SET_PLAYER_ETA",
   payload: { eta },

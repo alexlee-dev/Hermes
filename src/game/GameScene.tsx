@@ -1,4 +1,5 @@
 import * as React from "react";
+import { connect, ConnectedProps } from "react-redux";
 import * as THREE from "three";
 import * as TWEEN from "@tweenjs/tween.js";
 import {
@@ -16,15 +17,33 @@ import Starfield from "./objects/Starfield";
 import Station from "./objects/Station";
 import PlayerShip from "./objects/PlayerShip";
 
-import { CameraTargetChangeEvent, ShipTravelEvent } from "../types";
+import { handleSetPlayerIsTraveling } from "./redux/actions/player";
 
-class GameScene extends React.Component<unknown, unknown> {
-  constructor(props: unknown) {
+import { CameraTargetChangeEvent, GameState, ShipTravelEvent } from "../types";
+
+const mapState = (state: GameState) => ({
+  cameraTarget: state.camera.target,
+  playerDockedStation: state.player.dockedStation,
+  playerIsTraveling: state.player.isTraveling,
+  playerLocation: state.player.location,
+});
+
+const mapDispatch = {
+  handleSetPlayerIsTraveling,
+};
+
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type GameSceneProps = PropsFromRedux;
+
+// TODO - Camera position needs to update on tick as well (stay with camera target);
+// TODO - When page is reloaded mid flight, scene should set up in flight, not at previous station
+class GameScene extends React.Component<GameSceneProps, unknown> {
+  constructor(props: GameSceneProps) {
     super(props);
-    this.state = {};
-    // ? - Get this value from Redux;
-    this.playerIsTraveling = false;
-    this.cameraTarget = undefined;
+    this.stations = [];
   }
 
   // * Properties
@@ -38,8 +57,8 @@ class GameScene extends React.Component<unknown, unknown> {
   scene!: Scene;
   starfield!: Object3D;
   travelStartTimestamp?: number;
-  playerIsTraveling: boolean;
   playerShip!: Object3D;
+  stations!: Object3D[];
 
   // * -------------------------
   // * Lifecycle Events
@@ -67,12 +86,20 @@ class GameScene extends React.Component<unknown, unknown> {
     // * Player Ship
     const playerShipObject = new PlayerShip({
       label: "Player Ship",
-      x: 0,
-      y: 0,
-      z: 0,
+      x: this.props.playerDockedStation
+        ? this.props.playerLocation[0] - 0.75
+        : this.props.playerLocation[0],
+      y: this.props.playerLocation[1],
+      z: this.props.playerLocation[2],
     });
     this.playerShip = playerShipObject.object;
     this.scene.add(playerShipObject.object);
+    // * When scene is rebuilt, player ship is always in focus
+    this.camera.position.set(
+      this.playerShip.position.x,
+      this.playerShip.position.y,
+      this.playerShip.position.z + 10
+    );
 
     // * Stations
     stations.forEach((station) => {
@@ -88,6 +115,7 @@ class GameScene extends React.Component<unknown, unknown> {
         z: station.location[2],
       });
       this.scene.add(stationObject.object);
+      this.stations.push(stationObject.object);
     });
 
     // * Starfield
@@ -101,7 +129,15 @@ class GameScene extends React.Component<unknown, unknown> {
     this.setupBaseScene();
     this.createObjects();
     this.setupListeners();
-    this.cameraTarget = this.playerShip;
+
+    const cameraTargets: { [index: string]: Object3D } = {
+      ship: this.playerShip,
+      "1": this.stations[0],
+      "2": this.stations[1],
+      "3": this.stations[2],
+    };
+
+    this.cameraTarget = cameraTargets[this.props.cameraTarget];
 
     this.tick = this.tick.bind(this);
     this.tick();
@@ -123,7 +159,6 @@ class GameScene extends React.Component<unknown, unknown> {
       nearPlane,
       farPlane
     );
-    this.camera.position.set(0, 0, 50);
     // * Setup Renderer
     this.renderer = new THREE.WebGL1Renderer({ alpha: true, antialias: true });
     this.renderer.setSize(width, height);
@@ -135,6 +170,7 @@ class GameScene extends React.Component<unknown, unknown> {
   }
 
   setupListeners(): void {
+    // TODO - See if you can rewrite the listeners and abstract out a lot of the functionality, including integrating w Redux better
     window.addEventListener(
       "resize",
       () => {
@@ -172,16 +208,14 @@ class GameScene extends React.Component<unknown, unknown> {
           this.playerShip.position.set(posObj.x, posObj.y, posObj.z);
         })
         .onComplete(() => {
-          console.log("STOP");
           // eslint-disable-next-line
           (window as any).travelComplete = true;
         });
 
-      console.log("SHIP TRAVELING");
       // eslint-disable-next-line
       (window as any).travelComplete = false;
       tween.start();
-      this.playerIsTraveling = true;
+      handleSetPlayerIsTraveling(true);
     });
 
     window.addEventListener(
@@ -192,6 +226,7 @@ class GameScene extends React.Component<unknown, unknown> {
         }
 
         let correspondingObject: Object3D | undefined = this.playerShip;
+        // TODO - Rewrite how this is looked up
         if (e.detail.cameraTarget !== "ship") {
           correspondingObject = this.scene.children.find(
             (object) =>
@@ -247,4 +282,4 @@ class GameScene extends React.Component<unknown, unknown> {
   }
 }
 
-export default GameScene;
+export default connector(GameScene);

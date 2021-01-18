@@ -11,10 +11,13 @@ import GameScene from "./GameScene";
 
 import {
   handleSetPlayerDestination,
+  handleSetPlayerDockedStation,
   handleSetPlayerEta,
   handleSetPlayerIsTraveling,
   handleSetPlayerLocation,
 } from "./redux/actions/player";
+
+import { stations } from "./constants";
 
 import { GameState } from "../types";
 
@@ -26,6 +29,7 @@ const mapState = (state: GameState) => ({
 
 const mapDispatch = {
   handleSetPlayerDestination,
+  handleSetPlayerDockedStation,
   handleSetPlayerEta,
   handleSetPlayerIsTraveling,
   handleSetPlayerLocation,
@@ -38,6 +42,7 @@ type AppProps = ConnectedProps<typeof connector>;
 const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
   const {
     handleSetPlayerDestination,
+    handleSetPlayerDockedStation,
     handleSetPlayerEta,
     handleSetPlayerIsTraveling,
     handleSetPlayerLocation,
@@ -55,10 +60,21 @@ const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
         if (!playerDestination) {
           throw new Error("No player destination!");
         }
+
+        const location = playerDestination.location;
+        const currentStation =
+          stations.find(
+            (station) =>
+              station.location[0] === location[0] &&
+              station.location[1] === location[1] &&
+              station.location[2] === location[2]
+          ) || null;
+        console.log({ currentStation });
         handleSetPlayerIsTraveling(false);
         handleSetPlayerEta(null);
         handleSetPlayerLocation(playerDestination.location);
         handleSetPlayerDestination(null);
+        handleSetPlayerDockedStation(currentStation);
       } else {
         if (!playerEta) {
           throw new Error("no eta!");

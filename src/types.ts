@@ -55,12 +55,14 @@ export interface ModalState {
 
 export type PlayerActionTypes =
   | SetPlayerDestinationAction
+  | SetPlayerDockedStationAction
   | SetPlayerEtaAction
   | SetPlayerIsTravelingAction
   | SetPlayerLocationAction;
 
 export interface PlayerState {
   destination: Station | null;
+  dockedStation: Station | null;
   eta: number | null;
   isTraveling: boolean;
   location: MapCoordinate;
@@ -99,6 +101,11 @@ export interface SetPlayerDestinationAction {
   payload: {
     destination: Station | null;
   };
+}
+
+export interface SetPlayerDockedStationAction {
+  type: "SET_PLAYER_DOCKED_STATION";
+  payload: { dockedStation: Station | null };
 }
 
 export interface SetPlayerEtaAction {
