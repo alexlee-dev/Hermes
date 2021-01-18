@@ -7,8 +7,8 @@ import { stations } from "../constants";
 import { RootState } from "../../types";
 
 const mapState = (state: RootState) => ({
-  userIsTraveling: state.user.isTraveling,
-  userLocation: state.user.location,
+  playerIsTraveling: state.player.isTraveling,
+  playerLocation: state.player.location,
 });
 
 const mapDispatch = {};
@@ -17,20 +17,20 @@ const connector = connect(mapState, mapDispatch);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-type UserLocationProps = PropsFromRedux;
+type PlayerLocationProps = PropsFromRedux;
 
-const UserLocation: React.FunctionComponent<UserLocationProps> = (
-  props: UserLocationProps
+const PlayerLocation: React.FunctionComponent<PlayerLocationProps> = (
+  props: PlayerLocationProps
 ) => {
-  const { userIsTraveling, userLocation } = props;
+  const { playerIsTraveling, playerLocation } = props;
 
   const currentStation =
-    !userIsTraveling &&
+    !playerIsTraveling &&
     stations.find(
       (station) =>
-        station.location[0] === userLocation[0] &&
-        station.location[1] === userLocation[1] &&
-        station.location[2] === userLocation[2]
+        station.location[0] === playerLocation[0] &&
+        station.location[1] === playerLocation[1] &&
+        station.location[2] === playerLocation[2]
     );
 
   let location;
@@ -38,7 +38,7 @@ const UserLocation: React.FunctionComponent<UserLocationProps> = (
   if (currentStation && currentStation.name) {
     location = currentStation.name;
   } else {
-    if (userIsTraveling) {
+    if (playerIsTraveling) {
       location = "Traveling...";
     } else {
       location = "In space...";
@@ -47,7 +47,7 @@ const UserLocation: React.FunctionComponent<UserLocationProps> = (
 
   return (
     <div>
-      {!userIsTraveling && (
+      {!playerIsTraveling && (
         <div>
           <h2>Location</h2>
           {location}
@@ -63,4 +63,4 @@ const UserLocation: React.FunctionComponent<UserLocationProps> = (
   );
 };
 
-export default connector(UserLocation);
+export default connector(PlayerLocation);

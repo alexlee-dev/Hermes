@@ -30,7 +30,7 @@ export interface Item {
 export type MapCoordinate = [xCoordinate, yCoordinate, zCoordinate];
 
 export interface MenuType {
-  name: "camera" | "market" | "travel" | "userLocation";
+  name: "camera" | "market" | "travel" | "playerLocation";
   title: string;
 }
 
@@ -51,7 +51,7 @@ export interface ModalState {
 export interface RootState {
   camera: CameraState;
   modal: ModalState;
-  user: UserState;
+  player: PlayerState;
 }
 
 export interface SetCameraTargetAction {
@@ -103,41 +103,41 @@ export interface Station {
   width: number;
 }
 
-export interface SetUserDestinationAction {
-  type: "SET_USER_DESTINATION";
+export interface SetPlayerDestinationAction {
+  type: "SET_PLAYER_DESTINATION";
   payload: {
     destination: Station | null;
   };
 }
 
-export interface SetUserEtaAction {
-  type: "SET_USER_ETA";
+export interface SetPlayerEtaAction {
+  type: "SET_PLAYER_ETA";
   payload: {
     eta: number | null;
   };
 }
 
-export interface SetUserIsTravelingAction {
-  type: "SET_USER_IS_TRAVELING";
+export interface SetPlayerIsTravelingAction {
+  type: "SET_PLAYER_IS_TRAVELING";
   payload: {
     isTraveling: boolean;
   };
 }
 
-export interface SetUserLocationAction {
-  type: "SET_USER_LOCATION";
+export interface SetPlayerLocationAction {
+  type: "SET_PLAYER_LOCATION";
   payload: {
     location: MapCoordinate;
   };
 }
 
-export type UserActionTypes =
-  | SetUserDestinationAction
-  | SetUserEtaAction
-  | SetUserIsTravelingAction
-  | SetUserLocationAction;
+export type PlayerActionTypes =
+  | SetPlayerDestinationAction
+  | SetPlayerEtaAction
+  | SetPlayerIsTravelingAction
+  | SetPlayerLocationAction;
 
-export interface UserState {
+export interface PlayerState {
   destination: Station | null;
   eta: number | null;
   isTraveling: boolean;

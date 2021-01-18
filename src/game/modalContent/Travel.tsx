@@ -8,11 +8,11 @@ import {
   ModalActionTypes,
   RootState,
   Station,
-  UserActionTypes,
+  PlayerActionTypes,
 } from "../../types";
 
 const mapState = (state: RootState) => ({
-  userLocation: state.user.location,
+  playerLocation: state.player.location,
 });
 
 const mapDispatch = {
@@ -20,16 +20,18 @@ const mapDispatch = {
     type: "SET_MODAL_IS_OPEN",
     payload: { isOpen },
   }),
-  handleSetUserDestination: (destination: Station | null): UserActionTypes => ({
-    type: "SET_USER_DESTINATION",
+  handleSetPlayerDestination: (
+    destination: Station | null
+  ): PlayerActionTypes => ({
+    type: "SET_PLAYER_DESTINATION",
     payload: { destination },
   }),
-  handleSetUserEta: (eta: number | null): UserActionTypes => ({
-    type: "SET_USER_ETA",
+  handleSetPlayerEta: (eta: number | null): PlayerActionTypes => ({
+    type: "SET_PLAYER_ETA",
     payload: { eta },
   }),
-  handleSetUserIsTraveling: (isTraveling: boolean): UserActionTypes => ({
-    type: "SET_USER_IS_TRAVELING",
+  handleSetPlayerIsTraveling: (isTraveling: boolean): PlayerActionTypes => ({
+    type: "SET_PLAYER_IS_TRAVELING",
     payload: { isTraveling },
   }),
 };
@@ -45,10 +47,10 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
 ) => {
   const {
     handleSetModalIsOpen,
-    handleSetUserDestination,
-    handleSetUserEta,
-    handleSetUserIsTraveling,
-    userLocation,
+    handleSetPlayerDestination,
+    handleSetPlayerEta,
+    handleSetPlayerIsTraveling,
+    playerLocation,
   } = props;
 
   const [destination, setDestination] = React.useState<Station | null>(null);
@@ -61,11 +63,11 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
 
     // * Close modal
     handleSetModalIsOpen(false);
-    // * Set isUserTraveling to true
-    handleSetUserIsTraveling(true);
+    // * Set isPlayerTraveling to true
+    handleSetPlayerIsTraveling(true);
 
     // * Set an ETA based on the distance to travel
-    const distance = calculateDistance(userLocation, destination);
+    const distance = calculateDistance(playerLocation, destination);
 
     // * Should edit this depending on ship stats later
     const speed = 1;
@@ -73,8 +75,8 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
     const travelTime = distance * speed;
     const eta = calculateEta(travelTime);
 
-    handleSetUserEta(eta);
-    handleSetUserDestination(destination);
+    handleSetPlayerEta(eta);
+    handleSetPlayerDestination(destination);
 
     const event = new CustomEvent("shipTravel", {
       detail: {
@@ -105,7 +107,7 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
       <select id="destination" onChange={handleDestinationChange}>
         <option value="">-- Please select a destination --</option>
         {stations
-          .filter((station) => !arraysMatch(station.location, userLocation))
+          .filter((station) => !arraysMatch(station.location, playerLocation))
           .map((station) => (
             <option key={station.id} value={station.id}>
               {station.name}

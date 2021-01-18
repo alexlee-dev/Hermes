@@ -3,15 +3,15 @@ import * as THREE from "three";
 
 import { createLabel } from "../util";
 
-interface UserShipProps {
+interface PlayerShipProps {
   label: string;
   x: number;
   y: number;
   z: number;
 }
 
-class UserShip extends React.Component<unknown, unknown> {
-  constructor(props: UserShipProps) {
+class PlayerShip extends React.Component<unknown, unknown> {
+  constructor(props: PlayerShipProps) {
     super(props);
     this.state = {};
     this.label = props.label;
@@ -29,12 +29,12 @@ class UserShip extends React.Component<unknown, unknown> {
   z: number;
 
   init(): void {
-    // * Create User Ship Mesh
+    // * Create Player Ship Mesh
     const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
     const material = new THREE.MeshPhongMaterial({ color: "red" });
     const mesh = new THREE.Mesh(geometry, material);
 
-    // * Create User Ship Label
+    // * Create Player Ship Label
     const label = createLabel(
       this.label,
       "red",
@@ -52,4 +52,4 @@ class UserShip extends React.Component<unknown, unknown> {
   // update(timestamp?: number): void {}
 }
 
-export default UserShip;
+export default PlayerShip;

@@ -7,8 +7,8 @@ import SidebarButton from "./SidebarButton";
 
 const mapState = (state: RootState) => ({
   modalIsOpen: state.modal.isOpen,
-  userEta: state.user.eta,
-  userIsTraveling: state.user.isTraveling,
+  playerEta: state.player.eta,
+  playerIsTraveling: state.player.isTraveling,
 });
 
 const mapDispatch = {};
@@ -22,7 +22,7 @@ type SidebarProps = PropsFromRedux;
 const Sidebar: React.FunctionComponent<SidebarProps> = (
   props: SidebarProps
 ) => {
-  const { modalIsOpen, userEta, userIsTraveling } = props;
+  const { modalIsOpen, playerEta, playerIsTraveling } = props;
 
   return (
     <div className={modalIsOpen ? "blur" : undefined} id="game-display">
@@ -30,10 +30,10 @@ const Sidebar: React.FunctionComponent<SidebarProps> = (
       <div>
         <SidebarButton
           iconLocation="/assets/compass.svg"
-          label="User Location"
-          menuType={{ name: "userLocation", title: "User Location" }}
+          label="Player Location"
+          menuType={{ name: "playerLocation", title: "Player Location" }}
         />
-        {!userIsTraveling && (
+        {!playerIsTraveling && (
           <SidebarButton
             iconLocation="/assets/map.svg"
             label="Travel"
@@ -50,10 +50,10 @@ const Sidebar: React.FunctionComponent<SidebarProps> = (
           label="Camera"
           menuType={{ name: "camera", title: "Camera" }}
         />
-        {userIsTraveling && userEta && (
+        {playerIsTraveling && playerEta && (
           <div>
             <h3>ETA</h3>
-            {userEta}
+            {playerEta}
           </div>
         )}
       </div>

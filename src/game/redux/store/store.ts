@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 
 import cameraReducer from "../reducers/camera";
 import modalReducer from "../reducers/modal";
-import userReducer from "../reducers/user";
+import playerReducer from "../reducers/player";
 
 import { loadState } from "../../util";
 
@@ -20,7 +20,7 @@ const store = createStore(
   combineReducers({
     camera: cameraReducer,
     modal: modalReducer,
-    user: userReducer,
+    player: playerReducer,
   }),
   persistedState,
   composeEnhancer(applyMiddleware(thunk))

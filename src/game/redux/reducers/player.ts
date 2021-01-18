@@ -1,8 +1,8 @@
 import { startingLocation } from "../../constants";
 
-import { UserActionTypes, UserState } from "../../../types";
+import { PlayerActionTypes, PlayerState } from "../../../types";
 
-const userDefaultState: UserState = {
+const playerDefaultState: PlayerState = {
   destination: null,
   eta: null,
   isTraveling: false,
@@ -10,17 +10,17 @@ const userDefaultState: UserState = {
 };
 
 export default (
-  state = userDefaultState,
-  action: UserActionTypes
-): UserState => {
+  state = playerDefaultState,
+  action: PlayerActionTypes
+): PlayerState => {
   switch (action.type) {
-    case "SET_USER_DESTINATION":
+    case "SET_PLAYER_DESTINATION":
       return { ...state, destination: action.payload.destination };
-    case "SET_USER_ETA":
+    case "SET_PLAYER_ETA":
       return { ...state, eta: action.payload.eta };
-    case "SET_USER_IS_TRAVELING":
+    case "SET_PLAYER_IS_TRAVELING":
       return { ...state, isTraveling: action.payload.isTraveling };
-    case "SET_USER_LOCATION":
+    case "SET_PLAYER_LOCATION":
       return { ...state, location: action.payload.location };
     default:
       return state;

@@ -4,7 +4,7 @@ import { connect, ConnectedProps } from "react-redux";
 import CameraContent from "../modalContent/Camera";
 import MarketContent from "../modalContent/Market";
 import TravelContent from "../modalContent/Travel";
-import UserLocation from "../modalContent/UserLocation";
+import PlayerLocation from "../modalContent/PlayerLocation";
 
 import { ModalActionTypes, RootState } from "../../types";
 
@@ -33,7 +33,7 @@ const contents: {
   camera: CameraContent,
   market: MarketContent,
   travel: TravelContent,
-  userLocation: UserLocation,
+  playerLocation: PlayerLocation,
 };
 
 const Modal: React.FunctionComponent<ModalProps> = (props: ModalProps) => {

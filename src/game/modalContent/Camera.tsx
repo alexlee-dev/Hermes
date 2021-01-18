@@ -51,7 +51,7 @@ const CameraContent: React.FunctionComponent<CameraContentProps> = (
           onChange={handleCameraTargetChange}
           value={cameraTarget}
         >
-          <option value="ship">User Ship</option>
+          <option value="ship">Player Ship</option>
           {stations.map((station) => (
             <option key={station.id} value={station.id}>
               {station.name}

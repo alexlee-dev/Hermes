@@ -9,31 +9,33 @@ import useInterval from "./hooks/useInterval";
 
 import GameScene from "./GameScene";
 
-import { MapCoordinate, RootState, Station, UserActionTypes } from "../types";
+import { MapCoordinate, RootState, Station, PlayerActionTypes } from "../types";
 
 const mapState = (state: RootState) => ({
-  userEta: state.user.eta,
-  userDestination: state.user.destination,
-  userIsTraveling: state.user.isTraveling,
+  playerEta: state.player.eta,
+  playerDestination: state.player.destination,
+  playerIsTraveling: state.player.isTraveling,
 });
 
 const mapDispatch = {
-  handleSetUserDestination: (destination: Station | null): UserActionTypes => ({
-    type: "SET_USER_DESTINATION",
+  handleSetPlayerDestination: (
+    destination: Station | null
+  ): PlayerActionTypes => ({
+    type: "SET_PLAYER_DESTINATION",
     payload: { destination },
   }),
-  handleSetUserEta: (eta: number | null): UserActionTypes => ({
-    type: "SET_USER_ETA",
+  handleSetPlayerEta: (eta: number | null): PlayerActionTypes => ({
+    type: "SET_PLAYER_ETA",
     payload: { eta },
   }),
-  handleSetUserIsTraveling: (isTraveling: boolean): UserActionTypes => ({
-    type: "SET_USER_IS_TRAVELING",
+  handleSetPlayerIsTraveling: (isTraveling: boolean): PlayerActionTypes => ({
+    type: "SET_PLAYER_IS_TRAVELING",
     payload: {
       isTraveling,
     },
   }),
-  handleSetUserLocation: (location: MapCoordinate): UserActionTypes => ({
-    type: "SET_USER_LOCATION",
+  handleSetPlayerLocation: (location: MapCoordinate): PlayerActionTypes => ({
+    type: "SET_PLAYER_LOCATION",
     payload: { location },
   }),
 };
@@ -42,35 +44,34 @@ const connector = connect(mapState, mapDispatch);
 
 type AppProps = ConnectedProps<typeof connector>;
 
-// TODO - Rename 'user' to 'player'
 const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
   const {
-    handleSetUserDestination,
-    handleSetUserEta,
-    handleSetUserIsTraveling,
-    handleSetUserLocation,
-    userDestination,
-    userEta,
-    userIsTraveling,
+    handleSetPlayerDestination,
+    handleSetPlayerEta,
+    handleSetPlayerIsTraveling,
+    handleSetPlayerLocation,
+    playerDestination,
+    playerEta,
+    playerIsTraveling,
   } = props;
 
   useInterval(() => {
-    if (userIsTraveling) {
+    if (playerIsTraveling) {
       // * Update the ETA every 1 second
       // TODO Probably do this better somehow
       if ((window as any).travelComplete) {
-        if (!userDestination) {
-          throw new Error("No user destination!");
+        if (!playerDestination) {
+          throw new Error("No player destination!");
         }
-        handleSetUserIsTraveling(false);
-        handleSetUserEta(null);
-        handleSetUserLocation(userDestination.location);
-        handleSetUserDestination(null);
+        handleSetPlayerIsTraveling(false);
+        handleSetPlayerEta(null);
+        handleSetPlayerLocation(playerDestination.location);
+        handleSetPlayerDestination(null);
       } else {
-        if (!userEta) {
+        if (!playerEta) {
           throw new Error("no eta!");
         }
-        handleSetUserEta(userEta - 1);
+        handleSetPlayerEta(playerEta - 1);
       }
     }
   }, 1000);
