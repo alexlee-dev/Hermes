@@ -8,9 +8,9 @@ import PlayerLocation from "../modalContent/PlayerLocation";
 
 import { handleSetModalIsOpen } from "../redux/actions/modal";
 
-import { RootState } from "../../types";
+import { GameState } from "../../types";
 
-const mapState = (state: RootState) => ({
+const mapState = (state: GameState) => ({
   contentKey: state.modal.contentKey,
   isOpen: state.modal.isOpen,
   title: state.modal.title,

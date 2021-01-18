@@ -1,11 +1,11 @@
 import * as React from "react";
 import { connect, ConnectedProps } from "react-redux";
 
-import { RootState } from "../../types";
+import { GameState } from "../../types";
 
 import SidebarButton from "./SidebarButton";
 
-const mapState = (state: RootState) => ({
+const mapState = (state: GameState) => ({
   modalIsOpen: state.modal.isOpen,
   playerEta: state.player.eta,
   playerIsTraveling: state.player.isTraveling,

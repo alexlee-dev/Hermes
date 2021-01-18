@@ -7,7 +7,7 @@ import playerReducer from "../reducers/player";
 
 import { loadState } from "../../util";
 
-import { RootState } from "../../../types";
+import { GameState } from "../../../types";
 // import { loadState, saveState } from "../../util/main";
 // import throttle from "lodash/throttle";
 
@@ -15,7 +15,7 @@ const composeEnhancer =
   // eslint-disable-next-line
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const persistedState: RootState | undefined = loadState();
+const persistedState: GameState | undefined = loadState();
 
 const store = createStore(
   combineReducers({

@@ -11,9 +11,9 @@ import {
 import { stations } from "../constants";
 import { arraysMatch, calculateDistance, calculateEta } from "../util";
 
-import { RootState, Station } from "../../types";
+import { GameState, Station } from "../../types";
 
-const mapState = (state: RootState) => ({
+const mapState = (state: GameState) => ({
   playerLocation: state.player.location,
 });
 

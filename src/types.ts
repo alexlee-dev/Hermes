@@ -20,6 +20,12 @@ export type Controller = {
 
 export type Domain = string | undefined;
 
+export interface GameState {
+  camera: CameraState;
+  modal: ModalState;
+  player: PlayerState;
+}
+
 export interface Item {
   description: string;
   inventory: number;
@@ -45,13 +51,6 @@ export interface ModalState {
   isOpen: boolean;
   // TODO - write out the titles, not just "string"
   title: string;
-}
-
-// TODO - Rename "Game State"
-export interface RootState {
-  camera: CameraState;
-  modal: ModalState;
-  player: PlayerState;
 }
 
 export interface SetCameraTargetAction {

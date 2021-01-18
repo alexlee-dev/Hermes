@@ -5,9 +5,9 @@ import { stations } from "../constants";
 
 import { handleSetCameraTarget } from "../redux/actions/camera";
 
-import { RootState } from "../../types";
+import { GameState } from "../../types";
 
-const mapState = (state: RootState) => ({
+const mapState = (state: GameState) => ({
   cameraTarget: state.camera.target,
 });
 

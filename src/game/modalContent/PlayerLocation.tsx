@@ -4,9 +4,9 @@ import { connect, ConnectedProps } from "react-redux";
 import StationDisplay from "../components/StationDisplay";
 import { stations } from "../constants";
 
-import { RootState } from "../../types";
+import { GameState } from "../../types";
 
-const mapState = (state: RootState) => ({
+const mapState = (state: GameState) => ({
   playerIsTraveling: state.player.isTraveling,
   playerLocation: state.player.location,
 });

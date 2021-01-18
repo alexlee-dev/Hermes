@@ -16,9 +16,9 @@ import {
   handleSetPlayerLocation,
 } from "./redux/actions/player";
 
-import { RootState } from "../types";
+import { GameState } from "../types";
 
-const mapState = (state: RootState) => ({
+const mapState = (state: GameState) => ({
   playerEta: state.player.eta,
   playerDestination: state.player.destination,
   playerIsTraveling: state.player.isTraveling,

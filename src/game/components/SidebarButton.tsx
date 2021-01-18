@@ -7,9 +7,9 @@ import {
   handleSetModalTitle,
 } from "../redux/actions/modal";
 
-import { MenuType, RootState } from "../../types";
+import { MenuType, GameState } from "../../types";
 
-const mapState = (state: RootState) => ({});
+const mapState = (state: GameState) => ({});
 
 const mapDispatch = {
   handleSetModalContentKey,
