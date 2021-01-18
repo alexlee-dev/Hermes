@@ -1,18 +1,23 @@
 import * as React from "react";
+import { connect, ConnectedProps } from "react-redux";
 
 import StationDisplay from "../components/StationDisplay";
 import { stations } from "../constants";
 
-import { MapCoordinate, Station } from "../../types";
+import { RootState } from "../../types";
 
-interface UserLocationProps {
-  setEta: (eta: number) => void;
-  setModalIsOpen: (modalIsOpen: boolean) => void;
-  setUserDestination: (userDestination: Station) => void;
-  setUserIsTraveling: (userIsTraveling: boolean) => void;
-  userLocation: MapCoordinate;
-  userIsTraveling: boolean;
-}
+const mapState = (state: RootState) => ({
+  userIsTraveling: state.user.isTraveling,
+  userLocation: state.user.location,
+});
+
+const mapDispatch = {};
+
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type UserLocationProps = PropsFromRedux;
 
 const UserLocation: React.FunctionComponent<UserLocationProps> = (
   props: UserLocationProps
@@ -58,4 +63,4 @@ const UserLocation: React.FunctionComponent<UserLocationProps> = (
   );
 };
 
-export default UserLocation;
+export default connector(UserLocation);

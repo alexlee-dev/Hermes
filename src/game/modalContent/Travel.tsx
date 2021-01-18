@@ -1,28 +1,53 @@
 import * as React from "react";
+import { connect, ConnectedProps } from "react-redux";
 
 import { stations } from "../constants";
 import { arraysMatch, calculateDistance, calculateEta } from "../util";
 
-import { CameraTarget, Station } from "../../types";
+import {
+  ModalActionTypes,
+  RootState,
+  Station,
+  UserActionTypes,
+} from "../../types";
 
-interface TravelContentProps {
-  cameraTarget: CameraTarget;
-  setCameraTarget: (cameraTarget: CameraTarget) => void;
-  setEta: (eta: number) => void;
-  setModalIsOpen: (modalIsOpen: boolean) => void;
-  setUserDestination: (userDestination: Station) => void;
-  setUserIsTraveling: (userIsTraveling: boolean) => void;
-  userLocation: [number, number];
-}
+const mapState = (state: RootState) => ({
+  userLocation: state.user.location,
+});
+
+const mapDispatch = {
+  handleSetModalIsOpen: (isOpen: boolean): ModalActionTypes => ({
+    type: "SET_MODAL_IS_OPEN",
+    payload: { isOpen },
+  }),
+  handleSetUserDestination: (destination: Station | null): UserActionTypes => ({
+    type: "SET_USER_DESTINATION",
+    payload: { destination },
+  }),
+  handleSetUserEta: (eta: number | null): UserActionTypes => ({
+    type: "SET_USER_ETA",
+    payload: { eta },
+  }),
+  handleSetUserIsTraveling: (isTraveling: boolean): UserActionTypes => ({
+    type: "SET_USER_IS_TRAVELING",
+    payload: { isTraveling },
+  }),
+};
+
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type TravelContentProps = PropsFromRedux;
 
 const TravelContent: React.FunctionComponent<TravelContentProps> = (
   props: TravelContentProps
 ) => {
   const {
-    setEta,
-    setModalIsOpen,
-    setUserDestination,
-    setUserIsTraveling,
+    handleSetModalIsOpen,
+    handleSetUserDestination,
+    handleSetUserEta,
+    handleSetUserIsTraveling,
     userLocation,
   } = props;
 
@@ -35,9 +60,9 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
     }
 
     // * Close modal
-    setModalIsOpen(false);
+    handleSetModalIsOpen(false);
     // * Set isUserTraveling to true
-    setUserIsTraveling(true);
+    handleSetUserIsTraveling(true);
 
     // * Set an ETA based on the distance to travel
     const distance = calculateDistance(userLocation, destination);
@@ -48,8 +73,8 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
     const travelTime = distance * speed;
     const eta = calculateEta(travelTime);
 
-    setEta(eta);
-    setUserDestination(destination);
+    handleSetUserEta(eta);
+    handleSetUserDestination(destination);
 
     const event = new CustomEvent("shipTravel", {
       detail: {
@@ -94,4 +119,4 @@ const TravelContent: React.FunctionComponent<TravelContentProps> = (
   );
 };
 
-export default TravelContent;
+export default connector(TravelContent);

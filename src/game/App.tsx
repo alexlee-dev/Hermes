@@ -1,30 +1,58 @@
 import * as React from "react";
+import { connect, ConnectedProps } from "react-redux";
 import ReactTooltip from "react-tooltip";
 
 import Modal from "./components/Modal";
-
-import { startingLocation } from "./constants";
 import Sidebar from "./components/Sidebar";
+
 import useInterval from "./hooks/useInterval";
+
 import GameScene from "./GameScene";
 
-import { CameraTarget, MapCoordinate, Station } from "../types";
+import { MapCoordinate, RootState, Station, UserActionTypes } from "../types";
 
-const App: React.FunctionComponent<unknown> = () => {
-  const [cameraTarget, setCameraTarget] = React.useState<CameraTarget>("ship");
-  const [modalContent, setModalContent] = React.useState<string>("");
-  const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
-  const [modalTitle, setModalTitle] = React.useState<string>("");
+const mapState = (state: RootState) => ({
+  userEta: state.user.eta,
+  userDestination: state.user.destination,
+  userIsTraveling: state.user.isTraveling,
+});
 
-  const [userLocation, setUserLocation] = React.useState<MapCoordinate>(
-    startingLocation
-  );
-  const [userDestination, setUserDestination] = React.useState<Station | null>(
-    null
-  );
-  const [userIsTraveling, setUserIsTraveling] = React.useState<boolean>(false);
-  // * In Seconds
-  const [eta, setEta] = React.useState<number | null>(null);
+const mapDispatch = {
+  handleSetUserDestination: (destination: Station | null): UserActionTypes => ({
+    type: "SET_USER_DESTINATION",
+    payload: { destination },
+  }),
+  handleSetUserEta: (eta: number | null): UserActionTypes => ({
+    type: "SET_USER_ETA",
+    payload: { eta },
+  }),
+  handleSetUserIsTraveling: (isTraveling: boolean): UserActionTypes => ({
+    type: "SET_USER_IS_TRAVELING",
+    payload: {
+      isTraveling,
+    },
+  }),
+  handleSetUserLocation: (location: MapCoordinate): UserActionTypes => ({
+    type: "SET_USER_LOCATION",
+    payload: { location },
+  }),
+};
+
+const connector = connect(mapState, mapDispatch);
+
+type AppProps = ConnectedProps<typeof connector>;
+
+// TODO - Rename 'user' to 'player'
+const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
+  const {
+    handleSetUserDestination,
+    handleSetUserEta,
+    handleSetUserIsTraveling,
+    handleSetUserLocation,
+    userDestination,
+    userEta,
+    userIsTraveling,
+  } = props;
 
   useInterval(() => {
     if (userIsTraveling) {
@@ -34,46 +62,27 @@ const App: React.FunctionComponent<unknown> = () => {
         if (!userDestination) {
           throw new Error("No user destination!");
         }
-        setUserIsTraveling(false);
-        setEta(null);
-        setUserLocation(userDestination.location);
-        setUserDestination(null);
+        handleSetUserIsTraveling(false);
+        handleSetUserEta(null);
+        handleSetUserLocation(userDestination.location);
+        handleSetUserDestination(null);
       } else {
-        if (!eta) {
+        if (!userEta) {
           throw new Error("no eta!");
         }
-        setEta(eta - 1);
+        handleSetUserEta(userEta - 1);
       }
     }
   }, 1000);
 
   return (
     <>
-      <Sidebar
-        eta={eta}
-        modalIsOpen={modalIsOpen}
-        setModalContent={setModalContent}
-        setModalIsOpen={setModalIsOpen}
-        setModalTitle={setModalTitle}
-        userIsTraveling={userIsTraveling}
-      />
+      <Sidebar />
       <GameScene />
-      <Modal
-        cameraTarget={cameraTarget}
-        content={modalContent}
-        display={modalIsOpen}
-        setCameraTarget={setCameraTarget}
-        setEta={setEta}
-        setModalIsOpen={setModalIsOpen}
-        setUserDestination={setUserDestination}
-        setUserIsTraveling={setUserIsTraveling}
-        title={modalTitle}
-        userIsTraveling={userIsTraveling}
-        userLocation={userLocation}
-      />
+      <Modal />
       <ReactTooltip />
     </>
   );
 };
 
-export default App;
+export default connector(App);

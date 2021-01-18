@@ -1,27 +1,38 @@
 import * as React from "react";
+import { connect, ConnectedProps } from "react-redux";
+
 import { stations } from "../constants";
 
-import { CameraTarget, Station } from "../../types";
+import { CameraActionTypes, CameraTarget, RootState } from "../../types";
 
-interface CameraContentProps {
-  cameraTarget: CameraTarget;
-  setCameraTarget: (cameraTarget: CameraTarget) => void;
-  setEta: (eta: number) => void;
-  setModalIsOpen: (modalIsOpen: boolean) => void;
-  setUserDestination: (userDestination: Station) => void;
-  setUserIsTraveling: (userIsTraveling: boolean) => void;
-  userLocation: [number, number];
-}
+const mapState = (state: RootState) => ({
+  cameraTarget: state.camera.target,
+});
+
+const mapDispatch = {
+  handleSetCameraTarget: (target: CameraTarget): CameraActionTypes => ({
+    type: "SET_CAMERA_TARGET",
+    payload: {
+      target,
+    },
+  }),
+};
+
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type CameraContentProps = PropsFromRedux;
 
 const CameraContent: React.FunctionComponent<CameraContentProps> = (
   props: CameraContentProps
 ) => {
-  const { cameraTarget, setCameraTarget } = props;
+  const { cameraTarget, handleSetCameraTarget } = props;
 
   const handleCameraTargetChange = (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setCameraTarget(e.target.value);
+    handleSetCameraTarget(e.target.value);
     const event = new CustomEvent("cameraTargetChange", {
       detail: {
         cameraTarget: e.target.value,
@@ -52,4 +63,4 @@ const CameraContent: React.FunctionComponent<CameraContentProps> = (
   );
 };
 
-export default CameraContent;
+export default connector(CameraContent);
