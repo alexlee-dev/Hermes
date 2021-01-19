@@ -1,15 +1,9 @@
 import * as React from "react";
 import { connect, ConnectedProps } from "react-redux";
 
-import { handleSetModalIsOpen } from "../redux/actions/modal";
-import {
-  handleSetPlayerDestination,
-  handleSetPlayerEta,
-  handleSetPlayerIsTraveling,
-} from "../redux/actions/player";
-
+import { handleInitiateTravel } from "../redux/thunks";
 import { stations } from "../constants";
-import { arraysMatch, calculateDistance, calculateEta } from "../util";
+import { arraysMatch } from "../util";
 
 import { GameState, Station } from "../../types";
 
@@ -18,10 +12,7 @@ const mapState = (state: GameState) => ({
 });
 
 const mapDispatch = {
-  handleSetModalIsOpen,
-  handleSetPlayerDestination,
-  handleSetPlayerEta,
-  handleSetPlayerIsTraveling,
+  handleInitiateTravel,
 };
 
 const connector = connect(mapState, mapDispatch);
@@ -33,47 +24,13 @@ type TravelContentProps = PropsFromRedux;
 const TravelContent: React.FunctionComponent<TravelContentProps> = (
   props: TravelContentProps
 ) => {
-  const {
-    handleSetModalIsOpen,
-    handleSetPlayerDestination,
-    handleSetPlayerEta,
-    handleSetPlayerIsTraveling,
-    playerLocation,
-  } = props;
+  const { handleInitiateTravel, playerLocation } = props;
 
   const [destination, setDestination] = React.useState<Station | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!destination) {
-      throw new Error("No destination!");
-    }
-
-    // * Close modal
-    handleSetModalIsOpen(false);
-    // * Set isPlayerTraveling to true
-    handleSetPlayerIsTraveling(true);
-
-    // * Set an ETA based on the distance to travel
-    const distance = calculateDistance(playerLocation, destination);
-
-    // * Should edit this depending on ship stats later
-    const speed = 1;
-    // * In seconds
-    const travelTime = distance * speed;
-    const eta = calculateEta(travelTime);
-
-    handleSetPlayerEta(eta);
-    handleSetPlayerDestination(destination);
-
-    const event = new CustomEvent("shipTravel", {
-      detail: {
-        travelDestination: destination,
-        travelDistance: distance,
-        travelDuration: eta * 1000,
-      },
-    });
-    window.dispatchEvent(event);
+    handleInitiateTravel(destination);
   };
 
   const handleDestinationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

@@ -1,18 +1,12 @@
 import * as React from "react";
 import { connect, ConnectedProps } from "react-redux";
 
-import {
-  handleSetModalContentKey,
-  handleSetModalIsOpen,
-  handleSetModalTitle,
-} from "../redux/actions/modal";
+import { handleOpenSidebarMenu } from "../redux/thunks";
 
 import { MenuType } from "../../types";
 
 const mapDispatch = {
-  handleSetModalContentKey,
-  handleSetModalIsOpen,
-  handleSetModalTitle,
+  handleOpenSidebarMenu,
 };
 
 const connector = connect(null, mapDispatch);
@@ -28,20 +22,7 @@ type SidebarButtonProps = PropsFromRedux & {
 const SidebarButton: React.FunctionComponent<SidebarButtonProps> = (
   props: SidebarButtonProps
 ) => {
-  const {
-    handleSetModalContentKey,
-    handleSetModalIsOpen,
-    handleSetModalTitle,
-    iconLocation,
-    label,
-    menuType,
-  } = props;
-
-  const handleOpenSidebarMenu = (menuType: MenuType) => {
-    handleSetModalContentKey(menuType.name);
-    handleSetModalTitle(menuType.title);
-    handleSetModalIsOpen(true);
-  };
+  const { handleOpenSidebarMenu, iconLocation, label, menuType } = props;
 
   return (
     <button

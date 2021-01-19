@@ -17,9 +17,17 @@ import Starfield from "./objects/Starfield";
 import Station from "./objects/Station";
 import PlayerShip from "./objects/PlayerShip";
 
-import { handleSetPlayerIsTraveling } from "./redux/actions/player";
+import {
+  handleSetPlayerIsTraveling,
+  handleSetPlayerLocation,
+} from "./redux/actions/player";
 
-import { CameraTargetChangeEvent, GameState, ShipTravelEvent } from "../types";
+import {
+  CameraTargetChangeEvent,
+  GameState,
+  MapCoordinate,
+  ShipTravelEvent,
+} from "../types";
 
 const mapState = (state: GameState) => ({
   cameraTarget: state.camera.target,
@@ -30,6 +38,7 @@ const mapState = (state: GameState) => ({
 
 const mapDispatch = {
   handleSetPlayerIsTraveling,
+  handleSetPlayerLocation,
 };
 
 const connector = connect(mapState, mapDispatch);
@@ -205,7 +214,18 @@ class GameScene extends React.Component<GameSceneProps, unknown> {
         )
         .easing(TWEEN.Easing.Quintic.InOut)
         .onUpdate((posObj) => {
-          this.playerShip.position.set(posObj.x, posObj.y, posObj.z);
+          // ! - You were doing this:
+          // * Figure out how to update the player position in Redux, but
+          // * Probably not on every time ".onUpdate()" runs, because it does it a ton of times per second. That's a lot of logic.
+          // * Maybe that doesn't matter?
+          const coordinate: MapCoordinate = [posObj.x, posObj.y, posObj.z];
+          this.playerShip.position.set(
+            coordinate[0],
+            coordinate[1],
+            coordinate[2]
+          );
+          console.log("UPDATE");
+          this.props.handleSetPlayerLocation(coordinate);
         })
         .onComplete(() => {
           // eslint-disable-next-line

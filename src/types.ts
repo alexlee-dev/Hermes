@@ -1,4 +1,13 @@
+import { Action } from "redux";
+import { ThunkAction } from "redux-thunk";
 import { Router } from "express";
+
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  GameState,
+  unknown,
+  Action<string>
+>;
 
 export type CameraActionTypes = SetCameraTargetAction;
 
