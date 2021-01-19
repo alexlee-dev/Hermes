@@ -8,6 +8,8 @@ const playerDefaultState: PlayerState = {
   eta: null,
   isTraveling: false,
   location: startingLocation,
+  travelDistance: null,
+  travelDuration: null,
 };
 
 export default (
@@ -25,6 +27,10 @@ export default (
       return { ...state, isTraveling: action.payload.isTraveling };
     case "SET_PLAYER_LOCATION":
       return { ...state, location: action.payload.location };
+    case "SET_PLAYER_TRAVEL_DISTANCE":
+      return { ...state, travelDistance: action.payload.travelDistance };
+    case "SET_PLAYER_TRAVEL_DURATION":
+      return { ...state, travelDuration: action.payload.travelDuration };
     default:
       return state;
   }

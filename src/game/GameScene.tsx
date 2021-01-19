@@ -31,9 +31,11 @@ import {
 
 const mapState = (state: GameState) => ({
   cameraTarget: state.camera.target,
+  playerDestination: state.player.destination,
   playerDockedStation: state.player.dockedStation,
   playerIsTraveling: state.player.isTraveling,
   playerLocation: state.player.location,
+  playerTravelDuration: state.player.travelDuration,
 });
 
 const mapDispatch = {
@@ -45,7 +47,9 @@ const connector = connect(mapState, mapDispatch);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-type GameSceneProps = PropsFromRedux;
+type GameSceneProps = PropsFromRedux & {
+  playerShip: any;
+};
 
 // TODO - Camera position needs to update on tick as well (stay with camera target);
 // TODO - When page is reloaded mid flight, scene should set up in flight, not at previous station
@@ -66,7 +70,6 @@ class GameScene extends React.Component<GameSceneProps, unknown> {
   scene!: Scene;
   starfield!: Object3D;
   travelStartTimestamp?: number;
-  playerShip!: Object3D;
   stations!: Object3D[];
 
   // * -------------------------
@@ -93,21 +96,21 @@ class GameScene extends React.Component<GameSceneProps, unknown> {
     );
 
     // * Player Ship
-    const playerShipObject = new PlayerShip({
-      label: "Player Ship",
-      x: this.props.playerDockedStation
-        ? this.props.playerLocation[0] - 0.75
-        : this.props.playerLocation[0],
-      y: this.props.playerLocation[1],
-      z: this.props.playerLocation[2],
-    });
-    this.playerShip = playerShipObject.object;
-    this.scene.add(playerShipObject.object);
+    // const playerShipObject = new PlayerShip({
+    //   label: "Player Ship",
+    //   x: this.props.playerDockedStation
+    //     ? this.props.playerLocation[0] - 0.75
+    //     : this.props.playerLocation[0],
+    //   y: this.props.playerLocation[1],
+    //   z: this.props.playerLocation[2],
+    // });
+    // this.playerShip = playerShipObject.object;
+    this.scene.add(this.props.playerShip.object);
     // * When scene is rebuilt, player ship is always in focus
     this.camera.position.set(
-      this.playerShip.position.x,
-      this.playerShip.position.y,
-      this.playerShip.position.z + 10
+      this.props.playerShip.object.position.x,
+      this.props.playerShip.object.position.y,
+      this.props.playerShip.object.position.z + 10
     );
 
     // * Stations
@@ -140,7 +143,7 @@ class GameScene extends React.Component<GameSceneProps, unknown> {
     this.setupListeners();
 
     const cameraTargets: { [index: string]: Object3D } = {
-      ship: this.playerShip,
+      ship: this.props.playerShip.object,
       "1": this.stations[0],
       "2": this.stations[1],
       "3": this.stations[2],
@@ -192,34 +195,39 @@ class GameScene extends React.Component<GameSceneProps, unknown> {
       false
     );
 
+    // ? What Do I Want To Do?
+    // * 1. User clicks "Travel" button
+    // * 2. Redux State is Updated to Show Player Travel
+    // * 3. GameScene takes in the new Redux State changes, and animates the ship traveling
     window.addEventListener("shipTravel", (e: ShipTravelEvent) => {
-      if (!e.detail) {
-        throw new Error("No detail!");
+      console.log("START OF EVENT LISTENER");
+      if (!this.props.playerDestination || !this.props.playerTravelDuration) {
+        throw new Error("No player destination or no player travel duration!");
       }
 
+      // ! When you figure out the on reload
+      // * On reload, create new tween for ship travel, but don't add easing
       const tween = new TWEEN.Tween({
-        x: this.playerShip.position.x,
-        y: this.playerShip.position.y,
-        z: this.playerShip.position.z,
+        x: this.props.playerShip.object.position.x,
+        y: this.props.playerShip.object.position.y,
+        z: this.props.playerShip.object.position.z,
       })
         .to(
           {
             // * The 0.75 makes the ship appear to "dock" with the station, instead of just getting "consumed" by it
-            // ? - Use values from Redux
-            x: e.detail.travelDestination.location[0] - 0.75,
-            y: e.detail.travelDestination.location[1],
-            z: e.detail.travelDestination.location[2],
+            x: this.props.playerDestination.location[0] - 0.75,
+            y: this.props.playerDestination.location[1],
+            z: this.props.playerDestination.location[2],
           },
-          e.detail.travelDuration
+          this.props.playerTravelDuration
         )
-        .easing(TWEEN.Easing.Quintic.InOut)
-        .onUpdate((posObj) => {
-          // ! - You were doing this:
+        .onUpdate((posObj: { x: number; y: number; z: number }) => {
+          (window as any).shipMoving = true;
           // * Figure out how to update the player position in Redux, but
           // * Probably not on every time ".onUpdate()" runs, because it does it a ton of times per second. That's a lot of logic.
           // * Maybe that doesn't matter?
           const coordinate: MapCoordinate = [posObj.x, posObj.y, posObj.z];
-          this.playerShip.position.set(
+          this.props.playerShip.object.position.set(
             coordinate[0],
             coordinate[1],
             coordinate[2]
@@ -229,8 +237,15 @@ class GameScene extends React.Component<GameSceneProps, unknown> {
         })
         .onComplete(() => {
           // eslint-disable-next-line
+          (window as any).shipMoving = false;
           (window as any).travelComplete = true;
+          (window as any).tween = undefined;
+          console.log("COMPLETED!!!");
         });
+
+      if (e.detail && e.detail.easing) {
+        tween.easing(TWEEN.Easing.Quintic.InOut);
+      }
 
       // eslint-disable-next-line
       (window as any).travelComplete = false;
@@ -245,7 +260,8 @@ class GameScene extends React.Component<GameSceneProps, unknown> {
           throw new Error("No detail!");
         }
 
-        let correspondingObject: Object3D | undefined = this.playerShip;
+        let correspondingObject: Object3D | undefined = this.props.playerShip
+          .object;
         // TODO - Rewrite how this is looked up
         if (e.detail.cameraTarget !== "ship") {
           correspondingObject = this.scene.children.find(

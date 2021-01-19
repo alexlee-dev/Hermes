@@ -67,7 +67,9 @@ export type PlayerActionTypes =
   | SetPlayerDockedStationAction
   | SetPlayerEtaAction
   | SetPlayerIsTravelingAction
-  | SetPlayerLocationAction;
+  | SetPlayerLocationAction
+  | SetPlayerTravelDistance
+  | SetPlayerTravelDuration;
 
 export interface PlayerState {
   destination: Station | null;
@@ -75,6 +77,8 @@ export interface PlayerState {
   eta: number | null;
   isTraveling: boolean;
   location: MapCoordinate;
+  travelDistance: number | null;
+  travelDuration: number | null;
 }
 
 export interface SetCameraTargetAction {
@@ -138,13 +142,19 @@ export interface SetPlayerLocationAction {
   };
 }
 
+export interface SetPlayerTravelDistance {
+  type: "SET_PLAYER_TRAVEL_DISTANCE";
+  payload: { travelDistance: number | null };
+}
+
+export interface SetPlayerTravelDuration {
+  type: "SET_PLAYER_TRAVEL_DURATION";
+  payload: { travelDuration: number | null };
+}
+
 export interface ShipTravelEvent extends Event {
   detail?: {
-    travelDestination: Station;
-    // * In "units" ...?
-    travelDistance: number;
-    // * In miliseconds
-    travelDuration: number;
+    easing: boolean;
   };
 }
 
