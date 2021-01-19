@@ -103,6 +103,8 @@ class GameScene extends React.Component<unknown, unknown> {
     this.setupListeners();
     this.cameraTarget = this.playerShip;
 
+    (window as any).camera = this.camera;
+    (window as any).orbitControls = this.orbitControls;
     this.tick = this.tick.bind(this);
     this.tick();
   }
