@@ -59,6 +59,7 @@ class Station extends React.Component<unknown, unknown> {
       this.object.position.z
     );
 
+    this.object.name = this.label;
     this.object.userData = { id: this.id, name: this.label };
     this.object.add(mesh);
     this.object.add(label);

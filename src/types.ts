@@ -12,15 +12,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 export type CameraActionTypes = SetCameraTargetAction;
 
 export interface CameraState {
-  target: CameraTarget;
-}
-
-export type CameraTarget = string;
-
-export interface CameraTargetChangeEvent extends Event {
-  detail?: {
-    cameraTarget: CameraTarget;
-  };
+  target: MapCoordinate;
 }
 
 export type ContentKey = "" | "camera" | "market" | "playerLocation" | "travel";
@@ -84,7 +76,7 @@ export interface PlayerState {
 export interface SetCameraTargetAction {
   type: "SET_CAMERA_TARGET";
   payload: {
-    target: CameraTarget;
+    target: MapCoordinate;
   };
 }
 
@@ -150,12 +142,6 @@ export interface SetPlayerTravelDistance {
 export interface SetPlayerTravelDuration {
   type: "SET_PLAYER_TRAVEL_DURATION";
   payload: { travelDuration: number | null };
-}
-
-export interface ShipTravelEvent extends Event {
-  detail?: {
-    easing: boolean;
-  };
 }
 
 export interface Station {

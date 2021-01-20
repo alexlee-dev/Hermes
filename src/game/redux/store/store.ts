@@ -29,7 +29,7 @@ const store = createStore(
 store.subscribe(
   throttle(() => {
     saveState({
-      camera: store.getState().camera,
+      camera: { ...store.getState().camera, target: [0, 0, 0] },
       modal: store.getState().modal,
       player: store.getState().player,
     });

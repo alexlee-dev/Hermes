@@ -44,6 +44,7 @@ class PlayerShip extends React.Component<unknown, unknown> {
       this.object.position.z
     );
 
+    this.object.name = this.label;
     this.object.add(mesh);
     this.object.add(label);
     this.object.position.set(this.x, this.y, this.z);

@@ -11,34 +11,17 @@ import GameScene from "./GameScene";
 
 import { handleGameTick } from "./redux/thunks";
 
-import { GameState } from "../types";
-import PlayerShip from "./objects/PlayerShip";
-
-const mapState = (state: GameState) => ({
-  playerEta: state.player.eta,
-  playerDestination: state.player.destination,
-  playerIsTraveling: state.player.isTraveling,
-  playerLocation: state.player.location,
-});
-
 const mapDispatch = {
   handleGameTick,
 };
 
-const connector = connect(mapState, mapDispatch);
+const connector = connect(null, mapDispatch);
 
 type AppProps = ConnectedProps<typeof connector>;
 
+// TODO - Create a button to just clear localstorage and refresh page for dev purposes
 const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
-  const { handleGameTick, playerLocation } = props;
-  const [playerShip, setPlayerShip] = React.useState(
-    new PlayerShip({
-      label: "Player Ship",
-      x: playerLocation[0],
-      y: playerLocation[1],
-      z: playerLocation[2],
-    })
-  );
+  const { handleGameTick } = props;
 
   console.log("RERENDER APP!");
 
@@ -47,7 +30,7 @@ const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
   return (
     <>
       <Sidebar />
-      <GameScene playerShip={playerShip} />
+      <GameScene />
       <Modal />
       <ReactTooltip />
     </>

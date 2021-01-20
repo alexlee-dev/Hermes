@@ -1,7 +1,9 @@
+import { startingLocation } from "../../constants";
+
 import { CameraActionTypes, CameraState } from "../../../types";
 
 const cameraDefaultState: CameraState = {
-  target: "ship",
+  target: startingLocation,
 };
 
 export default (

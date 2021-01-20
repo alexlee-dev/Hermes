@@ -1,7 +1,7 @@
-import { CameraActionTypes, CameraTarget } from "../../../types";
+import { CameraActionTypes, MapCoordinate } from "../../../types";
 
 export const handleSetCameraTarget = (
-  target: CameraTarget
+  target: MapCoordinate
 ): CameraActionTypes => {
   return {
     type: "SET_CAMERA_TARGET",

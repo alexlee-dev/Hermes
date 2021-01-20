@@ -9,6 +9,7 @@ import { GameState } from "../../types";
 
 const mapState = (state: GameState) => ({
   cameraTarget: state.camera.target,
+  playerLocation: state.player.location,
 });
 
 const mapDispatch = {
@@ -24,19 +25,7 @@ type CameraContentProps = PropsFromRedux;
 const CameraContent: React.FunctionComponent<CameraContentProps> = (
   props: CameraContentProps
 ) => {
-  const { cameraTarget, handleSetCameraTarget } = props;
-
-  const handleCameraTargetChange = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    handleSetCameraTarget(e.target.value);
-    const event = new CustomEvent("cameraTargetChange", {
-      detail: {
-        cameraTarget: e.target.value,
-      },
-    });
-    window.dispatchEvent(event);
-  };
+  const { cameraTarget, handleSetCameraTarget, playerLocation } = props;
 
   return (
     <div>
@@ -45,12 +34,18 @@ const CameraContent: React.FunctionComponent<CameraContentProps> = (
         <label htmlFor="cameraTarget">Camera Target</label>
         <select
           id="cameraTarget"
-          onChange={handleCameraTargetChange}
-          value={cameraTarget}
+          onChange={(e) => {
+            const targetValue = e.target.value;
+            console.log({ targetValue });
+            const parsedVal = JSON.parse(targetValue);
+            console.log({ parsedVal });
+            handleSetCameraTarget(parsedVal);
+          }}
+          value={JSON.stringify(cameraTarget)}
         >
-          <option value="ship">Player Ship</option>
+          <option value={JSON.stringify(playerLocation)}>Player Ship</option>
           {stations.map((station) => (
-            <option key={station.id} value={station.id}>
+            <option key={station.id} value={JSON.stringify(station.location)}>
               {station.name}
             </option>
           ))}
